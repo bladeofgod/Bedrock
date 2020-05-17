@@ -4,8 +4,9 @@ import 'package:flustars/flustars.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:tripalink/base_framework/ui/behavior/over_scroll_behavior.dart';
-import 'package:tripalink/base_framework/utils/image_helper.dart';
+import 'package:flutter_bedrock/base_framework/ui/behavior/over_scroll_behavior.dart';
+import 'package:flutter_bedrock/base_framework/utils/image_helper.dart';
+
 
 abstract class BaseStatelessWidget extends StatelessWidget{
 
