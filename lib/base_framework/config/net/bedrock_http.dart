@@ -11,10 +11,10 @@ import 'package:flutter_bedrock/base_framework/exception/un_caught_exception.dar
 import 'package:flutter_bedrock/base_framework/exception/user_unbind_exception.dart';
 
 
-final TripaLinkHttp tripaLinkHttp = TripaLinkHttp();
+final BedRock bedRock = BedRock();
 
 
-class TripaLinkHttp extends BaseHttp{
+class BedRock extends BaseHttp{
 
 
   @override
@@ -56,7 +56,7 @@ class ApiInterceptor extends InterceptorsWrapper{
 
     ResponseData responseData = ResponseData.fromJson(response.data);
     if(responseData.success){
-      return tripaLinkHttp.resolve(responseData);
+      return bedRock.resolve(responseData);
     }else{
       ///这里可以根据不同的业务代码 扔出不同的异常
       ///具体要根据后台进行协商
@@ -72,7 +72,7 @@ class ApiInterceptor extends InterceptorsWrapper{
 
     }
 
-    return tripaLinkHttp.resolve(response);
+    return bedRock.resolve(response);
 
   }
 

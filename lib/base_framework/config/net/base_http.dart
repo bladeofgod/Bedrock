@@ -9,8 +9,10 @@ import 'package:dio/native_imp.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'package:flustars/flustars.dart';
 import 'package:flutter/foundation.dart';
-import 'package:tripalink/base_framework/config/frame_constant.dart';
-import 'package:tripalink/base_framework/utils/platform_utils.dart';
+import 'package:flutter_bedrock/base_framework/utils/platform_utils.dart';
+
+import '../frame_constant.dart';
+
 
 _parseAndDecode(String response) {
   return jsonDecode(response);
