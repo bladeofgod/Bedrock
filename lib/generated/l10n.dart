@@ -37,6 +37,15 @@ class S {
       args: [],
     );
   }
+
+  String get autoBySystem {
+    return Intl.message(
+      'AutoBySystem',
+      name: 'autoBySystem',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

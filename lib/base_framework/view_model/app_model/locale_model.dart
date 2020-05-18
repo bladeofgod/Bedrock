@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flustars/flustars.dart';
+import 'package:flutter_bedrock/generated/l10n.dart';
 
 
 
@@ -10,7 +11,7 @@ class LocaleModel extends ChangeNotifier {
 ///Platform.localeName
 ///有些手机 简体中文是 zh_Hans_CN 繁体是 zh_Hant_TW
   ///有些手机 中文简体是 zh_CN 繁体是 zh_TW
-  static const localeValueList = ['', 'cn', 'en',"tw"];
+  static const localeValueList = ['', 'zh', 'en',"tw"];
 
   //
   static const kLocaleIndex = 'kLocaleIndex';
@@ -48,8 +49,6 @@ class LocaleModel extends ChangeNotifier {
         return '简体中文';
       case 2:
         return 'English';
-      case 3:
-        return "繁體中文";
       default:
         return '';
     }
