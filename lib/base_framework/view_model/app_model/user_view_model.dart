@@ -6,12 +6,8 @@
 
 import 'package:flustars/flustars.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:mp_chart/mp/controller/bar_line_scatter_candle_bubble_controller.dart';
-import 'package:oktoast/oktoast.dart';
 
-import 'package:tripalink/page/mine/fake/user_entity.dart';
-import 'dart:convert';
-import 'package:tripalink/service/tripalink_repository.dart';
+
 
 class UserViewModel extends ChangeNotifier{
   //此字段保存上一个登录的用户ID，之后根据此ID去取用户缓存

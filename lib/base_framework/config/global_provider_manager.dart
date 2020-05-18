@@ -10,11 +10,7 @@
 
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
-import 'package:tripalink/base_framework/view_model/app_model/app_cache_model.dart';
 
-import 'package:tripalink/base_framework/view_model/app_model/device_model.dart';
-import 'package:tripalink/base_framework/view_model/app_model/locale_model.dart';
-import 'package:tripalink/base_framework/view_model/app_model/user_view_model.dart';
 
 List<SingleChildWidget> providers =[
   ...independentServices,

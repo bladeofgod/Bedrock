@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flustars/flustars.dart';
-import 'package:tripalink/generated/l10n.dart';
+
 
 
 

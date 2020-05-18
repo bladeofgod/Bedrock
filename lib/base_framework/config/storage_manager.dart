@@ -6,8 +6,7 @@ import 'dart:io';
 import 'package:flustars/flustars.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:tripalink/base_framework/config/frame_constant.dart';
-import 'package:tripalink/base_framework/utils/platform_utils.dart';
+
 
 class StorageManager{
 

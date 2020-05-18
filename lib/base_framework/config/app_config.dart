@@ -5,6 +5,8 @@
 
 
 
+import 'package:flutter_bedrock/base_framework/config/storage_manager.dart';
+
 class AppConfig{
 
 
