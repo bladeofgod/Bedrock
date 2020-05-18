@@ -1,3 +1,6 @@
-{"hello": "Hello",
-  "autoBySystem": "跟随系统"
+{
+  "hello": "你好",
+  "autoBySystem": "跟随系统",
+  "confirm": "确认",
+  "reset": "重置"
 }

@@ -130,11 +130,9 @@ class ImageHelper {
   static Future<String> saveImage(String name, Uint8List fileData) async {
     //Image image = Image.memory(fileData);
     Directory tempDir = await getTemporaryDirectory();
-    debugPrint("---------------------");
     debugPrint(tempDir.path);
     File file = File("${tempDir.path}/$name.png");
     file.writeAsBytesSync(fileData);
-    debugPrint("file path---------------------");
     debugPrint(file.path);
     return file.path;
 

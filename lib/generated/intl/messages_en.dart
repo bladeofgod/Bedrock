@@ -22,6 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "autoBySystem" : MessageLookupByLibrary.simpleMessage("AutoBySystem"),
-    "hello" : MessageLookupByLibrary.simpleMessage("Hello")
+    "confirm" : MessageLookupByLibrary.simpleMessage("Confirm"),
+    "hello" : MessageLookupByLibrary.simpleMessage("Hello"),
+    "reset" : MessageLookupByLibrary.simpleMessage("Reset")
   };
 }

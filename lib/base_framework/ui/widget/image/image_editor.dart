@@ -8,11 +8,11 @@ import 'dart:typed_data';
 
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bedrock/base_framework/utils/image_helper.dart';
+import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
+import 'package:flutter_bedrock/generated/l10n.dart';
 import 'package:image_editor/image_editor.dart' as ie;
 import 'package:path_provider/path_provider.dart';
-import 'package:tripalink/base_framework/utils/image_helper.dart';
-import 'package:tripalink/base_framework/widget_state/base_state.dart';
-import 'package:tripalink/generated/l10n.dart';
 
 class ImageEditor extends StatefulWidget{
 
