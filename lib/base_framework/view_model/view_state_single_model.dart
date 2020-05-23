@@ -4,7 +4,7 @@
 import 'package:flutter/cupertino.dart';
 
 import 'package:oktoast/oktoast.dart';
-import 'package:tripalink/base_framework/view_model/view_state_model.dart';
+import 'package:flutter_bedrock/base_framework/view_model/view_state_model.dart';
 
 abstract class ViewStateSingleModel<T> extends ViewStateModel{
 

@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:tripalink/base_framework/widget_state/base_state.dart';
+import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
 
 
 class TripaLiskToastUtils {

@@ -24,6 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "autoBySystem" : MessageLookupByLibrary.simpleMessage("AutoBySystem"),
     "confirm" : MessageLookupByLibrary.simpleMessage("Confirm"),
     "hello" : MessageLookupByLibrary.simpleMessage("Hello"),
+    "refreshTwoLevel" : MessageLookupByLibrary.simpleMessage("refreshTwoLevel"),
     "reset" : MessageLookupByLibrary.simpleMessage("Reset")
   };
 }

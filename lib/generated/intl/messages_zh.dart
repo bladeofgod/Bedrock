@@ -24,6 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "autoBySystem" : MessageLookupByLibrary.simpleMessage("跟随系统"),
     "confirm" : MessageLookupByLibrary.simpleMessage("确认"),
     "hello" : MessageLookupByLibrary.simpleMessage("你好"),
+    "refreshTwoLevel" : MessageLookupByLibrary.simpleMessage("去二楼"),
     "reset" : MessageLookupByLibrary.simpleMessage("重置")
   };
 }

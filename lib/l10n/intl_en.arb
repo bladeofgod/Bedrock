@@ -2,5 +2,6 @@
   "hello": "Hello",
   "autoBySystem": "AutoBySystem",
   "confirm": "Confirm",
-  "reset": "Reset"
+  "reset": "Reset",
+  "refreshTwoLevel":"refreshTwoLevel"
 }

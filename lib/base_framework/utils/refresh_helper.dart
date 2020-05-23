@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-import 'package:tripalink/base_framework/ui/widget/activity_indicator.dart';
-import 'package:tripalink/generated/l10n.dart';
+import 'package:flutter_bedrock/base_framework/ui/widget/activity_indicator.dart';
+import 'package:flutter_bedrock/generated/l10n.dart';
 
 /// 首页列表的header
 class HomeRefreshHeader extends StatelessWidget {

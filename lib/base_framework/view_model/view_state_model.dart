@@ -4,8 +4,8 @@ import 'dart:math';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:oktoast/oktoast.dart';
-import 'package:tripalink/base_framework/exception/un_authorized_exception.dart';
-import 'package:tripalink/base_framework/exception/user_unbind_exception.dart';
+import 'package:flutter_bedrock/base_framework/exception/un_authorized_exception.dart';
+import 'package:flutter_bedrock/base_framework/exception/user_unbind_exception.dart';
 
 import 'view_state.dart';
 
