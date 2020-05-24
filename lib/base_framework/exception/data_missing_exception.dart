@@ -1,14 +1,10 @@
 
 
+import 'package:flutter_bedrock/base_framework/exception/base_exception.dart';
+
 /// data missing
 
-class DataMissingException implements Exception{
+class DataMissingException extends BaseException{
+  DataMissingException({String message = "data missing"}) : super(message);
 
-  String message ="数据缺失";
-
-  @override
-  String toString() {
-    // TODO: implement toString
-    return message;
-  }
 }

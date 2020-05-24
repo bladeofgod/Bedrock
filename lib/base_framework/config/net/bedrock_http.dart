@@ -7,7 +7,7 @@ import 'package:flustars/flustars.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bedrock/base_framework/config/net/base_http.dart';
 import 'package:flutter_bedrock/base_framework/exception/un_authorized_exception.dart';
-import 'package:flutter_bedrock/base_framework/exception/un_caught_exception.dart';
+import 'package:flutter_bedrock/base_framework/exception/un_handle_exception.dart';
 import 'package:flutter_bedrock/base_framework/exception/user_unbind_exception.dart';
 
 
@@ -65,9 +65,9 @@ class ApiInterceptor extends InterceptorsWrapper{
       }
       if(responseData.code == 30003){
         //用户需要绑定
-        throw new UserUnbindException();
+        throw new UserUnbindException(responseData.message??"user unBind");
       }
-      throw new UnCaughtException();
+      throw new UnHandleException(responseData.message??"un handle exception");
       //return null;
 
     }

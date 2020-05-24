@@ -1,8 +1,8 @@
 
 
-class VerificationCodeException implements Exception {
-  const VerificationCodeException();
+import 'package:flutter_bedrock/base_framework/exception/base_exception.dart';
 
-  @override
-  String toString() => 'VerificationCodeException';
+class VerificationCodeException extends BaseException  {
+  VerificationCodeException(String message) : super(message);
+
 }

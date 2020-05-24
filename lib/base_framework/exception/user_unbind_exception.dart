@@ -3,13 +3,11 @@
 * Date : 2020/5/9
 */
 
-class UserUnbindException implements Exception{
+import 'package:flutter_bedrock/base_framework/exception/base_exception.dart';
 
-  const UserUnbindException();
+class UserUnbindException extends BaseException{
+  UserUnbindException(String message) : super(message);
 
-  @override
-  String toString() {
-    return "UserUnbindException";
-  }
+
 }
 
