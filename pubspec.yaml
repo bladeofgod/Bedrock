@@ -68,7 +68,7 @@ dependencies:
 
 
   flutter_swiper: ^1.1.6
-  extended_image: ^0.7.1
+  extended_image: ^0.8.0
 
   #
   #  image_picker: ^0.6.5+2

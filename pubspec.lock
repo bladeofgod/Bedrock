@@ -126,7 +126,7 @@ packages:
       name: extended_image
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.7.3+1"
+    version: "0.8.0"
   extended_image_library:
     dependency: transitive
     description:
