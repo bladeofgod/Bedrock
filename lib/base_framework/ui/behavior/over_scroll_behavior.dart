@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 
 /// dislodge the any subclass of ScrollView's inkwell
+/// 去除scroll view的 水印
 
 class OverScrollBehavior extends ScrollBehavior{
 

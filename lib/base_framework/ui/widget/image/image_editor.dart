@@ -29,9 +29,9 @@ class ImageEditor extends StatefulWidget{
 
 class ImageEditorState extends BaseState<ImageEditor> {
 
-  final String name;
+  final String name;///图片名字
 
-  final Uint8List _memoryImage;
+  final Uint8List _memoryImage;///图片数量
 
 
   ImageEditorState(this.name, this._memoryImage);

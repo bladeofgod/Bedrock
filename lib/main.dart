@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flustars/flustars.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/page/exception/exception_page.dart';
 
@@ -22,6 +23,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    ///设计图尺寸
+    setDesignWHD(750, 1334,density: 1.0);
+
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
