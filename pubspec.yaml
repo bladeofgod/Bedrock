@@ -53,9 +53,11 @@ dependencies:
   #localstorage: ^2.0.0
 
   # Html Encoder/Decoder
-  html_unescape: ^1.0.1+3
+  #html_unescape: ^1.0.1+3
   # 解析html标签
-  flutter_html: ^0.11.1
+  #flutter_html: ^0.11.1
+  #解析富文本建议使用 markdown
+  markdown_widget: ^1.1.9
 
   # 判断list是否相等
   collection: ^1.14.11
@@ -64,31 +66,26 @@ dependencies:
   # UI
   oktoast: ^2.1.7
 
-  pull_to_refresh: ^1.5.6
+  pull_to_refresh: ^1.5.8
 
-
-  flutter_swiper: ^1.1.6
+  #swiper
+  #flutter_swiper: ^1.1.6
   extended_image: ^0.8.0
 
   #
   #  image_picker: ^0.6.5+2
   #image_picker_saver: ^0.3.0
   #image_gallery_saver: ^1.2.2
+  #图片拾取
   multi_image_picker: ^4.6.6+rc.1
   #裁剪
   image_editor: ^0.1.6
 
-  # 日历控件
-#  flutter_custom_calendar:
-#    git:
-#      url: https://github.com/LXD312569496/flutter_custom_calendar.git
   #cached_network_image: ^2.0.0-rc.1
   # 类iOS侧滑菜单
   #flutter_slidable: 0.5.3
-  # 谁用谁闪亮
+  # 谁用谁闪亮 (骨架屏)
   shimmer: ^1.1.1
-  #地址选择器 包含 滚轮 、滑动选择等--------此处源码我改动过
-  #city_pickers: ^0.1.30
   #chart
   #mp_chart: ^0.1.9
   # 更新展示支持mark_down
@@ -135,7 +132,7 @@ dependencies:
   flutter_datetime_picker: ^1.2.8
 
   #pop dialog  :https://juejin.im/post/5d85b4a06fb9a06af238aef9
-  flutter_custom_dialog: ^1.0.16
+  flutter_custom_dialog: ^1.0.19
 
   #微信SDK https://github.com/OpenFlutter/fluwx
   #fluwx: ^1.1.3
@@ -149,12 +146,13 @@ dependencies:
   #facebook_share
   #fcm
   #firebase_messaging: ^6.0.13
-  scrollable_positioned_list: ^0.1.3
-  fluttertoast: ^4.0.0
+  #滚动到制定item的list--- 个人经验，目前最好使的了
+  scrollable_positioned_list: ^0.1.6
+
 
   #flutter_local_notifications: ^1.4.2
   #自定义data 滚轮选择
-  flutter_picker: ^1.1.3
+  #flutter_picker: ^1.1.3
 
   #flutter_bugly: ^0.2.8
 
