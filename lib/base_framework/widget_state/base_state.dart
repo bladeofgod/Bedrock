@@ -9,7 +9,7 @@ import 'package:flutter_bedrock/base_framework/utils/image_helper.dart';
 
 
 
-abstract class BaseState<T extends StatefulWidget> extends State<T> with WidgetsBindingObserver{
+abstract class BaseState<T extends StatefulWidget> extends State<T> {
 
   ///切换状态栏 模式：light or dark
   ///应在根位置调用此方法
@@ -129,12 +129,7 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> with Widgets
   }
 
 
-  widgetBinding(){
-    WidgetsBinding.instance.addObserver(this);
-  }
-  widgetUnBinding(){
-    WidgetsBinding.instance.removeObserver(this);
-  }
+
 
   /// current widget is visible and focusable if is true;
   bool isResumed = true;
@@ -153,15 +148,14 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> with Widgets
 //  suspending：应用被挂起，此状态IOS永远不会回调
 
   /// just trigger at user is pressing home or back button;
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    isResumed = state == AppLifecycleState.resumed;
-
-    isInactive = state == AppLifecycleState.inactive;
-    isPause = state == AppLifecycleState.paused;
-
-
-  }
+//  @override
+//  void didChangeAppLifecycleState(AppLifecycleState state) {
+//    isResumed = state == AppLifecycleState.resumed;
+//
+//    isInactive = state == AppLifecycleState.inactive;
+//    isPause = state == AppLifecycleState.paused;
+//
+//  }
 
 
   ///使用common app bar时 应该实现下面的方法。
