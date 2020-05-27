@@ -14,13 +14,11 @@ class ViewStateModel with ChangeNotifier {
   /// 防止页面销毁后,异步任务才完成,导致报错
   bool disposed = false;
 
-  /// 当前的页面状态,默认为busy,可在viewModel的构造方法中指定;
   ViewState _viewState;
 
   /// 根据状态构造
   ///
   /// 子类可以在构造函数指定需要的页面状态
-  /// FooModel():super(viewState:ViewState.busy);
   ViewStateModel({ViewState viewState})
       : _viewState = viewState ?? ViewState.idle;
 
@@ -104,72 +102,13 @@ class ViewStateModel with ChangeNotifier {
   /// [e],有可能是Error,也有可能是Exception.所以需要判断处理
   /// [s] 为堆栈信息
   void handleCatch(e, s) {
-    //should toast something here
-    // DioError的判断,理论不应该拿进来,增强了代码耦合性,抽取为时组件时.应移除
-    //print("----> ${e.toString()}");
+
     if(e is UnAuthorizedException){
       setUnAuthorized();
     }
     if(e is UserUnbindException){
       setUnBind();
     }
-//    if(e is DioError){
-//      print("${e.error}");
-//      print("${e.response}");
-//      print("${e.message}");
-//      print("${e.type}");
-//    }
-//    String str = e.toString();
-//    Map response = json.decode(str.substring(str.indexOf("{"),str.lastIndexOf
-//      ("}")));
-//    var errorCode = response["errorCode"];
-//    var detailMsg = response["detailMessage"];
-//    showToast("$detailMsg  $errorCode");
-//    showToast("s from server : ${s.toString()}");
-//    debugPrint('error----->\n' + e.toString());
-//    debugPrint('statck----->\n' + s.toString());
-    //temp set
-    ///根据应用 自定义异常
-//    _errorMessage = e.toString();
-//    if(e is HessianException){
-//      showToast("${e.message}");
-//      if(e.code == 20007){
-//        setUnAuthorized();
-//      }
-//      print("${e.code}");
-//      print("${e.detail}");
-//      print("${e.message}");
-//
-//    }else if(e is DataMissingException){
-//      showToast(e.message);
-//      setError(e.message);
-//    }
-//    else if (e is DioError && e.error is UnAuthorizedException) {
-//      print("${e.type}");
-//      print("${e.message}");
-//      print("${e.response}");
-//      print("${e.error}");
-//      setUnAuthorized();
-//    }
-//    else if(e is DioError){
-//      print("${e.type}");
-//      print("${e.message}");
-//      print("${e.response}");
-//      print("${e.error}");
-//
-//    }
-//    else if(e is Exception ){
-//      print("${e.toString()}");
-//      if(e.toString().contains("20007")){
-//        //showToast(e.message);
-//        setUnAuthorized();
-//      }
-//    }
-//    else {
-//      //print("${e.code}");
-//      debugPrint('error--->\n' + e.toString());
-//      debugPrint('statck--->\n' + s.toString());
-//      setError(e is Error ? e.toString() : e.message);
-//    }
+
   }
 }
