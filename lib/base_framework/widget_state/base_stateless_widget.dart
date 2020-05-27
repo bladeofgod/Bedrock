@@ -144,6 +144,11 @@ abstract class BaseStatelessWidget extends StatelessWidget{
 
   double getWidthPx(double width) => ScreenUtil.getInstance().getWidthPx(width);
 
+  ///屏幕宽度
+  double getScreenWidth()=>ScreenUtil.getInstance().screenWidth;
+  ///屏幕高度
+  double getScreenHeight()=>ScreenUtil.getInstance().screenHeight;
+
   //目前仅对于手机： 因为手机大多数情况下是长度变化较大，
   // 所以以高度来算出半径，保证异形屏的弧度不会缩小
   ///有其他需求，还需要重改
