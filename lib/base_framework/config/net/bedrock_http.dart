@@ -72,7 +72,6 @@ class ApiInterceptor extends InterceptorsWrapper{
 
     }
 
-    return bedRock.resolve(response);
 
   }
 

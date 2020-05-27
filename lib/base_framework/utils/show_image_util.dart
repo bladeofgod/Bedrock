@@ -17,7 +17,7 @@ import 'package:flutter_bedrock/base_framework/utils/image_helper.dart';
 
 
 class ShowImageUtil{
-
+  ///根据后台协商不同尾缀来加载不同尺寸的图片，可以换成你自己的
   static const String W400 = "-w400";
   static const String W600 = "-w600";
   static const String W1000 = "-w1000";
@@ -63,84 +63,7 @@ class ShowImageUtil{
     );
   }
 
-  /*
-  * show big image with default & error widget
-  *
-  * */
-  static Widget showBigImageWithDefaultError(String url,double width,
-      double height,{
-        String imageType = W1000,
-        double borderRadius = 0,
-        Widget defaultImg,
-        Widget errorImg,
-        BoxFit boxFit : BoxFit.cover}){
-    //print("image url ________$url$W400");
 
-    return ExtendedImage.network(
-      "$url$imageType",
-      width: width,
-      height: height,
-      fit: boxFit,
-      borderRadius: BorderRadius.circular(borderRadius),
-      cache: true,
-      //不同状态加载不同图片
-      loadStateChanged: (ExtendedImageState state){
-        switch(state.extendedImageLoadState){
-          case LoadState.loading:
-            return Container();
-          case LoadState.completed:
-
-            return ExtendedRawImage(
-              image: state.extendedImageInfo?.image,
-              width: width,
-              height: height,fit: boxFit,);
-          case LoadState.failed:
-          // TODO: Handle this case.
-            return Container();
-          default :
-            return Container();
-        }
-      },
-    );
-  }
-
-
-  /*
-  * show small image
-  * usually for thumbnail image
-  *
-  * */
-
-  static Widget showImageSmallWithDefaultError(String url,double width,
-      double height,{
-        Widget defaultImg,
-        Widget errorImg,
-        BoxFit boxFit : BoxFit.cover}){
-    return ExtendedImage.network(
-      url,
-      width: width,
-      height: height,
-      fit: boxFit,
-      cache: true,
-      //不同状态加载不同图片
-      loadStateChanged: (ExtendedImageState state){
-        switch(state.extendedImageLoadState){
-          case LoadState.loading:
-            return Container();
-          case LoadState.completed:
-            return ExtendedRawImage(
-              image: state.extendedImageInfo?.image,
-              width: width,
-              height: height,fit: boxFit,);
-          case LoadState.failed:
-            // TODO: Handle this case.
-            return Container();
-          default :
-            return Container();
-        }
-      },
-    );
-  }
 
 
 //  static Widget showImageSmallWithDefaultError(String url,double width,

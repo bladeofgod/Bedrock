@@ -16,6 +16,9 @@ class ImageHelper {
   static const String baseUrl = 'http://www.baidu.com';
   static const String imagePrefix = '$baseUrl/uimg/';
 
+  ///图片扩展名，：建议使用webP，使用前先了解一下它
+  static const String imageTail = ".png";
+
 
   static String addWebp(String url){
     return  "$url.webp";
@@ -38,27 +41,29 @@ class ImageHelper {
     return imagePrefix + url;
   }
 
+
+
   static String wrapAssets(String url) {
-    return "assets/images/" + url;
+    return "assets/images/" + url + imageTail;
   }
 
   static String wrapAssetsIcon(String url,{bool need1x = false}){
-    return 'assets/images/icons/${need1x?"/1.0x":""}' + url;
+    return 'assets/images/icons/${need1x?"/1.0x":""}' + url + imageTail;
   }
 
   static String wrapAssetsBG(String url){
-    return 'assets/images/backgrounds/' + url;
+    return 'assets/images/backgrounds/' + url + imageTail;
   }
 
   static String wrapAssetsLogo(String url){
-    return 'assets/images/logos/' + url;
+    return 'assets/images/logos/' + url + imageTail;
   }
 
   static String wrapAssetsDefault(String url){
-    return 'assets/images/default/' + url;
+    return 'assets/images/default/' + url + imageTail;
   }
   static String wrapAssetsBanner(String url){
-    return 'assets/images/backgrounds/banner/' + url;
+    return 'assets/images/backgrounds/banner/' + url + imageTail;
   }
 
   static Widget placeHolder({double width, double height}) {
@@ -83,20 +88,8 @@ class ImageHelper {
   }
 
 
-  static Widget error({double width, double height, double size}) {
-    return SizedBox(
-        width: width,
-        height: height,
-        child: Icon(
-          Icons.error_outline,
-          size: size,
-        ));
-  }
 
-  static String randomUrl(
-      {int width = 100, int height = 100, Object key = ''}) {
-    return 'http://placeimg.com/$width/$height/${key.hashCode.toString()+key.toString()}';
-  }
+
 
   ///picker
 
