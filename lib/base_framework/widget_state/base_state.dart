@@ -74,8 +74,8 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
       },
       child: Container(
         color: Colors.white,
-        width: getWidthPx(80),
-        height: getHeightPx(50),
+        width: getWidthPx(150),
+        height: getHeightPx(90),
         alignment: Alignment.bottomLeft,
         child: Image.asset(ImageHelper.wrapAssetsIcon("icon_back_black.png"),width: getWidthPx(17),height: getHeightPx(32),),
       ),

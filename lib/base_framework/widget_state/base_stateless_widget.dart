@@ -75,7 +75,13 @@ abstract class BaseStatelessWidget extends StatelessWidget{
       onTap: (){
         Navigator.of(context).pop();
       },
-      child: Image.asset(ImageHelper.wrapAssetsIcon("icon_back_black.png"),width: getWidthPx(17),height: getHeightPx(32),),
+      child: Container(
+        color: Colors.white,
+        width: getWidthPx(150),
+        height: getHeightPx(90),
+        alignment: Alignment.bottomLeft,
+        child: Image.asset(ImageHelper.wrapAssetsIcon("icon_back_black.png"),width: getWidthPx(17),height: getHeightPx(32),),
+      ),
     );
   }
 
