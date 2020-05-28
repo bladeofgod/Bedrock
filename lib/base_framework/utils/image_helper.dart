@@ -16,7 +16,7 @@ class ImageHelper {
   static const String baseUrl = 'http://www.baidu.com';
   static const String imagePrefix = '$baseUrl/uimg/';
 
-  ///图片扩展名，：建议使用webP，使用前先了解一下它
+  ///图片扩展名，：建议使用webP，使用前先了解一下它（据说安卓4.0以下可能不兼容，不过微信都放弃4.0了）
   static const String imageTail = ".png";
 
 

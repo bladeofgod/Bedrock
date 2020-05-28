@@ -2,7 +2,10 @@ import 'dart:async';
 
 import 'package:flustars/flustars.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
+import 'package:flutter_bedrock/page/demo_page/demo_page.dart';
 import 'package:flutter_bedrock/page/exception/exception_page.dart';
+import 'package:flutter_bedrock/service_api/bedrock_repository_proxy.dart';
 
 void main(){
   runZoned((){
@@ -37,22 +40,4 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class DemoPage extends StatefulWidget{
-  @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    return DemoPageState();
-  }
-
-}
-
-class DemoPageState extends State<DemoPage> {
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return Container(
-      child: Center(),
-    );
-  }
-}
 

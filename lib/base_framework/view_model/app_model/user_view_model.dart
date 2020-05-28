@@ -6,7 +6,7 @@
 
 import 'package:flustars/flustars.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_bedrock/page/mine/user_entity.dart';
+import 'file:///D:/flutterProjects/Bedrock/lib/page/mine/entity/user_entity.dart';
 
 
 

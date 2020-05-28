@@ -16,11 +16,12 @@ final BedRock bedRock = BedRock();
 
 class BedRock extends BaseHttp{
 
+  final String china = "https://apitripalink.com/";
 
   @override
   void init() {
 
-    options.baseUrl = "https://www.baidu.com";
+    options.baseUrl = china;
     interceptors
       ..add(CookieManager(PersistCookieJar()))
       ..add(ApiInterceptor());
