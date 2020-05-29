@@ -22,6 +22,7 @@ class DemoPageState extends BaseState<DemoPage> {
   Widget build(BuildContext context) {
 
     return Container(
+      color: Colors.white,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[

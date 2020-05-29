@@ -2,12 +2,24 @@ import 'dart:async';
 
 import 'package:flustars/flustars.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bedrock/base_framework/config/app_config.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
 import 'package:flutter_bedrock/page/demo_page/demo_page.dart';
 import 'package:flutter_bedrock/page/exception/exception_page.dart';
 import 'package:flutter_bedrock/service_api/bedrock_repository_proxy.dart';
 
-void main(){
+void main()async{
+  WidgetsFlutterBinding.ensureInitialized();
+  ///横竖屏
+//  SystemChrome.setPreferredOrientations([
+//    DeviceOrientation.portraitUp,
+//    DeviceOrientation.portraitDown
+//  ]);
+
+  await AppConfig.init();
+
+
+
   runZoned((){
     ErrorWidget.builder = (FlutterErrorDetails details){
       Zone.current.handleUncaughtError(details.exception, details.stack);
