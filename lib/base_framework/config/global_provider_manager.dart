@@ -23,17 +23,17 @@ List<SingleChildWidget> providers =[
 
 /// 应用级 独立 model
 List<SingleChildWidget> independentServices = [
-  //ChangeNotifierProvider<ThemeModel>.value(value: ThemeModel()),
-  ChangeNotifierProvider<LocaleModel>.value(value: LocaleModel()),
+  //ChangeNotifierProvider<ThemeModel>.value(value: ThemeModel()),  //主题配置
+  ChangeNotifierProvider<LocaleModel>.value(value: LocaleModel()), //国际化
   //设备model
-  ChangeNotifierProvider<DeviceModel>.value(value: DeviceModel()),
+  ChangeNotifierProvider<DeviceModel>.value(value: DeviceModel()),//设备model
   //global app cache model
-  ChangeNotifierProvider<AppCacheModel>.value(value: AppCacheModel()),
+  ChangeNotifierProvider<AppCacheModel>.value(value: AppCacheModel()),//项目缓存model
 //  ///这里应该放入一个购物车
 //  ChangeNotifierProvider<GlobalCartGoodsModel>.value(value:
 //  GlobalCartGoodsModel()),
   ///2020.3.10  目前应该没有购物车等可以与用户绑定,这里将用户model抽到上层
-  ChangeNotifierProvider<UserViewModel>.value(value: UserViewModel()),
+  ChangeNotifierProvider<UserViewModel>.value(value: UserViewModel()),//用户 model
 
 ];
 

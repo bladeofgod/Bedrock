@@ -3,10 +3,19 @@ import 'dart:async';
 import 'package:flustars/flustars.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/base_framework/config/app_config.dart';
+import 'package:flutter_bedrock/base_framework/config/global_provider_manager.dart';
+import 'package:flutter_bedrock/base_framework/view_model/app_model/locale_model.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
 import 'package:flutter_bedrock/page/demo_page/demo_page.dart';
 import 'package:flutter_bedrock/page/exception/exception_page.dart';
 import 'package:flutter_bedrock/service_api/bedrock_repository_proxy.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:oktoast/oktoast.dart';
+import 'package:provider/provider.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
+
+import 'base_framework/config/router_manager.dart';
+import 'generated/l10n.dart';
 
 void main()async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -41,13 +50,36 @@ class MyApp extends StatelessWidget {
     ///设计图尺寸
     setDesignWHD(750, 1334,density: 1.0);
 
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-
-        primarySwatch: Colors.blue,
-      ),
-      home: DemoPage(),
+    return OKToast(
+      child: MultiProvider(
+          providers: providers,
+        child: Consumer<LocaleModel>(
+          builder: (ctx,localModel,child){
+            return RefreshConfiguration(
+              hideFooterWhenNotFull: true,//列表数据不满一页,不触发加载更多
+              child: MaterialApp(
+                theme: ThemeData(
+                  //项目配置字体，其他主题颜色配置的可以百度
+//                  fontFamily: Theme.of(context).platform == TargetPlatform.android? (localModel.localeIndex == 1 ?  "HanSans":"DIN") : "IOSGILROY",
+                ),
+                debugShowCheckedModeBanner: false,
+                locale: localModel.locale,
+                //国际化工厂代理
+                localizationsDelegates: [
+                  // Intl 插件（需要安装）
+                  S.delegate,
+                  RefreshLocalizations.delegate, //下拉刷新
+                  //系统控件 国际化
+                  GlobalCupertinoLocalizations.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate//文本方向等
+                ],
+                supportedLocales: S.delegate.supportedLocales,
+                onGenerateRoute: Router.generateRoute,
+                initialRoute: RouteName.demo_page,
+              ),
+            );
+          }),),
     );
   }
 }
