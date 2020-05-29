@@ -5,6 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'package:flustars/flustars.dart';
 import 'package:flutter/foundation.dart';
+import '../../utils/exception_pitcher.dart';
 import 'package:flutter_bedrock/base_framework/config/net/base_http.dart';
 import 'package:flutter_bedrock/base_framework/config/storage_manager.dart';
 import 'package:flutter_bedrock/base_framework/exception/un_authorized_exception.dart';
@@ -70,16 +71,7 @@ class ApiInterceptor extends InterceptorsWrapper{
     }else{
       ///这里可以根据不同的业务代码 扔出不同的异常
       ///具体要根据后台进行协商
-      if(responseData.code ==  30001){
-        throw new UnAuthorizedException();
-      }
-      if(responseData.code == 30003){
-        //用户需要绑定
-        throw new UserUnbindException(responseData.message??"user unBind");
-      }
-      throw new UnHandleException(responseData.message??"un handle exception");
-      //return null;
-
+      return ExceptionPitcher().throwException(responseData);//不加return会有黄色警告，纯属美观
     }
 
 

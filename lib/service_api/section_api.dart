@@ -35,7 +35,7 @@ class SectionOne{
       "model":"1","user_id":"","union_id":"321","status":"0"
     };
 
-    var response = await bedRock.post("$Index_php?r=collect/save-collect",data: FormData.fromMap(map));;
+    var response = await bedRock.post("$Index_php?r=collect/save-collect",data: FormData.fromMap(map));
 //    try{
 //      response = await bedRock.post("$Index_php?r=collect/save-collect",data: FormData.fromMap(map));
 //
