@@ -11,7 +11,7 @@ import 'package:flutter_bedrock/service_api/bedrock_repository_proxy.dart';
 class DemoPage extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
+
     return DemoPageState();
   }
 

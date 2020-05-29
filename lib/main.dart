@@ -58,10 +58,10 @@ class MyApp extends StatelessWidget {
             return RefreshConfiguration(
               hideFooterWhenNotFull: true,//列表数据不满一页,不触发加载更多
               child: MaterialApp(
-                theme: ThemeData(
-                  //项目配置字体，其他主题颜色配置的可以百度
-//                  fontFamily: Theme.of(context).platform == TargetPlatform.android? (localModel.localeIndex == 1 ?  "HanSans":"DIN") : "IOSGILROY",
-                ),
+//                theme: ThemeData(
+//                  //项目配置字体，其他主题颜色配置的可以百度
+////                  fontFamily: Theme.of(context).platform == TargetPlatform.android? (localModel.localeIndex == 1 ?  "HanSans":"DIN") : "IOSGILROY",
+//                ),
                 debugShowCheckedModeBanner: false,
                 locale: localModel.locale,
                 //国际化工厂代理
