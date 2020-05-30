@@ -22,23 +22,22 @@ class DemoPageState extends BaseState<DemoPage> {
   Widget build(BuildContext context) {
 
     return Container(
+      width: getWidthPx(750),height: getHeightPx(1334),
       color: Colors.white,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          getSizeBox(height: getWidthPx(100)),
-          RaisedButton(
-            child: Text("test api o",style: TextStyle(color: Colors.black),),
-            onPressed: ()async{
-              try{
-                await BedrockRepositoryProxy.getInstance().getSectionOne().getTest();
-              }catch(e){
-                debugPrint('--------');
-                debugPrint(e.toString());
-              }
-            },
-          ),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            getSizeBox(height: getWidthPx(100)),
+            RaisedButton(
+              child: Text("demo handle exception",style: TextStyle(color: Colors.black),),
+              onPressed: (){
+                Navigotar.of(context).pu
+              },
+            ),
+            getSizeBox(height: getHeightPx(40)),
+          ],
+        ),
       ),
     );
   }
