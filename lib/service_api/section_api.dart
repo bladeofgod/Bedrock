@@ -36,16 +36,10 @@ class SectionOne{
     };
 
     var response = await bedRock.post("$Index_php?r=collect/save-collect",data: FormData.fromMap(map));
-//    try{
-//      response = await bedRock.post("$Index_php?r=collect/save-collect",data: FormData.fromMap(map));
-//
-//    }catch(e){
-//      debugPrint("---------------");
-//      debugPrint(e.toString());
-//    }
+
+
     return response;
   }
-
 
 }
 

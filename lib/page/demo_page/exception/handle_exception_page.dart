@@ -34,8 +34,19 @@ class HandleExceptionPageState extends BaseState<HandleExceptionPage> {
           return Container(
             width: getWidthPx(750),
             height: getHeightPx(1334),
-            child: Center(
-              child: Text("need sign in"),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text("need sign in",style: TextStyle(color: Colors.black,fontSize: getSp(36),
+                  fontWeight: FontWeight.bold),),
+                getSizeBox(height: getWidthPx(40)),
+                Divider(
+                  height: getWidthPx(5),
+                  color: Colors.red,
+                ),
+                getSizeBox(height: getWidthPx(40)),
+                Text(model.explain,style: TextStyle(color: Colors.black,fontSize: getSp(30)),),
+              ],
             ),
           );
         }
