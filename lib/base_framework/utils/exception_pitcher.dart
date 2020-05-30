@@ -22,14 +22,16 @@ class ExceptionPitcher{
     return _instance;
   }
 
-  Future throwException(ResponseData responseData){
+  Exception transformException(ResponseData responseData){
     switch(responseData.code){
+      ///仅为以下测试代码
+      case -2:
       case 30001:
-        throw UnAuthorizedException();
+        return UnAuthorizedException();
       case 30003:
-        throw UserUnbindException(responseData.message??"user unBind");
+        return UserUnbindException(responseData.message??"user unBind");
       default:
-        throw UnHandleException(responseData.message??"un handle exception");
+        return UnHandleException(responseData.message??"un handle exception");
     }
   }
 

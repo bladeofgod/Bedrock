@@ -69,7 +69,7 @@ class ApiInterceptor extends InterceptorsWrapper{
     }else{
       ///这里可以根据不同的业务代码 扔出不同的异常
       ///具体要根据后台进行协商
-      return ExceptionPitcher().throwException(responseData);//不加return会有黄色警告，纯属美观
+      throw ExceptionPitcher().transformException(responseData);
     }
 
 

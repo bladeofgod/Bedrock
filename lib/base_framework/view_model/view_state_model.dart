@@ -102,13 +102,18 @@ class ViewStateModel with ChangeNotifier {
   /// [e],有可能是Error,也有可能是Exception.所以需要判断处理
   /// [s] 为堆栈信息
   void handleCatch(e, s) {
+    if(e is DioError){
 
-    if(e is UnAuthorizedException){
-      setUnAuthorized();
+      if(e.error is UnAuthorizedException){
+        setUnAuthorized();
+      }
+      if(e.error is UserUnbindException){
+        setUnBind();
+      }
+
     }
-    if(e is UserUnbindException){
-      setUnBind();
-    }
+
+
 
   }
 }

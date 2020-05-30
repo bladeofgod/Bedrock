@@ -5,6 +5,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bedrock/base_framework/config/router_manager.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
 import 'package:flutter_bedrock/service_api/bedrock_repository_proxy.dart';
 
@@ -32,7 +33,7 @@ class DemoPageState extends BaseState<DemoPage> {
             RaisedButton(
               child: Text("demo handle exception",style: TextStyle(color: Colors.black),),
               onPressed: (){
-                Navigotar.of(context).pu
+                Navigator.of(context).pushNamed(RouteName.demo_exception_page);
               },
             ),
             getSizeBox(height: getHeightPx(40)),
