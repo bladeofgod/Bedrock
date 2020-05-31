@@ -110,6 +110,9 @@ class ViewStateModel with ChangeNotifier {
       if(e.error is UserUnbindException){
         setUnBind();
       }
+      if(e.type == DioErrorType.CONNECT_TIMEOUT ){
+        //todo
+      }
 
     }
 
