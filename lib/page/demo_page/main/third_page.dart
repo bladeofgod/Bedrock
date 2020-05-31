@@ -20,7 +20,15 @@ class ThirdPagePageState extends BaseState<ThirdPage> {
 
     return switchStatusBar2Dark(child: Consumer<AppCacheModel>(
       builder: (ctx,cacheModel,child){
-        return ProviderWidget();
+        return Container(
+          color: Colors.white,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text("third page"),
+            ],
+          ),
+        );
       },
     ));
   }

@@ -37,6 +37,12 @@ class DemoPageState extends BaseState<DemoPage> {
               },
             ),
             getSizeBox(height: getHeightPx(40)),
+            RaisedButton(
+              child: Text("main page",style: TextStyle(color: Colors.black),),
+              onPressed: (){
+                Navigator.of(context).pushNamed(RouteName.main_page);
+              },
+            ),
           ],
         ),
       ),
