@@ -9,6 +9,8 @@ import 'package:flutter_bedrock/base_framework/config/router_manager.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
 import 'package:flutter_bedrock/service_api/bedrock_repository_proxy.dart';
 
+///demo，代码分包比较随意
+
 class DemoPage extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {

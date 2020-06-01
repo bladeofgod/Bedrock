@@ -41,8 +41,10 @@ abstract class ViewStateListModel<T> extends ViewStateModel {
   // 加载数据
   Future<List<T>> loadData();
 
+  ///数据获取后会调用此方法
   onCompleted(List<T> data) {}
 
+  ///状态刷新后会调用此方法
   onRefreshCompleted(){}
 
 }
