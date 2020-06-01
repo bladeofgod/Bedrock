@@ -47,6 +47,9 @@ class ViewStateModel with ChangeNotifier {
 
   bool get unBind => viewState == ViewState.unBind;
 
+  bool get noNet => viewState == ViewState.noNet;
+
+
   void setBusy(bool value) {
     _errorMessage = null;
     viewState = value ? ViewState.busy : ViewState.idle;
@@ -76,6 +79,11 @@ class ViewStateModel with ChangeNotifier {
   void setUnBind(){
     _errorMessage = null;
     viewState = ViewState.unBind;
+  }
+
+  void setNoNet(){
+    _errorMessage = null;
+    viewState = ViewState.noNet;
   }
 
   @override
