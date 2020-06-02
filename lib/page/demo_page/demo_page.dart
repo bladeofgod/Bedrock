@@ -24,7 +24,7 @@ class DemoPageState extends BaseState<DemoPage> {
   @override
   Widget build(BuildContext context) {
 
-    return Container(
+    return switchStatusBar2Dark(child: Container(
       width: getWidthPx(750),height: getHeightPx(1334),
       color: Colors.white,
       child: SingleChildScrollView(
@@ -32,6 +32,7 @@ class DemoPageState extends BaseState<DemoPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             getSizeBox(height: getWidthPx(100)),
+            buildIntro("API请求的异常捕获和处理DEMO"),
             RaisedButton(
               child: Text("demo handle exception",style: TextStyle(color: Colors.black),),
               onPressed: (){
@@ -39,6 +40,7 @@ class DemoPageState extends BaseState<DemoPage> {
               },
             ),
             getSizeBox(height: getHeightPx(40)),
+            buildIntro("综合性框架功能演示DEMO"),
             RaisedButton(
               child: Text("main page",style: TextStyle(color: Colors.black),),
               onPressed: (){
@@ -48,6 +50,10 @@ class DemoPageState extends BaseState<DemoPage> {
           ],
         ),
       ),
-    );
+    ));
+  }
+
+  Widget buildIntro(String str){
+    return Text(str,style: TextStyle(color: Colors.black,fontSize: getSp(28)),);
   }
 }
