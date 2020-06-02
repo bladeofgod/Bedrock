@@ -40,13 +40,17 @@ class DetailImageWidgetState extends BaseState<DetailImageWidget> {
 
     return switchStatusBar2Dark(
         isSetDark: true,
-        child: Stack(
-          children: <Widget>[
-            Container(
-              color: Colors.black,
-              width: getWidthPx(750),
-              height: getHeightPx(1334),
-              child: ExtendedImageGesturePageView.builder(
+        edgeInsets: EdgeInsets.all(0),
+        child: Container(
+          width: getWidthPx(750),
+          height: getHeightPx(1334),
+          child: Stack(
+            children: <Widget>[
+              Container(
+                color: Colors.black,
+                width: getWidthPx(750),
+                height: getHeightPx(1334),
+                child: ExtendedImageGesturePageView.builder(
                   controller: new PageController(initialPage: this.initIndex),
                   itemCount: imageList.length,
                   itemBuilder: (ctx,index){
@@ -62,20 +66,20 @@ class DetailImageWidgetState extends BaseState<DetailImageWidget> {
                     );
                     return image;
                   },
-                onPageChanged: (int index) {
-                 setState(() {
-                   indexStr=index+1;
-                 });
-                },
-                  ),
-            ),
-            commonAppBar(
-                title: "$indexStr/${imageList.length}",
-                bgColor: Colors.black,
-                leftWidget: buildAppBarLeft(),
-                leftPadding: getWidthPx(40),
-                rightPadding: getWidthPx(40)),
-          ],
+                  onPageChanged: (int index) {
+                    setState(() {
+                      indexStr=index+1;
+                    });
+                  },
+                ),
+              ),
+              commonAppBar(
+                  title: "$indexStr/${imageList.length}",
+                  leftWidget: buildAppBarLeft(),
+                  leftPadding: getWidthPx(40),
+                  rightPadding: getWidthPx(40)),
+            ],
+          ),
         )
     );
   }

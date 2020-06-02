@@ -16,11 +16,15 @@ abstract class BaseStatelessWidget extends StatelessWidget{
 
   ///切换状态栏 模式：light or dark
   ///应在根位置调用此方法
-  Widget switchStatusBar2Dark({bool isSetDark = false,@required Widget child}){
+  Widget switchStatusBar2Dark({bool isSetDark = false,@required Widget child,
+    EdgeInsets edgeInsets}){
     return AnnotatedRegion(
       value: isSetDark ? SystemUiOverlayStyle.dark : SystemUiOverlayStyle.light,
       child: Material(
-        child: child,
+        child: Padding(
+          padding: edgeInsets??EdgeInsets.only(bottom: ScreenUtil.getInstance().bottomBarHeight),
+          child: child,
+        ),
       ),
     );
   }
