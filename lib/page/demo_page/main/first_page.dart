@@ -8,6 +8,7 @@ import 'package:flutter_bedrock/base_framework/view_model/app_model/app_cache_mo
 import 'package:flutter_bedrock/base_framework/view_model/app_model/user_view_model.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
 import 'package:flutter_bedrock/page/demo_page/main/first/view_model/first_view_model.dart';
+import 'package:flutter_bedrock/page/demo_page/main/first/widget/first_banner.dart';
 import 'package:flutter_bedrock/page/demo_page/main_page.dart';
 import 'package:provider/provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -76,7 +77,20 @@ class FirstPageState extends BaseState<FirstPage> {
                     footer: RefresherFooter(),
                     onRefresh: firstModel.refresh,
                     enablePullDown: firstModel.list.isNotEmpty,
-                    child: CustomScrollView(),
+                    child: CustomScrollView(
+                      controller: scrollController,
+                      slivers: <Widget>[
+                        ///slivers 内部的子widget 请务必用SliverToBoxAdapter包裹，或者直接使用sliver**widget
+                        SliverToBoxAdapter(
+                          child: getSizeBox(height: getWidthPx(98),width: getWidthPx(750)),
+                        ),
+                        ///banner
+                        SliverToBoxAdapter(
+                          child: buildBanner(),
+                        ),
+
+                      ],
+                    ),
                   )),
                 ));
           },
@@ -84,6 +98,18 @@ class FirstPageState extends BaseState<FirstPage> {
       },
     ));
   }
+
+  Widget buildBanner(){
+    return Container(
+      width: getWidthPx(622),
+      height: getWidthPx(292),
+      child: FirstBanner(
+        borderRadius: BorderRadius.circular(getHeightPx(6)),
+        index: firstViewModel.ba,
+      ),
+    );
+  }
+
 }
 
 

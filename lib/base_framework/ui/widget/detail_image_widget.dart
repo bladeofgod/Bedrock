@@ -70,7 +70,7 @@ class DetailImageWidgetState extends BaseState<DetailImageWidget> {
                   ),
             ),
             commonAppBar(
-                title: "${indexStr}/${imageList.length}",
+                title: "$indexStr/${imageList.length}",
                 bgColor: Colors.black,
                 leftWidget: buildAppBarLeft(),
                 leftPadding: getWidthPx(40),
@@ -79,50 +79,7 @@ class DetailImageWidgetState extends BaseState<DetailImageWidget> {
         )
     );
   }
-  Widget commonAppBar({Widget leftWidget,String title,List<Widget> rightWidget ,
-    Color bgColor = Colors.black,@required double leftPadding,@required double rightPadding}){
-    return Container(
-      width: getWidthPx(750),
-      height: getHeightPx(110),
-      color: bgColor??Color.fromRGBO(241, 241, 241, 1),
-      padding: EdgeInsets.only(bottom: getHeightPx(10),left: leftPadding,right: rightPadding),
-      alignment: Alignment.bottomCenter,
-      child: Stack(
-        alignment: Alignment.bottomRight,
-        children: <Widget>[
-          Positioned(
-            left: 0,
-            child: leftWidget ?? Container(),
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Visibility(
-              visible:  title != null,
-              child: Text(
-                "$title",
-                style: TextStyle(fontSize: getSp(36),color: Colors.white,
-                    decoration: TextDecoration.none),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-  Widget buildAppBarLeft(){
-    return GestureDetector(
-      onTap: (){
-        Navigator.of(context).pop();
-      },
-      child: Container(
-        color: Colors.black,
-        width: getWidthPx(80),
-        height: getHeightPx(50),
-        alignment: Alignment.bottomLeft,
-        child: Image.asset(ImageHelper.wrapAssetsIcon("icon_back_black_p.jpg"),width: getWidthPx(17),height: getHeightPx(32),),
-      ),
-    );
-  }
+
 }
 
 

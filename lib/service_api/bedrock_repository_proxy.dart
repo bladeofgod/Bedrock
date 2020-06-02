@@ -4,7 +4,7 @@
 */
 
 
-import 'package:flutter_bedrock/service_api/section_api.dart';
+import 'package:flutter_bedrock/service_api/section_one_api.dart';
 
 class BedrockRepositoryProxy{
   static BedrockRepositoryProxy _singleton;
