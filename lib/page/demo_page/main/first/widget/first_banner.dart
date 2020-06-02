@@ -12,14 +12,14 @@ import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
 
 class FirstBanner extends StatefulWidget{
 
-  final int index;
+
   final List<String> imageList;
 
   final bool canShowBigImage;
 
   final BorderRadius borderRadius;
 
-  FirstBanner({this.index,this.imageList,this.canShowBigImage = false,this.borderRadius = BorderRadius.zero});
+  FirstBanner({this.imageList,this.canShowBigImage = false,this.borderRadius = BorderRadius.zero});
 
   @override
   State<StatefulWidget> createState() {

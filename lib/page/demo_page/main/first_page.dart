@@ -4,6 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/base_framework/ui/widget/provider_widget.dart';
 import 'package:flutter_bedrock/base_framework/utils/refresh_helper.dart';
+import 'package:flutter_bedrock/base_framework/utils/show_image_util.dart';
 import 'package:flutter_bedrock/base_framework/view_model/app_model/app_cache_model.dart';
 import 'package:flutter_bedrock/base_framework/view_model/app_model/user_view_model.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
@@ -13,7 +14,9 @@ import 'package:flutter_bedrock/page/demo_page/main_page.dart';
 import 'package:provider/provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-class FirstPage extends StatefulWidget{
+import 'first/entity/first_card_entity.dart';
+
+class FirstPage extends StatefulWidget {
 
   final TransportScrollController transportScrollController;
 
@@ -27,7 +30,7 @@ class FirstPage extends StatefulWidget{
 
 }
 
-class FirstPageState extends BaseState<FirstPage> {
+class FirstPageState extends BaseState<FirstPage> with AutomaticKeepAliveClientMixin {
 
   ScrollController scrollController;
 
@@ -75,8 +78,9 @@ class FirstPageState extends BaseState<FirstPage> {
                     controller:  firstModel.refreshController,
                     header: HomeRefreshHeader(Colors.black),
                     footer: RefresherFooter(),
-                    onRefresh: firstModel.refresh,
-                    enablePullDown: firstModel.list.isNotEmpty,
+                    onRefresh: firstModel.loadData,
+                    onLoading: firstModel.loadMore,
+                    enablePullDown: true,
                     child: CustomScrollView(
                       controller: scrollController,
                       slivers: <Widget>[
@@ -89,6 +93,15 @@ class FirstPageState extends BaseState<FirstPage> {
                           child: buildBanner(),
                         ),
 
+                        ///listview
+                        SliverList(
+                          delegate: SliverChildBuilderDelegate(
+                              (ctx,index){
+                                return buildItem(index,firstModel.cardList[index]);
+                              },childCount: firstModel.cardList?.length ?? 0
+                          ),
+                        ),
+
                       ],
                     ),
                   )),
@@ -99,16 +112,35 @@ class FirstPageState extends BaseState<FirstPage> {
     ));
   }
 
+  Widget buildItem(int index,FirstCardEntity entity){
+    return Container(
+      margin: EdgeInsets.only(top: getWidthPx(28), left: getWidthPx(40), right: getWidthPx(40)),
+      width: getWidthPx(670),
+      height: getWidthPx(450),
+      child: Column(
+        children: <Widget>[
+          ShowImageUtil.showImageWithDefaultError(entity.img, getWidthPx(670), getWidthPx(300)),
+          getSizeBox(height: getWidthPx(30)),
+          Text(entity.title,style: TextStyle(color: Colors.black,fontSize: getSp(32)),),
+        ],
+      ),
+    );
+  }
+
+
   Widget buildBanner(){
     return Container(
       width: getWidthPx(622),
       height: getWidthPx(292),
       child: FirstBanner(
         borderRadius: BorderRadius.circular(getHeightPx(6)),
-        index: firstViewModel.ba,
+        imageList: firstViewModel.firstEntity.banner,
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 
 }
 

@@ -62,7 +62,7 @@ class SectionOne{
     List<FirstCardEntity> response;
     await Future.delayed(Duration(seconds: 2)).then((value){
       if(pageNum > 3){
-        response = null;
+        response = [];
       }else{
         response = List.generate(8, (index){
           return FirstCardEntity(fakeData[index%3],"this is a title $index");

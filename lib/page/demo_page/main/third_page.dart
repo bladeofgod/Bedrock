@@ -14,7 +14,7 @@ class ThirdPage extends StatefulWidget{
 
 }
 
-class ThirdPagePageState extends BaseState<ThirdPage> {
+class ThirdPagePageState extends BaseState<ThirdPage> with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
 
@@ -32,4 +32,7 @@ class ThirdPagePageState extends BaseState<ThirdPage> {
       },
     ));
   }
+  @override
+  bool get wantKeepAlive => true;
+
 }
