@@ -78,9 +78,10 @@ class FirstPageState extends BaseState<FirstPage> with AutomaticKeepAliveClientM
                     controller:  firstModel.refreshController,
                     header: HomeRefreshHeader(Colors.black),
                     footer: RefresherFooter(),
-                    onRefresh: firstModel.loadData,
+                    onRefresh: firstModel.refresh,
                     onLoading: firstModel.loadMore,
                     enablePullDown: true,
+                    enablePullUp: true,
                     child: CustomScrollView(
                       controller: scrollController,
                       slivers: <Widget>[
@@ -91,6 +92,10 @@ class FirstPageState extends BaseState<FirstPage> with AutomaticKeepAliveClientM
                         ///banner
                         SliverToBoxAdapter(
                           child: buildBanner(),
+                        ),
+                        ///transform zone
+                        SliverToBoxAdapter(
+                          child: buildTransform(),
                         ),
 
                         ///listview
@@ -112,14 +117,49 @@ class FirstPageState extends BaseState<FirstPage> with AutomaticKeepAliveClientM
     ));
   }
 
+  Widget buildTransform(){
+    return Container(
+      width: getWidthPx(670),
+      height: getHeightPx(100),
+      margin: EdgeInsets.symmetric(horizontal: getWidthPx(40),vertical: getWidthPx(40)),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          buildOval("Zone",Colors.lightBlue),
+          buildOval("Mall",Colors.red),
+          buildOval("Play",Colors.deepOrange),
+          buildOval("Video",Colors.lightBlue),
+        ],
+      ),
+    );
+  }
+
+  Widget buildOval(String str,Color color){
+    return Container(
+      alignment: Alignment.center,
+      width: getWidthPx(100),height: getWidthPx(100),
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: color,
+        boxShadow: [
+          BoxShadow(color: Colors.grey[400],spreadRadius: 1.0,offset: Offset(0.8, 0.8),)
+        ],
+      ),
+      child: Text(str,style: TextStyle(color: Colors.white,fontSize: getSp(28)),),
+    );
+  }
+
   Widget buildItem(int index,FirstCardEntity entity){
     return Container(
+      color: Color.fromRGBO(248, 248, 248, 1),
       margin: EdgeInsets.only(top: getWidthPx(28), left: getWidthPx(40), right: getWidthPx(40)),
+      padding: EdgeInsets.all(10),
       width: getWidthPx(670),
-      height: getWidthPx(450),
+      height: getWidthPx(410),
       child: Column(
         children: <Widget>[
-          ShowImageUtil.showImageWithDefaultError(entity.img, getWidthPx(670), getWidthPx(300)),
+          ShowImageUtil.showImageWithDefaultError(entity.img, getWidthPx(650), getWidthPx(300),
+              borderRadius: getHeightPx(16)),
           getSizeBox(height: getWidthPx(30)),
           Text(entity.title,style: TextStyle(color: Colors.black,fontSize: getSp(32)),),
         ],

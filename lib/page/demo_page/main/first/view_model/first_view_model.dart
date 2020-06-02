@@ -38,6 +38,21 @@ class FirstViewModel extends ViewStateSingleModel{
     return result;
   }
 
+  refresh()async{
+    setBusy(true);
+    cardList.clear();
+    pageNum = 1;
+    BedrockRepositoryProxy.getInstance().getSectionOne()
+        .getFirstListCard(pageNum, pageSize).then((list){
+      cardList.addAll(list);
+      refreshController.refreshCompleted();
+      notifyListeners();
+    }).whenComplete((){
+      refreshController.loadComplete();
+      setBusy(false);
+    });
+  }
+
   loadMore()async{
     pageNum +=1;
     BedrockRepositoryProxy.getInstance().getSectionOne()
