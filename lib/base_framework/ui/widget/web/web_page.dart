@@ -37,7 +37,7 @@ class WebPageState extends BaseState<WebPage> {
       height: getHeightPx(1334),
       child: Column(
         children: <Widget>[
-          commonAppBar(leftPadding: getWidthPx(40), rightPadding: getWidthPx(40)),
+          commonAppBar(leftWidget: buildAppBarLeft(),leftPadding: getWidthPx(40), rightPadding: getWidthPx(40)),
           Expanded(
             child: WebviewScaffold(
               url: url,

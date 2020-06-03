@@ -82,7 +82,7 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
         width: getWidthPx(150),
         height: getHeightPx(90),
         alignment: Alignment.bottomLeft,
-        child: Image.asset(ImageHelper.wrapAssetsIcon("icon_back_black.png"),width: getWidthPx(17),height: getHeightPx(32),),
+        child: Image.asset(ImageHelper.wrapAssetsIcon("icon_back_black"),width: getWidthPx(17),height: getHeightPx(32),),
       ),
     );
   }

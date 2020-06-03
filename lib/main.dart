@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flustars/flustars.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bedrock/base_framework/config/app_config.dart';
 import 'package:flutter_bedrock/base_framework/config/global_provider_manager.dart';
 import 'package:flutter_bedrock/base_framework/view_model/app_model/locale_model.dart';
@@ -41,6 +42,8 @@ void main()async{
     debugPrint(trace.toString());
   });
   runApp(MyApp());
+  //状态栏置透明
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: Colors.transparent));
 }
 
 class MyApp extends StatelessWidget {
