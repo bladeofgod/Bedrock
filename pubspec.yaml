@@ -106,8 +106,11 @@ dependencies:
   #flutter_screenutil: ^0.5.3
   #数据库
   #sqflite: ^1.1.7
-  #常用工具类
-  flustars: ^0.2.6+1
+  #下方两个为常用工具类 详见文档：https://github.com/Sky24n/common_utils
+  #适配、sp本地缓存、路径util等
+  flustars: ^0.3.2
+  #字符串util、日期格式化、加解密、日志、等等
+  common_utils: ^1.2.1
 
   #  #高德地图
   #  amap_location: ^0.2.0
