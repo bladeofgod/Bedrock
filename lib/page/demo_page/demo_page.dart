@@ -21,6 +21,21 @@ class DemoPage extends StatefulWidget{
 }
 
 class DemoPageState extends BaseState<DemoPage> {
+
+  final String htmlData = """
+        <div>
+          <h1>Demo Page</h1>
+          <p>This is a fantastic product that you should buy!</p>
+          <h3>Features</h3>
+          <ul>
+            <li>It actually works</li>
+            <li>It exists</li>
+            <li>It doesn't cost much!</li>
+          </ul>
+          <!--You can pretty much put any html in here!-->
+        </div>
+      """;
+
   @override
   Widget build(BuildContext context) {
 
@@ -45,6 +60,24 @@ class DemoPageState extends BaseState<DemoPage> {
               child: Text("main page",style: TextStyle(color: Colors.black),),
               onPressed: (){
                 Navigator.of(context).pushNamed(RouteName.main_page);
+              },
+            ),
+            getSizeBox(height: getHeightPx(40)),
+            buildIntro("web/html DEMO"),
+            RaisedButton(
+              child: Text("web page",style: TextStyle(color: Colors.black),),
+              onPressed: (){
+                String url = 'https://github.com/bladeofgod/Bedrock';
+                Navigator.of(context).pushNamed(RouteName.web_page
+                    ,arguments:{'url':url} );
+              },
+            ),
+            getSizeBox(height: getHeightPx(20)),
+            RaisedButton(
+              child: Text("html page",style: TextStyle(color: Colors.black),),
+              onPressed: (){
+                Navigator.of(context).pushNamed(RouteName.html_page,
+                arguments: {'data':htmlData});
               },
             ),
           ],

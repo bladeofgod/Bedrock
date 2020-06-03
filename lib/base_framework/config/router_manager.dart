@@ -8,6 +8,8 @@ import 'package:flutter_bedrock/base_framework/ui/anim/page_route_anim/no_animat
 import 'package:flutter_bedrock/base_framework/ui/anim/page_route_anim/slide_animation.dart';
 import 'package:flutter_bedrock/base_framework/ui/widget/detail_image_widget.dart';
 import 'package:flutter_bedrock/base_framework/ui/widget/image/image_editor.dart';
+import 'package:flutter_bedrock/base_framework/ui/widget/web/html_page.dart';
+import 'package:flutter_bedrock/base_framework/ui/widget/web/web_page.dart';
 import 'package:flutter_bedrock/main.dart';
 import 'package:flutter_bedrock/page/demo_page/demo_page.dart';
 import 'package:flutter_bedrock/page/demo_page/exception/handle_exception_page.dart';
@@ -24,6 +26,10 @@ class RouteName{
   static const String editor_image_page = "editor_image_page";
   ///显示大图
   static const String show_big_image = "show_big_image";
+  ///web/html
+  static const String web_page = 'web_page';
+  static const String html_page = 'html_page';
+
 
 
 
@@ -40,6 +46,11 @@ class Router{
         return NoAnimRouteBuilder(MainPage());
       case RouteName.demo_exception_page:
         return NoAnimRouteBuilder(HandleExceptionPage());
+
+      case RouteName.web_page:
+        return NoAnimRouteBuilder(WebPage(settings.arguments));
+      case RouteName.html_page:
+        return NoAnimRouteBuilder(HtmlPage(settings.arguments));
 
       case RouteName.editor_image_page:
         ///外层为动画
