@@ -8,6 +8,7 @@ import 'package:flutter_bedrock/base_framework/config/global_provider_manager.da
 import 'package:flutter_bedrock/base_framework/view_model/app_model/locale_model.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
 import 'package:flutter_bedrock/page/demo_page/demo_page.dart';
+import 'package:flutter_bedrock/page/demo_page/exception/unknow_page.dart';
 import 'package:flutter_bedrock/page/exception/exception_page.dart';
 import 'package:flutter_bedrock/service_api/bedrock_repository_proxy.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -79,6 +80,11 @@ class MyApp extends StatelessWidget {
                 ],
                 supportedLocales: S.delegate.supportedLocales,
                 onGenerateRoute: Router.generateRoute,
+                onUnknownRoute: (settings){
+                  return PageRouteBuilder(pageBuilder: (ctx,_,__){
+                    return UnKnowPage();
+                  });
+                },
                 initialRoute: RouteName.demo_page,
               ),
             );

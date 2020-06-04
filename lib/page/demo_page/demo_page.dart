@@ -54,6 +54,14 @@ class DemoPageState extends BaseState<DemoPage> {
                 Navigator.of(context).pushNamed(RouteName.demo_exception_page);
               },
             ),
+            getSizeBox(height: getWidthPx(40)),
+            buildIntro("路由丢失DEMO"),
+            RaisedButton(
+              child: Text("route missing",style: TextStyle(color: Colors.black),),
+              onPressed: (){
+                Navigator.of(context).pushNamed("missing");
+              },
+            ),
             getSizeBox(height: getHeightPx(40)),
             buildIntro("综合性框架功能演示DEMO"),
             RaisedButton(

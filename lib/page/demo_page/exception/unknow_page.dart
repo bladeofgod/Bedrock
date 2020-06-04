@@ -4,6 +4,7 @@
 */
 
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
 
@@ -28,7 +29,7 @@ class UnKnowPageState extends BaseState<UnKnowPage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text(introduce,style: TextStyle(color: Colors.black,fontSize: getSp(28)),),
+          Text(introduce,textAlign: TextAlign.center,style: TextStyle(color: Colors.black,fontSize: getSp(28)),),
         ],
       ),
     ));
