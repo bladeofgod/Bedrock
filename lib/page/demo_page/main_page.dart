@@ -8,6 +8,7 @@ import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
 import 'package:flutter_bedrock/page/demo_page/main/first_page.dart';
 import 'package:flutter_bedrock/page/demo_page/main/second_page.dart';
 import 'package:flutter_bedrock/page/demo_page/main/third_page.dart';
+import 'package:oktoast/oktoast.dart';
 
 
 typedef TransportScrollController = Function(ScrollController controller);
@@ -51,6 +52,7 @@ class MainPageState extends BaseState<MainPage> {
                 if(lastPress == null ||
                       DateTime.now().difference(lastPress) >  Duration(seconds: 1)){
                   lastPress = DateTime.now();
+                  showToast("再点一次退出");
                   return false;
                 }
                 return true;

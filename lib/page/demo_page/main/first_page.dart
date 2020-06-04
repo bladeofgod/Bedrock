@@ -10,6 +10,7 @@ import 'package:flutter_bedrock/base_framework/view_model/app_model/user_view_mo
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
 import 'package:flutter_bedrock/page/demo_page/main/first/view_model/first_view_model.dart';
 import 'package:flutter_bedrock/page/demo_page/main/first/widget/first_banner.dart';
+import 'package:flutter_bedrock/page/demo_page/main/first/widget/first_skeleton_page.dart';
 import 'package:flutter_bedrock/page/demo_page/main_page.dart';
 import 'package:provider/provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -59,11 +60,8 @@ class FirstPageState extends BaseState<FirstPage> with AutomaticKeepAliveClientM
           },
           builder: (ctx,firstModel,child){
             if(firstModel.busy){
-              return Container(
-                child: Center(
-                  child: CircularProgressIndicator(),
-                ),
-              );
+              ///骨架屏
+              return FirstSkeletonPage();
             }
 
             firstViewModel = firstModel;
