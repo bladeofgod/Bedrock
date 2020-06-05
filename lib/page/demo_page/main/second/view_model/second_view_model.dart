@@ -15,6 +15,7 @@ class SecondViewModel extends ViewStateRefreshListModel<SecondEntity>{
   }
 
 
+
 }
 
 

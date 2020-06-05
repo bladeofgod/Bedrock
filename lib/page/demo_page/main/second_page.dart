@@ -55,25 +55,21 @@ class SecondPageState extends BaseState<SecondPage> with AutomaticKeepAliveClien
 
             secondViewModel = model;
             return RefreshConfiguration.copyAncestor(context: context,
-                child: Container(
-                  color: Colors.white,
-                  width: getWidthPx(750),
-                  height: getHeightPx(1236),
-                  ///如果不想要flutter 自带的水印，可以用这个包裹  eg:listview \  scrollview
-                  child: getNoInkWellListView(scrollView: SmartRefresher(
-                    controller:  secondViewModel.refreshController,
-                    header: HomeRefreshHeader(Colors.black),
-                    footer: RefresherFooter(),
-                    onRefresh: secondViewModel.refresh,
-                    onLoading: secondViewModel.loadMore,
-                    enablePullDown: true,
+                child: getNoInkWellListView(
+                    scrollView: SmartRefresher(
+                      controller:  secondViewModel.refreshController,
+                      header: HomeRefreshHeader(Colors.black),
+                      footer: RefresherFooter(),
+                      onRefresh: secondViewModel.refresh,
+                      onLoading: secondViewModel.loadMore,
+//                    enablePullDown: true,
                     enablePullUp: true,
-                    child: ListView.builder(
-                        itemBuilder: (ctx,index){
-                          return buildItem(secondViewModel.list[index],index);
-                        }),
-                  )),
-                ));
+                      child: ListView.builder(
+                        itemCount: model.list.length,
+                          itemBuilder: (ctx,index){
+                            return buildItem(secondViewModel.list[index],index);
+                          }),
+                    )));
           },
         );
       },
@@ -85,7 +81,7 @@ class SecondPageState extends BaseState<SecondPage> with AutomaticKeepAliveClien
       margin: EdgeInsets.only(top: getWidthPx(28), left: getWidthPx(40), right: getWidthPx(40)),
       padding: EdgeInsets.all(10),
       width: getWidthPx(670),
-      height: getWidthPx(410),
+      height: getWidthPx(420),
       child: Column(
         children: <Widget>[
           ShowImageUtil.showImageWithDefaultError(entity.img, getWidthPx(650), getWidthPx(300),
