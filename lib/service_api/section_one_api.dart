@@ -8,8 +8,10 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bedrock/base_framework/config/net/bedrock_http.dart';
+import 'package:flutter_bedrock/page/demo_page/main/fake_constant.dart';
 import 'package:flutter_bedrock/page/demo_page/main/first/entity/first_card_entity.dart';
 import 'package:flutter_bedrock/page/demo_page/main/first/entity/first_entity.dart';
+import 'package:flutter_bedrock/page/demo_page/main/second/entity/second_entity.dart';
 
 class SectionOne{
   static SectionOne _singleton;
@@ -75,6 +77,16 @@ class SectionOne{
 
   Future<List<SecondEntity>> getSecondList(int pageNum)async{
     List<SecondEntity> listData;
+    await Future.delayed(Duration(seconds: 2)).then((value){
+      if(pageNum > 4){
+        listData = [];
+      }else{
+        listData = List.generate(8, (index){
+          return SecondEntity(FakeConstant.imageList[index%9],"title : $index");
+        });
+      }
+    });
+    return listData;
 
   }
 

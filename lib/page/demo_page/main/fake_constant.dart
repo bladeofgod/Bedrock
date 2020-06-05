@@ -6,7 +6,7 @@
 
 class FakeConstant{
 
-  List<String> imageList = [
+  static const List<String> imageList = [
     'http://img.08087.cc/uploads/20190113/19/1547380421-DtxGodwgny.jpeg',
     'http://img.08087.cc/uploads/20190113/19/1547380421-yuCqefakQB.jpg',
     'http://img.08087.cc/uploads/20200526/21/1590499015-bRKMhvSkAg.jpg',

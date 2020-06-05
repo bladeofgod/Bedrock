@@ -8,6 +8,7 @@ class SecondEntity{
   String img;
   String title;
 
+  SecondEntity(this.img, this.title);
 }
 
 
