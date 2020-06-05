@@ -73,6 +73,11 @@ class SectionOne{
     return response;
   }
 
+  Future<List<SecondEntity>> getSecondList(int pageNum)async{
+    List<SecondEntity> listData;
+
+  }
+
 }
 
 
