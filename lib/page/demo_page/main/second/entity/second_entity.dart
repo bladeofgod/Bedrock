@@ -5,6 +5,9 @@
 
 class SecondEntity{
 
+  String img;
+  String title;
+
 }
 
 
