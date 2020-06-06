@@ -3,6 +3,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bedrock/base_framework/ui/widget/progress_widget.dart';
 import 'package:flutter_bedrock/base_framework/ui/widget/provider_widget.dart';
 import 'package:flutter_bedrock/base_framework/view_model/app_model/user_view_model.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
@@ -26,9 +27,9 @@ class LoginPageState extends BaseState<LoginPage> {
   Widget build(BuildContext context) {
     return switchStatusBar2Dark(
         child: Consumer<UserViewModel>(
-          builder: (ctx,userModel,childw){
+          builder: (ctx,userModel,child){
             return ProviderWidget<LoginViewModel>(
-              model: LoginViewModel(),
+              model: LoginViewModel(userModel),
               onModelReady: (model){
 
               },
@@ -38,14 +39,22 @@ class LoginPageState extends BaseState<LoginPage> {
                 return Container(
                   color: Colors.white,
                   width: getWidthPx(750),height: getHeightPx(1334),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                  child: Stack(
                     children: <Widget>[
-                      inputName(),
-                      getSizeBox(height: getWidthPx(20)),
-                      inputPassword(),
-                      getSizeBox(height: getWidthPx(40)),
-                      confirmBtn(),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          inputName(),
+                          getSizeBox(height: getWidthPx(20)),
+                          inputPassword(),
+                          getSizeBox(height: getWidthPx(40)),
+                          confirmBtn(),
+                        ],
+                      ),
+                      Visibility(
+                        visible: loginModel.busy,
+                        child: FullPageCircleProgressWidget(),
+                      )
                     ],
                   ),
                 );
@@ -57,6 +66,18 @@ class LoginPageState extends BaseState<LoginPage> {
   }
 
   Widget confirmBtn(){
+    return GestureDetector(
+      onTap: ()async{
+        await loginViewModel.login();
+      },
+      child: Container(
+        color: Colors.blue,
+        width: getWidthPx(400),
+        height: getWidthPx(80),
+        alignment: Alignment.center,
+        child: Text("登录",style: TextStyle(color: Colors.white,fontSize: getSp(30)),),
+      ),
+    );
 
   }
 

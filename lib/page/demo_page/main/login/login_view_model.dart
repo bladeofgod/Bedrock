@@ -2,15 +2,19 @@
 
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bedrock/base_framework/view_model/app_model/user_view_model.dart';
 import 'package:flutter_bedrock/base_framework/view_model/view_state_single_model.dart';
+import 'package:flutter_bedrock/service_api/bedrock_repository_proxy.dart';
 
 class LoginViewModel extends ViewStateSingleModel{
 
   TextEditingController nameController;
   TextEditingController passController;
 
+  final UserViewModel userViewModel;
 
-  LoginViewModel(){
+
+  LoginViewModel(this.userViewModel){
     nameController = TextEditingController();
     passController = TextEditingController();
   }
@@ -19,7 +23,18 @@ class LoginViewModel extends ViewStateSingleModel{
   String pass;
 
 
-  login(){}
+  login(){
+    ///可以用这个，也可以自己定义
+    setBusy(true);
+    BedrockRepositoryProxy.getInstance().getSectionOne().login(name, pass)
+    .then((user){
+      userViewModel?.saveUser(user);
+    })
+        .whenComplete((){
+      setBusy(false);
+    });
+
+  }
 
   @override
   Future loadData() {
