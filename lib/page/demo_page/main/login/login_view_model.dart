@@ -42,6 +42,7 @@ class LoginViewModel extends ViewStateSingleModel{
 
   @override
   Future loadData() {
+    ///在这里写入登录接口也可以，灵活随意
     return null;
 
   }

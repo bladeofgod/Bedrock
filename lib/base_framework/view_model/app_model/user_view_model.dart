@@ -38,6 +38,7 @@ class UserViewModel extends ChangeNotifier{
 
 
   UserViewModel(){
+    ///用户登陆后会在本地缓存用户实体，可以根据自己的实际需求改变
     var entity = SpUtil.getObject(last_user_id);
     if(entity != null){
       _userEntity = UserEntity.fromJson(entity);

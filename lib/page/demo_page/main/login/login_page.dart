@@ -28,26 +28,31 @@ class LoginPageState extends BaseState<LoginPage> {
     return switchStatusBar2Dark(
         child: Consumer<UserViewModel>(
           builder: (ctx,userModel,child){
-            if(userModel.hasUser){
-              WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-                Navigator.of(context).pop();
-              });
-            }
+
             return ProviderWidget<LoginViewModel>(
               model: LoginViewModel(userModel),
               onModelReady: (model){
 
               },
               builder: (ctx,loginModel,child){
+
+
+                if(userModel.hasUser){
+                  WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+                    Navigator.of(context).pop();
+                  });
+                }
                 loginViewModel = loginModel;
 
                 return Container(
                   color: Colors.white,
                   width: getWidthPx(750),height: getHeightPx(1334),
                   child: Stack(
+                    alignment: Alignment.center,
                     children: <Widget>[
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           inputName(),
                           getSizeBox(height: getWidthPx(20)),
@@ -112,7 +117,7 @@ class LoginPageState extends BaseState<LoginPage> {
         },
         controller: loginViewModel.passController,
         decoration: InputDecoration(
-            hintText: "enter name"
+            hintText: "enter password"
         ),
       ),
     );

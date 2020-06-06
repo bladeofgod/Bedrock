@@ -94,7 +94,7 @@ class SectionOne{
   Future<UserEntity> login(String name,String pass)async{
     UserEntity userEntity;
     await Future.delayed(Duration(seconds: 2)).then((value){
-      userEntity = UserEntity(nickName:"吉哈达",id:"123");
+      userEntity = UserEntity(nickName:name,id:pass);
     });
     return userEntity;
   }
