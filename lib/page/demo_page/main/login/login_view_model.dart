@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bedrock/base_framework/view_model/app_model/user_view_model.dart';
 import 'package:flutter_bedrock/base_framework/view_model/view_state_single_model.dart';
 import 'package:flutter_bedrock/service_api/bedrock_repository_proxy.dart';
+import 'package:oktoast/oktoast.dart';
 
 class LoginViewModel extends ViewStateSingleModel{
 
@@ -28,7 +29,10 @@ class LoginViewModel extends ViewStateSingleModel{
     setBusy(true);
     BedrockRepositoryProxy.getInstance().getSectionOne().login(name, pass)
     .then((user){
-      userViewModel?.saveUser(user);
+      if(user != null){
+        showToast("登陆成功");
+        userViewModel?.saveUser(user);
+      }
     })
         .whenComplete((){
       setBusy(false);

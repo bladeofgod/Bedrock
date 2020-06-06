@@ -28,6 +28,11 @@ class LoginPageState extends BaseState<LoginPage> {
     return switchStatusBar2Dark(
         child: Consumer<UserViewModel>(
           builder: (ctx,userModel,child){
+            if(userModel.hasUser){
+              WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+                Navigator.of(context).pop();
+              });
+            }
             return ProviderWidget<LoginViewModel>(
               model: LoginViewModel(userModel),
               onModelReady: (model){
