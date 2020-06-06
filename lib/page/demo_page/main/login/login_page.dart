@@ -18,6 +18,10 @@ class LoginPage extends StatefulWidget{
 }
 
 class LoginPageState extends BaseState<LoginPage> {
+
+
+  LoginViewModel loginViewModel;
+
   @override
   Widget build(BuildContext context) {
     return switchStatusBar2Dark(
@@ -29,10 +33,21 @@ class LoginPageState extends BaseState<LoginPage> {
 
               },
               builder: (ctx,loginModel,child){
+                loginViewModel = loginModel;
 
                 return Container(
+                  color: Colors.white,
                   width: getWidthPx(750),height: getHeightPx(1334),
-                  child: ,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      inputName(),
+                      getSizeBox(height: getWidthPx(20)),
+                      inputPassword(),
+                      getSizeBox(height: getWidthPx(40)),
+                      confirmBtn(),
+                    ],
+                  ),
                 );
 
               },
@@ -40,6 +55,48 @@ class LoginPageState extends BaseState<LoginPage> {
           },
         ));
   }
+
+  Widget confirmBtn(){
+
+  }
+
+  Widget inputName(){
+    return Container(
+      width: getWidthPx(450),
+      height: getWidthPx(80),
+      child: TextField(
+        onChanged: (text){
+          loginViewModel.name = text;
+        },
+        controller: loginViewModel.nameController,
+        decoration: InputDecoration(
+          hintText: "enter name"
+        ),
+      ),
+    );
+  }
+
+  Widget inputPassword(){
+    return Container(
+      width: getWidthPx(450),
+      height: getWidthPx(80),
+      child: TextField(
+        onChanged: (text){
+          loginViewModel.pass = text;
+        },
+        controller: loginViewModel.passController,
+        decoration: InputDecoration(
+            hintText: "enter name"
+        ),
+      ),
+    );
+  }
+
+
+
+
+
+
 }
 
 
