@@ -57,6 +57,7 @@ class UserViewModel extends ChangeNotifier{
       return ;
     }
     _userEntity = userEntity;
+    notifyListeners();
     SpUtil.putObject(last_user_id, userEntity);
 
   }
