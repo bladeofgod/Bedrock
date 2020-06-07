@@ -73,10 +73,13 @@ dependencies:
   #swiper
   #flutter_swiper: ^1.1.6
   #很强大的插件，瀑布流、滑动退出、手势放大等等等等，请查看文档
+  #大佬的文章 https://juejin.im/post/5dee2ab36fb9a01610796a20
   #https://github.com/fluttercandies/extended_image
   extended_image: ^0.8.0
   #https://pub.dev/packages/flutter_xupdate 漂亮的更新弹窗
   #flutter_xupdate: ^0.0.3
+  #刮刮卡  https://github.com/826327700/flutter_plugins_demo
+  #scratcher: ^1.3.0
 
   #
   #  image_picker: ^0.6.5+2
