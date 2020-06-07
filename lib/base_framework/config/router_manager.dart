@@ -16,6 +16,7 @@ import 'package:flutter_bedrock/main.dart';
 import 'package:flutter_bedrock/page/demo_page/demo_page.dart';
 import 'package:flutter_bedrock/page/demo_page/exception/handle_exception_page.dart';
 import 'package:flutter_bedrock/page/demo_page/image/pick_image_page.dart';
+import 'package:flutter_bedrock/page/demo_page/local_i10l/local_page.dart';
 import 'package:flutter_bedrock/page/demo_page/main/login/login_page.dart';
 import 'package:flutter_bedrock/page/demo_page/main_page.dart';
 import 'package:flutter_bedrock/page/demo_page/route_anim/fade_page.dart';
@@ -35,6 +36,8 @@ class RouteName{
   static const String fade_page = 'fade_page';
   static const String scale_page = 'scale_page';
   static const String slide_page = 'slide_page';
+
+  static const String local_i10l_page = 'local_i10l_page';
 
 
 
@@ -58,6 +61,8 @@ class Router{
     switch(settings.name) {
       case RouteName.demo_page:
         return NoAnimRouteBuilder(DemoPage());
+      case RouteName.local_i10l_page:
+        return NoAnimRouteBuilder(LocalPage());
       case RouteName.login_page:
         return SlideTopRouteBuilder(LoginPage());
       case RouteName.pick_image_page:
