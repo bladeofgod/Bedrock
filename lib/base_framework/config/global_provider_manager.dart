@@ -21,7 +21,7 @@ List<SingleChildWidget> providers =[
   ...dependentServices,
 ];
 
-/// 应用级 独立 model
+/// 应用级 独立 model(通过consumer 可以在任意页面获取到)
 List<SingleChildWidget> independentServices = [
   //ChangeNotifierProvider<ThemeModel>.value(value: ThemeModel()),  //主题配置
   ChangeNotifierProvider<LocaleModel>.value(value: LocaleModel()), //国际化
@@ -38,8 +38,8 @@ List<SingleChildWidget> independentServices = [
 ];
 
 
-/// 需要依赖的model
-/// eg :UserModel组合 购物车model （后续可能添加别的）
+/// 需要依赖的model,下方注释代码为例子
+/// eg :UserModel 购物车model的组合（如购物车与用户ID绑定）
 List<SingleChildWidget> dependentServices = [
 
 //  ChangeNotifierProxyProvider<GlobalCartGoodsModel, UserModel>(

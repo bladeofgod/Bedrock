@@ -96,6 +96,14 @@ class DemoPageState extends BaseState<DemoPage> {
                 Navigator.of(context).pushNamed(RouteName.pick_image_page,);
               },
             ),
+            getSizeBox(height: getHeightPx(40)),
+            buildIntro("页面跳转动画 DEMO"),
+            RaisedButton(
+              child: Text("route animation page",style: TextStyle(color: Colors.black),),
+              onPressed: (){
+                Navigator.of(context).pushNamed(RouteName.route_anim_page,);
+              },
+            ),
           ],
         ),
       ),
