@@ -91,7 +91,7 @@ class ImageHelper {
 
 
 
-  ///picker
+  ///从相册选择或者拍照一张照片picker   插件：MultiImagePicker
 
   static Future<List<Asset>> pickImage()async{
     List<Asset> images = List<Asset>();

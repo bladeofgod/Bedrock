@@ -14,6 +14,8 @@ import 'package:flutter_bedrock/generated/l10n.dart';
 import 'package:image_editor/image_editor.dart' as ie;
 import 'package:path_provider/path_provider.dart';
 
+///图片存储在了沙盒里，理论上兼容华为
+
 class ImageEditor extends StatefulWidget{
 
   final Map arguments;

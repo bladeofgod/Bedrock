@@ -88,6 +88,14 @@ class DemoPageState extends BaseState<DemoPage> {
                 arguments: {'data':htmlData});
               },
             ),
+            getSizeBox(height: getHeightPx(40)),
+            buildIntro("图片相关 DEMO"),
+            RaisedButton(
+              child: Text("image page",style: TextStyle(color: Colors.black),),
+              onPressed: (){
+                Navigator.of(context).pushNamed(RouteName.pick_image_page,);
+              },
+            ),
           ],
         ),
       ),

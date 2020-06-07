@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/base_framework/ui/widget/skeleton/base_skeleton/base_skeleton_widget.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
 
+/// 继承 BaseSkeletonWidget，
 class FirstSkeletonPage extends BaseSkeletonWidget{
   @override
   Widget build(BuildContext context) {
