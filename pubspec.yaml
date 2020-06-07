@@ -72,7 +72,11 @@ dependencies:
 
   #swiper
   #flutter_swiper: ^1.1.6
+  #很强大的插件，瀑布流、滑动退出、手势放大等等等等，请查看文档
+  #https://github.com/fluttercandies/extended_image
   extended_image: ^0.8.0
+  #https://pub.dev/packages/flutter_xupdate 漂亮的更新弹窗
+  #flutter_xupdate: ^0.0.3
 
   #
   #  image_picker: ^0.6.5+2
