@@ -24,7 +24,7 @@ class BedRock extends BaseHttp{
 
     options.baseUrl = china;
     interceptors
-      ..add(CookieManager(PersistCookieJar(dir: StorageManager.temporaryDirectory.path)))
+      ..add(CookieManager(PersistCookieJar(dir: StorageManager.appDirectory.path)))
       ..add(ApiInterceptor());
   }
 
