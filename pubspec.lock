@@ -141,6 +141,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.2.3"
+  ffloat:
+    dependency: "direct main"
+    description:
+      name: ffloat
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.1"
   flustars:
     dependency: "direct main"
     description:

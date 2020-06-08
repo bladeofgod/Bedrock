@@ -29,6 +29,9 @@ dependencies:
   # State
   provider: ^4.1.3
 
+  #FFloat: 阿里闲鱼旗下的插件系列之一
+  #墙裂！推荐阅读他们的系列文章，https://juejin.im/post/5ec17d6a5188256d7674b942#heading-12
+  ffloat: ^1.0.1
   # Base Component
   # WebView iOS添加键值对 o.flutter.embedded_views_preview = YES
   #flutter 官方插件，
