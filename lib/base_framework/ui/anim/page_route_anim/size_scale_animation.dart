@@ -2,10 +2,10 @@
 
 import 'package:flutter/material.dart';
 
-class SizeRoute extends PageRouteBuilder {
+class ScaleRouteBuilder extends PageRouteBuilder {
   final Widget page;
 
-  SizeRoute(this.page)
+  ScaleRouteBuilder(this.page)
       : super(
     pageBuilder: (context, animation, secondaryAnimation) => page,
     transitionDuration: Duration(milliseconds: 300),

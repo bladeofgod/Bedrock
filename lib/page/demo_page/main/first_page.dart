@@ -96,6 +96,14 @@ class FirstPageState extends BaseState<FirstPage> with AutomaticKeepAliveClientM
                           child: buildTransform(),
                         ),
 
+                        SliverToBoxAdapter(
+                          child: Container(
+                            alignment: Alignment.center,
+                            width: getWidthPx(750),
+                            color: Color.fromRGBO(240, 240, 240, 1),
+                          child: Text("Tip ：点击第一个底部导航键可以滚动到顶部"),),
+                        ),
+
                         ///listview
                         SliverList(
                           delegate: SliverChildBuilderDelegate(

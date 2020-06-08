@@ -88,6 +88,30 @@ class DemoPageState extends BaseState<DemoPage> {
                 arguments: {'data':htmlData});
               },
             ),
+            getSizeBox(height: getHeightPx(40)),
+            buildIntro("图片相关 DEMO"),
+            RaisedButton(
+              child: Text("image page",style: TextStyle(color: Colors.black),),
+              onPressed: (){
+                Navigator.of(context).pushNamed(RouteName.pick_image_page,);
+              },
+            ),
+            getSizeBox(height: getHeightPx(40)),
+            buildIntro("页面跳转动画 DEMO"),
+            RaisedButton(
+              child: Text("route animation page",style: TextStyle(color: Colors.black),),
+              onPressed: (){
+                Navigator.of(context).pushNamed(RouteName.route_anim_page,);
+              },
+            ),
+            getSizeBox(height: getHeightPx(40)),
+            buildIntro("国际化 DEMO"),
+            RaisedButton(
+              child: Text("i10l page",style: TextStyle(color: Colors.black),),
+              onPressed: (){
+                Navigator.of(context).pushNamed(RouteName.local_i10l_page,);
+              },
+            ),
           ],
         ),
       ),

@@ -12,6 +12,7 @@ import 'package:flutter_bedrock/page/demo_page/main/fake_constant.dart';
 import 'package:flutter_bedrock/page/demo_page/main/first/entity/first_card_entity.dart';
 import 'package:flutter_bedrock/page/demo_page/main/first/entity/first_entity.dart';
 import 'package:flutter_bedrock/page/demo_page/main/second/entity/second_entity.dart';
+import 'package:flutter_bedrock/page/mine/entity/user_entity.dart';
 
 class SectionOne{
   static SectionOne _singleton;
@@ -89,6 +90,15 @@ class SectionOne{
     return listData;
 
   }
+
+  Future<UserEntity> login(String name,String pass)async{
+    UserEntity userEntity;
+    await Future.delayed(Duration(seconds: 2)).then((value){
+      userEntity = UserEntity(nickName:name,id:pass);
+    });
+    return userEntity;
+  }
+
 
 }
 

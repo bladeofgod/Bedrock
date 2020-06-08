@@ -18,8 +18,8 @@ class DetailImageWidget extends StatefulWidget{
 
   @override
   State<StatefulWidget> createState() {
-
-    return DetailImageWidgetState(arguments["imageList"],arguments["initIndex"]);
+    //imageList:图片urlList，initIndex: 从第几个开始显示
+    return DetailImageWidgetState(imageList:arguments["imageList"],initIndex:arguments["initIndex"]);
   }
 
 }
@@ -30,7 +30,7 @@ class DetailImageWidgetState extends BaseState<DetailImageWidget> {
   final int initIndex;
   int indexStr=1;
 
-  DetailImageWidgetState(this.imageList, this.initIndex);
+  DetailImageWidgetState({this.imageList, this.initIndex = 0});
   void initState() {
     super.initState();
   }
@@ -50,11 +50,12 @@ class DetailImageWidgetState extends BaseState<DetailImageWidget> {
                 color: Colors.black,
                 width: getWidthPx(750),
                 height: getHeightPx(1334),
+                ///可增加滑动退出等功能、具体可以查看插件的文档
                 child: ExtendedImageGesturePageView.builder(
                   controller: new PageController(initialPage: this.initIndex),
                   itemCount: imageList.length,
                   itemBuilder: (ctx,index){
-                    var url = "${imageList[index]}${ShowImageUtil.W1000}";
+                    var url = "${imageList[index]}";
                     //var url = "http://a0.att.hudong.com/78/52/01200000123847134434529793168.jpg";
                     Widget image = ExtendedImage.network(
                       url,fit: BoxFit.contain,mode: ExtendedImageMode.gesture,

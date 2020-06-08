@@ -62,6 +62,11 @@ class HandleExceptionPageState extends BaseState<HandleExceptionPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              Text("测试未登录异常捕捉（不仅限于业务异常，其它异常如超时、无网络等都可以用类似的方法处理\n"
+                  "见 ViewStateModel : handleException()",
+              style: TextStyle(color: Colors.black),),
+
+              getSizeBox(height: getWidthPx(60)),
               RaisedButton(
                 child: Text("click request api"),
                 onPressed: (){

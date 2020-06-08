@@ -3,6 +3,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bedrock/base_framework/config/router_manager.dart';
 import 'package:flutter_bedrock/base_framework/ui/widget/provider_widget.dart';
 import 'package:flutter_bedrock/base_framework/utils/refresh_helper.dart';
 import 'package:flutter_bedrock/base_framework/utils/show_image_util.dart';
@@ -76,20 +77,26 @@ class SecondPageState extends BaseState<SecondPage> with AutomaticKeepAliveClien
     ));
   }
   Widget buildItem(SecondEntity entity,int index){
-    return Container(
-      color: index%2 == 0 ?  Colors.greenAccent[400]:Colors.lightBlueAccent[400],
-      margin: EdgeInsets.only(top: getWidthPx(28), left: getWidthPx(40), right: getWidthPx(40)),
-      padding: EdgeInsets.all(10),
-      width: getWidthPx(670),
-      height: getWidthPx(420),
-      child: Column(
-        children: <Widget>[
-          ShowImageUtil.showImageWithDefaultError(entity.img, getWidthPx(650), getWidthPx(300),
-              borderRadius: getHeightPx(16)),
-          getSizeBox(height: getWidthPx(30)),
-          Text("${entity.title} -- ${userViewModel.hasUser?userViewModel.getUserName:"用户未登录"}",
-            style: TextStyle(color: Colors.black,fontSize: getSp(32)),),
-        ],
+    return GestureDetector(
+      onTap: (){
+        Navigator.of(context).pushNamed(RouteName.show_big_image
+          ,arguments: {"imageList":[entity.img],"initIndex":0});
+      },
+      child: Container(
+        color: index%2 == 0 ?  Colors.greenAccent[400]:Colors.lightBlueAccent[400],
+        margin: EdgeInsets.only(top: getWidthPx(28), left: getWidthPx(40), right: getWidthPx(40)),
+        padding: EdgeInsets.all(10),
+        width: getWidthPx(670),
+        height: getWidthPx(420),
+        child: Column(
+          children: <Widget>[
+            ShowImageUtil.showImageWithDefaultError(entity.img, getWidthPx(650), getWidthPx(300),
+                borderRadius: getHeightPx(16)),
+            getSizeBox(height: getWidthPx(30)),
+            Text("${entity.title} -- ${userViewModel.hasUser?userViewModel.getUserName:"用户未登录"}",
+              style: TextStyle(color: Colors.black,fontSize: getSp(32)),),
+          ],
+        ),
       ),
     );
 
