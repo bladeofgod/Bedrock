@@ -1,10 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-import 'view_state_list_model.dart';
+import 'list_view_state_model.dart';
 
 /// 基于
-abstract class ViewStateRefreshListModel<T> extends ViewStateListModel<T> {
+abstract class RefreshListViewStateModel<T> extends ListViewStateModel<T> {
   /// 分页第一页页码
   static const int pageNumFirst = 1;
 

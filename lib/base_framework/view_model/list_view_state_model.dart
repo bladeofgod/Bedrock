@@ -1,7 +1,7 @@
 import 'view_state_model.dart';
 
 /// 基于
-abstract class ViewStateListModel<T> extends ViewStateModel {
+abstract class ListViewStateModel<T> extends ViewStateModel {
   /// 页面数据
   List<T> list = [];
   ///第一次加载
@@ -41,10 +41,10 @@ abstract class ViewStateListModel<T> extends ViewStateModel {
   // 加载数据
   Future<List<T>> loadData();
 
-  ///数据获取后会调用此方法
+  ///数据获取后会调用此方法,此方法在notifyListeners（）之前
   onCompleted(List<T> data) {}
 
-  ///状态刷新后会调用此方法
+  ///状态刷新后会调用此方法，此方法在notifyListeners（）之后
   onRefreshCompleted(){}
 
 }

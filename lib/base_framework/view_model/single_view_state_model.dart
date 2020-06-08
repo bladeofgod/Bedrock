@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:flutter_bedrock/base_framework/view_model/view_state_model.dart';
 
-abstract class ViewStateSingleModel<T> extends ViewStateModel{
+abstract class SingleViewStateModel<T> extends ViewStateModel{
 
   T data ;
 
