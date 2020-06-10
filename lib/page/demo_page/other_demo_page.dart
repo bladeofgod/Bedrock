@@ -33,6 +33,13 @@ class OtherDemoPageState extends BaseState<OtherDemoPage> {
               Navigator.of(context).pushNamed(RouteName.scroll_page);
             },
           ),
+          getSizeBox(height: getWidthPx(40)),
+          RaisedButton(
+            child: Text('stream Util'),
+            onPressed: (){
+              Navigator.of(context).pushNamed(RouteName.little_util_page);
+            },
+          ),
         ],
       ),
     ));
