@@ -51,6 +51,7 @@ class LittleUtilPageState extends BaseState<LittleUtilPage> {
 
         });
       }else{
+        ///避免内存泄漏
         streamSubscription.cancel();
       }
 
