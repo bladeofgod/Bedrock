@@ -112,6 +112,14 @@ class DemoPageState extends BaseState<DemoPage> {
                 Navigator.of(context).pushNamed(RouteName.local_i10l_page,);
               },
             ),
+            getSizeBox(height: getHeightPx(40)),
+            buildIntro("实验室 DEMO"),
+            RaisedButton(
+              child: Text("laboratory page",style: TextStyle(color: Colors.black),),
+              onPressed: (){
+                Navigator.of(context).pushNamed(RouteName.demo_other_page,);
+              },
+            ),
           ],
         ),
       ),
