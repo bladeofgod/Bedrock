@@ -28,12 +28,12 @@ abstract class RefreshListViewStateModel<T> extends ListViewStateModel<T> {
     //firstInit = init;
     try {
       _currentPageNum = pageNumFirst;
+      list.clear();
       var data = await loadData(pageNum: pageNumFirst);
       if (data == null || data.isEmpty) {
         setEmpty();
       } else {
         onCompleted(data);
-        list.clear();
         list.addAll(data);
         refreshController.refreshCompleted();
         if (data.length < pageSize) {
