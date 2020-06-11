@@ -4,10 +4,10 @@ import 'package:provider/provider.dart';
 /// Provider封装类
 /// 方便数据初始化
 class ProviderWidget<T extends ChangeNotifier> extends StatefulWidget {
-  final ValueWidgetBuilder<T> builder;
-  final T model;
-  final Widget child;
-  final Function(T) onModelReady;
+  final ValueWidgetBuilder<T> builder;///根据model状态构建页面
+  final T model;///你的model
+  final Widget child;///此child 为stateless 可以视具体情况使用（一般用不到）
+  final Function(T) onModelReady;///model创建好后会调用此方法，根据需要传入
 
   ProviderWidget({
     Key key,
