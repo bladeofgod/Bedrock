@@ -26,6 +26,7 @@ import 'package:flutter_bedrock/page/demo_page/route_anim/fade_page.dart';
 import 'package:flutter_bedrock/page/demo_page/route_anim/route_animation_page.dart';
 import 'package:flutter_bedrock/page/demo_page/route_anim/scale_page.dart';
 import 'package:flutter_bedrock/page/demo_page/route_anim/slide_page.dart';
+import 'package:flutter_bedrock/page/demo_page/slide_out_page.dart';
 
 class RouteName{
 
@@ -37,6 +38,7 @@ class RouteName{
   static const String demo_other_page = 'demo_other_page';
   static const String scroll_page = 'scroll_page';
   static const String little_util_page = 'little_util_page';
+  static const String slide_out_page = 'slide_out_page';
 
   static const String route_anim_page = 'route_anim_page';
   static const String fade_page = 'fade_page';
@@ -83,6 +85,8 @@ class Router{
         return NoAnimRouteBuilder(MainPage());
       case RouteName.demo_exception_page:
         return NoAnimRouteBuilder(HandleExceptionPage());
+      case RouteName.slide_out_page:
+        return SlideRightRouteBuilder(SlideOutPage());
 
       case RouteName.route_anim_page:
         return NoAnimRouteBuilder(RouteAnimationPage());

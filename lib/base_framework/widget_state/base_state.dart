@@ -19,7 +19,20 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
   ///应在根位置调用此方法
   Widget switchStatusBar2Dark({bool isSetDark = true,@required Widget child,
     ///适配、
-    EdgeInsets edgeInsets}){
+    EdgeInsets edgeInsets,bool needSlideOut = true}){
+    if(! needSlideOut){
+      return AnnotatedRegion(
+          value: isSetDark ? SystemUiOverlayStyle.dark : SystemUiOverlayStyle.light,
+          child: Material(
+            color: Colors.transparent,
+            child: Padding(
+              padding: edgeInsets??EdgeInsets.only(bottom: ScreenUtil.getInstance().bottomBarHeight),
+              child: child,
+            ),
+          )
+      );
+
+    }
     return AnnotatedRegion(
       value: isSetDark ? SystemUiOverlayStyle.dark : SystemUiOverlayStyle.light,
       child: Material(

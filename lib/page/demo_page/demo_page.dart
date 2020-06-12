@@ -71,6 +71,14 @@ class DemoPageState extends BaseState<DemoPage> {
               },
             ),
             getSizeBox(height: getHeightPx(40)),
+            buildIntro("左侧滑动返回上一页"),
+            RaisedButton(
+              child: Text("left slide to pop page",style: TextStyle(color: Colors.black),),
+              onPressed: (){
+                Navigator.of(context).pushNamed(RouteName.slide_out_page);
+              },
+            ),
+            getSizeBox(height: getHeightPx(40)),
             buildIntro("web/html DEMO"),
             RaisedButton(
               child: Text("web page",style: TextStyle(color: Colors.black),),
