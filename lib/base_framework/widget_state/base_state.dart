@@ -11,6 +11,10 @@ import 'package:flutter_bedrock/base_framework/utils/image_helper.dart';
 
 abstract class BaseState<T extends StatefulWidget> extends State<T> {
 
+  double marginLeft = 0.0;
+  double dragPosition = 0.0;
+  bool slideOutActive = false;
+
   ///切换状态栏 模式：light or dark
   ///应在根位置调用此方法
   Widget switchStatusBar2Dark({bool isSetDark = true,@required Widget child,
@@ -19,9 +23,45 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
     return AnnotatedRegion(
       value: isSetDark ? SystemUiOverlayStyle.dark : SystemUiOverlayStyle.light,
       child: Material(
+        color: Colors.transparent,
         child: Padding(
           padding: edgeInsets??EdgeInsets.only(bottom: ScreenUtil.getInstance().bottomBarHeight),
-          child: child,
+          child: GestureDetector(
+            onHorizontalDragStart: (dragStart){
+              slideOutActive = dragStart.globalPosition.dx < (getScreenWidth() / 10);
+
+            },
+            onHorizontalDragUpdate: (dragDetails){
+              if(!slideOutActive) return;
+              marginLeft = dragDetails.globalPosition.dx;
+              dragPosition = marginLeft;
+              //if(marLeft > 250) return;
+              if(marginLeft < getWidthPx(50)) marginLeft = 0;
+              setState(() {
+
+              });
+            },
+            onHorizontalDragEnd: (dragEnd){
+              if(dragPosition > getScreenWidth()/2){
+                Navigator.of(context).pop();
+              }else{
+                marginLeft = 0.0;
+                setState(() {
+
+                });
+              }
+            },
+            child: AnimatedContainer(
+              duration: Duration(milliseconds: 200),
+              margin: EdgeInsets.only(left: marginLeft),
+              child: SingleChildScrollView(
+                physics: NeverScrollableScrollPhysics(),
+                scrollDirection: Axis.horizontal,
+                child: child,
+              ),
+            ),
+
+          ),
         ),
       )
     );
