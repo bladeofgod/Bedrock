@@ -28,6 +28,7 @@ class SlideOutPageState extends BaseState<SlideOutPage> {
   @override
   Widget build(BuildContext context) {
     return switchStatusBar2Dark(
+      needSlideOut: true,
       child: Container(
         color: Colors.blue,
         width: getWidthPx(750),height: getHeightPx(1334),

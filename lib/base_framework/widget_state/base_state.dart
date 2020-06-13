@@ -17,14 +17,15 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
 
   ///切换状态栏 模式：light or dark
   ///应在根位置调用此方法
+  ///needSlideOut是否支持右滑返回、如果整个项目不需要，可以配置默认值为false
   Widget switchStatusBar2Dark({bool isSetDark = true,@required Widget child,
     ///适配、
-    EdgeInsets edgeInsets,bool needSlideOut = true}){
+    EdgeInsets edgeInsets,bool needSlideOut = false}){
     if(! needSlideOut){
       return AnnotatedRegion(
           value: isSetDark ? SystemUiOverlayStyle.dark : SystemUiOverlayStyle.light,
           child: Material(
-            color: Colors.transparent,
+            color: Colors.white,
             child: Padding(
               padding: edgeInsets??EdgeInsets.only(bottom: ScreenUtil.getInstance().bottomBarHeight),
               child: child,
@@ -55,7 +56,7 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
               });
             },
             onHorizontalDragEnd: (dragEnd){
-              if(dragPosition > getScreenWidth()/2){
+              if(dragPosition > getScreenWidth()/5){
                 Navigator.of(context).pop();
               }else{
                 marginLeft = 0.0;

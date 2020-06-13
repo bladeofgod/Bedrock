@@ -21,6 +21,7 @@ import 'package:flutter_bedrock/page/demo_page/main/login/login_page.dart';
 import 'package:flutter_bedrock/page/demo_page/main_page.dart';
 import 'package:flutter_bedrock/page/demo_page/other/little_util_page.dart';
 import 'package:flutter_bedrock/page/demo_page/other/scroll_page.dart';
+import 'package:flutter_bedrock/page/demo_page/other/timer_page.dart';
 import 'package:flutter_bedrock/page/demo_page/other_demo_page.dart';
 import 'package:flutter_bedrock/page/demo_page/route_anim/fade_page.dart';
 import 'package:flutter_bedrock/page/demo_page/route_anim/route_animation_page.dart';
@@ -39,6 +40,7 @@ class RouteName{
   static const String scroll_page = 'scroll_page';
   static const String little_util_page = 'little_util_page';
   static const String slide_out_page = 'slide_out_page';
+  static const String timer_page = 'timer_page';
 
   static const String route_anim_page = 'route_anim_page';
   static const String fade_page = 'fade_page';
@@ -87,6 +89,8 @@ class Router{
         return NoAnimRouteBuilder(HandleExceptionPage());
       case RouteName.slide_out_page:
         return SlideRightRouteBuilder(SlideOutPage());
+      case RouteName.timer_page:
+        return NoAnimRouteBuilder(TimerPage());
 
       case RouteName.route_anim_page:
         return NoAnimRouteBuilder(RouteAnimationPage());
