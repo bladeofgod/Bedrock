@@ -1,6 +1,8 @@
 import 'package:connectivity/connectivity.dart';
+import 'package:flustars/flustars.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:mmkv_flutter/mmkv_flutter.dart';
+import 'package:oktoast/oktoast.dart';
 
 import 'view_state_model.dart';
 
@@ -16,23 +18,28 @@ abstract class ListViewStateModel<T> extends ViewStateModel {
   initData() async {
     setBusy(true);
     if(cacheDataFactory != null){
-      checkNet();
+      bool netStatus =await checkNet();
+      if(netStatus){
+        ///没网
+        await showCacheData();
+        return;
+      }
     }
     await refresh(init: true);
   }
 
-  checkNet()async{
-    var connectivityResult = await (Connectivity().checkConnectivity());
-    if(connectivityResult == ConnectivityResult.none){
-      final mmkv = await MmkvFlutter.getInstance();
-      ///没网
-      debugPrint('run time type  :${runtimeType}');
-      String cache =await mmkv.getString(this.runtimeType.toString());
-      if(cache == null || cache.isEmpty){
-        setEmpty();
-      }else{
-        cacheDataFactory.fetchListCacheData(cache.split(','));
-      }
+
+
+  showCacheData()async{
+    showToast('请检查网络状态');
+    final mmkv = await MmkvFlutter.getInstance();
+    ///没网
+    debugPrint('run time type  :${runtimeType}');
+    String cache =await mmkv.getString(this.runtimeType.toString());
+    if(cache == null || cache.isEmpty){
+      setEmpty();
+    }else{
+      cacheDataFactory.fetchListCacheData(cache.split(','));
     }
   }
 
@@ -54,10 +61,19 @@ abstract class ListViewStateModel<T> extends ViewStateModel {
           notifyListeners();
         }
         onRefreshCompleted();
+        ///第一次加载且已注册的才缓存
+        if(init && cacheDataFactory != null){
+          cacheData();
+        }
       }
     } catch (e, s) {
       handleCatch(e, s);
     }
+  }
+  void cacheData()async{
+    debugPrint('list to string  ${cacheDataFactory.cacheListData().toString()}');
+    final mmkv = await MmkvFlutter.getInstance();
+    await mmkv.setString(this.runtimeType.toString(),cacheDataFactory.cacheListData().toString());
   }
 
   // 加载数据

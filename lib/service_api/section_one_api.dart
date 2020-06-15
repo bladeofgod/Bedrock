@@ -9,6 +9,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bedrock/base_framework/config/net/bedrock_http.dart';
 import 'package:flutter_bedrock/page/demo_page/main/fake_constant.dart';
+import 'package:flutter_bedrock/page/demo_page/main/first/entity/cache_entity.dart';
 import 'package:flutter_bedrock/page/demo_page/main/first/entity/first_card_entity.dart';
 import 'package:flutter_bedrock/page/demo_page/main/first/entity/first_entity.dart';
 import 'package:flutter_bedrock/page/demo_page/main/second/entity/second_entity.dart';
@@ -89,6 +90,20 @@ class SectionOne{
     });
     return listData;
 
+  }
+
+  Future<List<CacheEntity>> getCacheList(int pageNum)async{
+    List<CacheEntity> listData;
+    await Future.delayed(Duration(seconds: 2)).then((value){
+      if(pageNum > 4){
+        listData = [];
+      }else{
+        listData = List.generate(10, (index){
+          return CacheEntity(FakeConstant.imageList[index%9],"title : $index");
+        });
+      }
+    });
+    return listData;
   }
 
   Future<UserEntity> login(String name,String pass)async{

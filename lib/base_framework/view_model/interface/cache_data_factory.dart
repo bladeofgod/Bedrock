@@ -5,10 +5,10 @@
 
 abstract class CacheDataFactory{
   String cacheData();
-  fetchCacheData(String cache);
+  void fetchCacheData(String cache);
 
   List<String> cacheListData();
-  fetchListCacheData(List<String> cacheList);
+  void fetchListCacheData(List<String> cacheList);
 
 }
 

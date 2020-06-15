@@ -133,7 +133,7 @@ class FirstPageState extends BaseState<FirstPage> with AutomaticKeepAliveClientM
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           buildOval("FFloat",Colors.lightBlue),
-          buildOval("Mall",Colors.red),
+          buildOval("Cache",Colors.red),
           buildOval("Play",Colors.deepOrange),
           buildOval("Video",Colors.lightBlue),
         ],
@@ -146,6 +146,8 @@ class FirstPageState extends BaseState<FirstPage> with AutomaticKeepAliveClientM
       onTap: (){
         if(str.contains('FFloat')){
           Navigator.of(context).pushNamed(RouteName.ffloat_page);
+        }else if(str.contains('Cache')){
+          Navigator.of(context).pushNamed(RouteName.cache_data_page);
         }
       },
       child: Container(

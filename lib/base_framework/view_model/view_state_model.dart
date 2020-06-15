@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:connectivity/connectivity.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/base_framework/view_model/interface/cache_data_factory.dart';
@@ -108,6 +109,13 @@ class ViewStateModel with ChangeNotifier {
   CacheDataFactory cacheDataFactory;
   injectCache(CacheDataFactory cacheDataFactory){
     this.cacheDataFactory = cacheDataFactory;
+  }
+
+  ///检查网络状态
+  checkNet()async{
+    debugPrint('检查网络');
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    return connectivityResult == ConnectivityResult.none;
   }
 
  /// Handle Error and Exception

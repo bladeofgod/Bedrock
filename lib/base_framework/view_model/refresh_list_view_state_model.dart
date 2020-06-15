@@ -1,7 +1,9 @@
 import 'package:flutter/foundation.dart';
+import 'package:mmkv_flutter/mmkv_flutter.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import 'list_view_state_model.dart';
+import 'package:flutter_bedrock/base_framework/extension/list_extension.dart';
 
 /// 基于
 abstract class RefreshListViewStateModel<T> extends ListViewStateModel<T> {
@@ -50,6 +52,10 @@ abstract class RefreshListViewStateModel<T> extends ListViewStateModel<T> {
           notifyListeners();
         }
         onRefreshCompleted();
+        ///第一次加载且已注册的才缓存
+        if(init && cacheDataFactory != null){
+          cacheRefreshData();
+        }
       }
       return data;
     } catch (e, s) {
@@ -57,6 +63,13 @@ abstract class RefreshListViewStateModel<T> extends ListViewStateModel<T> {
       handleCatch(e, s);
       return null;
     }
+  }
+
+  cacheRefreshData()async{
+    //debugPrint('list to string  ${cacheDataFactory.cacheListData().toString()}');
+    debugPrint('run time type  ${this.runtimeType.toString()}');
+    final mmkv = await MmkvFlutter.getInstance();
+    await mmkv.setString(this.runtimeType.toString(),cacheDataFactory.cacheListData().toStringByComma());
   }
 
   /// 上拉加载更多

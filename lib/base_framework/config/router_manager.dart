@@ -17,6 +17,7 @@ import 'package:flutter_bedrock/page/demo_page/demo_page.dart';
 import 'package:flutter_bedrock/page/demo_page/exception/handle_exception_page.dart';
 import 'package:flutter_bedrock/page/demo_page/image/pick_image_page.dart';
 import 'package:flutter_bedrock/page/demo_page/local_i10l/local_page.dart';
+import 'package:flutter_bedrock/page/demo_page/main/first/cache_data_page.dart';
 import 'file:///D:/flutterProjects/Bedrock/lib/page/demo_page/main/first/ffloat_page.dart';
 import 'package:flutter_bedrock/page/demo_page/main/login/login_page.dart';
 import 'package:flutter_bedrock/page/demo_page/main_page.dart';
@@ -78,6 +79,8 @@ class Router{
         return NoAnimRouteBuilder(DemoPage());
       case RouteName.scroll_page:
         return NoAnimRouteBuilder(ScrollPage());
+      case RouteName.cache_data_page:
+        return NoAnimRouteBuilder(CacheDataPage());
       case RouteName.little_util_page:
         return NoAnimRouteBuilder(LittleUtilPage());
       case RouteName.ffloat_page:
