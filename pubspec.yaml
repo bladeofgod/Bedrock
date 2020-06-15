@@ -123,6 +123,8 @@ dependencies:
   flustars: ^0.3.2
   #字符串util、日期格式化、加解密、日志、等等
   common_utils: ^1.2.1
+  #微信 mmkv 比sp更快
+  mmkv_flutter: ^1.0.10
 
   #  #高德地图
   #  amap_location: ^0.2.0
