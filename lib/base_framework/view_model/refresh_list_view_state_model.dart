@@ -7,11 +7,7 @@ import 'package:flutter_bedrock/base_framework/extension/list_extension.dart';
 
 /// 基于
 abstract class RefreshListViewStateModel<T> extends ListViewStateModel<T> {
-  /// 分页第一页页码
-  static const int pageNumFirst = 1;
 
-  /// 分页条目数量
-  static const int pageSize = 10;
 
   RefreshController _refreshController =
       RefreshController(initialRefresh: false);
@@ -19,11 +15,10 @@ abstract class RefreshListViewStateModel<T> extends ListViewStateModel<T> {
   RefreshController get refreshController => _refreshController;
 
   /// 当前页码
-  int _currentPageNum = pageNumFirst;
-  get currentPageNum => _currentPageNum;
+  int _currentPageNum = 1;
+  get currentPageNum => pageNumFirst;
   ///每页加载数量
-  int _pageDataSize = pageSize;
-  get pageDataSize => _pageDataSize;
+  get pageDataSize => pageSize;
 
   /// 下拉刷新
   Future<List<T>> refresh({bool init = false}) async {
@@ -69,7 +64,13 @@ abstract class RefreshListViewStateModel<T> extends ListViewStateModel<T> {
     //debugPrint('list to string  ${cacheDataFactory.cacheListData().toString()}');
     debugPrint('run time type  ${this.runtimeType.toString()}');
     final mmkv = await MmkvFlutter.getInstance();
-    await mmkv.setString(this.runtimeType.toString(),cacheDataFactory.cacheListData().toStringByComma());
+    int i=0;
+    for(String str in cacheDataFactory.cacheListData()){
+      debugPrint('set  ${this.runtimeType.toString()}$i');
+      await mmkv.setString('${this.runtimeType.toString()}$i',str);
+      i +=1;
+    }
+
   }
 
   /// 上拉加载更多

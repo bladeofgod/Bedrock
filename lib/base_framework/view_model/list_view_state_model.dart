@@ -8,6 +8,13 @@ import 'view_state_model.dart';
 
 /// 基于
 abstract class ListViewStateModel<T> extends ViewStateModel {
+
+  /// 分页第一页页码
+  final int pageNumFirst = 1;
+
+  /// 分页条目数量
+  final int pageSize = 10;
+
   /// 页面数据
   List<T> list = [];
   ///第一次加载
@@ -33,14 +40,25 @@ abstract class ListViewStateModel<T> extends ViewStateModel {
   showCacheData()async{
     showToast('请检查网络状态');
     final mmkv = await MmkvFlutter.getInstance();
-    ///没网
     debugPrint('run time type  :${runtimeType}');
-    String cache =await mmkv.getString(this.runtimeType.toString());
-    if(cache == null || cache.isEmpty){
-      setEmpty();
-    }else{
-      cacheDataFactory.fetchListCacheData(cache.split(','));
+    ///总是取第一页作为临时展示
+    List<String> cacheList = [];
+    List<Future<String>> futures = [];
+    for(int i=0 ; i < 10; i++){
+      futures.add(mmkv.getString('${this.runtimeType.toString()}$i'));
     }
+    Future.wait(futures).then((value){
+      cacheList.addAll(value);
+      cacheList.removeWhere((element) => (element.isEmpty || element.contains('null')));
+      if(cacheList.isEmpty ){
+        setEmpty();
+      }else{
+        cacheDataFactory.fetchListCacheData(cacheList);
+        setBusy(false);
+      }
+    });
+
+
   }
 
   // 下拉刷新

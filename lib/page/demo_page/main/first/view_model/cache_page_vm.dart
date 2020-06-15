@@ -35,7 +35,6 @@ class CachePageVM extends RefreshListViewStateModel<CacheEntity> implements Cach
     list.forEach((element) {
       strList.add(jsonEncode(element));
     });
-    debugPrint('cache list ${strList.toString()}');
     return strList;
   }
 
@@ -49,8 +48,6 @@ class CachePageVM extends RefreshListViewStateModel<CacheEntity> implements Cach
     cacheList.forEach((element) {
       list.add(CacheEntity.fromJson(jsonDecode(element)));
     });
-
-    debugPrint('fetch cache list  ${list.toString()}');
 
   }
 

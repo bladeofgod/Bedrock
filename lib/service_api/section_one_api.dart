@@ -99,7 +99,7 @@ class SectionOne{
         listData = [];
       }else{
         listData = List.generate(10, (index){
-          return CacheEntity(FakeConstant.imageList[index%9],"title : $index");
+          return CacheEntity(FakeConstant.imageList[index%9]," $index");
         });
       }
     });
