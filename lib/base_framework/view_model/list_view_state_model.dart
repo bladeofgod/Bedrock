@@ -40,7 +40,6 @@ abstract class ListViewStateModel<T> extends ViewStateModel {
   showCacheData()async{
     showToast('请检查网络状态');
     final mmkv = await MmkvFlutter.getInstance();
-    debugPrint('run time type  :${runtimeType}');
     ///总是取第一页作为临时展示
     List<String> cacheList = [];
     List<Future<String>> futures = [];
