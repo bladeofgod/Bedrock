@@ -2,6 +2,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bedrock/base_framework/config/router_manager.dart';
 import 'package:flutter_bedrock/base_framework/ui/widget/provider_widget.dart';
 import 'package:flutter_bedrock/base_framework/utils/refresh_helper.dart';
 import 'package:flutter_bedrock/base_framework/utils/show_image_util.dart';
@@ -131,7 +132,7 @@ class FirstPageState extends BaseState<FirstPage> with AutomaticKeepAliveClientM
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          buildOval("Zone",Colors.lightBlue),
+          buildOval("FFloat",Colors.lightBlue),
           buildOval("Mall",Colors.red),
           buildOval("Play",Colors.deepOrange),
           buildOval("Video",Colors.lightBlue),
@@ -141,17 +142,24 @@ class FirstPageState extends BaseState<FirstPage> with AutomaticKeepAliveClientM
   }
 
   Widget buildOval(String str,Color color){
-    return Container(
-      alignment: Alignment.center,
-      width: getWidthPx(100),height: getWidthPx(100),
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: color,
-        boxShadow: [
-          BoxShadow(color: Colors.grey[400],spreadRadius: 1.0,offset: Offset(0.8, 0.8),)
-        ],
+    return GestureDetector(
+      onTap: (){
+        if(str.contains('FFloat')){
+          Navigator.of(context).pushNamed(RouteName.ffloat_page);
+        }
+      },
+      child: Container(
+        alignment: Alignment.center,
+        width: getWidthPx(100),height: getWidthPx(100),
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: color,
+          boxShadow: [
+            BoxShadow(color: Colors.grey[400],spreadRadius: 1.0,offset: Offset(0.8, 0.8),)
+          ],
+        ),
+        child: Text(str,style: TextStyle(color: Colors.white,fontSize: getSp(28)),),
       ),
-      child: Text(str,style: TextStyle(color: Colors.white,fontSize: getSp(28)),),
     );
   }
 
