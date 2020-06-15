@@ -48,6 +48,13 @@ class OtherDemoPageState extends BaseState<OtherDemoPage> {
               Navigator.of(context).pushNamed(RouteName.timer_page);
             },
           ),
+          getSizeBox(height: getWidthPx(40)),
+          RaisedButton(
+            child: Text('请求权限'),
+            onPressed: (){
+              Navigator.of(context).pushNamed(RouteName.permissions_page);
+            },
+          ),
         ],
       ),
     ));
