@@ -4,11 +4,11 @@
 */
 
 abstract class CacheDataFactory{
-  cacheData(String data);
-  String fetchCacheData();
+  String cacheData();
+  fetchCacheData(String cache);
 
-  cacheListData(List<String> list);
-  List<String> fetchListCacheData();
+  List<String> cacheListData();
+  fetchListCacheData(List<String> cacheList);
 
 }
 

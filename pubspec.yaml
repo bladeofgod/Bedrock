@@ -126,6 +126,9 @@ dependencies:
   #微信 mmkv 比sp更快
   mmkv_flutter: ^1.0.10
 
+  #网络状态
+  connectivity: ^0.4.8+6
+
   #  #高德地图
   #  amap_location: ^0.2.0
   #如果你需要用到地图, 定位和搜索三个组件, 建议使用amap_all_fluttify,

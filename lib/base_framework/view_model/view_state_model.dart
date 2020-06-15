@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bedrock/base_framework/view_model/interface/cache_data_factory.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:flutter_bedrock/base_framework/exception/un_authorized_exception.dart';
 import 'package:flutter_bedrock/base_framework/exception/user_unbind_exception.dart';
@@ -104,7 +105,12 @@ class ViewStateModel with ChangeNotifier {
     super.dispose();
   }
 
-  /// Handle Error and Exception
+  CacheDataFactory cacheDataFactory;
+  injectCache(CacheDataFactory cacheDataFactory){
+    this.cacheDataFactory = cacheDataFactory;
+  }
+
+ /// Handle Error and Exception
   ///
   /// 统一处理子类的异常情况
   /// [e],有可能是Error,也有可能是Exception.所以需要判断处理
