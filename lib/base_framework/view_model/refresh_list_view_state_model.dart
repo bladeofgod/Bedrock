@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter_bedrock/base_framework/view_model/handle/exception_handler.dart';
 import 'package:mmkv_flutter/mmkv_flutter.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
@@ -47,15 +48,14 @@ abstract class RefreshListViewStateModel<T> extends ListViewStateModel<T> {
           notifyListeners();
         }
         onRefreshCompleted();
-        ///第一次加载且已注册的才缓存
+        ///第一次加载且已注册缓存功能的，才进行缓存
         if(init && cacheDataFactory != null){
           cacheRefreshData();
         }
       }
       return data;
     } catch (e, s) {
-      debugPrint("handle exception : $e");
-      handleCatch(e, s);
+      ExceptionHandler.getInstance().handleException(this, e, s);
       return null;
     }
   }

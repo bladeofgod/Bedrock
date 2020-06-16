@@ -106,6 +106,10 @@ class ViewStateModel with ChangeNotifier {
     super.dispose();
   }
 
+  /// 当注册缓存功能后，会在第一次进入页面加载数据时（initData（））对数据进行缓存
+  /// 刷新等操作是不会缓存数据的。之后，在没网的情况下会显示上次缓存的数据并提示用户网络状态，已达到更好的用户体验
+  /// 你也可以根据自己的需求定制
+
   CacheDataFactory cacheDataFactory;
   injectCache(CacheDataFactory cacheDataFactory){
     this.cacheDataFactory = cacheDataFactory;
@@ -118,27 +122,5 @@ class ViewStateModel with ChangeNotifier {
     return connectivityResult == ConnectivityResult.none;
   }
 
- /// Handle Error and Exception
-  ///
-  /// 统一处理子类的异常情况
-  /// [e],有可能是Error,也有可能是Exception.所以需要判断处理
-  /// [s] 为堆栈信息
-  void handleCatch(e, s) {
-    if(e is DioError){
 
-      if(e.error is UnAuthorizedException){
-        setUnAuthorized();
-      }
-      if(e.error is UserUnbindException){
-        setUnBind();
-      }
-      if(e.type == DioErrorType.CONNECT_TIMEOUT ){
-        //todo
-      }
-
-    }
-
-
-
-  }
 }

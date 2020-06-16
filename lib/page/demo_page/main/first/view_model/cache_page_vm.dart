@@ -12,9 +12,12 @@ import 'package:flutter_bedrock/base_framework/view_model/refresh_list_view_stat
 import 'package:flutter_bedrock/page/demo_page/main/first/entity/cache_entity.dart';
 import 'package:flutter_bedrock/service_api/bedrock_repository_proxy.dart';
 
+
+
 class CachePageVM extends RefreshListViewStateModel<CacheEntity> implements CacheDataFactory{
 
   CachePageVM(){
+    ///注册缓存功能
     this.injectCache(this);
   }
 

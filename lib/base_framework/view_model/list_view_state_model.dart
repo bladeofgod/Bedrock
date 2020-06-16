@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:mmkv_flutter/mmkv_flutter.dart';
 import 'package:oktoast/oktoast.dart';
 
+import 'handle/exception_handler.dart';
 import 'view_state_model.dart';
 
 /// 基于
@@ -25,9 +26,10 @@ abstract class ListViewStateModel<T> extends ViewStateModel {
   initData() async {
     setBusy(true);
     if(cacheDataFactory != null){
+      ///
       bool netStatus =await checkNet();
       if(netStatus){
-        ///没网
+        ///没网 的情况下
         await showCacheData();
         return;
       }
@@ -36,7 +38,7 @@ abstract class ListViewStateModel<T> extends ViewStateModel {
   }
 
 
-
+  ///加载上一次的缓存并提示
   showCacheData()async{
     showToast('请检查网络状态');
     final mmkv = await MmkvFlutter.getInstance();
@@ -78,20 +80,13 @@ abstract class ListViewStateModel<T> extends ViewStateModel {
           notifyListeners();
         }
         onRefreshCompleted();
-        ///第一次加载且已注册的才缓存
-        if(init && cacheDataFactory != null){
-          cacheData();
-        }
+
       }
     } catch (e, s) {
-      handleCatch(e, s);
+      ExceptionHandler.getInstance().handleException(this, e, s);
     }
   }
-  void cacheData()async{
-    debugPrint('list to string  ${cacheDataFactory.cacheListData().toString()}');
-    final mmkv = await MmkvFlutter.getInstance();
-    await mmkv.setString(this.runtimeType.toString(),cacheDataFactory.cacheListData().toString());
-  }
+
 
   // 加载数据
   Future<List<T>> loadData();

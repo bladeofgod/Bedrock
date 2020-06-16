@@ -6,6 +6,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:flutter_bedrock/base_framework/view_model/view_state_model.dart';
 
+import 'handle/exception_handler.dart';
+
 abstract class SingleViewStateModel<T> extends ViewStateModel{
 
   T data ;
@@ -30,9 +32,7 @@ abstract class SingleViewStateModel<T> extends ViewStateModel{
         }
       }
     } catch (e,s){
-      debugPrint("e :    $e");
-      debugPrint("s :    $s");
-      handleCatch(e, s);
+      ExceptionHandler.getInstance().handleException(this, e, s);
       }
   }
 
