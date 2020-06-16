@@ -37,7 +37,7 @@ class HandleExceptionPageState extends BaseState<HandleExceptionPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text("need sign in",style: TextStyle(color: Colors.black,fontSize: getSp(36),
+                Text("需要登录",style: TextStyle(color: Colors.black,fontSize: getSp(36),
                   fontWeight: FontWeight.bold),),
                 getSizeBox(height: getWidthPx(40)),
                 Divider(

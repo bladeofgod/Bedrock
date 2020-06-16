@@ -61,12 +61,9 @@ abstract class RefreshListViewStateModel<T> extends ListViewStateModel<T> {
   }
 
   cacheRefreshData()async{
-    //debugPrint('list to string  ${cacheDataFactory.cacheListData().toString()}');
-    debugPrint('run time type  ${this.runtimeType.toString()}');
     final mmkv = await MmkvFlutter.getInstance();
     int i=0;
     for(String str in cacheDataFactory.cacheListData()){
-      debugPrint('set  ${this.runtimeType.toString()}$i');
       await mmkv.setString('${this.runtimeType.toString()}$i',str);
       i +=1;
     }

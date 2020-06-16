@@ -32,7 +32,6 @@ class ExceptionHandler{
   /// [e],有可能是Error,也有可能是Exception.所以需要判断处理
   /// [s] 为堆栈信息
   void handleException<T extends ViewStateModel>(T model,e,s){
-    assert(T is ViewStateModel,'model must extends ViewStateModel');
     debugPrint("e :    $e");
     debugPrint("s :    $s");
     if(e is DioError){
