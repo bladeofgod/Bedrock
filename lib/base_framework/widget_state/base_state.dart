@@ -248,6 +248,27 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
   ///得到适配后的字号
   double getSp(double fontSize) => ScreenUtil.getInstance().getSp(fontSize);
 
+  ///目前webview插件主要有两种，就当前版本介绍一下：
+  ///  1、webview_flutter ^0.3.21
+  ///     不支持html富文本、网页加载导致滚动异常 (如果遇到，使用wrapWebView() 方法可以解决)
+  ///  2、flutter_webview_plugin  ^0.3.11
+  ///     支持html富文本、但是会有web浮层导致遮盖其他原生页面（退出页面时即可发现）
+
+
+  ///解决 webview_flutter 滚动问题
+  Widget wrapWebView(Widget webView){
+    return ListView(
+      padding: EdgeInsets.all(0),
+      children: <Widget>[
+        SizedBox.fromSize(
+          size: Size(100, 1000),
+          child: webView,
+        )
+      ],
+    );
+  }
+
+
   /*
   * input
   * 输入内容白名单
