@@ -3,6 +3,8 @@
 * Date : 2020/6/16
 */
 
+import 'dart:io';
+
 import 'package:connectivity/connectivity.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -44,6 +46,16 @@ class ExceptionHandler{
       if(e.type == DioErrorType.CONNECT_TIMEOUT ){
         //todo
       }
+      ///以下是demo 代码，实际项目最好删除掉
+      assert((){
+        ///我没有服务器，为了测试未登录下请求接口，并捕获抛出的未登录异常，
+        ///这里将dio抛出的SocketException（因为使用了www.baidu.com当做服务地址，所以请求接口时会抛出这个异常）
+        ///当做咱们抛出的未登录异常，并对他处理
+        if(e.error is SocketException){
+          model.setUnAuthorized();
+        }
+        return true;
+      }());
 
     }
   }

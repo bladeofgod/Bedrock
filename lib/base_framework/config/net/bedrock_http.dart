@@ -16,7 +16,7 @@ final BedRock bedRock = BedRock();
 
 class BedRock extends BaseHttp{
 
-  final String china = "https://apitripalink.com/";
+  final String china = "https://www.baidu.com/";
 
 
   @override
