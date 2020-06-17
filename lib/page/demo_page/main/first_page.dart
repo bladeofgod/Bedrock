@@ -13,6 +13,7 @@ import 'package:flutter_bedrock/page/demo_page/main/first/view_model/first_view_
 import 'package:flutter_bedrock/page/demo_page/main/first/widget/first_banner.dart';
 import 'package:flutter_bedrock/page/demo_page/main/first/widget/first_skeleton_page.dart';
 import 'package:flutter_bedrock/page/demo_page/main_page.dart';
+import 'package:oktoast/oktoast.dart';
 import 'package:provider/provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
@@ -148,6 +149,8 @@ class FirstPageState extends BaseState<FirstPage> with AutomaticKeepAliveClientM
           Navigator.of(context).pushNamed(RouteName.ffloat_page);
         }else if(str.contains('Cache')){
           Navigator.of(context).pushNamed(RouteName.cache_data_page);
+        }else{
+          showToast('施工中...');
         }
       },
       child: Container(
