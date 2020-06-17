@@ -93,7 +93,10 @@
     此框架属于菜鸡初试身手，稚嫩之处还请海涵，不足之处欢迎斧正，不胜感激。
     
 ## 后续
-    我会持续维护这个库、有问题欢迎提issue，我会尽快回复。
+    我会持续维护这个库，有问题欢迎提issue和pr，我会尽快回复。
     欢迎打赏一杯咖啡，哈哈哈~
+    
+    
+    
     
 ![image](https://github.com/bladeofgod/Bedrock/blob/master/alipwechat.png)
