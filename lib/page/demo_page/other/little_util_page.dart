@@ -42,7 +42,10 @@ class LittleUtilPageState extends BaseState<LittleUtilPage> {
     ));
   }
   StreamSubscription streamSubscription;
-  startCalculate(){
+  startCalculate()async{
+    if(streamSubscription != null){
+      await streamSubscription.cancel();
+    }
      streamSubscription = LittleUtil.cycleUtil((){
 
       if(mounted){

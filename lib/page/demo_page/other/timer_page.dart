@@ -19,7 +19,8 @@ class TimerPageState extends BaseState<TimerPage> {
   String text = '''
   有的时候需要在用户滚动到某个item后请求接口并刷新，但是并不能确定用户会停在这个item。如果不考虑这些我，
   只是生硬的停一次请求一次，\n1、造成卡顿 \n 2、引起数据错乱 \n 3、浪费服务器资源 \n
-  我的做法是通过timer来进行请求，具体请查看代码
+  我的做法是通过timer来进行请求\n
+  具体请查看代码和日志
       ''';
   
   @override

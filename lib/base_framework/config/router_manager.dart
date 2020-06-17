@@ -109,9 +109,9 @@ class Router{
       case RouteName.slide_page:
         return SlideTopRouteBuilder(SlidePage());
       case RouteName.fade_page:
-        return ScaleRouteBuilder(FadePage());
+        return FadeRouteBuilder(FadePage());
       case RouteName.scale_page:
-        return FadeRouteBuilder(ScalePage());
+        return ScaleRouteBuilder(ScalePage());
 
       case RouteName.web_page:
         return NoAnimRouteBuilder(WebPage(settings.arguments));
