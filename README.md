@@ -95,3 +95,7 @@
 ## 后续
     我会持续维护这个库、有问题欢迎提issue，我会尽快回复。
     欢迎打赏一杯咖啡，哈哈哈~
+    
+![image](https://github.com/bladeofgod/Bedrock/blob/master/alipay.jpg)
+
+![image](https://github.com/bladeofgod/Bedrock/blob/master/wechat.jpg)
