@@ -255,18 +255,18 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
   ///     支持html富文本、但是会有web浮层导致遮盖其他原生页面（退出页面时即可发现）
 
 
-  ///解决 webview_flutter 滚动问题
-  Widget wrapWebView(Widget webView){
-    return ListView(
-      padding: EdgeInsets.all(0),
-      children: <Widget>[
-        SizedBox.fromSize(
-          size: Size(100, 1000),
-          child: webView,
-        )
-      ],
-    );
-  }
+  ///解决 webview_flutter 滚动问题 update:解决不了
+//  Widget wrapWebView(Widget webView){
+//    return ListView(
+//      padding: EdgeInsets.all(0),
+//      children: <Widget>[
+//        SizedBox.fromSize(
+//          size: Size(100, 1000),
+//          child: webView,
+//        )
+//      ],
+//    );
+//  }
 
 
   /*

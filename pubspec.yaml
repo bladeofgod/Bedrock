@@ -35,10 +35,10 @@ dependencies:
   # Base Component
   # WebView iOS添加键值对 o.flutter.embedded_views_preview = YES
   #flutter 官方插件，
-  #这个不会覆盖widget，但是html支持不好。 当你遇到无法网页滚动时：参见base_state类的wrapWebView()方法
+  #这个不会覆盖widget，但是html支持不好。
   #webview_flutter: ^0.3.19+9
   #  webview_flutter: ^0.3.21
-  #这个文档齐全(支持富文本的显示：这个插件有个bug、会覆盖其它widget，你用的时候更一下看看修复没有)
+  #这个文档齐全(支持富文本的显示：这个插件有个bug、会覆盖其它widget(不用页面切换动画是没问题的)，你用的时候更一下看看修复没有)
   flutter_webview_plugin: ^0.3.11
 
   #设备信息、包信息
