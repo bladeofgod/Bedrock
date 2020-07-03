@@ -38,10 +38,11 @@ class SectionOne{
 
   Future getTest()async{
     var map = {
-      "model":"1","user_id":"","union_id":"321","status":"0"
+      'username':123,
+      'password':'123'
     };
 
-    var response = await bedRock.post("$Index_php?r=collect/save-collect",data: FormData.fromMap(map));
+    var response = await bedRock.post("user/login",data: FormData.fromMap(map));
 
     return response;
   }

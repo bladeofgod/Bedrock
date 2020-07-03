@@ -51,8 +51,10 @@ class ExceptionHandler{
         ///我没有服务器，为了测试未登录下请求接口，并捕获抛出的未登录异常，
         ///这里将dio抛出的SocketException（因为使用了www.baidu.com当做服务地址，所以请求接口时会抛出这个异常）
         ///当做咱们抛出的未登录异常，并对他处理
-        if(e.error is SocketException){
-          model.setUnAuthorized();
+        if(e.error is Exception){
+          ///这信息只是我临时设置用于DEMO，最好从异常里面取（也就是后端的message），当然也可以自己写。
+          String temp = '用户未登录';
+          model.setUnAuthorized(toast: temp);
         }
         return true;
       }());

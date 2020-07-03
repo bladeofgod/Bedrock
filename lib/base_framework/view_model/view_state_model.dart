@@ -73,19 +73,28 @@ class ViewStateModel with ChangeNotifier {
     viewState = ViewState.idle;
   }
 
-  void setUnAuthorized() {
-    _errorMessage = null;
+  void setUnAuthorized({String toast}) {
+    _errorMessage = toast;
+    showShortToast(toast);
     viewState = ViewState.unAuthorized;
   }
 
-  void setUnBind(){
-    _errorMessage = null;
+  void setUnBind({String toast}){
+    _errorMessage = toast;
+    showShortToast(toast);
     viewState = ViewState.unBind;
   }
 
-  void setNoNet(){
-    _errorMessage = null;
+  void setNoNet({String toast}){
+    _errorMessage = toast;
+    showShortToast(toast);
     viewState = ViewState.noNet;
+  }
+
+  showShortToast(String toast){
+    if(toast != null && toast.isNotEmpty){
+      showToast(toast);
+    }
   }
 
   @override
