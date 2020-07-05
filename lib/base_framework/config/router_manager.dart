@@ -19,6 +19,7 @@ import 'package:flutter_bedrock/page/demo_page/image/pick_image_page.dart';
 import 'package:flutter_bedrock/page/demo_page/local_i10l/local_page.dart';
 import 'package:flutter_bedrock/page/demo_page/main/first/cache_data_page.dart';
 import 'package:flutter_bedrock/page/demo_page/main/first/ffloat_page.dart';
+import 'package:flutter_bedrock/page/demo_page/main/first/update_page.dart';
 import 'package:flutter_bedrock/page/demo_page/main/login/login_page.dart';
 import 'package:flutter_bedrock/page/demo_page/main_page.dart';
 import 'package:flutter_bedrock/page/demo_page/other/little_util_page.dart';
@@ -77,7 +78,7 @@ class Router{
   static Route<dynamic> generateRoute(RouteSettings settings){
     switch(settings.name) {
       case RouteName.update_page:
-        return NoAnimRouteBuilder(page)
+        return NoAnimRouteBuilder(UpdatePage());
       case RouteName.demo_page:
         return NoAnimRouteBuilder(DemoPage());
       case RouteName.scroll_page:

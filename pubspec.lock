@@ -273,6 +273,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.1.6"
+  install_plugin:
+    dependency: "direct main"
+    description:
+      name: install_plugin
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.0.1"
   intl:
     dependency: transitive
     description:

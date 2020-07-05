@@ -143,7 +143,7 @@ class FirstPageState extends BaseState<FirstPage> with AutomaticKeepAliveClientM
         children: <Widget>[
           buildOval("FFloat",Colors.lightBlue),
           buildOval("Cache",Colors.red),
-          buildOval("下载",Colors.deepOrange),
+          buildOval("更新",Colors.deepOrange),
           buildOval("Video",Colors.lightBlue),
         ],
       ),
@@ -158,7 +158,7 @@ class FirstPageState extends BaseState<FirstPage> with AutomaticKeepAliveClientM
         }else if(str.contains('Cache')){
           Navigator.of(context).pushNamed(RouteName.cache_data_page);
         }else if(str.contains('更新')){
-
+          Navigator.of(context).pushNamed(RouteName.update_page);
         }
         else{
           showToast('施工中...');
