@@ -33,6 +33,8 @@ class UpdateViewModel extends SingleViewStateModel{
   void getNewApk()async{
     if(Platform.isAndroid){
       checkPermission();
+    }else{
+      ///ios 去 app store吧
     }
 
 
