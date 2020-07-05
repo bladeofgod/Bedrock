@@ -1,11 +1,14 @@
 
 
 
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bedrock/base_framework/config/net/bedrock_http.dart';
 import 'package:flutter_bedrock/base_framework/config/storage_manager.dart';
+import 'package:flutter_bedrock/base_framework/utils/platform_utils.dart';
 import 'package:flutter_bedrock/base_framework/view_model/single_view_state_model.dart';
 //import 'package:install_plugin/install_plugin.dart';
 import 'package:oktoast/oktoast.dart';
@@ -28,12 +31,15 @@ class UpdateViewModel extends SingleViewStateModel{
 
 
   void getNewApk()async{
-    checkPermission();
+    if(Platform.isAndroid){
+      checkPermission();
+    }
+
 
   }
 
   String getSavePath(){
-    String path = StorageManager.appDirectory.path + '/test/bedrock.apk';
+    String path = StorageManager.externalDirectory.path + '/test/bedrock.apk';
     debugPrint(path);
     return path;
   }
@@ -47,7 +53,7 @@ class UpdateViewModel extends SingleViewStateModel{
       await dio.download(yybUrl, getSavePath(),
           cancelToken:cancelToken,
           onReceiveProgress: (receive,total){
-            debugPrint('apk info $receive   $total');
+            //debugPrint('apk info $receive   $total');
             setProgress((receive/total *100).toStringAsFixed(1));
           } ).then((response){
             if(response.statusCode == 200){

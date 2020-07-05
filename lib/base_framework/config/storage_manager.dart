@@ -15,11 +15,14 @@ class StorageManager{
   static Directory temporaryDirectory;
   ///应用目录
   static Directory appDirectory;
+  ///外部存储 (仅限安卓)
+  static Directory externalDirectory;
 
   static init()async{
     await SpUtil.getInstance();
     temporaryDirectory = await getTemporaryDirectory();
     appDirectory = await getApplicationDocumentsDirectory();
+    externalDirectory = await getExternalStorageDirectory();
     ///本地缓存基本都可以使用此工具
     ///后续页面可以同步使用
 
