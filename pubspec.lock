@@ -224,13 +224,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.3.11"
-  flutter_xupdate:
-    dependency: "direct main"
-    description:
-      name: flutter_xupdate
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "0.0.3"
   highlight:
     dependency: transitive
     description:
