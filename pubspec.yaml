@@ -53,6 +53,9 @@ dependencies:
   dio_cookie_manager: ^1.0.0
   cookie_jar: ^1.0.0
   path_provider: ^1.6.1
+  #应用更新
+  flutter_downloader: ^1.4.4
+
   #shared_preferences: ^0.5.2+2
   # 本地json对象存储
   #localstorage: ^2.0.0
