@@ -7,7 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bedrock/base_framework/config/net/bedrock_http.dart';
 import 'package:flutter_bedrock/base_framework/config/storage_manager.dart';
 import 'package:flutter_bedrock/base_framework/view_model/single_view_state_model.dart';
-import 'package:install_plugin/install_plugin.dart';
+//import 'package:install_plugin/install_plugin.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -61,18 +61,18 @@ class UpdateViewModel extends SingleViewStateModel{
   }
 
   installAPK(){
-    try{
-      ///第二个参数要与你的包名一致
-      InstallPlugin.installApk(getSavePath(), 'com.lijiaqi.flutter_bedrock')
-        .then((result){
-          debugPrint(result);
-      } ).catchError((error){
-        debugPrint(error.toString());
-      });
-
-    }on PlatformException catch(e){
-      debugPrint(e.toString());
-    }
+//    try{
+//      ///第二个参数要与你的包名一致
+//      InstallPlugin.installApk(getSavePath(), 'com.lijiaqi.flutter_bedrock')
+//        .then((result){
+//          debugPrint(result);
+//      } ).catchError((error){
+//        debugPrint(error.toString());
+//      });
+//
+//    }on PlatformException catch(e){
+//      debugPrint(e.toString());
+//    }
 
   }
 
