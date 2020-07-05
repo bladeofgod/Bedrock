@@ -47,6 +47,7 @@ class RouteName{
   static const String permissions_page = 'permissions_page';
   static const String ffloat_page = 'ffloat_page';
   static const String cache_data_page = 'cache_data_page';
+  static const String update_page = 'update_page';
 
   static const String route_anim_page = 'route_anim_page';
   static const String fade_page = 'fade_page';
@@ -75,6 +76,8 @@ class Router{
 
   static Route<dynamic> generateRoute(RouteSettings settings){
     switch(settings.name) {
+      case RouteName.update_page:
+        return NoAnimRouteBuilder(page)
       case RouteName.demo_page:
         return NoAnimRouteBuilder(DemoPage());
       case RouteName.scroll_page:

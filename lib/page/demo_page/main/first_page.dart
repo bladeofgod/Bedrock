@@ -93,6 +93,14 @@ class FirstPageState extends BaseState<FirstPage> with AutomaticKeepAliveClientM
                         SliverToBoxAdapter(
                           child: buildBanner(),
                         ),
+                        SliverToBoxAdapter(
+                          child: Container(
+                            margin: EdgeInsets.only(top: getWidthPx(30)),
+                            alignment: Alignment.center,
+                            width: getWidthPx(750),
+                            color: Color.fromRGBO(240, 240, 240, 1),
+                            child: Text("下面4个是一些功能演示"),),
+                        ),
                         ///transform zone
                         SliverToBoxAdapter(
                           child: buildTransform(),
@@ -135,7 +143,7 @@ class FirstPageState extends BaseState<FirstPage> with AutomaticKeepAliveClientM
         children: <Widget>[
           buildOval("FFloat",Colors.lightBlue),
           buildOval("Cache",Colors.red),
-          buildOval("Play",Colors.deepOrange),
+          buildOval("下载",Colors.deepOrange),
           buildOval("Video",Colors.lightBlue),
         ],
       ),
@@ -149,7 +157,10 @@ class FirstPageState extends BaseState<FirstPage> with AutomaticKeepAliveClientM
           Navigator.of(context).pushNamed(RouteName.ffloat_page);
         }else if(str.contains('Cache')){
           Navigator.of(context).pushNamed(RouteName.cache_data_page);
-        }else{
+        }else if(str.contains('更新')){
+
+        }
+        else{
           showToast('施工中...');
         }
       },
