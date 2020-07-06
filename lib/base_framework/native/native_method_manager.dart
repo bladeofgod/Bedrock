@@ -27,6 +27,7 @@ class NativeMethodManager{
 
 
   void installApk(String path)async{
+    ///ios建议直接取应用市场
     if(Platform.isAndroid){
       await _channel.invokeMethod(methodInstall,
           {"path":path});
