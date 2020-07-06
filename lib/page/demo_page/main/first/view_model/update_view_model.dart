@@ -62,7 +62,9 @@ class UpdateViewModel extends SingleViewStateModel{
           cancelToken:cancelToken,
           onReceiveProgress: (receive,total){
             //debugPrint('apk info $receive   $total');
-            setProgress((receive/total *100).toStringAsFixed(1));
+            if(total != -1){
+
+            }
           } ).then((response){
             if(response.statusCode == 200){
               installAPK();
