@@ -52,6 +52,9 @@ class UpdateViewModel extends SingleViewStateModel{
   void cancelTask(){
     cancelToken?.cancel();
   }
+  ///没有自己的服务器，所以使用了应用宝的下载链接
+  ///请求直接由DIO完成，在实际使用的时候，需要更换自己的
+  ///这里的代码写的有些随意
   Dio dio = Dio();
   downloadAPK()async{
     try{
@@ -71,21 +74,9 @@ class UpdateViewModel extends SingleViewStateModel{
     }
   }
 
+  ///一些第三方安装插件可能有问题，自己写一个，你也可以根据需求自己在原生端修改
   installAPK(){
-    debugPrint("flutter  install apk");
     NativeMethodManager.getInstance().installApk(getSavePath());
-//    try{
-//      ///第二个参数要与你的包名一致
-//      InstallPlugin.installApk(getSavePath(), 'com.lijiaqi.flutter_bedrock')
-//        .then((result){
-//          debugPrint(result);
-//      } ).catchError((error){
-//        debugPrint(error.toString());
-//      });
-//
-//    }on PlatformException catch(e){
-//      debugPrint(e.toString());
-//    }
 
   }
 

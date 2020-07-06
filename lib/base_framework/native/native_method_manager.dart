@@ -25,6 +25,7 @@ class NativeMethodManager{
   NativeMethodManager._();
 
 
+  ///安卓端：安装指定路径的apk，如果有问题请给我提issue
 
   void installApk(String path)async{
     ///ios建议直接取应用市场
