@@ -8,6 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bedrock/base_framework/config/net/bedrock_http.dart';
 import 'package:flutter_bedrock/base_framework/config/storage_manager.dart';
+import 'package:flutter_bedrock/base_framework/native/native_method_manager.dart';
 import 'package:flutter_bedrock/base_framework/utils/platform_utils.dart';
 import 'package:flutter_bedrock/base_framework/view_model/single_view_state_model.dart';
 //import 'package:install_plugin/install_plugin.dart';
@@ -15,6 +16,8 @@ import 'package:oktoast/oktoast.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class UpdateViewModel extends SingleViewStateModel{
+
+
 
   final String url = 'https://imtt.dd.qq.com/16891/apk/12404EAD3910202D5DC1A19F0F27135A.apk?fsname=com.taobao.taobao_9.9.1_293.apk';
 
@@ -69,6 +72,8 @@ class UpdateViewModel extends SingleViewStateModel{
   }
 
   installAPK(){
+    debugPrint("flutter  install apk");
+    NativeMethodManager.getInstance().installApk(getSavePath());
 //    try{
 //      ///第二个参数要与你的包名一致
 //      InstallPlugin.installApk(getSavePath(), 'com.lijiaqi.flutter_bedrock')

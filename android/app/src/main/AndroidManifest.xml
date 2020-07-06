@@ -32,7 +32,7 @@
         android:label="flutter_bedrock"
         android:icon="@mipmap/ic_launcher">
         <activity
-            android:name=".MainActivity"
+            android:name="com.lijiaqi.bedrock.MainActivity"
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
@@ -48,5 +48,17 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+
+        <!--自动升级获取文件uri-->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.lijiaqi.flutter_bedrock.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths"/>
+
+        </provider>
     </application>
 </manifest>
