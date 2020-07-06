@@ -63,6 +63,7 @@ class UpdateViewModel extends SingleViewStateModel{
           onReceiveProgress: (receive,total){
             //debugPrint('apk info $receive   $total');
             if(total != -1){
+              setProgress((receive/total *100).toStringAsFixed(1));
 
             }
           } ).then((response){
