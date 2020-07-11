@@ -173,7 +173,7 @@ dependencies:
   #滚动到制定item的list--- 个人经验，目前最好使的了
   scrollable_positioned_list: ^0.1.6
 
-
+  #通知插件， https://pub.flutter-io.cn/packages/flutter_local_notifications
   #flutter_local_notifications: ^1.4.2
   #自定义data 滚轮选择
   #flutter_picker: ^1.1.3
