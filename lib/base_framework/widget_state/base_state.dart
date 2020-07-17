@@ -9,12 +9,13 @@ import 'package:flutter_bedrock/base_framework/utils/image_helper.dart';
 
 
 
-abstract class BaseState<T extends StatefulWidget> extends State<T> {
+abstract class BaseState<T extends StatefulWidget> extends State<T> with RouteAware {
 
   double marginLeft = 0.0;
   double dragPosition = 0.0;
   bool slideOutActive = false;
 
+  ///所有页面请务必使用此方法作为根布局
   ///切换状态栏 模式：light or dark
   ///应在根位置调用此方法
   ///needSlideOut是否支持右滑返回、如果整个项目不需要，可以配置默认值为false
@@ -80,6 +81,7 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
       )
     );
   }
+
 
   ///去掉 scroll view的 水印  e.g : listView scrollView
   ///

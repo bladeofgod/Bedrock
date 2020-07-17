@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bedrock/base_framework/config/app_config.dart';
 import 'package:flutter_bedrock/base_framework/config/global_provider_manager.dart';
+import 'package:flutter_bedrock/base_framework/observe/own_navigator_observe.dart';
 import 'package:flutter_bedrock/base_framework/view_model/app_model/locale_model.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
 import 'package:flutter_bedrock/page/demo_page/demo_page.dart';
@@ -47,6 +48,8 @@ void main()async{
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: Colors.transparent));
 }
 
+final RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
+
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -79,6 +82,9 @@ class MyApp extends StatelessWidget {
                   GlobalWidgetsLocalizations.delegate//文本方向等
                 ],
                 supportedLocales: S.delegate.supportedLocales,
+                navigatorObservers: [
+                  routeObserver
+                ],
                 onGenerateRoute: Router.generateRoute,
                 onUnknownRoute: (settings){
                   return PageRouteBuilder(pageBuilder: (ctx,_,__){
