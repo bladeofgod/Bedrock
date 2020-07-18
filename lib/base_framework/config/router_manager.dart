@@ -73,6 +73,8 @@ class RouteName{
 
 }
 
+final RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey();
 
 class Router{
 
