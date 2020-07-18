@@ -1,5 +1,7 @@
 # 更新日志
 
+## 1.0.3
+    增加路由观测功能：RouteAwareWidget
 
 ## 1.0.2
     增加Android端下载安装功能和对应DEMO
