@@ -92,7 +92,7 @@ class Router{
         return NoAnimRouteBuilder(UpdatePage());
       case RouteName.demo_page:
         ///注意这个方法 :wrapAwareWidget()
-        ///这样包裹后，页面的pop和push就可以监听到，具体怎么使用可以根据你的业务需求来
+        ///这样包裹后，页面的pop和push就可以监听到，具体怎么使用可以根据你的业务需求来 eg:页面恢复、统计等
         ///代码参见 :RouteAwareWidget 和日志
         return NoAnimRouteBuilder(wrapAwareWidget(RouteName.demo_page,DemoPage()));
       case RouteName.scroll_page:
