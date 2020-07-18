@@ -73,7 +73,15 @@ class RouteName{
 
 }
 
+///观测路由，可以对路由的push和pop进行观测
+///具体可以查看 类：RouteAwareWidget
 final RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
+
+///root widget的 key，暂时没什么用
+/// 不过你可以用它进行无context跳转，eg：
+/// navigatorKey.currentState.pop()
+/// navigatorKey.currentState.pushNamed('update_page');
+/// 不过我不太喜欢这样用(该框架内也并没有这样使用)
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey();
 
 class Router{
@@ -83,7 +91,10 @@ class Router{
       case RouteName.update_page:
         return NoAnimRouteBuilder(UpdatePage());
       case RouteName.demo_page:
-        return NoAnimRouteBuilder(RouteAwareWidget(RouteName.demo_page,DemoPage()));
+        ///注意这个方法 :wrapAwareWidget()
+        ///这样包裹后，页面的pop和push就可以监听到，具体怎么使用可以根据你的业务需求来
+        ///代码参见 :RouteAwareWidget 和日志
+        return NoAnimRouteBuilder(wrapAwareWidget(RouteName.demo_page,DemoPage()));
       case RouteName.scroll_page:
         return NoAnimRouteBuilder(ScrollPage());
       case RouteName.cache_data_page:
@@ -105,9 +116,9 @@ class Router{
       case RouteName.main_page:
         return NoAnimRouteBuilder(MainPage());
       case RouteName.demo_exception_page:
-        return NoAnimRouteBuilder(RouteAwareWidget(RouteName.demo_exception_page, HandleExceptionPage()));
+        return NoAnimRouteBuilder(wrapAwareWidget(RouteName.demo_exception_page, HandleExceptionPage()));
       case RouteName.slide_out_page:
-        return SlideRightRouteBuilder(RouteAwareWidget(RouteName.slide_out_page, SlideOutPage()));
+        return SlideRightRouteBuilder(wrapAwareWidget(RouteName.slide_out_page, SlideOutPage()));
       case RouteName.timer_page:
         return NoAnimRouteBuilder(TimerPage());
 
@@ -131,6 +142,12 @@ class Router{
       case RouteName.show_big_image:
         return NoAnimRouteBuilder(DetailImageWidget(settings.arguments));
     }
+  }
+
+  static RouteAwareWidget wrapAwareWidget(String name,Widget page){
+    assert(name != null, 'name must not null');
+    assert(page != null,'page child must not null');
+    return RouteAwareWidget(name, page);
   }
 
 }
