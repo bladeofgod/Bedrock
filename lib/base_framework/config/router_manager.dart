@@ -10,6 +10,7 @@ import 'package:flutter_bedrock/base_framework/ui/anim/page_route_anim/size_scal
 import 'package:flutter_bedrock/base_framework/ui/anim/page_route_anim/slide_animation.dart';
 import 'package:flutter_bedrock/base_framework/ui/widget/detail_image_widget.dart';
 import 'package:flutter_bedrock/base_framework/ui/widget/image/image_editor.dart';
+import 'package:flutter_bedrock/base_framework/ui/widget/route/route_aware_widget.dart';
 import 'package:flutter_bedrock/base_framework/ui/widget/web/html_page.dart';
 import 'package:flutter_bedrock/base_framework/ui/widget/web/web_page.dart';
 import 'package:flutter_bedrock/main.dart';
@@ -80,7 +81,7 @@ class Router{
       case RouteName.update_page:
         return NoAnimRouteBuilder(UpdatePage());
       case RouteName.demo_page:
-        return NoAnimRouteBuilder(DemoPage());
+        return NoAnimRouteBuilder(RouteAwareWidget(RouteName.demo_page,DemoPage()));
       case RouteName.scroll_page:
         return NoAnimRouteBuilder(ScrollPage());
       case RouteName.cache_data_page:
@@ -102,9 +103,9 @@ class Router{
       case RouteName.main_page:
         return NoAnimRouteBuilder(MainPage());
       case RouteName.demo_exception_page:
-        return NoAnimRouteBuilder(HandleExceptionPage());
+        return NoAnimRouteBuilder(RouteAwareWidget(RouteName.demo_exception_page, HandleExceptionPage()));
       case RouteName.slide_out_page:
-        return SlideRightRouteBuilder(SlideOutPage());
+        return SlideRightRouteBuilder(RouteAwareWidget(RouteName.slide_out_page, SlideOutPage()));
       case RouteName.timer_page:
         return NoAnimRouteBuilder(TimerPage());
 
