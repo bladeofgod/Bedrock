@@ -31,7 +31,10 @@ class CachePageVM extends RefreshListViewStateModel<CacheEntity> implements Cach
   String cacheData() {
     return '';
   }
-
+  /*
+  * 缓存采取json 转str的方式
+  * 这里将你的list entity 转成 list string
+  * */
   @override
   List<String> cacheListData() {
     List<String> strList = [];
@@ -45,7 +48,11 @@ class CachePageVM extends RefreshListViewStateModel<CacheEntity> implements Cach
   void fetchCacheData(String cache) {
 
   }
-
+  /*
+  * 将之前缓存的list string 取出 并转为 list entity
+  * 请务必保证json格式正确
+  *
+  * */
   @override
   void fetchListCacheData(List<String> cacheList) {
     cacheList.forEach((element) {
