@@ -5,6 +5,7 @@ import 'package:flustars/flustars.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bedrock/base_framework/ui/behavior/over_scroll_behavior.dart';
+import 'package:flutter_bedrock/base_framework/ui/widget/progress_widget.dart';
 import 'package:flutter_bedrock/base_framework/utils/image_helper.dart';
 import 'package:oktoast/oktoast.dart';
 
@@ -236,5 +237,18 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>  {
 //    );
 //  }
 
+  DialogLoadingController _dialogLoadingController;
+  showProgressDialog({Widget progress,
+    Color bgColor,}){
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (ctx)=>LoadingProgress(loadingCreate: (controller){
+        this._dialogLoadingController = controller;
+      },progress: progress,bgColor: bgColor,)
+    ));
+  }
 
+  dismissProgressDialog(){
+    _dialogLoadingController?.dismissDialog();
+    _dialogLoadingController = null;
+  }
 }

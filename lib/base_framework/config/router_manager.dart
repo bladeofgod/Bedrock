@@ -10,6 +10,7 @@ import 'package:flutter_bedrock/base_framework/ui/anim/page_route_anim/size_scal
 import 'package:flutter_bedrock/base_framework/ui/anim/page_route_anim/slide_animation.dart';
 import 'package:flutter_bedrock/base_framework/ui/widget/detail_image_widget.dart';
 import 'package:flutter_bedrock/base_framework/ui/widget/image/image_editor.dart';
+import 'package:flutter_bedrock/base_framework/ui/widget/progress_widget.dart';
 import 'package:flutter_bedrock/base_framework/ui/widget/route/route_aware_widget.dart';
 import 'package:flutter_bedrock/base_framework/ui/widget/web/html_page.dart';
 import 'package:flutter_bedrock/base_framework/ui/widget/web/web_page.dart';
@@ -68,6 +69,8 @@ class RouteName{
   static const String web_page = 'web_page';
   static const String html_page = 'html_page';
 
+  ///dialog式progress
+  //static const String dialog_progress = 'dialog_progress';
 
 
 
@@ -141,6 +144,8 @@ class Router{
         return SlideTopRouteBuilder(ImageEditor(settings.arguments));
       case RouteName.show_big_image:
         return NoAnimRouteBuilder(DetailImageWidget(settings.arguments));
+//      case RouteName.dialog_progress:
+//        return NoAnimRouteBuilder(LoadingProgress());
     }
   }
 

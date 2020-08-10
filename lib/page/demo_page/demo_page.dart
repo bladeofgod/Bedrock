@@ -128,6 +128,15 @@ class DemoPageState extends BaseState<DemoPage> {
                 Navigator.of(context).pushNamed(RouteName.demo_other_page,);
               },
             ),
+            getSizeBox(height: getHeightPx(40)),
+            buildIntro("dialog 式 loading 演示"),
+            RaisedButton(
+              child: Text("laboratory page",style: TextStyle(color: Colors.black),),
+              onPressed: (){
+                showProgressDialog();
+                Future.delayed(Duration(seconds: 2)).then((value) => dismissProgressDialog());
+              },
+            ),
           ],
         ),
       ),
