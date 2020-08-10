@@ -237,13 +237,19 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>  {
 //    );
 //  }
 
+  ///在页面上方显示一个 loading widget
+  ///共有两种方法，showProgressDialog是其中一种
+  ///具体参见 : progress_widget.dart
   DialogLoadingController _dialogLoadingController;
   showProgressDialog({Widget progress,
     Color bgColor,}){
-    Navigator.of(context).push(MaterialPageRoute(
-      builder: (ctx)=>LoadingProgress(loadingCreate: (controller){
-        this._dialogLoadingController = controller;
-      },progress: progress,bgColor: bgColor,)
+    Navigator.of(context).push(PageRouteBuilder(
+      opaque: false,
+      pageBuilder: (ctx,animation,secondAnimation){
+        return LoadingProgress(loadingCreate: (controller){
+          this._dialogLoadingController = controller;
+        },progress: progress,bgColor: bgColor,);
+      }
     ));
   }
 

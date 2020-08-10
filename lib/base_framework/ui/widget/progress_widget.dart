@@ -34,6 +34,8 @@ class CircleProgressWidget extends BaseStatelessWidget{
 
 }
 
+///显示progress 方式 1
+///这种方式，需要在布局中添加FullPageCircleProgressWidget
 class FullPageCircleProgressWidget extends BaseStatelessWidget{
   @override
   Widget build(BuildContext context) {
@@ -49,6 +51,9 @@ class FullPageCircleProgressWidget extends BaseStatelessWidget{
   }
 
 }
+
+///显示progress 方式 2
+///这种方式，不需要在布局中添加
 
 typedef LoadingCreate = void Function(DialogLoadingController controller);
 
@@ -81,7 +86,9 @@ class LoadingProgressState extends BaseState<LoadingProgress> {
       if(controller.isShow){
         //todo
       }else{
-        Navigator.of(context).pop();
+        WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+          Navigator.of(context).pop();
+        });
       }
     });
   }
@@ -98,7 +105,7 @@ class LoadingProgressState extends BaseState<LoadingProgress> {
     final size = MediaQuery.of(context).size;
 
     return Container(
-      color: widget.bgColor??Colors.black.withOpacity(0.3),
+      color: widget.bgColor??Color.fromRGBO(34, 34, 34, 0.3),
       width: size.width,height: size.height,
       alignment: Alignment.center,
       child:widget.progress?? CircularProgressIndicator(),

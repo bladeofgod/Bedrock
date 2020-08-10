@@ -131,12 +131,13 @@ class DemoPageState extends BaseState<DemoPage> {
             getSizeBox(height: getHeightPx(40)),
             buildIntro("dialog 式 loading 演示"),
             RaisedButton(
-              child: Text("laboratory page",style: TextStyle(color: Colors.black),),
+              child: Text("dialog progress page",style: TextStyle(color: Colors.black),),
               onPressed: (){
                 showProgressDialog();
                 Future.delayed(Duration(seconds: 2)).then((value) => dismissProgressDialog());
               },
             ),
+            getSizeBox(height: getHeightPx(40)),
           ],
         ),
       ),
