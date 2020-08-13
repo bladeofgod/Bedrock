@@ -243,14 +243,16 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>  {
   DialogLoadingController _dialogLoadingController;
   showProgressDialog({Widget progress,
     Color bgColor,}){
-    Navigator.of(context).push(PageRouteBuilder(
-      opaque: false,
-      pageBuilder: (ctx,animation,secondAnimation){
-        return LoadingProgress(loadingCreate: (controller){
-          this._dialogLoadingController = controller;
-        },progress: progress,bgColor: bgColor,);
-      }
-    ));
+    if(_dialogLoadingController == null){
+      _dialogLoadingController = DialogLoadingController();
+      Navigator.of(context).push(PageRouteBuilder(
+          opaque: false,
+          pageBuilder: (ctx,animation,secondAnimation){
+            return LoadingProgress(controller: _dialogLoadingController
+              ,progress: progress,bgColor: bgColor,);
+          }
+      ));
+    }
   }
 
   dismissProgressDialog(){

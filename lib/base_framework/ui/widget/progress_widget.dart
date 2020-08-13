@@ -55,15 +55,16 @@ class FullPageCircleProgressWidget extends BaseStatelessWidget{
 ///显示progress 方式 2
 ///这种方式，不需要在布局中添加
 
-typedef LoadingCreate = void Function(DialogLoadingController controller);
+//typedef LoadingCreate = void Function(DialogLoadingController controller);
 
 class LoadingProgress extends StatefulWidget{
   final Widget progress;
   final Color bgColor;
-  final LoadingCreate loadingCreate;
+  //final LoadingCreate loadingCreate;
+  final DialogLoadingController controller;
 
   const LoadingProgress({Key key, this.progress,
-    this.bgColor,@required this.loadingCreate })
+    this.bgColor,@required this.controller })
       : super(key: key);
 
 
@@ -76,14 +77,13 @@ class LoadingProgress extends StatefulWidget{
 
 class LoadingProgressState extends BaseState<LoadingProgress> {
 
-  DialogLoadingController controller = DialogLoadingController();
 
   @override
   void initState() {
     super.initState();
-    widget.loadingCreate(controller);
-    controller.addListener(() {
-      if(controller.isShow){
+
+    widget.controller.addListener(() {
+      if(widget.controller.isShow){
         //todo
       }else{
         WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
@@ -95,7 +95,8 @@ class LoadingProgressState extends BaseState<LoadingProgress> {
 
   @override
   void dispose() {
-    controller?.dispose();
+    widget.controller.isShow = false;
+    widget.controller?.dispose();
     super.dispose();
   }
 
