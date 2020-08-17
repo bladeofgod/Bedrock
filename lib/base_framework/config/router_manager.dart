@@ -4,6 +4,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bedrock/base_framework/factory/page/page_animation_builder.dart';
 import 'package:flutter_bedrock/base_framework/ui/anim/page_route_anim/fade_animation.dart';
 import 'package:flutter_bedrock/base_framework/ui/anim/page_route_anim/no_animation.dart';
 import 'package:flutter_bedrock/base_framework/ui/anim/page_route_anim/size_scale_animation.dart';
@@ -92,58 +93,58 @@ class Router{
   static Route<dynamic> generateRoute(RouteSettings settings){
     switch(settings.name) {
       case RouteName.update_page:
-        return NoAnimRouteBuilder(UpdatePage());
+        return pageBuilder.wrapWithNoAnim(UpdatePage());
       case RouteName.demo_page:
         ///注意这个方法 :wrapAwareWidget()
         ///这样包裹后，页面的pop和push就可以监听到，具体怎么使用可以根据你的业务需求来 eg:页面恢复、统计等
         ///代码参见 :RouteAwareWidget 和日志
-        return NoAnimRouteBuilder(wrapAwareWidget(RouteName.demo_page,DemoPage()));
+        return pageBuilder.wrapWithNoAnim(wrapAwareWidget(RouteName.demo_page,DemoPage()));
       case RouteName.scroll_page:
-        return NoAnimRouteBuilder(ScrollPage());
+        return pageBuilder.wrapWithNoAnim(ScrollPage());
       case RouteName.cache_data_page:
-        return NoAnimRouteBuilder(CacheDataPage());
+        return pageBuilder.wrapWithNoAnim(CacheDataPage());
       case RouteName.little_util_page:
-        return NoAnimRouteBuilder(LittleUtilPage());
+        return pageBuilder.wrapWithNoAnim(LittleUtilPage());
       case RouteName.ffloat_page:
-        return NoAnimRouteBuilder(FFloatPage());
+        return pageBuilder.wrapWithNoAnim(FFloatPage());
       case RouteName.permissions_page:
-        return NoAnimRouteBuilder(RequestPermissionsPage());
+        return pageBuilder.wrapWithNoAnim(RequestPermissionsPage());
       case RouteName.demo_other_page:
-        return NoAnimRouteBuilder(OtherDemoPage());
+        return pageBuilder.wrapWithNoAnim(OtherDemoPage());
       case RouteName.local_i10l_page:
-        return NoAnimRouteBuilder(LocalPage());
+        return pageBuilder.wrapWithNoAnim(LocalPage());
       case RouteName.login_page:
-        return SlideTopRouteBuilder(LoginPage());
+        return pageBuilder.wrapWithSlideTopAnim(LoginPage());
       case RouteName.pick_image_page:
-        return NoAnimRouteBuilder(PickImagePage());
+        return pageBuilder.wrapWithNoAnim(PickImagePage());
       case RouteName.main_page:
-        return NoAnimRouteBuilder(MainPage());
+        return pageBuilder.wrapWithNoAnim(MainPage());
       case RouteName.demo_exception_page:
-        return NoAnimRouteBuilder(wrapAwareWidget(RouteName.demo_exception_page, HandleExceptionPage()));
+        return pageBuilder.wrapWithNoAnim(wrapAwareWidget(RouteName.demo_exception_page, HandleExceptionPage()));
       case RouteName.slide_out_page:
-        return SlideRightRouteBuilder(wrapAwareWidget(RouteName.slide_out_page, SlideOutPage()));
+        return pageBuilder.wrapWithSlideAnim(wrapAwareWidget(RouteName.slide_out_page, SlideOutPage()));
       case RouteName.timer_page:
-        return NoAnimRouteBuilder(TimerPage());
+        return pageBuilder.wrapWithNoAnim(TimerPage());
 
       case RouteName.route_anim_page:
-        return NoAnimRouteBuilder(RouteAnimationPage());
+        return pageBuilder.wrapWithNoAnim(RouteAnimationPage());
       case RouteName.slide_page:
-        return SlideTopRouteBuilder(SlidePage());
+        return pageBuilder.wrapWithSlideTopAnim(SlidePage());
       case RouteName.fade_page:
-        return FadeRouteBuilder(FadePage());
+        return pageBuilder.wrapWithFadeAnim(FadePage());
       case RouteName.scale_page:
-        return ScaleRouteBuilder(ScalePage());
+        return pageBuilder.wrapWithScaleAnim(ScalePage());
 
       case RouteName.web_page:
-        return NoAnimRouteBuilder(WebPage(settings.arguments));
+        return pageBuilder.wrapWithNoAnim(WebPage(settings.arguments));
       case RouteName.html_page:
-        return NoAnimRouteBuilder(HtmlPage(settings.arguments));
+        return pageBuilder.wrapWithNoAnim(HtmlPage(settings.arguments));
 
       case RouteName.editor_image_page:
         ///外层为动画
-        return SlideTopRouteBuilder(ImageEditor(settings.arguments));
+        return pageBuilder.wrapWithSlideTopAnim(ImageEditor(settings.arguments));
       case RouteName.show_big_image:
-        return NoAnimRouteBuilder(DetailImageWidget(settings.arguments));
+        return pageBuilder.wrapWithNoAnim(DetailImageWidget(settings.arguments));
 //      case RouteName.dialog_progress:
 //        return NoAnimRouteBuilder(LoadingProgress());
     }

@@ -8,6 +8,8 @@ import 'package:flutter_bedrock/base_framework/ui/anim/page_route_anim/slide_ani
 
 ///后期对此扩建
 
+final PageAnimationBuilder pageBuilder = PageAnimationBuilder.getInstance();
+
 class PageAnimationBuilder{
 
   static PageAnimationBuilder singleton;
@@ -29,16 +31,23 @@ class PageAnimationBuilder{
   }
 
 
-
+  ///fade
   Route<dynamic> wrapWithFadeAnim(Widget page){
     return FadeRouteBuilder(page);
   }
 
 
+  ///slide
   Route<dynamic> wrapWithSlideAnim(Widget page){
     return SlideRightRouteBuilder(page);
   }
 
+  Route<dynamic> wrapWithSlideTopAnim(Widget page){
+    return SlideTopRouteBuilder(page);
+  }
+
+
+  ///scale
   Route<dynamic> wrapWithScaleAnim(Widget page){
     return ScaleRouteBuilder(page);
   }
