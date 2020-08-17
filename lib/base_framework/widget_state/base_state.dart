@@ -25,63 +25,82 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>  {
     ///适配、
     EdgeInsets edgeInsets,bool needSlideOut = false}){
     if(! needSlideOut){
-      return AnnotatedRegion(
-          value: isSetDark ? SystemUiOverlayStyle.dark : SystemUiOverlayStyle.light,
-          child: Material(
-            color: Colors.white,
-            child: Padding(
-              padding: edgeInsets??EdgeInsets.only(bottom: ScreenUtil.getInstance().bottomBarHeight),
-              child: child,
-            ),
-          )
-      );
+      //不含侧滑退出
+      return getNormalPage(isSetDark: isSetDark,child: child,edgeInsets: edgeInsets,
+        needSlideOut: needSlideOut);
 
+    }else{
+      //侧滑退出
+      return getPageWithSlideOut(isSetDark: isSetDark,child: child,edgeInsets: edgeInsets,
+          needSlideOut: needSlideOut);
     }
+
+  }
+
+  Widget getNormalPage({bool isSetDark = true,@required Widget child,
+    ///适配、
+    EdgeInsets edgeInsets,bool needSlideOut = false}){
     return AnnotatedRegion(
-      value: isSetDark ? SystemUiOverlayStyle.dark : SystemUiOverlayStyle.light,
-      child: Material(
-        color: Colors.transparent,
-        child: Padding(
-          padding: edgeInsets??EdgeInsets.only(bottom: ScreenUtil.getInstance().bottomBarHeight),
-          child: GestureDetector(
-            onHorizontalDragStart: (dragStart){
-              slideOutActive = dragStart.globalPosition.dx < (getScreenWidth() / 10);
+        value: isSetDark ? SystemUiOverlayStyle.dark : SystemUiOverlayStyle.light,
+        child: Material(
+          color: Colors.white,
+          child: Padding(
+            padding: edgeInsets??EdgeInsets.only(bottom: ScreenUtil.getInstance().bottomBarHeight),
+            child: child,
+          ),
+        )
+    );
+  }
 
-            },
-            onHorizontalDragUpdate: (dragDetails){
-              if(!slideOutActive) return;
-              marginLeft = dragDetails.globalPosition.dx;
-              dragPosition = marginLeft;
-              //if(marLeft > 250) return;
-              if(marginLeft < getWidthPx(50)) marginLeft = 0;
-              setState(() {
+  Widget getPageWithSlideOut({bool isSetDark = true,@required Widget child,
+    ///适配、
+    EdgeInsets edgeInsets,bool needSlideOut = false}){
+    return AnnotatedRegion(
+        value: isSetDark ? SystemUiOverlayStyle.dark : SystemUiOverlayStyle.light,
+        child: Material(
+          color: Colors.transparent,
+          child: Padding(
+            padding: edgeInsets??EdgeInsets.only(bottom: ScreenUtil.getInstance().bottomBarHeight),
+            child: GestureDetector(
+              onHorizontalDragStart: (dragStart){
+                slideOutActive = dragStart.globalPosition.dx < (getScreenWidth() / 10);
 
-              });
-            },
-            onHorizontalDragEnd: (dragEnd){
-              if(dragPosition > getScreenWidth()/5){
-                Navigator.of(context).pop();
-              }else{
-                marginLeft = 0.0;
+              },
+              onHorizontalDragUpdate: (dragDetails){
+                if(!slideOutActive) return;
+                marginLeft = dragDetails.globalPosition.dx;
+                dragPosition = marginLeft;
+                //if(marLeft > 250) return;
+                if(marginLeft < getWidthPx(50)) marginLeft = 0;
                 setState(() {
 
                 });
-              }
-            },
-            child: AnimatedContainer(
-              duration: Duration(milliseconds: 200),
-              margin: EdgeInsets.only(left: marginLeft),
-              child: SingleChildScrollView(
-                physics: NeverScrollableScrollPhysics(),
-                scrollDirection: Axis.horizontal,
-                child: child,
-              ),
-            ),
+              },
+              onHorizontalDragEnd: (dragEnd){
+                if(dragPosition > getScreenWidth()/5){
+                  Navigator.of(context).pop();
+                }else{
+                  marginLeft = 0.0;
+                  setState(() {
 
+                  });
+                }
+              },
+              child: AnimatedContainer(
+                duration: Duration(milliseconds: 200),
+                margin: EdgeInsets.only(left: marginLeft),
+                child: SingleChildScrollView(
+                  physics: NeverScrollableScrollPhysics(),
+                  scrollDirection: Axis.horizontal,
+                  child: child,
+                ),
+              ),
+
+            ),
           ),
-        ),
-      )
+        )
     );
+
   }
 
 
