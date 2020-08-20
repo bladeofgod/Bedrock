@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <paths xmlns:android="http://schemas.android.com/apk/res/android">
-        <files-path name="my_images"
+
+        <root-path
+            name="root_path"
+            path="."/>
+        <files-path
+            name="my_images"
             path="images"/>
 
         <external-path
@@ -11,5 +16,9 @@
         <cache-path
             name="cache_place"
             path="."/>
+
+        <external-path name="files_root" path="." />
+        <external-path name="external_storage_root" path="." />
+        <external-path name="external_files" path="."/>
     </paths>
 </resources>
