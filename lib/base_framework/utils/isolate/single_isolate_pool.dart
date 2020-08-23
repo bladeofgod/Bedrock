@@ -7,10 +7,41 @@ import 'dart:isolate';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 
+const String childPortKey = 'c_port_key';
+
+///_waitLine.key = _resultLine.key
+
+/// value : task method
 final LinkedHashMap<String,Function> _waitLine = LinkedHashMap();
+/// value : result callback
 final LinkedHashMap<String,Function> _resultLine = LinkedHashMap();
 
 bool isProcessing = false;
+
+///child isolate
+void _processTask(SendPort sendPort)async{
+  final childPort = ReceivePort();
+  sendPort.send([childPortKey,childPort.sendPort]);
+
+  ///子线程监听
+  childPort.listen((message) {
+    debugPrint('child : $message');
+  });
+  while(_waitLine.length >0){
+    if(!isProcessing){
+      isProcessing = true;
+      var entry = _waitLine.entries.first;
+      final String key = entry.key;
+      var result = await entry.value();
+      ///must list and length == 2
+      sendPort.send([key,result]);
+//        if(_resultLine.containsKey(key)){
+//          ///call result-callback
+//          _resultLine[key](result);
+//        }
+    }
+  }
+}
 
 class SingleIsolatePool{
 
@@ -32,9 +63,33 @@ class SingleIsolatePool{
     return _singleton;
   }
 
+
+  void clearLine(String expiredKey){
+    _waitLine.removeWhere((key, value) => key == expiredKey);
+    _resultLine.removeWhere((key, value) => key == expiredKey);
+    isProcessing = false;
+  }
+
   void init()async{
-    _isolate = await Isolate.spawn(processTask, receivePort.sendPort);
+    _isolate = await Isolate.spawn(_processTask, receivePort.sendPort);
     childSendPort = await receivePort.first;
+    receivePort.listen((message) {
+      debugPrint('$message');
+      String key = message[0];
+      var result = message[1];
+      if(key == childPortKey){
+        childSendPort = result;
+      }else if(_resultLine.containsKey(key)){
+        _resultLine[key](result);
+      }
+      clearLine(key);
+      ///waste time
+//      if(message is List){
+//        if(message.length == 2){
+//        }
+//      }
+
+    },);
   }
 
 
@@ -49,31 +104,6 @@ class SingleIsolatePool{
     _resultLine[key] = resultCallback;
 
   }
-
-
-  ///child isolate
-  void processTask(SendPort sendPort)async{
-    final childPort = ReceivePort();
-    sendPort.send(childPort.sendPort);
-
-    ///子线程监听
-    await for(var msg in childPort){}
-//    while(_waitLine.length > 0){
-//      if(!isProcessing){
-//        isProcessing = true;
-//
-//      }
-//    }
-  }
-
-  void dodo(String msg){
-    print(msg);
-  }
-
-
-
-
-
 
 
 }
