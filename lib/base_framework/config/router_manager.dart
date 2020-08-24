@@ -19,6 +19,7 @@ import 'package:flutter_bedrock/main.dart';
 import 'package:flutter_bedrock/page/demo_page/demo_page.dart';
 import 'package:flutter_bedrock/page/demo_page/exception/handle_exception_page.dart';
 import 'package:flutter_bedrock/page/demo_page/image/pick_image_page.dart';
+import 'package:flutter_bedrock/page/demo_page/isolate/isolate_page.dart';
 import 'package:flutter_bedrock/page/demo_page/local_i10l/local_page.dart';
 import 'package:flutter_bedrock/page/demo_page/main/first/cache_data_page.dart';
 import 'package:flutter_bedrock/page/demo_page/main/first/ffloat_page.dart';
@@ -60,6 +61,7 @@ class RouteName{
 
   static const String local_i10l_page = 'local_i10l_page';
 
+  static const String isolate_page = 'isolate_page';
 
 
   ///对指定图片进行裁剪、并返回对应路径
@@ -92,6 +94,8 @@ class Router{
 
   static Route<dynamic> generateRoute(RouteSettings settings){
     switch(settings.name) {
+      case RouteName.isolate_page:
+        return pageBuilder.wrapWithNoAnim(IsolatePage());
       case RouteName.update_page:
         return pageBuilder.wrapWithNoAnim(UpdatePage());
       case RouteName.demo_page:

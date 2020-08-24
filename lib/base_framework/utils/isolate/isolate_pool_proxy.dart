@@ -1,6 +1,7 @@
 
 
 
+import 'package:flutter_bedrock/base_framework/utils/isolate/single_isolate_pool.dart';
 import 'package:flutter_bedrock/base_framework/utils/isolate/standard_isolate_pool.dart';
 
 class IsolatePoolProxy{
@@ -23,6 +24,10 @@ class IsolatePoolProxy{
 
   StandardIsolatePool getStandardPool(){
     return StandardIsolatePool.getInstance();
+  }
+
+  SingleIsolatePool getSinglePoll(){
+    return SingleIsolatePool.getInstance();
   }
 
 

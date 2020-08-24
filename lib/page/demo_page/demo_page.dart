@@ -47,13 +47,22 @@ class DemoPageState extends BaseState<DemoPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             getSizeBox(height: getWidthPx(100)),
-            buildIntro("API请求的异常捕获和处理DEMO"),
+            buildIntro("综合性框架功能演示DEMO"),
             RaisedButton(
-              child: Text("demo handle exception",style: TextStyle(color: Colors.black),),
+              child: Text("main page",style: TextStyle(color: Colors.black),),
               onPressed: (){
-                Navigator.of(context).pushNamed(RouteName.demo_exception_page);
+                Navigator.of(context).pushNamed(RouteName.main_page);
               },
             ),
+            getSizeBox(height: getHeightPx(40)),
+            buildIntro("isolate pool 功能演示"),
+            RaisedButton(
+              child: Text("isolate pool",style: TextStyle(color: Colors.black),),
+              onPressed: (){
+                Navigator.of(context).pushNamed(RouteName.isolate_page);
+              },
+            ),
+
             getSizeBox(height: getWidthPx(40)),
             buildIntro("路由丢失DEMO"),
             RaisedButton(
@@ -63,13 +72,14 @@ class DemoPageState extends BaseState<DemoPage> {
               },
             ),
             getSizeBox(height: getHeightPx(40)),
-            buildIntro("综合性框架功能演示DEMO"),
+            buildIntro("API请求的异常捕获和处理DEMO"),
             RaisedButton(
-              child: Text("main page",style: TextStyle(color: Colors.black),),
+              child: Text("demo handle exception",style: TextStyle(color: Colors.black),),
               onPressed: (){
-                Navigator.of(context).pushNamed(RouteName.main_page);
+                Navigator.of(context).pushNamed(RouteName.demo_exception_page);
               },
             ),
+
             getSizeBox(height: getHeightPx(40)),
             buildIntro("左侧滑动返回上一页"),
             RaisedButton(
