@@ -33,12 +33,13 @@ class IsolatePageState extends BaseState<IsolatePage> {
             children: <Widget>[
               Text(result),
               RaisedButton(onPressed: ()async{
-                IsolatePoolProxy.instance.getSinglePoll()
-                  .executeTask(getWork, (result){
-                    setState(() {
-                      this.result = result;
-                    });
-                });
+                ///设计有问题，不要使用此功能
+//                IsolatePoolProxy.getInstance().getSinglePoll()
+//                  .executeTask(getWork, (result){
+//                    setState(() {
+//                      this.result = result;
+//                    });
+//                });
               },
               child: Text('get work'),),
 

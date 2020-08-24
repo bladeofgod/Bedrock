@@ -54,14 +54,15 @@ class DemoPageState extends BaseState<DemoPage> {
                 Navigator.of(context).pushNamed(RouteName.main_page);
               },
             ),
-            getSizeBox(height: getHeightPx(40)),
-            buildIntro("isolate pool 功能演示"),
-            RaisedButton(
-              child: Text("isolate pool",style: TextStyle(color: Colors.black),),
-              onPressed: (){
-                Navigator.of(context).pushNamed(RouteName.isolate_page);
-              },
-            ),
+            ///未制作好的
+//            getSizeBox(height: getHeightPx(40)),
+//            buildIntro("isolate pool 功能演示"),
+//            RaisedButton(
+//              child: Text("isolate pool",style: TextStyle(color: Colors.black),),
+//              onPressed: (){
+//                Navigator.of(context).pushNamed(RouteName.isolate_page);
+//              },
+//            ),
 
             getSizeBox(height: getWidthPx(40)),
             buildIntro("路由丢失DEMO"),
