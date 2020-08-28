@@ -7,6 +7,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bedrock/base_framework/config/net/bedrock_http.dart';
 import 'package:flutter_bedrock/base_framework/utils/isolate/app_private_ioslate.dart';
 import 'package:flutter_bedrock/base_framework/utils/isolate/isolate_pool_proxy.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
@@ -21,7 +22,7 @@ class IsolatePage extends StatefulWidget{
 
 class IsolatePageState extends BaseState<IsolatePage> {
 
-  String result = '显示结果';
+  String result = '查看log';
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +40,13 @@ class IsolatePageState extends BaseState<IsolatePage> {
 
               },
               child: Text('get work'),),
+              SizedBox(width: 1,height: 20,),
+              RaisedButton(onPressed: ()async{
+                debugPrint('请求 google');
+                bedRock.get('https://www.google.com');
+
+              },
+                child: Text('测试无网 取消所有连接'),),
 
             ],
           ),

@@ -9,6 +9,7 @@ import 'package:dio/native_imp.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'package:flustars/flustars.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_bedrock/base_framework/config/net/bedrock_http.dart';
 import 'package:flutter_bedrock/base_framework/utils/platform_utils.dart';
 
 import '../frame_constant.dart';
@@ -25,6 +26,7 @@ parseJson(String text) {
 //具体应用配置http类继承此类
 abstract class BaseHttp extends DioForNative{
 
+  final CancelToken rootCancelToken = CancelToken();
 
   BaseHttp(){
     ///将原始 返回数据 json化
@@ -38,7 +40,16 @@ abstract class BaseHttp extends DioForNative{
 
   void init();
 
+  cancelAllRequest(){
+    _cancelToken.cancel(['no available net']);
+  }
+
 }
+
+///默认项目所有cancelToken使用这一个，用于断网下取消
+///如有特殊需要可以 在ApiInterceptor进行覆盖或者注释
+final CancelToken _cancelToken = CancelToken();
+
 
 ///添加拦截器
 class HeaderInterceptor extends InterceptorsWrapper{
@@ -46,6 +57,8 @@ class HeaderInterceptor extends InterceptorsWrapper{
   Future onRequest(RequestOptions options) async{
     options.connectTimeout = 1000 * 45;
     options.receiveTimeout = 1000 * 45;
+
+    options.cancelToken = _cancelToken;
 
     ///这里加入版本信息 在header，可以根据需求更改
     var appVersion = await PlatformUtils.getAppVersion();

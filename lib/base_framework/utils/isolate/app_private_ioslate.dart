@@ -8,7 +8,10 @@ import 'dart:isolate';
 
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/cupertino.dart';
-import 'file:///D:/bedrock/lib/base_framework/observe/app_status/app_status_observe.dart';
+import 'package:flutter_bedrock/base_framework/config/net/base_http.dart';
+import 'package:flutter_bedrock/base_framework/config/net/bedrock_http.dart';
+import 'package:flutter_bedrock/base_framework/observe/app_status/app_status_observe.dart';
+import 'package:oktoast/oktoast.dart';
 
 class AppPrivateIsolate{
 
@@ -44,6 +47,13 @@ class AppPrivateIsolate{
       }else if(key == kNetAvailable){
         ///网络是否可用
         debugPrint('${message[1]}');
+        String available = message[1];
+        if(available == kNetDisable){
+          showToast('网络不可用');
+          bedRock.cancelAllRequest();
+        }else if(available == kNetEnable){
+          debugPrint('网络正常');
+        }
       }
     });
 
