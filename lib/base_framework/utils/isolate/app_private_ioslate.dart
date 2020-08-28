@@ -6,6 +6,7 @@
 
 import 'dart:isolate';
 
+import 'package:connectivity/connectivity.dart';
 import 'package:flutter/cupertino.dart';
 import 'file:///D:/bedrock/lib/base_framework/observe/app_status/app_status_observe.dart';
 
@@ -40,13 +41,24 @@ class AppPrivateIsolate{
       var value = message[1];
       if(key == kNetPortKey){
         _netSendPort = value;
-      }else if(key == kNetType){
-        ///网络类型
       }else if(key == kNetAvailable){
         ///网络是否可用
         debugPrint('${message[1]}');
       }
     });
+
+    ///网络连接方式的监听
+    ///   ！ 注意这个不要放在child isolate
+    Connectivity().onConnectivityChanged.listen((netType) {
+      debugPrint('$netType');
+      if(netType == ConnectivityResult.wifi){
+
+      }else if(netType == ConnectivityResult.mobile){
+
+      }
+
+    });
+
 
   }
 
