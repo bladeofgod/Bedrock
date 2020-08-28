@@ -53,12 +53,6 @@ class IsolatePageState extends BaseState<IsolatePage> {
         ));
   }
 
-  Future<String> getWork()async{
-    debugPrint('isolate start');
-    sleep(Duration(seconds: 5));
-    debugPrint('isolate done');
-    return '结果是123';
-  }
 
 
 }
