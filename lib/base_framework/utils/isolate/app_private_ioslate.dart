@@ -10,7 +10,7 @@ import 'package:connectivity/connectivity.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bedrock/base_framework/config/net/base_http.dart';
 import 'package:flutter_bedrock/base_framework/config/net/bedrock_http.dart';
-import 'package:flutter_bedrock/base_framework/observe/app_status/app_status_observe.dart';
+import 'package:flutter_bedrock/base_framework/observe/app_status/app_status_observe.dart' as appObserve;
 import 'package:flutter_bedrock/base_framework/view_model/app_model/app_status_model.dart';
 import 'package:oktoast/oktoast.dart';
 
@@ -39,25 +39,25 @@ class AppPrivateIsolate{
 
   void initNetObserver()async{
     if(_netIsolate != null )return;
-    _netIsolate =await Isolate.spawn(observerNetState, _netReceivePort.sendPort);
+    _netIsolate =await Isolate.spawn(appObserve.observerNetState, _netReceivePort.sendPort);
 
     /// message<String,dynamic>
     _netReceivePort.listen((message) {
       debugPrint('$message');
       String key = message[0];
       var value = message[1];
-      if(key == kNetPortKey){
+      if(key == appObserve.kNetPortKey){
         _netSendPort = value;
-      }else if(key == kNetAvailable){
+      }else if(key == appObserve.kNetAvailable){
         ///网络是否可用
         debugPrint('${message[1]}');
         String available = message[1];
         ///可以根据状态做对应的操作 具体看你的业务需求
-        if(available == kNetDisable){
+        if(available == appObserve.kNetDisable){
           showToast('网络不可用');
           //bedRock.cancelAllRequest();
           appStatusModel.setNetStatus(NetStatus.Disable);
-        }else if(available == kNetEnable){
+        }else if(available == appObserve.kNetEnable){
           debugPrint('网络正常');
           appStatusModel.setNetStatus(NetStatus.Enable);
         }
