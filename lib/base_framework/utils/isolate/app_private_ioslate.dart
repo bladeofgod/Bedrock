@@ -7,7 +7,7 @@
 import 'dart:isolate';
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_bedrock/base_framework/observe/app_status_observer.dart';
+import 'file:///D:/bedrock/lib/base_framework/observe/app_status/app_status_observe.dart';
 
 class AppPrivateIsolate{
 
@@ -30,6 +30,7 @@ class AppPrivateIsolate{
   Isolate _netIsolate ;
 
   void initNetObserver()async{
+    if(_netIsolate != null )return;
     _netIsolate =await Isolate.spawn(observerNetState, _netReceivePort.sendPort);
 
     /// message<String,dynamic>

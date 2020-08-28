@@ -24,6 +24,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
 
+
   flutter_localizations:
     sdk: flutter
   # State
@@ -44,7 +45,6 @@ dependencies:
   #设备信息、包信息
   device_info: ^0.4.1
   package_info: ^0.4.0+6
-  #  connectivity: ^0.4.3+6
 
   # Data
   #  json_annotation: ^2.4.0
@@ -131,7 +131,7 @@ dependencies:
   mmkv_flutter: ^1.0.10
 
   #网络状态
-  connectivity: ^0.4.8+6
+  connectivity: ^0.4.9+2
 
   #  #高德地图
   #  amap_location: ^0.2.0

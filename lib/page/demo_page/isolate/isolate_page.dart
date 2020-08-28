@@ -7,6 +7,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bedrock/base_framework/utils/isolate/app_private_ioslate.dart';
 import 'package:flutter_bedrock/base_framework/utils/isolate/isolate_pool_proxy.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
 
@@ -33,6 +34,7 @@ class IsolatePageState extends BaseState<IsolatePage> {
             children: <Widget>[
               Text(result),
               RaisedButton(onPressed: ()async{
+                AppPrivateIsolate.getInstance().initNetObserver();
                 ///设计有问题，不要使用此功能
 //                IsolatePoolProxy.getInstance().getSinglePoll()
 //                  .executeTask(getWork, (result){
