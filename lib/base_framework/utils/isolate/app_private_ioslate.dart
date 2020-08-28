@@ -11,10 +11,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bedrock/base_framework/config/net/base_http.dart';
 import 'package:flutter_bedrock/base_framework/config/net/bedrock_http.dart';
 import 'package:flutter_bedrock/base_framework/observe/app_status/app_status_observe.dart';
+import 'package:flutter_bedrock/base_framework/view_model/app_model/app_status_model.dart';
 import 'package:oktoast/oktoast.dart';
 
 class AppPrivateIsolate{
 
+  final AppStatusModel appStatusModel = AppStatusModel();
+
+  ///
   static AppPrivateIsolate _appPrivateIsolate;
 
   factory AppPrivateIsolate()=>getInstance();
@@ -48,11 +52,14 @@ class AppPrivateIsolate{
         ///网络是否可用
         debugPrint('${message[1]}');
         String available = message[1];
+        ///可以根据状态做对应的操作 具体看你的业务需求
         if(available == kNetDisable){
           showToast('网络不可用');
-          bedRock.cancelAllRequest();
+          //bedRock.cancelAllRequest();
+          appStatusModel.setNetStatus(NetStatus.Disable);
         }else if(available == kNetEnable){
           debugPrint('网络正常');
+          appStatusModel.setNetStatus(NetStatus.Enable);
         }
       }
     });
@@ -62,9 +69,11 @@ class AppPrivateIsolate{
     Connectivity().onConnectivityChanged.listen((netType) {
       debugPrint('$netType');
       if(netType == ConnectivityResult.wifi){
-
+        appStatusModel.setNetType(NetType.wifi);
       }else if(netType == ConnectivityResult.mobile){
-
+        appStatusModel.setNetType(NetType.mobile);
+      }else if(netType == ConnectivityResult.none){
+        appStatusModel.setNetType(NetType.none);
       }
 
     });
