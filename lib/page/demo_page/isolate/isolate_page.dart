@@ -34,14 +34,9 @@ class IsolatePageState extends BaseState<IsolatePage> {
             children: <Widget>[
               Text(result),
               RaisedButton(onPressed: ()async{
+                ///结果 在 log里
                 AppPrivateIsolate.getInstance().initNetObserver();
-                ///设计有问题，不要使用此功能
-//                IsolatePoolProxy.getInstance().getSinglePoll()
-//                  .executeTask(getWork, (result){
-//                    setState(() {
-//                      this.result = result;
-//                    });
-//                });
+
               },
               child: Text('get work'),),
 
