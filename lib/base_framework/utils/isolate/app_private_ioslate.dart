@@ -14,6 +14,10 @@ import 'package:flutter_bedrock/base_framework/observe/app_status/app_status_obs
 import 'package:flutter_bedrock/base_framework/view_model/app_model/app_status_model.dart';
 import 'package:oktoast/oktoast.dart';
 
+
+///app 状态监测类，负责各种状态监测
+///多数监测工作在子isolate
+
 class AppPrivateIsolate{
 
   final AppStatusModel appStatusModel = AppStatusModel();
@@ -37,6 +41,7 @@ class AppPrivateIsolate{
   SendPort _netSendPort ;
   Isolate _netIsolate ;
 
+  ///监测网络状态和连接类型
   void initNetObserver()async{
     if(_netIsolate != null )return;
     _netIsolate =await Isolate.spawn(appObserve.observerNetState, _netReceivePort.sendPort);
@@ -80,6 +85,8 @@ class AppPrivateIsolate{
 
 
   }
+
+  ///其他的监测工作 待拓展
 
 
 }
