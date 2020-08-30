@@ -86,6 +86,26 @@ class AppPrivateIsolate{
 
   }
 
+  ///服务器通知监测
+
+  final ReceivePort _serverRP = ReceivePort();
+  SendPort _serverOBSendPort;
+  Isolate _serverOBIsolate;
+
+  void initServerNotifyWatch()async{
+    if(_serverOBIsolate != null)return;
+    _serverOBIsolate = await Isolate.spawn(appObserve.observeServerNotify, _serverRP.sendPort);
+
+    _serverRP.listen((message) {
+      debugPrint('${appObserve.kServeNotifyPortKey} main : $message');
+      //todo
+    });
+
+  }
+
+
+
+
   ///其他的监测工作 待拓展
 
 
