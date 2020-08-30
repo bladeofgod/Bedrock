@@ -21,11 +21,11 @@ void observerNetState(SendPort sendPort){
   final String china = 'baidu.com';
   final String usa = 'google.com';
   final ReceivePort receivePort = ReceivePort();
-  sendPort.send([kNetPortKey,receivePort.sendPort]);
-
   receivePort.listen((message) {
     debugPrint('$kNetPortKey  : $message');
   });
+
+  sendPort.send([kNetPortKey,receivePort.sendPort]);
 
 
 
