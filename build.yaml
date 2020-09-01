@@ -1,0 +1,6 @@
+targets:
+  $default:
+    builders:
+      reflectable:
+        generate_for:
+          - lib/base_framework/utils/isolate/factory/worker_isolate.dart

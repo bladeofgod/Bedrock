@@ -180,6 +180,9 @@ dependencies:
 
   #flutter_bugly: ^0.2.8
 
+  reflectable: ^2.2.5
+  build_runner: ^1.7.0
+
 
 
 dev_dependencies:

@@ -47,6 +47,12 @@ class IsolatePageState extends BaseState<IsolatePage> {
 
               },
                 child: Text('测试无网 取消所有连接'),),
+              SizedBox(width: 1,height: 20,),
+              RaisedButton(onPressed: ()async{
+                IsolatePoolProxy.getInstance().callTask();
+
+              },
+                child: Text('测试worker'),),
 
             ],
           ),
