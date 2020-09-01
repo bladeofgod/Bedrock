@@ -2,7 +2,7 @@
 // https://github.com/dart-lang/reflectable.
 
 import 'dart:core';
-import 'worker_isolate.dart' as prefix0;
+import 'main.dart' as prefix0;
 
 // ignore_for_file: prefer_adjacent_string_concatenation
 // ignore_for_file: prefer_collection_literals
@@ -37,11 +37,11 @@ final _data = <r.Reflectable, r.ReflectorData>{
             const <int>[-1],
             null,
             {
-              r'==': 0,
-              r'toString': 1,
-              r'noSuchMethod': 0,
-              r'hashCode': 1,
-              r'runtimeType': 1,
+              r'==': 1,
+              r'toString': 0,
+              r'noSuchMethod': 1,
+              r'hashCode': 0,
+              r'runtimeType': 0,
               r'test': 0
             })
       ],
@@ -60,12 +60,8 @@ final _data = <r.Reflectable, r.ReflectorData>{
       {},
       null,
       [
-        const [
-          1,
-          0,
-          const [#bb]
-        ],
-        const [0, 0, null]
+        const [0, 0, null],
+        const [1, 0, null]
       ])
 };
 

@@ -16,6 +16,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:provider/provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:reflectable/reflectable.dart';
 
 import 'base_framework/config/router_manager.dart';
 import 'generated/l10n.dart';
@@ -98,5 +99,33 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
+
+/*
+* 在此处添加你要执行的方法，之后在terminal运行下方代码
+* flutter packages pub run build_runner build
+*
+* 为了避免顺序错误导致的参数异常，这里不使用positionalArguments
+*
+* */
+
+@myReflect
+class WorkList{
+
+  test(){
+    print('  test method');
+  }
+
+}
+
+
+const myReflect = MyReflectable();
+
+class MyReflectable extends Reflectable{
+  const MyReflectable():super(invokingCapability);
+}
+
+
 
 

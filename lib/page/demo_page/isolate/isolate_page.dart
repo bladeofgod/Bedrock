@@ -9,6 +9,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/base_framework/config/net/bedrock_http.dart';
 import 'package:flutter_bedrock/base_framework/utils/isolate/app_private_ioslate.dart';
+import 'package:flutter_bedrock/base_framework/utils/isolate/factory/worker_isolate.dart';
 import 'package:flutter_bedrock/base_framework/utils/isolate/isolate_pool_proxy.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
 
@@ -49,7 +50,7 @@ class IsolatePageState extends BaseState<IsolatePage> {
                 child: Text('测试无网 取消所有连接'),),
               SizedBox(width: 1,height: 20,),
               RaisedButton(onPressed: ()async{
-                IsolatePoolProxy.getInstance().callTask();
+                WorkerMainProxy.getInstance().callTask();
 
               },
                 child: Text('测试worker'),),
