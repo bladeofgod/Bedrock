@@ -99,9 +99,11 @@ class WorkerMainProxy{
 
 }
 
+/////////////////////////////以下为子线程////////////////////////////////////////
+
 /*
 * 中间代理isolate
-*
+* 注意： 请勿使用任何dart:ui内的东西（即涉及到flutter的代码）
 * */
 
 List<TaskWrapper> taskLog = [];
@@ -184,7 +186,7 @@ void runProxy(){
 
 /*
 * 工作isolate
-*
+* 注意： 请勿使用任何dart:ui内的东西（即涉及到flutter的代码）
 * */
 
 

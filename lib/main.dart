@@ -103,17 +103,19 @@ class MyApp extends StatelessWidget {
 
 
 /*
-* 在此处添加你要执行的方法，之后在terminal运行下方代码
+* 在此处添加(修改)你要执行的方法，之后在terminal运行下方代码
 * flutter packages pub run build_runner build
 *
 * 为了避免顺序错误导致的参数异常，这里不使用positionalArguments
 *
 *
-* 注意： 此类内的方法请全部使用命名参数 即 ： {String a} 这样
+* 注意： 此类内的方法请全部使用-命名参数- 即 ： {String a} 这样
 * 避免顺序不一致导致的执行错误
 *
 * 参数/返回支持类型 (null,bool,num,String,double)
 * 或者包含以上类型的 list,map
+*
+* 注意： 请勿使用任何dart:ui内的东西（即flutter的代码）
 * */
 
 @myReflect
