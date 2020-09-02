@@ -60,7 +60,11 @@ final _data = <r.Reflectable, r.ReflectorData>{
       {},
       null,
       [
-        const [0, 0, null],
+        const [
+          0,
+          0,
+          const [#n, #m]
+        ],
         const [1, 0, null]
       ])
 };

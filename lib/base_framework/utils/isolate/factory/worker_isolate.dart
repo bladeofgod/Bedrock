@@ -6,9 +6,13 @@
 
 import 'dart:async';
 import 'dart:isolate';
+import 'dart:math';
 
 
 
+import 'package:flutter_bedrock/base_framework/utils/isolate/factory/task_warpper.dart';
+import 'package:flutter_bedrock/base_framework/utils/isolate/factory/work_isolate_wrapper.dart';
+import 'package:markdown_widget/markdown_widget.dart';
 import 'package:reflectable/reflectable.dart';
 
 import '../../../../main.dart';
@@ -26,11 +30,14 @@ const int kSendPortKey = 6633;//第二个元素则为 sendPort
 
 const int kTaskKey = 8844; // 第二个元素为task
 
+const int kTaskParamsKey = 10055; // 第二个元素为 方法对应的 参数
+
+const int kTaskResult = 15500;//任务返回结果
+
 ///
 const String kMethodName = 'kMethodName';
 const String kNameArgs = 'kNameArgs';
 
-final List<String> orders = [];
 
 /*
 * 此类在 main isolate
@@ -49,22 +56,43 @@ class WorkerMainProxy{
 
   WorkerMainProxy._();
 
-  void callTask()async{
+  final ReceivePort receivePort = ReceivePort();
+  Isolate isolate;
+  SendPort childPort;
 
-    final ReceivePort receivePort = ReceivePort();
-    Isolate isolate = await Isolate.spawn(proxyHandler, receivePort.sendPort);
-    SendPort childPort;
-    receivePort.listen((message) {
-      print('msg from proxy $message');
-      if(message[0] == kSendPortKey){
-        childPort = message[1];
-        childPort.send([kTaskKey,'test']);
-      }
-    });
+  List<TaskWrapper> taskCache = [];
 
+  ///nameArgs  key: params name
+  ///value: params value .
+  ///and type can only 'num,null,double,String'
+  void invokeWorker({String methodName,Map<String,dynamic> nameArgs})async{
+    taskCache.add(TaskWrapper(methodName, nameArgs));
+    if(isolate == null){
+      isolate  = await Isolate.spawn(proxyHandler, receivePort.sendPort);
+      receivePort.listen((message) {
+        print('msg from proxy $message');
+        if(message[0] == kSendPortKey){
+          childPort = message[1];
+          sendTask();
+        }else if(message[0]){
+          ///要考虑多线程不同步的情况
+          //任务返回结果
+        }
+      });
+    }else if(childPort != null){
+      sendTask();
+    }
 
   }
 
+  void sendTask(){
+    if(taskCache.length > 0){
+      taskCache.forEach((element) {
+        childPort.send([kTaskKey,element.methodName,element.nameArgs]);
+      });
+      taskCache.clear();
+    }
+  }
 
 }
 
@@ -73,45 +101,83 @@ class WorkerMainProxy{
 *
 * */
 
+List<TaskWrapper> taskLog = [];
+
+final ReceivePort receiveMainPort = ReceivePort();
+final SendPort sendPortOfProxy = receiveMainPort.sendPort;
+
+final Map<int,WorkIsolateWrapper> workers = {};
+
 void proxyHandler(SendPort mainPort)async{
-  final ReceivePort receivePort = ReceivePort();
-  final SendPort sendPort = receivePort.sendPort;
-  receivePort.listen((message) {
+
+  receiveMainPort.listen((message) {
     print('msg from main  $message');
     if(message[0] == kTaskKey){
-      orders.add(message[1]);
+      String name = message[1];
+      Map<String,dynamic> args = message[2];
+      TaskWrapper wrapper = TaskWrapper(name,args);
+      taskLog.add(wrapper);
     }
 
   });
 
-  mainPort.send([kSendPortKey,sendPort]);
-
-  ///connect with child isolate
+  mainPort.send([kSendPortKey,sendPortOfProxy]);
 
 
-  final ReceivePort proxyPort = ReceivePort();
-  final SendPort proxySendPort = proxyPort.sendPort;
-  final Isolate isolate = await Isolate.spawn(_workerIsolate, proxySendPort);
+  /// create 3 work isolate
 
-  SendPort childSendPort;
+  List.generate(3, (index) async{
+    final ReceivePort proxyPort = ReceivePort();
+    final SendPort proxySendPort = proxyPort.sendPort;
+    Isolate.spawn(_workerIsolate, proxySendPort,paused: true)
+      .then((isolate) {
+      int id = Random().nextInt(1000);
+      while(workers.containsKey(id)){
+        id = Random().nextInt(1000);
+      }
+      var worker = WorkIsolateWrapper(proxyPort, proxySendPort, isolate);
+      workers[id] = worker;
+      worker.init();
+    });
 
-  proxyPort.listen((message) {
-    print('msg from child $message');
-    if(message[0] == kSendPortKey){
-      childSendPort = message[1];
-      runTask(childSendPort);
-    }
 
   });
+
+  print('works length  : ${workers.length}');
+  runProxy();
+
+
+//  SendPort childSendPort;
+//
+//  proxyPort.listen((message) {
+//    print('msg from child $message');
+//    if(message[0] == kSendPortKey){
+//      childSendPort = message[1];
+//      runTask(childSendPort);
+//    }
+//
+//  });
 
 }
 
-void runTask(SendPort port){
-  final timer = Timer.periodic(Duration(seconds: 1), (timer) {
-    String methodName = orders.first;
-    port.send([kTaskKey,{kMethodName:methodName,
-      kNameArgs:{'bb':'你好'}}]);
-    orders.removeWhere((element) => element==methodName);
+void runProxy(){
+  final timer = Timer.periodic(Duration(milliseconds: 1), (timer) {
+    if(taskLog.length>0){
+      workers.forEach((key, value) {
+        if(taskLog.length > 0){
+          if(value.isStandBy()){
+            TaskWrapper task = taskLog.first;
+            value.setStatus(false);// not free
+            value.workSendPort.send([kTaskKey,{kMethodName:task.methodName,
+              kNameArgs:task.nameArgs}]);
+            taskLog.removeWhere((element) => element == task);
+          }
+
+        }
+
+      });
+
+    }
   });
 }
 
@@ -140,10 +206,11 @@ void _workerIsolate(SendPort proxyPort){
         (method[kNameArgs] as Map).forEach((key, value) {
           nameArguments[Symbol(key)] = value;
         });
+        print('call   $nameArguments');
         final WorkList workerList = WorkList();
         final InstanceMirror instanceMirror = myReflect.reflect(workerList);
-        final ClassMirror classMirror = myReflect.reflectType(WorkList);
-        instanceMirror.invoke(mn, []);
+        //final ClassMirror classMirror = myReflect.reflectType(WorkList);
+        instanceMirror.invoke(mn, [],nameArguments);
       }
 
 

@@ -108,14 +108,21 @@ class MyApp extends StatelessWidget {
 *
 * 为了避免顺序错误导致的参数异常，这里不使用positionalArguments
 *
+*
+* 注意： 此类内的方法请全部使用命名参数 即 ： {String a} 这样
+* 避免顺序不一致导致的执行错误
+*
+* 参数/返回支持类型 (null,bool,num,String,double)
+* 或者包含以上类型的 list,map
 * */
 
 @myReflect
 class WorkList{
 
-  test(){
-    print('  test method');
+  test({String n,String m}){
+    print('  test method   $n');
   }
+
 
 }
 

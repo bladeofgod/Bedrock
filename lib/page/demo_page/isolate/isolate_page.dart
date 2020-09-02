@@ -25,6 +25,8 @@ class IsolatePageState extends BaseState<IsolatePage> {
 
   String result = '查看log';
 
+
+  int count = 1;
   @override
   Widget build(BuildContext context) {
     return switchStatusBar2Dark(
@@ -50,7 +52,11 @@ class IsolatePageState extends BaseState<IsolatePage> {
                 child: Text('测试无网 取消所有连接'),),
               SizedBox(width: 1,height: 20,),
               RaisedButton(onPressed: ()async{
-                WorkerMainProxy.getInstance().callTask();
+                WorkerMainProxy.getInstance()
+                ///参数一：方法名字，参数二：方法对应的命名参数，
+                ///务必确保参数名与WorkList中的一致
+                    .invokeWorker(methodName: 'test',nameArgs: {'n':'第$count次唤起','m':'第二个参数'});
+                count++;
 
               },
                 child: Text('测试worker'),),
