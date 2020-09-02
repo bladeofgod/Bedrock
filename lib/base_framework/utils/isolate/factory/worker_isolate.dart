@@ -73,7 +73,7 @@ class WorkerMainProxy{
       initializing = true;
       isolate  = await Isolate.spawn(proxyHandler, receivePort.sendPort);
       receivePort.listen((message) {
-        print('msg from proxy $message');
+
         if(message[0] == kSendPortKey){
           childPort = message[1];
           sendTask();
@@ -114,7 +114,6 @@ final Map<int,WorkIsolateWrapper> workers = {};
 void proxyHandler(SendPort mainPort)async{
 
   receiveMainPort.listen((message) {
-    print('msg from main  $message');
     if(message[0] == kTaskKey){
       String name = message[1];
       Map<String,dynamic> args = message[2];
@@ -138,7 +137,7 @@ void proxyHandler(SendPort mainPort)async{
       while(workers.containsKey(id)){
         id = Random().nextInt(1000);
       }
-      var worker = WorkIsolateWrapper(proxyPort, proxySendPort, isolate);
+      var worker = WorkIsolateWrapper(id,proxyPort, proxySendPort, isolate);
       workers[id] = worker;
       worker.init();
     });
@@ -146,7 +145,6 @@ void proxyHandler(SendPort mainPort)async{
 
   });
 
-  print('works length  : ${workers.length}');
   runProxy();
 
 
@@ -171,7 +169,6 @@ void runProxy(){
           if(value.isStandBy()){
             TaskWrapper task = taskLog.first;
             value.setStatus(false);// not free
-            print('worker id ----------  $key');
             value.workSendPort.send([kTaskKey,{kMethodName:task.methodName,
               kNameArgs:task.nameArgs}]);
             taskLog.removeWhere((element) => element == task);
@@ -204,7 +201,6 @@ void _workerIsolate(SendPort proxyPort){
   receivePort.listen((message) {
     if(message[0] == kTaskKey){
       ///执行任务
-      print('call method ${message[1]}');
       Map method = message[1];
       String mn = method[kMethodName];
       Map<Symbol,dynamic> nameArguments = {};
@@ -213,7 +209,7 @@ void _workerIsolate(SendPort proxyPort){
         (method[kNameArgs] as Map).forEach((key, value) {
           nameArguments[Symbol(key)] = value;
         });
-        print('call   $nameArguments');
+
         final WorkList workerList = WorkList();
         final InstanceMirror instanceMirror = myReflect.reflect(workerList);
         //final ClassMirror classMirror = myReflect.reflectType(WorkList);
@@ -221,7 +217,7 @@ void _workerIsolate(SendPort proxyPort){
         ///work done
         ///结构暂定为 [order flag, result(Map)]
         ///个人认为这种多线程处理任务，最好不要有返回结果 ....待设计
-        proxyPort.send([kWorkDone,{'result':'done'}]);
+        proxyPort.send([kWorkDone,{'method':mn,'args':nameArguments.toString()}]);
       }
 
     }
