@@ -12,8 +12,11 @@ enum NetStatus{
 enum NetType{
   wifi,mobile,none
 }
-
-class AppStatusModel extends ChangeNotifier{
+/*
+* 如果这个类不适合你的需求，可以根据自己的需求更改。
+* 仅做参考
+* */
+class AppStatusModel {
   static AppStatusModel _singleton;
   factory AppStatusModel() => _getInstance();
   static AppStatusModel _getInstance(){
@@ -27,7 +30,6 @@ class AppStatusModel extends ChangeNotifier{
   NetStatus netStatus = NetStatus.Enable;
   setNetStatus(NetStatus status){
     netStatus = status;
-    notifyListeners();
   }
 
   ///网络连接方式
@@ -35,7 +37,6 @@ class AppStatusModel extends ChangeNotifier{
   NetType netType ;
   setNetType(NetType type){
     netType = type;
-    notifyListeners();
   }
 
 

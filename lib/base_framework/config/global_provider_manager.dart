@@ -30,8 +30,6 @@ List<SingleChildWidget> independentServices = [
   ChangeNotifierProvider<DeviceModel>.value(value: DeviceModel()),//设备model
   //global app cache model
   ChangeNotifierProvider<AppCacheModel>.value(value: AppCacheModel()),//项目缓存model
-  //app 状态
-  //ChangeNotifierProvider<AppStatusModel>.value(value: AppStatusModel()),
 //  ///这里应该放入一个购物车
 //  ChangeNotifierProvider<GlobalCartGoodsModel>.value(value:
 //  GlobalCartGoodsModel()),
