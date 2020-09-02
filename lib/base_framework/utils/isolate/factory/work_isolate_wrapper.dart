@@ -33,6 +33,9 @@ class WorkIsolateWrapper {
       if (message[0] == kSendPortKey) {
         workSendPort = message[1];
         initSuccess = true;
+      }else if(message[0] == kWorkDone){
+        ///work done
+        setStatus(true);
       }
     });
   }

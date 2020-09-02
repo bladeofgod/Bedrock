@@ -62,12 +62,15 @@ class WorkerMainProxy{
 
   List<TaskWrapper> taskCache = [];
 
+  bool initializing = false;
+
   ///nameArgs  key: params name
   ///value: params value .
   ///and type can only 'num,null,double,String'
   void invokeWorker({String methodName,Map<String,dynamic> nameArgs})async{
     taskCache.add(TaskWrapper(methodName, nameArgs));
-    if(isolate == null){
+    if(isolate == null && !initializing){
+      initializing = true;
       isolate  = await Isolate.spawn(proxyHandler, receivePort.sendPort);
       receivePort.listen((message) {
         print('msg from proxy $message');
@@ -79,7 +82,7 @@ class WorkerMainProxy{
           //任务返回结果
         }
       });
-    }else if(childPort != null){
+    }else if(isolate != null && childPort != null){
       sendTask();
     }
 
@@ -168,6 +171,7 @@ void runProxy(){
           if(value.isStandBy()){
             TaskWrapper task = taskLog.first;
             value.setStatus(false);// not free
+            print('worker id ----------  $key');
             value.workSendPort.send([kTaskKey,{kMethodName:task.methodName,
               kNameArgs:task.nameArgs}]);
             taskLog.removeWhere((element) => element == task);
@@ -185,6 +189,9 @@ void runProxy(){
 * 工作isolate
 *
 * */
+
+
+const int kWorkDone = 98766; //处理完后的回复tag
 
 void _workerIsolate(SendPort proxyPort){
   initializeReflectable();
@@ -211,8 +218,11 @@ void _workerIsolate(SendPort proxyPort){
         final InstanceMirror instanceMirror = myReflect.reflect(workerList);
         //final ClassMirror classMirror = myReflect.reflectType(WorkList);
         instanceMirror.invoke(mn, [],nameArguments);
+        ///work done
+        ///结构暂定为 [order flag, result(Map)]
+        ///个人认为这种多线程处理任务，最好不要有返回结果 ....待设计
+        proxyPort.send([kWorkDone,{'result':'done'}]);
       }
-
 
     }
 
