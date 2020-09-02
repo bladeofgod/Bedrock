@@ -42,14 +42,14 @@ class IsolatePageState extends BaseState<IsolatePage> {
                 AppPrivateIsolate.getInstance().initNetObserver();
 
               },
-              child: Text('get work'),),
+              child: Text('get work 注意日志'),),
               SizedBox(width: 1,height: 20,),
               RaisedButton(onPressed: ()async{
                 debugPrint('请求 google');
                 bedRock.get('https://www.google.com');
 
               },
-                child: Text('测试无网 取消所有连接'),),
+                child: Text('测试无网 取消所有连接，需要先启动上面的按钮'),),
               SizedBox(width: 1,height: 20,),
               RaisedButton(onPressed: ()async{
                 List.generate(100, (index){
