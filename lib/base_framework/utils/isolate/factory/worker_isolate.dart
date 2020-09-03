@@ -77,7 +77,7 @@ class WorkerMainProxy{
         if(message[0] == kSendPortKey){
           childPort = message[1];
           sendTask();
-        }else if(message[0]){
+        }else if(message[0]==kTaskResult){
           ///要考虑多线程不同步的情况
           //任务返回结果
         }
