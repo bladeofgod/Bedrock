@@ -2,8 +2,7 @@
 
     一款基于MVVM+Provider的快速开发框架。
     欢迎提issue和pr，如果对你有帮助的话，给个star吧。 ^.^
-    
-[   带图介绍](https://juejin.im/post/5edc91edf265da76c76b18a5)
+
 
 [更新日志](https://github.com/bladeofgod/Bedrock/blob/master/update_log.md)
 
