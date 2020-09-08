@@ -140,13 +140,13 @@ class Router{
         return pageBuilder.wrapWithScaleAnim(ScalePage());
 
       case RouteName.web_page:
-        return pageBuilder.wrapWithNoAnim(WebPage(settings.arguments));
+        return pageBuilder.wrapWithNoAnim(WebPageState(settings.arguments).generateWidget());
       case RouteName.html_page:
         return pageBuilder.wrapWithNoAnim(HtmlPage(settings.arguments));
 
       case RouteName.editor_image_page:
         ///外层为动画
-        return pageBuilder.wrapWithSlideTopAnim(ImageEditor(settings.arguments));
+        return pageBuilder.wrapWithSlideTopAnim(ImageEditorState(settings.arguments).generateWidget());
       case RouteName.show_big_image:
         return pageBuilder.wrapWithNoAnim(DetailImageWidget(settings.arguments));
 //      case RouteName.dialog_progress:

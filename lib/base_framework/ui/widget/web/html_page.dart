@@ -25,6 +25,8 @@ class HtmlPage extends StatefulWidget{
 
 class HtmlPageState extends BaseState<HtmlPage> {
 
+  final Map arguments;
+
   final String htmlContent;
 
 

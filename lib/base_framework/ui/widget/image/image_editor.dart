@@ -10,33 +10,24 @@ import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/base_framework/utils/image_helper.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
+import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 import 'package:flutter_bedrock/generated/l10n.dart';
 import 'package:image_editor/image_editor.dart' as ie;
 import 'package:path_provider/path_provider.dart';
 
 ///图片存储在了沙盒里，理论上兼容华为
 
-class ImageEditor extends StatefulWidget{
+class ImageEditorState extends PageState {
 
   final Map arguments;
-  ImageEditor(this.arguments);
-
-  @override
-  State<StatefulWidget> createState() {
-
-    return ImageEditorState(arguments["name"],arguments["image"]);
-  }
-
-}
-
-class ImageEditorState extends BaseState<ImageEditor> {
 
   final String name;///图片名字
 
   final Uint8List _memoryImage;///图片数量
 
 
-  ImageEditorState(this.name, this._memoryImage);
+  ImageEditorState(this.arguments)
+    :name = arguments["name"],_memoryImage = arguments["image"];
 
   final GlobalKey<ExtendedImageEditorState> editorKey =
   GlobalKey<ExtendedImageEditorState>();

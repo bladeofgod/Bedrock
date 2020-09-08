@@ -10,6 +10,8 @@ import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 
 /// * 如果是页面，继承 [PageState]
 /// * 如果是view，继承 [ViewState]
+///
+/// 此处扩展功能 应该只与 view相关
 
 abstract class ViewState extends BaseState with WidgetGenerator{
 

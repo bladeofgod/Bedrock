@@ -16,6 +16,9 @@ import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
 /// * 如果是页面，继承 [PageState]
 /// * 如果是view，继承 [ViewState]
 
+
+/// 此处扩展功能应该只与page相关
+
 abstract class PageState extends BaseState with WidgetGenerator{
 
   double marginLeft = 0.0;

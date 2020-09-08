@@ -7,28 +7,19 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
+import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
-class WebPage extends StatefulWidget{
+
+class WebPageState extends PageState{
 
   final Map arguments;
-
-
-  WebPage(this.arguments);
-
-  @override
-  State<StatefulWidget> createState() {
-    return WebPageState(arguments['url']);
-  }
-
-}
-
-class WebPageState extends BaseState<WebPage> {
 
   final String url;
 
 
-  WebPageState(this.url);
+  WebPageState(this.arguments)
+    :url = arguments['url'];
 
   @override
   Widget build(BuildContext context) {

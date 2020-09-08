@@ -14,6 +14,9 @@ import 'package:oktoast/oktoast.dart';
 /// * 请勿直接继承此类
 /// * 如果是页面，继承 [PageState]
 /// * 如果是view，继承 [ViewState]
+///
+/// 此处扩展功能应该是 page和view通用功能
+
 
 abstract class BaseState<T extends StatefulWidget> extends State<T>  {
 
@@ -89,7 +92,7 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>  {
 
 
 /*
-  * app 生命周期，建议在需要的页面自己监听
+  * app 生命周期，建议在需要的地方自己注册监听
   *
   * */
 
