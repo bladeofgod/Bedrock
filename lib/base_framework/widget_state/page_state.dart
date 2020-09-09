@@ -12,10 +12,11 @@ import 'package:flutter_bedrock/base_framework/config/router_manager.dart';
 import 'package:flutter_bedrock/base_framework/utils/image_helper.dart';
 import 'package:flutter_bedrock/base_framework/view_model/view_state.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
+import 'package:flutter_bedrock/base_framework/widget_state/widget_state.dart';
 
 
 /// * 如果是页面，继承 [PageState]
-/// * 如果是view，继承 [ViewState]
+/// * 如果是view，继承 [WidgetState]
 
 
 /// 此处扩展功能应该只与page相关
@@ -89,7 +90,7 @@ abstract class PageState extends BaseState with WidgetGenerator,RouteAware{
               },
               onHorizontalDragEnd: (dragEnd){
                 if(dragPosition > getScreenWidth()/5){
-                  Navigator.of(context).pop();
+                  pop();
                 }else{
                   marginLeft = 0.0;
                   setState(() {
@@ -152,8 +153,8 @@ abstract class PageState extends BaseState with WidgetGenerator,RouteAware{
   Widget buildAppBarLeft(){
     return GestureDetector(
       onTap: (){
-        if(Navigator.of(context).canPop()){
-          Navigator.of(context).pop();
+        if(canPop()){
+          pop();
         }else{
           ///增加需要的提示信息
         }

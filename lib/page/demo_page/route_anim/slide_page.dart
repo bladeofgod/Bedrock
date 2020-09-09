@@ -3,16 +3,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
+import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 
-class SlidePage extends StatefulWidget{
-  @override
-  State<StatefulWidget> createState() {
-    return SlidePageState();
-  }
-
-}
-
-class SlidePageState extends BaseState<SlidePage> {
+class SlidePageState extends PageState {
   @override
   Widget build(BuildContext context) {
     return switchStatusBar2Dark(child: Container(

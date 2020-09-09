@@ -11,7 +11,7 @@ import 'package:flutter_bedrock/base_framework/ui/widget/progress_widget.dart';
 import 'package:flutter_bedrock/base_framework/ui/widget/route/route_aware_widget.dart';
 import 'package:flutter_bedrock/base_framework/utils/image_helper.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
-import 'package:flutter_bedrock/base_framework/widget_state/view_state.dart';
+import 'package:flutter_bedrock/base_framework/widget_state/widget_state.dart';
 import 'package:oktoast/oktoast.dart';
 
 /// * 请勿直接继承此类
@@ -128,24 +128,48 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>  {
 
 }
 
+///widget生成器
+///并且装配原flutter Widget的功能
+
 mixin WidgetGenerator on BaseState implements _RouteGenerator,_NavigateActor{
+
+  ///push时，需要每次调用一下这个方法
+  ///可以设计成不调用此方法，但是孰优孰劣还不清楚，例如：push时，将变成TargetState().push
+  ///有点怪
   Widget generateWidget({Key key}){
     return _CommonWidget(state: this,key: key,);
   }
 
   @override
-  PageRoute<T> buildRoute<T>(Widget page) {
-    return pageBuilder.wrapWithNoAnim(page);
+  PageRoute<T> buildRoute<T>(Widget page,{PageAnimation animation}) {
+    switch(animation){
+
+      case PageAnimation.Fade:
+        return pageBuilder.wrapWithFadeAnim(page);
+      case PageAnimation.Scale:
+        return pageBuilder.wrapWithScaleAnim(page);
+      case PageAnimation.Slide:
+        return pageBuilder.wrapWithSlideAnim(page);
+      default:
+        return pageBuilder.wrapWithNoAnim(page);
+    }
+
   }
 
   @override
-  Future push(Widget page,{String recordName}) {
-    return Navigator.of(context).push(buildRoute(page));
+  Future push(Widget page,{String recordName,PageAnimation animation = PageAnimation.Non}) {
+    return Navigator.of(context).push(buildRoute(page,animation: animation));
   }
 
   @override
   void pop<T extends Object>({T result,String recordName}) {
     Navigator.of(context).pop(result);
+  }
+
+
+  @override
+  bool canPop() {
+    return Navigator.of(context).canPop();
   }
 }
 
@@ -160,6 +184,8 @@ abstract class _RouteGenerator {
 abstract class _NavigateActor{
   Future push(Widget page,{String recordName});
   void pop<T extends Object>({T result,String recordName});
+
+  bool canPop();
 }
 
 class _CommonWidget extends StatefulWidget{

@@ -10,6 +10,11 @@ import 'package:flutter_bedrock/base_framework/ui/anim/page_route_anim/slide_ani
 
 final PageAnimationBuilder pageBuilder = PageAnimationBuilder.getInstance();
 
+enum PageAnimation{
+  Fade,Scale,Slide,Non
+}
+
+
 class PageAnimationBuilder{
 
   static PageAnimationBuilder singleton;

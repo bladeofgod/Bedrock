@@ -4,17 +4,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
+import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 
-class TimerPage extends StatefulWidget{
-  @override
-  State<StatefulWidget> createState() {
-    return TimerPageState();
-  }
-  
-}
 
-class TimerPageState extends BaseState<TimerPage> {
+
+class TimerPageState extends PageState {
   
   String text = '''
   有的时候需要在用户滚动到某个item后请求接口并刷新，但是并不能确定用户会停在这个item。如果不考虑这些我，

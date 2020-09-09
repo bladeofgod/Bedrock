@@ -7,19 +7,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/base_framework/config/router_manager.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
+import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
+import 'package:flutter_bedrock/page/demo_page/other/little_util_page.dart';
+import 'package:flutter_bedrock/page/demo_page/other/request_permission_page.dart';
+import 'package:flutter_bedrock/page/demo_page/other/scroll_page.dart';
+import 'package:flutter_bedrock/page/demo_page/other/timer_page.dart';
 
 ///实验室 随便写的。
 
 
-class OtherDemoPage extends StatefulWidget{
-  @override
-  State<StatefulWidget> createState() {
-    return OtherDemoPageState();
-  }
 
-}
-
-class OtherDemoPageState extends BaseState<OtherDemoPage> {
+class OtherDemoPageState extends PageState {
   @override
   Widget build(BuildContext context) {
     return switchStatusBar2Dark(child: Container(
@@ -31,28 +29,28 @@ class OtherDemoPageState extends BaseState<OtherDemoPage> {
           RaisedButton(
             child: Text('滚动事件的监听'),
             onPressed: (){
-              Navigator.of(context).pushNamed(RouteName.scroll_page);
+              push(ScrollPageState().generateWidget());
             },
           ),
           getSizeBox(height: getWidthPx(40)),
           RaisedButton(
             child: Text('stream Util'),
             onPressed: (){
-              Navigator.of(context).pushNamed(RouteName.little_util_page);
+              push(LittleUtilPageState().generateWidget());
             },
           ),
           getSizeBox(height: getWidthPx(40)),
           RaisedButton(
             child: Text('滑动中适时刷新view的经验'),
             onPressed: (){
-              Navigator.of(context).pushNamed(RouteName.timer_page);
+              push(TimerPageState().generateWidget());
             },
           ),
           getSizeBox(height: getWidthPx(40)),
           RaisedButton(
             child: Text('请求权限'),
             onPressed: (){
-              Navigator.of(context).pushNamed(RouteName.permissions_page);
+              push(RequestPermissionsPageState().generateWidget());
             },
           ),
         ],

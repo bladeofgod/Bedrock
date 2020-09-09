@@ -7,11 +7,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/base_framework/config/router_manager.dart';
+import 'package:flutter_bedrock/base_framework/ui/widget/detail_image_widget.dart';
 import 'package:flutter_bedrock/base_framework/utils/show_image_util.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
+import 'package:flutter_bedrock/base_framework/widget_state/widget_state.dart';
 
-class FirstBanner extends StatefulWidget{
 
+class FirstBannerState extends WidgetState {
 
   final List<String> imageList;
 
@@ -19,18 +21,9 @@ class FirstBanner extends StatefulWidget{
 
   final BorderRadius borderRadius;
 
-  FirstBanner({this.imageList,this.canShowBigImage = false,this.borderRadius = BorderRadius.zero});
-
-  @override
-  State<StatefulWidget> createState() {
-
-    return FirstBannerState();
-  }
-
-}
-
-class FirstBannerState extends BaseState<FirstBanner> {
   int imageIndex = 1;
+
+  FirstBannerState({this.imageList, this.canShowBigImage = false,this.borderRadius = BorderRadius.zero});
 
   @override
   Widget build(BuildContext context) {
@@ -42,24 +35,25 @@ class FirstBannerState extends BaseState<FirstBanner> {
           enableInfiniteScroll: true,
           height: 292,
           viewportFraction: 1.0,
-          items: widget.imageList.map((item) {
-            if(widget.canShowBigImage){
+          items: imageList.map((item) {
+            if(canShowBigImage){
               return GestureDetector(
                 onTap: (){
-                  if(widget.canShowBigImage){
-                    Navigator.of(context).pushNamed(RouteName.show_big_image,
-                        arguments: {"imageList":widget.imageList,"initIndex":(imageIndex-1)});
+                  if(canShowBigImage){
+                    push(DetailImageWidgetState(imageList,initIndex: imageIndex-1)
+                        .generateWidget());
+
                   }
                 },
                 child: ClipRRect(
-                  borderRadius:widget.borderRadius??BorderRadius.circular(getHeightPx(10)) ,
+                  borderRadius:borderRadius??BorderRadius.circular(getHeightPx(10)) ,
                   child: ShowImageUtil.showImageWithDefaultError(item,  getWidthPx(622),
                       getHeightPx(292),boxFit: BoxFit.cover ),
                 ),
               );
             }else{
               return ClipRRect(
-                borderRadius: widget.borderRadius??BorderRadius.circular(getHeightPx(10)),
+                borderRadius: borderRadius??BorderRadius.circular(getHeightPx(10)),
                 child: ShowImageUtil.showImageWithDefaultError(item,  getWidthPx(622),
                     getHeightPx(292),boxFit: BoxFit.cover,borderRadius: getHeightPx(10)),
               );
@@ -82,7 +76,7 @@ class FirstBannerState extends BaseState<FirstBanner> {
                 borderRadius: BorderRadius.circular(getHeightPx(14))
             ),
             child: Text(
-              "$imageIndex/${widget.imageList.length}",style: TextStyle(fontSize: getSp(22),color: Colors.white),
+              "$imageIndex/${imageList.length}",style: TextStyle(fontSize: getSp(22),color: Colors.white),
             ),
           ),
         ),

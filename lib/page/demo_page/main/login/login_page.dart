@@ -7,18 +7,12 @@ import 'package:flutter_bedrock/base_framework/ui/widget/progress_widget.dart';
 import 'package:flutter_bedrock/base_framework/ui/widget/provider_widget.dart';
 import 'package:flutter_bedrock/base_framework/view_model/app_model/user_view_model.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
+import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 import 'package:flutter_bedrock/page/demo_page/main/login/login_view_model.dart';
 import 'package:provider/provider.dart';
 
-class LoginPage extends StatefulWidget{
-  @override
-  State<StatefulWidget> createState() {
-    return LoginPageState();
-  }
 
-}
-
-class LoginPageState extends BaseState<LoginPage> {
+class LoginPageState extends PageState {
 
 
   LoginViewModel loginViewModel;
@@ -39,7 +33,7 @@ class LoginPageState extends BaseState<LoginPage> {
 
                 if(userModel.hasUser){
                   WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-                    Navigator.of(context).pop();
+                    pop();
                   });
                 }
                 loginViewModel = loginModel;

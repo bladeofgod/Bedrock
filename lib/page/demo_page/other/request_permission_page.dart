@@ -2,18 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
+import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-class RequestPermissionsPage extends StatefulWidget{
-  @override
-  State<StatefulWidget> createState() {
-    return RequestPermissionsPageState();
-  }
 
-}
-
-class RequestPermissionsPageState extends BaseState<RequestPermissionsPage> {
+class RequestPermissionsPageState extends PageState {
 
   String status = '权限未请求';
 

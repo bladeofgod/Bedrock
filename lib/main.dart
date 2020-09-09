@@ -37,7 +37,7 @@ void main()async{
     ErrorWidget.builder = (FlutterErrorDetails details){
       Zone.current.handleUncaughtError(details.exception, details.stack);
       ///出现异常时会进入下方页面（flutter原有的红屏），
-      return ExceptionPage(details.exception.toString(),details.stack.toString());
+      return ExceptionPageState(details.exception.toString(),details.stack.toString()).generateWidget();
     };
   },onError: (Object object,StackTrace trace){
     ///你可以将下面日志上传到服务器，用于release后的错误处理
@@ -86,13 +86,15 @@ class MyApp extends StatelessWidget {
                 navigatorObservers: [
                   routeObserver
                 ],
-                onGenerateRoute: Router.generateRoute,
-                onUnknownRoute: (settings){
-                  return PageRouteBuilder(pageBuilder: (ctx,_,__){
-                    return UnKnowPage();
-                  });
-                },
-                initialRoute: RouteName.demo_page,
+              home: DemoPageState().generateWidget(),
+              ///改版啦，这里用不到，你可以删除
+//                onGenerateRoute: Router.generateRoute,
+//                onUnknownRoute: (settings){
+//                  return PageRouteBuilder(pageBuilder: (ctx,_,__){
+//                    return UnKnowPage();
+//                  });
+//                },
+//                initialRoute: RouteName.demo_page,
               ),
             );
           }),),

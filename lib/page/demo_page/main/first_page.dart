@@ -9,6 +9,10 @@ import 'package:flutter_bedrock/base_framework/utils/show_image_util.dart';
 import 'package:flutter_bedrock/base_framework/view_model/app_model/app_cache_model.dart';
 import 'package:flutter_bedrock/base_framework/view_model/app_model/user_view_model.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
+import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
+import 'package:flutter_bedrock/page/demo_page/main/first/cache_data_page.dart';
+import 'package:flutter_bedrock/page/demo_page/main/first/ffloat_page.dart';
+import 'package:flutter_bedrock/page/demo_page/main/first/update_page.dart';
 import 'package:flutter_bedrock/page/demo_page/main/first/view_model/first_view_model.dart';
 import 'package:flutter_bedrock/page/demo_page/main/first/widget/first_banner.dart';
 import 'package:flutter_bedrock/page/demo_page/main/first/widget/first_skeleton_page.dart';
@@ -19,28 +23,19 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import 'first/entity/first_card_entity.dart';
 
-class FirstPage extends StatefulWidget {
+
+class FirstPageState extends PageState with AutomaticKeepAliveClientMixin {
 
   final TransportScrollController transportScrollController;
 
-
-  FirstPage(this.transportScrollController);
-
-  @override
-  State<StatefulWidget> createState() {
-    return FirstPageState();
-  }
-
-}
-
-class FirstPageState extends BaseState<FirstPage> with AutomaticKeepAliveClientMixin {
-
   ScrollController scrollController;
+
+  FirstPageState(this.transportScrollController);
 
   @override
   void initState() {
     scrollController = ScrollController();
-    widget.transportScrollController(scrollController);
+    transportScrollController(scrollController);
     super.initState();
   }
 
@@ -50,7 +45,7 @@ class FirstPageState extends BaseState<FirstPage> with AutomaticKeepAliveClientM
 
   @override
   Widget build(BuildContext context) {
-
+    super.build(context);
     return switchStatusBar2Dark(
         child: Consumer2<UserViewModel,AppCacheModel>(
       builder: (ctx,userViewModel,cacheModel,child){
@@ -154,11 +149,11 @@ class FirstPageState extends BaseState<FirstPage> with AutomaticKeepAliveClientM
     return GestureDetector(
       onTap: (){
         if(str.contains('FFloat')){
-          Navigator.of(context).pushNamed(RouteName.ffloat_page);
+          push(FFloatPageState().generateWidget());
         }else if(str.contains('Cache')){
-          Navigator.of(context).pushNamed(RouteName.cache_data_page);
+          push(CacheDataPageState().generateWidget());
         }else if(str.contains('更新')){
-          Navigator.of(context).pushNamed(RouteName.update_page);
+          push(UpdatePageState().generateWidget());
         }
         else{
           showToast('施工中...');
@@ -202,10 +197,10 @@ class FirstPageState extends BaseState<FirstPage> with AutomaticKeepAliveClientM
     return Container(
       width: getWidthPx(622),
       height: getWidthPx(292),
-      child: FirstBanner(
+      child: FirstBannerState(
         borderRadius: BorderRadius.circular(getHeightPx(6)),
         imageList: firstViewModel.firstEntity.banner,
-      ),
+      ).generateWidget(),
     );
   }
 

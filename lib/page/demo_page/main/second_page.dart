@@ -4,12 +4,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/base_framework/config/router_manager.dart';
+import 'package:flutter_bedrock/base_framework/ui/widget/detail_image_widget.dart';
 import 'package:flutter_bedrock/base_framework/ui/widget/provider_widget.dart';
 import 'package:flutter_bedrock/base_framework/utils/refresh_helper.dart';
 import 'package:flutter_bedrock/base_framework/utils/show_image_util.dart';
 import 'package:flutter_bedrock/base_framework/view_model/app_model/app_cache_model.dart';
 import 'package:flutter_bedrock/base_framework/view_model/app_model/user_view_model.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
+import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 import 'package:flutter_bedrock/page/demo_page/main/second/entity/second_entity.dart';
 import 'package:flutter_bedrock/page/demo_page/main/second/view_model/second_view_model.dart';
 import 'package:provider/provider.dart';
@@ -17,15 +19,9 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 
 
-class SecondPage extends StatefulWidget{
-  @override
-  State<StatefulWidget> createState() {
-    return SecondPageState();
-  }
 
-}
 
-class SecondPageState extends BaseState<SecondPage> with AutomaticKeepAliveClientMixin {
+class SecondPageState extends PageState with AutomaticKeepAliveClientMixin {
 
 
   SecondViewModel secondViewModel;
@@ -79,8 +75,7 @@ class SecondPageState extends BaseState<SecondPage> with AutomaticKeepAliveClien
   Widget buildItem(SecondEntity entity,int index){
     return GestureDetector(
       onTap: (){
-        Navigator.of(context).pushNamed(RouteName.show_big_image
-          ,arguments: {"imageList":[entity.img],"initIndex":0});
+        push(DetailImageWidgetState([entity.img]).generateWidget());
       },
       child: Container(
         color: index%2 == 0 ?  Colors.greenAccent[400]:Colors.lightBlueAccent[400],

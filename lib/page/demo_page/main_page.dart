@@ -5,6 +5,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
+import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 import 'package:flutter_bedrock/page/demo_page/main/first_page.dart';
 import 'package:flutter_bedrock/page/demo_page/main/second_page.dart';
 import 'package:flutter_bedrock/page/demo_page/main/third_page.dart';
@@ -13,16 +14,9 @@ import 'package:oktoast/oktoast.dart';
 
 typedef TransportScrollController = Function(ScrollController controller);
 
-class MainPage extends StatefulWidget{
 
-  @override
-  State<StatefulWidget> createState() {
-    return MainPageState();
-  }
 
-}
-
-class MainPageState extends BaseState<MainPage> {
+class MainPageState extends PageState {
 
   final PageController pageController = PageController();
   int selectIndex = 0;
@@ -65,11 +59,11 @@ class MainPageState extends BaseState<MainPage> {
                       physics: NeverScrollableScrollPhysics(),
                       controller: pageController,
                       children: <Widget>[
-                        FirstPage((controller){
+                        FirstPageState((controller){
                           firstController = controller;
-                        }),
-                        SecondPage(),
-                        ThirdPage(),
+                        }).generateWidget(),
+                        SecondPageState().generateWidget(),
+                        ThirdPagePageState().generateWidget(),
                       ],
                       onPageChanged: (index){
                         setState(() {

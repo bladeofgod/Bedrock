@@ -4,17 +4,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/base_framework/ui/widget/provider_widget.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
+import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 import 'package:flutter_bedrock/page/demo_page/main/first/view_model/update_view_model.dart';
 
-class UpdatePage extends StatefulWidget{
-  @override
-  State<StatefulWidget> createState() {
-    return UpdatePageState();
-  }
-  
-}
 
-class UpdatePageState extends BaseState<UpdatePage> {
+class UpdatePageState extends PageState {
 
   String text = '''
     更新功能展示\n

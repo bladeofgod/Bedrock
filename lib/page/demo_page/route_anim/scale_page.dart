@@ -2,17 +2,11 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
+import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 
-class ScalePage extends StatefulWidget{
-  @override
-  State<StatefulWidget> createState() {
-    return ScalePageState();
-  }
 
-}
 
-class ScalePageState extends BaseState<ScalePage> {
+class ScalePageState extends PageState {
   @override
   Widget build(BuildContext context) {
     return switchStatusBar2Dark(child: Container(

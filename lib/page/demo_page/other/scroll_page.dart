@@ -5,16 +5,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
+import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 
-class ScrollPage extends StatefulWidget{
-  @override
-  State<StatefulWidget> createState() {
-    return ScrollPageState();
-  }
 
-}
 
-class ScrollPageState extends BaseState<ScrollPage> {
+class ScrollPageState extends PageState {
 
   String text = "停止中";
   String t = "滚动中";

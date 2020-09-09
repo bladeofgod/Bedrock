@@ -8,24 +8,19 @@ import 'package:flutter_bedrock/base_framework/utils/platform_utils.dart';
 import 'package:flutter_bedrock/base_framework/view_model/app_model/app_cache_model.dart';
 import 'package:flutter_bedrock/base_framework/view_model/app_model/user_view_model.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
+import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
+import 'package:flutter_bedrock/page/demo_page/main/login/login_page.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:provider/provider.dart';
 
-class ThirdPage extends StatefulWidget{
-  @override
-  State<StatefulWidget> createState() {
-    return ThirdPagePageState();
-  }
 
-}
-
-class ThirdPagePageState extends BaseState<ThirdPage> with AutomaticKeepAliveClientMixin {
+class ThirdPagePageState extends PageState with AutomaticKeepAliveClientMixin {
 
   UserViewModel userViewModel;
 
   @override
   Widget build(BuildContext context) {
-
+    super.build(context);
     return switchStatusBar2Dark(child:
     Consumer2<UserViewModel,AppCacheModel>(
       builder: (ctx,userModel,cacheModel,child){
@@ -42,7 +37,7 @@ class ThirdPagePageState extends BaseState<ThirdPage> with AutomaticKeepAliveCli
               GestureDetector(
                 onTap: (){
                   if(!userModel.hasUser){
-                    Navigator.of(context).pushNamed(RouteName.login_page);
+                    push(LoginPageState().generateWidget());
                   }
                 },
                 child: buildUserInfo(),

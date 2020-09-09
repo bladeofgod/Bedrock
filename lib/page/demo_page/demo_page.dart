@@ -6,21 +6,25 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/base_framework/config/router_manager.dart';
+import 'package:flutter_bedrock/base_framework/ui/widget/web/html_page.dart';
+import 'package:flutter_bedrock/base_framework/ui/widget/web/web_page.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
+import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
+import 'package:flutter_bedrock/page/demo_page/exception/handle_exception_page.dart';
+import 'package:flutter_bedrock/page/demo_page/image/pick_image_page.dart';
+import 'package:flutter_bedrock/page/demo_page/isolate/isolate_page.dart';
+import 'package:flutter_bedrock/page/demo_page/local_i10l/local_page.dart';
+import 'package:flutter_bedrock/page/demo_page/main_page.dart';
+import 'package:flutter_bedrock/page/demo_page/other_demo_page.dart';
+import 'package:flutter_bedrock/page/demo_page/route_anim/route_animation_page.dart';
+import 'package:flutter_bedrock/page/demo_page/slide_out_page.dart';
+import 'package:flutter_bedrock/page/exception/exception_page.dart';
 import 'package:flutter_bedrock/service_api/bedrock_repository_proxy.dart';
 
 ///demo，代码分包比较随意
 
-class DemoPage extends StatefulWidget{
-  @override
-  State<StatefulWidget> createState() {
 
-    return DemoPageState();
-  }
-
-}
-
-class DemoPageState extends BaseState<DemoPage> {
+class DemoPageState extends PageState {
 
   final String htmlData = """
         <div>
@@ -51,7 +55,7 @@ class DemoPageState extends BaseState<DemoPage> {
             RaisedButton(
               child: Text("main page",style: TextStyle(color: Colors.black),),
               onPressed: (){
-                Navigator.of(context).pushNamed(RouteName.main_page);
+                push(MainPageState().generateWidget());
               },
             ),
 
@@ -60,24 +64,25 @@ class DemoPageState extends BaseState<DemoPage> {
             RaisedButton(
               child: Text("app observe ",style: TextStyle(color: Colors.black),),
               onPressed: (){
-                Navigator.of(context).pushNamed(RouteName.isolate_page);
+                push(IsolatePageState().generateWidget());
               },
             ),
 
             getSizeBox(height: getWidthPx(40)),
-            buildIntro("路由丢失DEMO"),
-            RaisedButton(
-              child: Text("route missing",style: TextStyle(color: Colors.black),),
-              onPressed: (){
-                Navigator.of(context).pushNamed("missing");
-              },
-            ),
-            getSizeBox(height: getHeightPx(40)),
+            ///重构后不再使用pushname，所以屏蔽这里
+//            buildIntro("路由丢失DEMO"),
+//            RaisedButton(
+//              child: Text("route missing",style: TextStyle(color: Colors.black),),
+//              onPressed: (){
+//                Navigator.of(context).pushNamed("missing");
+//              },
+//            ),
+//            getSizeBox(height: getHeightPx(40)),
             buildIntro("API请求的异常捕获和处理DEMO"),
             RaisedButton(
               child: Text("demo handle exception",style: TextStyle(color: Colors.black),),
               onPressed: (){
-                Navigator.of(context).pushNamed(RouteName.demo_exception_page);
+                push(HandleExceptionPageState().generateWidget());
               },
             ),
 
@@ -86,7 +91,7 @@ class DemoPageState extends BaseState<DemoPage> {
             RaisedButton(
               child: Text("left slide to pop page",style: TextStyle(color: Colors.black),),
               onPressed: (){
-                Navigator.of(context).pushNamed(RouteName.slide_out_page);
+                push(SlideOutPageState().generateWidget());
               },
             ),
             getSizeBox(height: getHeightPx(40)),
@@ -95,16 +100,14 @@ class DemoPageState extends BaseState<DemoPage> {
               child: Text("web page",style: TextStyle(color: Colors.black),),
               onPressed: (){
                 String url = 'https://github.com/bladeofgod/Bedrock';
-                Navigator.of(context).pushNamed(RouteName.web_page
-                    ,arguments:{'url':url} );
+                push(WebPageState(url).generateWidget());
               },
             ),
             getSizeBox(height: getHeightPx(20)),
             RaisedButton(
               child: Text("html page",style: TextStyle(color: Colors.black),),
               onPressed: (){
-                Navigator.of(context).pushNamed(RouteName.html_page,
-                arguments: {'data':htmlData});
+                push(HtmlPageState(htmlData).generateWidget());
               },
             ),
             getSizeBox(height: getHeightPx(40)),
@@ -112,7 +115,7 @@ class DemoPageState extends BaseState<DemoPage> {
             RaisedButton(
               child: Text("image page",style: TextStyle(color: Colors.black),),
               onPressed: (){
-                Navigator.of(context).pushNamed(RouteName.pick_image_page,);
+                push(PickImagePageState().generateWidget());
               },
             ),
             getSizeBox(height: getHeightPx(40)),
@@ -120,7 +123,7 @@ class DemoPageState extends BaseState<DemoPage> {
             RaisedButton(
               child: Text("route animation page",style: TextStyle(color: Colors.black),),
               onPressed: (){
-                Navigator.of(context).pushNamed(RouteName.route_anim_page,);
+                push(RouteAnimationPageState().generateWidget());
               },
             ),
             getSizeBox(height: getHeightPx(40)),
@@ -128,7 +131,7 @@ class DemoPageState extends BaseState<DemoPage> {
             RaisedButton(
               child: Text("i10l page",style: TextStyle(color: Colors.black),),
               onPressed: (){
-                Navigator.of(context).pushNamed(RouteName.local_i10l_page,);
+                push(LocalPageState().generateWidget());
               },
             ),
             getSizeBox(height: getHeightPx(40)),
@@ -136,7 +139,7 @@ class DemoPageState extends BaseState<DemoPage> {
             RaisedButton(
               child: Text("laboratory page",style: TextStyle(color: Colors.black),),
               onPressed: (){
-                Navigator.of(context).pushNamed(RouteName.demo_other_page,);
+                push(OtherDemoPageState().generateWidget());
               },
             ),
             getSizeBox(height: getHeightPx(40)),

@@ -5,16 +5,10 @@ import 'package:ffloat/ffloat.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
+import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 
-class FFloatPage extends StatefulWidget{
-  @override
-  State<StatefulWidget> createState() {
-    return FFloatPageState();
-  }
 
-}
-
-class FFloatPageState extends BaseState<FFloatPage> {
+class FFloatPageState extends PageState {
 
   FFloatController controller = FFloatController();
 

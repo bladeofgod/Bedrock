@@ -31,13 +31,13 @@
 
     
     很简单，如下操作：
-        1、页面/wiget，继承Basestate/BaseStatelessWidget
+        1、页面/wiget，继承PageState/WidgetState/BaseStatelessWidget
         2、骨架屏继承BaseSkeletonWidget
         3、ViewModel（VM）继承 ViewStateModel的子类，如：SingleViewStateModel、RefreshListViewStateModel（也可以根据需求自己封装）
         
-    页面代码如下(页面请使用Basestate)：
+    页面代码如下(页面请使用PageState)：
     
-    class APageState extends BaseState<APage>{
+    class APageState extends PageState{
     @override
      Widget build(BuildContext context) {
          return switchStatusBar2Dark(

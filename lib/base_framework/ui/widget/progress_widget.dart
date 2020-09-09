@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
 
 import 'package:flutter_bedrock/base_framework/widget_state/base_stateless_widget.dart';
+import 'package:flutter_bedrock/base_framework/widget_state/widget_state.dart';
 
 class CircleProgressWidget extends BaseStatelessWidget{
   @override
@@ -57,33 +58,23 @@ class FullPageCircleProgressWidget extends BaseStatelessWidget{
 
 //typedef LoadingCreate = void Function(DialogLoadingController controller);
 
-class LoadingProgress extends StatefulWidget{
+
+class LoadingProgressState extends WidgetState {
+
   final Widget progress;
   final Color bgColor;
   //final LoadingCreate loadingCreate;
   final DialogLoadingController controller;
 
-  const LoadingProgress({Key key, this.progress,
-    this.bgColor,@required this.controller })
-      : super(key: key);
-
-
-  @override
-  State<StatefulWidget> createState() {
-    return LoadingProgressState();
-  }
-
-}
-
-class LoadingProgressState extends BaseState<LoadingProgress> {
+  LoadingProgressState(this.progress, this.bgColor, this.controller);
 
 
   @override
   void initState() {
     super.initState();
 
-    widget.controller.addListener(() {
-      if(widget.controller.isShow){
+    controller.addListener(() {
+      if(controller.isShow){
         //todo
       }else{
         WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
@@ -95,8 +86,8 @@ class LoadingProgressState extends BaseState<LoadingProgress> {
 
   @override
   void dispose() {
-    widget.controller.isShow = false;
-    widget.controller?.dispose();
+    controller.isShow = false;
+    controller?.dispose();
     super.dispose();
   }
 
@@ -106,10 +97,10 @@ class LoadingProgressState extends BaseState<LoadingProgress> {
     final size = MediaQuery.of(context).size;
 
     return Container(
-      color: widget.bgColor??Color.fromRGBO(34, 34, 34, 0.3),
+      color: bgColor??Color.fromRGBO(34, 34, 34, 0.3),
       width: size.width,height: size.height,
       alignment: Alignment.center,
-      child:widget.progress?? CircularProgressIndicator(),
+      child:progress?? CircularProgressIndicator(),
     );
   }
 }

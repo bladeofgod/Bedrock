@@ -7,24 +7,19 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
+import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 
 ///非业务型异常展示的页面
 
-class ExceptionPage extends StatefulWidget{
+
+class ExceptionPageState extends PageState {
+
   final String exception;
   final String stack;
 
+  ExceptionPageState(this.exception, this.stack);
 
-  ExceptionPage(this.exception, this.stack);
 
-  @override
-  State<StatefulWidget> createState() {
-    return ExceptionPageState();
-  }
-  
-}
-
-class ExceptionPageState extends BaseState<ExceptionPage> {
   @override
   Widget build(BuildContext context) {
 
@@ -37,9 +32,9 @@ class ExceptionPageState extends BaseState<ExceptionPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text(widget.exception,style: TextStyle(color: Colors.black),),
+                Text(exception,style: TextStyle(color: Colors.black),),
                 getSizeBox(height: getWidthPx(50)),
-                Text(widget.stack,style: TextStyle(color: Colors.blue),),
+                Text(stack,style: TextStyle(color: Colors.blue),),
               ],
             ),
           ),
