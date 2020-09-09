@@ -8,6 +8,7 @@
 import 'package:flustars/flustars.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bedrock/base_framework/config/router_manager.dart';
 import 'package:flutter_bedrock/base_framework/utils/image_helper.dart';
 import 'package:flutter_bedrock/base_framework/view_model/view_state.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
@@ -19,7 +20,7 @@ import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
 
 /// 此处扩展功能应该只与page相关
 
-abstract class PageState extends BaseState with WidgetGenerator{
+abstract class PageState extends BaseState with WidgetGenerator,RouteAware{
 
   double marginLeft = 0.0;
   double dragPosition = 0.0;
@@ -166,6 +167,48 @@ abstract class PageState extends BaseState with WidgetGenerator{
         child: Image.asset(ImageHelper.wrapAssetsIcon("icon_back_black"),width: getWidthPx(17),height: getHeightPx(32),),
       ),
     );
+  }
+
+  //////////////////////////////////////////////////////
+  ///你可以在这里做一些路由记录或者埋点什么的
+  //////////////////////////////////////////////////////
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    routeObserver.subscribe(this, ModalRoute.of(context));
+  }
+  @override
+  void dispose() {
+    routeObserver.unsubscribe(this);
+    super.dispose();
+  }
+
+  @override
+  void didPush() {
+    ///将要进入的页面
+    debugPrint("push ${this.runtimeType}");
+    super.didPush();
+  }
+
+  @override
+  void didPop() {
+    ///将要弹出的页面
+    debugPrint("pop ${this.runtimeType}");
+    super.didPop();
+  }
+
+  @override
+  void didPopNext() {
+    ///弹出后显示的页面
+    debugPrint("pop next ${this.runtimeType}");
+    super.didPopNext();
+  }
+
+  @override
+  void didPushNext() {
+    ///进入后，被遮挡的页面
+    debugPrint("push next ${this.runtimeType}");
+    super.didPushNext();
   }
 
 }

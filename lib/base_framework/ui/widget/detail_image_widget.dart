@@ -5,35 +5,17 @@
 
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bedrock/base_framework/utils/image_helper.dart';
-import 'package:flutter_bedrock/base_framework/utils/show_image_util.dart';
-import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
 
-class DetailImageWidget extends StatefulWidget{
+import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 
 
-  final Map arguments;
-
-  DetailImageWidget(this.arguments);
-
-  @override
-  State<StatefulWidget> createState() {
-    //imageList:图片urlList，initIndex: 从第几个开始显示
-    return DetailImageWidgetState(imageList:arguments["imageList"],initIndex:arguments["initIndex"]);
-  }
-
-}
-
-class DetailImageWidgetState extends BaseState<DetailImageWidget> {
+class DetailImageWidgetState extends PageState {
 
   final List<String> imageList;
   final int initIndex;
   int indexStr=1;
 
-  DetailImageWidgetState({this.imageList, this.initIndex = 0});
-  void initState() {
-    super.initState();
-  }
+  DetailImageWidgetState(this.imageList, {this.initIndex = 0});
 
   @override
   Widget build(BuildContext context) {

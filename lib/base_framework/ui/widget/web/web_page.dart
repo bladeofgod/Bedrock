@@ -13,13 +13,11 @@ import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
 class WebPageState extends PageState{
 
-  final Map arguments;
 
   final String url;
 
 
-  WebPageState(this.arguments)
-    :url = arguments['url'];
+  WebPageState(this.url);
 
   @override
   Widget build(BuildContext context) {

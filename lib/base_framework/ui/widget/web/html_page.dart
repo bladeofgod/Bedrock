@@ -7,25 +7,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
+import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
-class HtmlPage extends StatefulWidget{
 
-  final Map arguments;
-
-
-  HtmlPage(this.arguments);
-
-  @override
-  State<StatefulWidget> createState() {
-    return HtmlPageState(arguments['data']);
-  }
-  
-}
-
-class HtmlPageState extends BaseState<HtmlPage> {
-
-  final Map arguments;
+class HtmlPageState extends PageState {
 
   final String htmlContent;
 

@@ -19,15 +19,12 @@ import 'package:path_provider/path_provider.dart';
 
 class ImageEditorState extends PageState {
 
-  final Map arguments;
-
   final String name;///图片名字
 
-  final Uint8List _memoryImage;///图片数量
+  final Uint8List memoryImage;///图片数量
 
 
-  ImageEditorState(this.arguments)
-    :name = arguments["name"],_memoryImage = arguments["image"];
+  ImageEditorState({@required this.name, @required this.memoryImage});
 
   final GlobalKey<ExtendedImageEditorState> editorKey =
   GlobalKey<ExtendedImageEditorState>();
@@ -47,7 +44,7 @@ class ImageEditorState extends PageState {
               Expanded(child: Container(
                 child: Center(
                   child: ExtendedImage.memory(
-                    _memoryImage,
+                    memoryImage,
                     fit: BoxFit.contain,
                     mode: ExtendedImageMode.editor,
                     enableLoadState: true,
@@ -101,8 +98,7 @@ class ImageEditorState extends PageState {
     option.addOption(ie.ClipOption.fromRect(rect));
     await ie.ImageEditor.editImage(image: data, imageEditorOption: option).then((result){
       ImageHelper.saveImage(name, result).then((path){
-        print("path $path");
-        Navigator.of(context).pop(path);
+        pop(result: path);
       });
     });
 

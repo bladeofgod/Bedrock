@@ -4,8 +4,11 @@
 import 'package:flustars/flustars.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bedrock/base_framework/factory/page/page_animation_builder.dart';
+import 'package:flutter_bedrock/base_framework/observe/route/router_binding.dart';
 import 'package:flutter_bedrock/base_framework/ui/behavior/over_scroll_behavior.dart';
 import 'package:flutter_bedrock/base_framework/ui/widget/progress_widget.dart';
+import 'package:flutter_bedrock/base_framework/ui/widget/route/route_aware_widget.dart';
 import 'package:flutter_bedrock/base_framework/utils/image_helper.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/view_state.dart';
@@ -125,10 +128,38 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>  {
 
 }
 
-mixin WidgetGenerator on BaseState{
+mixin WidgetGenerator on BaseState implements _RouteGenerator,_NavigateActor{
   Widget generateWidget({Key key}){
     return _CommonWidget(state: this,key: key,);
   }
+
+  @override
+  PageRoute<T> buildRoute<T>(Widget page) {
+    return pageBuilder.wrapWithNoAnim(page);
+  }
+
+  @override
+  Future push(Widget page,{String recordName}) {
+    return Navigator.of(context).push(buildRoute(page));
+  }
+
+  @override
+  void pop<T extends Object>({T result,String recordName}) {
+    Navigator.of(context).pop(result);
+  }
+}
+
+///构建 route
+
+abstract class _RouteGenerator {
+  PageRoute<T> buildRoute<T>(Widget page);
+}
+
+
+///路由操作
+abstract class _NavigateActor{
+  Future push(Widget page,{String recordName});
+  void pop<T extends Object>({T result,String recordName});
 }
 
 class _CommonWidget extends StatefulWidget{

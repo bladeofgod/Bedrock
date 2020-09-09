@@ -8,20 +8,16 @@ import 'package:flustars/flustars.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/base_framework/config/net/bedrock_http.dart';
 import 'package:flutter_bedrock/base_framework/config/router_manager.dart';
+import 'package:flutter_bedrock/base_framework/ui/widget/image/image_editor.dart';
 import 'package:flutter_bedrock/base_framework/utils/image_helper.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
+import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-class PickImagePage extends StatefulWidget{
-  @override
-  State<StatefulWidget> createState() {
-    return PickImagePageState();
-  }
 
-}
 
-class PickImagePageState extends BaseState<PickImagePage> {
+class PickImagePageState extends PageState {
 
   String avatarPath = "";
 
@@ -103,8 +99,9 @@ class PickImagePageState extends BaseState<PickImagePage> {
         showToast("only one image");
       }else{
         assetList[0].getByteData().then((data){
-          Navigator.of(context).pushNamed(RouteName.editor_image_page,
-              arguments: {"image":data.buffer.asUint8List(),"name":"tripalink_user_avatar"}).then((path){
+          push(ImageEditorState(name: "bedrock_user_avatar",memoryImage:data.buffer.asUint8List())
+              .generateWidget())
+              .then((path){
             SpUtil.putString(avatarPathKey, path);
             avatarPath = path;
             setState(() {
@@ -117,6 +114,7 @@ class PickImagePageState extends BaseState<PickImagePage> {
 
             }
           });
+
         });
 
       }

@@ -7,16 +7,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
+import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 
-class UnKnowPage extends StatefulWidget{
-  @override
-  State<StatefulWidget> createState() {
-    return UnKnowPageState();
-  }
 
-}
 
-class UnKnowPageState extends BaseState<UnKnowPage> {
+class UnKnowPageState extends PageState {
 
   String introduce = "路由未找到会进入此页面。\n "
       "理论上很难出现，但是对于一些路由路径后端控制，进行动态内部页面跳转的时候，还是有几率出现的，在此设置有一个页面，用户体验好一些。";
