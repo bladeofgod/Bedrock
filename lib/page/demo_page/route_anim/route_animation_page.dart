@@ -3,6 +3,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/base_framework/config/router_manager.dart';
+import 'package:flutter_bedrock/base_framework/factory/page/page_animation_builder.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 import 'package:flutter_bedrock/page/demo_page/route_anim/fade_page.dart';
@@ -20,7 +21,7 @@ class RouteAnimationPageState extends PageState {
             children: <Widget>[
               RaisedButton(
                 onPressed: (){
-                  push(SlidePageState().generateWidget());
+                  push(SlidePageState().generateWidget(),animation: PageAnimation.Slide);
 
                 },
                 child: Text("滑动跳转"),
@@ -28,7 +29,7 @@ class RouteAnimationPageState extends PageState {
               getSizeBox(height: getWidthPx(40)),
               RaisedButton(
                 onPressed: (){
-                  push(ScalePageState().generateWidget());
+                  push(ScalePageState().generateWidget(),animation: PageAnimation.Scale);
 
                 },
                 child: Text("缩放跳转"),
@@ -36,7 +37,7 @@ class RouteAnimationPageState extends PageState {
               getSizeBox(height: getWidthPx(40)),
               RaisedButton(
                 onPressed: (){
-                  push(FadePageState().generateWidget());
+                  push(FadePageState().generateWidget(),animation: PageAnimation.Fade);
 
                 },
                 child: Text("渐隐跳转"),

@@ -66,7 +66,7 @@ class LoadingProgressState extends WidgetState {
   //final LoadingCreate loadingCreate;
   final DialogLoadingController controller;
 
-  LoadingProgressState(this.progress, this.bgColor, this.controller);
+  LoadingProgressState({this.progress, this.bgColor, this.controller});
 
 
   @override

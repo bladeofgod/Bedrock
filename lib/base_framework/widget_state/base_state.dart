@@ -53,8 +53,8 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>  {
       Navigator.of(context).push(PageRouteBuilder(
           opaque: false,
           pageBuilder: (ctx,animation,secondAnimation){
-            return LoadingProgress(controller: _dialogLoadingController
-              ,progress: progress,bgColor: bgColor,);
+            return LoadingProgressState(controller: _dialogLoadingController
+              ,progress: progress,bgColor: bgColor,).generateWidget();
           }
       ));
     }
