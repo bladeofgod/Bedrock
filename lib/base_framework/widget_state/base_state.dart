@@ -165,6 +165,7 @@ mixin WidgetGenerator on BaseState implements _RouteGenerator,_NavigateActor{
   void pop<T extends Object>({T result,String recordName}) {
     Navigator.of(context).pop(result);
   }
+  
 
 
   @override
