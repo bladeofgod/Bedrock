@@ -18,6 +18,7 @@ import 'package:flutter_bedrock/page/demo_page/main_page.dart';
 import 'package:flutter_bedrock/page/demo_page/other_demo_page.dart';
 import 'package:flutter_bedrock/page/demo_page/route_anim/route_animation_page.dart';
 import 'package:flutter_bedrock/page/demo_page/slide_out_page.dart';
+import 'package:flutter_bedrock/page/demo_page/start/start_page.dart';
 import 'package:flutter_bedrock/page/exception/exception_page.dart';
 import 'package:flutter_bedrock/service_api/bedrock_repository_proxy.dart';
 
@@ -51,6 +52,15 @@ class DemoPageState extends PageState {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             getSizeBox(height: getWidthPx(100)),
+
+            buildIntro("看这里！入门第一步"),
+            RaisedButton(
+              child: Text("app observe ",style: TextStyle(color: Colors.black),),
+              onPressed: (){
+                push(StartPage());
+              },
+            ),
+            getSizeBox(height: getHeightPx(40)),
             buildIntro("综合性框架功能演示DEMO"),
             RaisedButton(
               child: Text("main page",style: TextStyle(color: Colors.black),),

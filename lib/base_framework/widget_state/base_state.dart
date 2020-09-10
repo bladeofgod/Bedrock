@@ -3,7 +3,8 @@
 
 import 'package:flustars/flustars.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
+
 import 'package:flutter_bedrock/base_framework/factory/page/page_animation_builder.dart';
 import 'package:flutter_bedrock/base_framework/observe/route/router_binding.dart';
 import 'package:flutter_bedrock/base_framework/ui/behavior/over_scroll_behavior.dart';
@@ -90,9 +91,6 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>  {
       .getHeightPx(radius) ;
   ///得到适配后的字号
   double getSp(double fontSize) => ScreenUtil.getInstance().getSp(fontSize);
-
-
-
 
 /*
   * app 生命周期，建议在需要的地方自己注册监听
