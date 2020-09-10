@@ -55,7 +55,7 @@ class DemoPageState extends PageState {
 
             buildIntro("看这里！入门第一步"),
             RaisedButton(
-              child: Text("app observe ",style: TextStyle(color: Colors.black),),
+              child: Text("build page & push/pop demo ",style: TextStyle(color: Colors.black),),
               onPressed: (){
                 push(StartPage());
               },
