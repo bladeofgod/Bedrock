@@ -31,30 +31,30 @@ class PageAnimationBuilder{
 
   ///
 
-  Route<dynamic> wrapWithNoAnim(Widget page){
-    return NoAnimRouteBuilder(page);
+  Route<dynamic> wrapWithNoAnim(Widget page,RouteSettings routeSettings){
+    return NoAnimRouteBuilder(page,routeSettings);
   }
 
 
   ///fade
-  Route<dynamic> wrapWithFadeAnim(Widget page){
-    return FadeRouteBuilder(page);
+  Route<dynamic> wrapWithFadeAnim(Widget page,RouteSettings routeSettings){
+    return FadeRouteBuilder(page,routeSettings);
   }
 
 
   ///slide
-  Route<dynamic> wrapWithSlideAnim(Widget page){
-    return SlideRightRouteBuilder(page);
+  Route<dynamic> wrapWithSlideAnim(Widget page,RouteSettings routeSettings){
+    return SlideRightRouteBuilder(page,routeSettings);
   }
 
-  Route<dynamic> wrapWithSlideTopAnim(Widget page){
-    return SlideTopRouteBuilder(page);
+  Route<dynamic> wrapWithSlideTopAnim(Widget page,RouteSettings routeSettings){
+    return SlideTopRouteBuilder(page,routeSettings);
   }
 
 
   ///scale
-  Route<dynamic> wrapWithScaleAnim(Widget page){
-    return ScaleRouteBuilder(page);
+  Route<dynamic> wrapWithScaleAnim(Widget page,RouteSettings routeSettings){
+    return ScaleRouteBuilder(page,routeSettings);
   }
 
 

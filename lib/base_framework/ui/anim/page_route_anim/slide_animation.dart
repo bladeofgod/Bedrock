@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 
 class SlideTopRouteBuilder extends PageRouteBuilder {
   final Widget page;
+  final RouteSettings routeSettings;
 
-  SlideTopRouteBuilder(this.page)
-      : super(
+  SlideTopRouteBuilder(this.page,this.routeSettings)
+      : super(settings:routeSettings,
       pageBuilder: (context, animation, secondaryAnimation) => page,
       transitionDuration: Duration(milliseconds: 800),
       transitionsBuilder:
@@ -48,9 +49,11 @@ class SlideBottomRouteBuilder extends PageRouteBuilder{
 
 class SlideRightRouteBuilder extends PageRouteBuilder{
   final Widget page;
+  final RouteSettings routeSettings;
 
-  SlideRightRouteBuilder(this.page)
-      :super(
+
+  SlideRightRouteBuilder(this.page,this.routeSettings)
+      :super(settings:routeSettings,
       pageBuilder:(ctx,animation,secondaryAnimation)=>page,
       opaque:false,
       transitionDuration:Duration(milliseconds: 300),

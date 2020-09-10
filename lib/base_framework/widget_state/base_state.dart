@@ -140,30 +140,53 @@ mixin WidgetGenerator on BaseState implements _RouteGenerator,_NavigateActor{
     return _CommonWidget(state: this,key: key,);
   }
 
+  /// [routeName]  => 你的页面类名
   @override
-  PageRoute<T> buildRoute<T>(Widget page,{PageAnimation animation}) {
+  PageRoute<T> buildRoute<T>(Widget page, String routeName, {PageAnimation animation, Object args}) {
+    var r = RouteSettings(
+        name:routeName,
+        arguments: args);
+
     switch(animation){
 
       case PageAnimation.Fade:
-        return pageBuilder.wrapWithFadeAnim(page);
+        return pageBuilder.wrapWithFadeAnim(page,r);
       case PageAnimation.Scale:
-        return pageBuilder.wrapWithScaleAnim(page);
+        return pageBuilder.wrapWithScaleAnim(page,r);
       case PageAnimation.Slide:
-        return pageBuilder.wrapWithSlideAnim(page);
+        return pageBuilder.wrapWithSlideAnim(page,r);
       default:
-        return pageBuilder.wrapWithNoAnim(page);
+        return pageBuilder.wrapWithNoAnim(page,r);
     }
-
   }
 
   @override
-  Future push(Widget page,{String recordName,PageAnimation animation = PageAnimation.Non}) {
-    return Navigator.of(context).push(buildRoute(page,animation: animation));
+  Future push<T extends PageState>(T page,{PageAnimation animation = PageAnimation.Non}) {
+    return Navigator.of(context).push(buildRoute(page.generateWidget(),
+        page.runtimeType.toString(),animation: animation));
   }
 
   @override
-  void pop<T extends Object>({T result,String recordName}) {
+  Future pushReplacement<T extends Object, TO extends PageState>(TO page, {PageAnimation animation, T result}) {
+    return Navigator.of(context).pushReplacement(buildRoute(page.generateWidget(),
+        page.runtimeType.toString()),result: result);
+  }
+
+
+  @override
+  Future pushAndRemoveUntil<T extends PageState>(T page, {PageAnimation animation,RoutePredicate predicate}) {
+    return Navigator.of(context).pushAndRemoveUntil(buildRoute(page.generateWidget(),
+        page.runtimeType.toString()),predicate?? (route) => false);
+  }
+
+
+  @override
+  void pop<T extends Object>({T result}) {
     Navigator.of(context).pop(result);
+  }
+  @override
+  void popUntil({RoutePredicate predicate}) {
+    Navigator.of(context).popUntil(predicate??(route) => false);
   }
   
 
@@ -172,19 +195,26 @@ mixin WidgetGenerator on BaseState implements _RouteGenerator,_NavigateActor{
   bool canPop() {
     return Navigator.of(context).canPop();
   }
+
 }
 
 ///构建 route
 
 abstract class _RouteGenerator {
-  PageRoute<T> buildRoute<T>(Widget page);
+  PageRoute<T> buildRoute<T>(Widget page,String routeName,{PageAnimation animation,Object args});
 }
 
 
 ///路由操作
 abstract class _NavigateActor{
-  Future push(Widget page,{String recordName});
-  void pop<T extends Object>({T result,String recordName});
+
+
+  Future push<T extends PageState>(T page,{PageAnimation animation});
+  Future pushAndRemoveUntil<T extends PageState>(T page,{PageAnimation animation,RoutePredicate predicate});
+  Future pushReplacement<T extends Object,TO extends PageState>(TO page, {PageAnimation animation, T result });
+
+  void pop<T extends Object>({T result,});
+  void popUntil({RoutePredicate predicate});
 
   bool canPop();
 }
