@@ -48,7 +48,7 @@ class StartPage extends PageState{
                 push(WithValuePage('start page送了一个西瓜'))
                   .then((value){
                     setState(() {
-                      backValue = value;
+                      backValue = value??'啥都没给';
                     });
                 });
               },

@@ -17,7 +17,7 @@ import 'package:oktoast/oktoast.dart';
 
 /// * 请勿直接继承此类
 /// * 如果是页面，继承 [PageState]
-/// * 如果是view，继承 [ViewState]
+/// * 如果是view，继承 [WidgetState]
 ///
 /// 此处扩展功能应该是 page和view通用功能
 
@@ -170,13 +170,11 @@ mixin WidgetGenerator on BaseState implements _RouteGenerator,_NavigateActor{
         page.runtimeType.toString()),result: result);
   }
 
-
   @override
   Future pushAndRemoveUntil<T extends PageState>(T page, {PageAnimation animation,RoutePredicate predicate}) {
     return Navigator.of(context).pushAndRemoveUntil(buildRoute(page.generateWidget(),
         page.runtimeType.toString()),predicate?? (route) => false);
   }
-
 
   @override
   void pop<T extends Object>({T result}) {
@@ -186,8 +184,6 @@ mixin WidgetGenerator on BaseState implements _RouteGenerator,_NavigateActor{
   void popUntil({RoutePredicate predicate}) {
     Navigator.of(context).popUntil(predicate??(route) => false);
   }
-  
-
 
   @override
   bool canPop() {
