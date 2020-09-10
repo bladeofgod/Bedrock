@@ -149,11 +149,11 @@ class FirstPageState extends PageState with AutomaticKeepAliveClientMixin {
     return GestureDetector(
       onTap: (){
         if(str.contains('FFloat')){
-          push(FFloatPageState().generateWidget());
+          push(FFloatPageState());
         }else if(str.contains('Cache')){
-          push(CacheDataPageState().generateWidget());
+          push(CacheDataPageState());
         }else if(str.contains('更新')){
-          push(UpdatePageState().generateWidget());
+          push(UpdatePageState());
         }
         else{
           showToast('施工中...');

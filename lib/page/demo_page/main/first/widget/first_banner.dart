@@ -40,8 +40,7 @@ class FirstBannerState extends WidgetState {
               return GestureDetector(
                 onTap: (){
                   if(canShowBigImage){
-                    push(DetailImageWidgetState(imageList,initIndex: imageIndex-1)
-                        .generateWidget());
+                    push(DetailImageWidgetState(imageList,initIndex: imageIndex-1));
 
                   }
                 },

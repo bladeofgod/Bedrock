@@ -55,7 +55,7 @@ class DemoPageState extends PageState {
             RaisedButton(
               child: Text("main page",style: TextStyle(color: Colors.black),),
               onPressed: (){
-                push(MainPageState().generateWidget());
+                push(MainPageState());
               },
             ),
 
@@ -64,7 +64,7 @@ class DemoPageState extends PageState {
             RaisedButton(
               child: Text("app observe ",style: TextStyle(color: Colors.black),),
               onPressed: (){
-                push(IsolatePageState().generateWidget());
+                push(IsolatePageState());
               },
             ),
 
@@ -82,7 +82,7 @@ class DemoPageState extends PageState {
             RaisedButton(
               child: Text("demo handle exception",style: TextStyle(color: Colors.black),),
               onPressed: (){
-                push(HandleExceptionPageState().generateWidget());
+                push(HandleExceptionPageState());
               },
             ),
 
@@ -91,7 +91,7 @@ class DemoPageState extends PageState {
             RaisedButton(
               child: Text("left slide to pop page",style: TextStyle(color: Colors.black),),
               onPressed: (){
-                push(SlideOutPageState().generateWidget());
+                push(SlideOutPageState());
               },
             ),
             getSizeBox(height: getHeightPx(40)),
@@ -100,14 +100,14 @@ class DemoPageState extends PageState {
               child: Text("web page",style: TextStyle(color: Colors.black),),
               onPressed: (){
                 String url = 'https://github.com/bladeofgod/Bedrock';
-                push(WebPageState(url).generateWidget());
+                push(WebPageState(url));
               },
             ),
             getSizeBox(height: getHeightPx(20)),
             RaisedButton(
               child: Text("html page",style: TextStyle(color: Colors.black),),
               onPressed: (){
-                push(HtmlPageState(htmlData).generateWidget());
+                push(HtmlPageState(htmlData));
               },
             ),
             getSizeBox(height: getHeightPx(40)),
@@ -115,7 +115,7 @@ class DemoPageState extends PageState {
             RaisedButton(
               child: Text("image page",style: TextStyle(color: Colors.black),),
               onPressed: (){
-                push(PickImagePageState().generateWidget());
+                push(PickImagePageState());
               },
             ),
             getSizeBox(height: getHeightPx(40)),
@@ -123,7 +123,7 @@ class DemoPageState extends PageState {
             RaisedButton(
               child: Text("route animation page",style: TextStyle(color: Colors.black),),
               onPressed: (){
-                push(RouteAnimationPageState().generateWidget());
+                push(RouteAnimationPageState());
               },
             ),
             getSizeBox(height: getHeightPx(40)),
@@ -131,7 +131,7 @@ class DemoPageState extends PageState {
             RaisedButton(
               child: Text("i10l page",style: TextStyle(color: Colors.black),),
               onPressed: (){
-                push(LocalPageState().generateWidget());
+                push(LocalPageState());
               },
             ),
             getSizeBox(height: getHeightPx(40)),
@@ -139,7 +139,7 @@ class DemoPageState extends PageState {
             RaisedButton(
               child: Text("laboratory page",style: TextStyle(color: Colors.black),),
               onPressed: (){
-                push(OtherDemoPageState().generateWidget());
+                push(OtherDemoPageState());
               },
             ),
             getSizeBox(height: getHeightPx(40)),

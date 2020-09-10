@@ -29,28 +29,28 @@ class OtherDemoPageState extends PageState {
           RaisedButton(
             child: Text('滚动事件的监听'),
             onPressed: (){
-              push(ScrollPageState().generateWidget());
+              push(ScrollPageState());
             },
           ),
           getSizeBox(height: getWidthPx(40)),
           RaisedButton(
             child: Text('stream Util'),
             onPressed: (){
-              push(LittleUtilPageState().generateWidget());
+              push(LittleUtilPageState());
             },
           ),
           getSizeBox(height: getWidthPx(40)),
           RaisedButton(
             child: Text('滑动中适时刷新view的经验'),
             onPressed: (){
-              push(TimerPageState().generateWidget());
+              push(TimerPageState());
             },
           ),
           getSizeBox(height: getWidthPx(40)),
           RaisedButton(
             child: Text('请求权限'),
             onPressed: (){
-              push(RequestPermissionsPageState().generateWidget());
+              push(RequestPermissionsPageState());
             },
           ),
         ],

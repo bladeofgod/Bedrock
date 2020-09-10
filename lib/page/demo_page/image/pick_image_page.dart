@@ -99,8 +99,7 @@ class PickImagePageState extends PageState {
         showToast("only one image");
       }else{
         assetList[0].getByteData().then((data){
-          push(ImageEditorState(name: "bedrock_user_avatar",memoryImage:data.buffer.asUint8List())
-              .generateWidget())
+          push(ImageEditorState(name: "bedrock_user_avatar",memoryImage:data.buffer.asUint8List()))
               .then((path){
             SpUtil.putString(avatarPathKey, path);
             avatarPath = path;

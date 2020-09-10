@@ -37,7 +37,7 @@ class ThirdPagePageState extends PageState with AutomaticKeepAliveClientMixin {
               GestureDetector(
                 onTap: (){
                   if(!userModel.hasUser){
-                    push(LoginPageState().generateWidget());
+                    push(LoginPageState());
                   }
                 },
                 child: buildUserInfo(),

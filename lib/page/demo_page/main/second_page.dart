@@ -75,7 +75,7 @@ class SecondPageState extends PageState with AutomaticKeepAliveClientMixin {
   Widget buildItem(SecondEntity entity,int index){
     return GestureDetector(
       onTap: (){
-        push(DetailImageWidgetState([entity.img]).generateWidget());
+        push(DetailImageWidgetState([entity.img]));
       },
       child: Container(
         color: index%2 == 0 ?  Colors.greenAccent[400]:Colors.lightBlueAccent[400],
