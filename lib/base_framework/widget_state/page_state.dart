@@ -171,6 +171,7 @@ abstract class PageState extends BaseState with WidgetGenerator,RouteAware{
   }
 
   //////////////////////////////////////////////////////
+  ///路由出/入 监测
   ///你可以在这里做一些路由记录或者埋点什么的
   //////////////////////////////////////////////////////
   @override
@@ -187,28 +188,28 @@ abstract class PageState extends BaseState with WidgetGenerator,RouteAware{
   @override
   void didPush() {
     ///将要进入的页面
-    debugPrint("push ${this.runtimeType}");
+    debugPrint("将要进入的页面 ${this.runtimeType}");
     super.didPush();
   }
 
   @override
   void didPop() {
     ///将要弹出的页面
-    debugPrint("pop ${this.runtimeType}");
+    debugPrint("将要弹出的页面 ${this.runtimeType}");
     super.didPop();
   }
 
   @override
   void didPopNext() {
     ///弹出后显示的页面
-    debugPrint("pop next ${this.runtimeType}");
+    debugPrint("弹出后显示的页面 ${this.runtimeType}");
     super.didPopNext();
   }
 
   @override
   void didPushNext() {
     ///进入后，被遮挡的页面
-    debugPrint("push next ${this.runtimeType}");
+    debugPrint("进入后，被遮挡的页面 ${this.runtimeType}");
     super.didPushNext();
   }
 
