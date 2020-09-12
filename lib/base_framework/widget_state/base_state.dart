@@ -131,9 +131,7 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>  {
 
 mixin WidgetGenerator on BaseState implements _RouteGenerator,_NavigateActor{
 
-  ///push时，需要每次调用一下这个方法
-  ///可以设计成不调用此方法，但是孰优孰劣还不清楚，例如：push时，将变成TargetState().push
-  ///有点怪
+  ///为state生成widget
   Widget generateWidget({Key key}){
     return _CommonWidget(state: this,key: key,);
   }
@@ -142,12 +140,12 @@ mixin WidgetGenerator on BaseState implements _RouteGenerator,_NavigateActor{
   @override
   PageRoute<T> buildRoute<T>(Widget page, String routeName, {PageAnimation animation = PageAnimation.Non
     , Object args}) {
+    assert(routeName != null && routeName.isNotEmpty,'route name must be not empty !');
     var r = RouteSettings(
         name:routeName,
         arguments: args);
 
     switch(animation){
-
       case PageAnimation.Fade:
         return pageBuilder.wrapWithFadeAnim(page,r);
       case PageAnimation.Scale:
@@ -160,21 +158,24 @@ mixin WidgetGenerator on BaseState implements _RouteGenerator,_NavigateActor{
   }
 
   @override
-  Future push<T extends PageState>(T page,{PageAnimation animation}) {
-    return Navigator.of(context).push(buildRoute(page.generateWidget(),
-        page.runtimeType.toString(),animation: animation));
+  Future push<T extends PageState>(T targetPage,{PageAnimation animation}) {
+    assert(targetPage != null,'the target page must not null !');
+    return Navigator.of(context).push(buildRoute(targetPage.generateWidget(),
+        targetPage.runtimeType.toString(),animation: animation));
   }
 
   @override
-  Future pushReplacement<T extends Object, TO extends PageState>(TO page, {PageAnimation animation, T result}) {
-    return Navigator.of(context).pushReplacement(buildRoute(page.generateWidget(),
-        page.runtimeType.toString(),animation: animation),result: result);
+  Future pushReplacement<T extends Object, TO extends PageState>(TO targetPage, {PageAnimation animation, T result}) {
+    assert(targetPage != null,'the target page must not null !');
+    return Navigator.of(context).pushReplacement(buildRoute(targetPage.generateWidget(),
+        targetPage.runtimeType.toString(),animation: animation),result: result);
   }
 
   @override
-  Future pushAndRemoveUntil<T extends PageState>(T page, {PageAnimation animation,RoutePredicate predicate}) {
-    return Navigator.of(context).pushAndRemoveUntil(buildRoute(page.generateWidget(),
-        page.runtimeType.toString(),animation: animation),predicate?? (route) => false);
+  Future pushAndRemoveUntil<T extends PageState>(T targetPage, {PageAnimation animation,RoutePredicate predicate}) {
+    assert(targetPage != null,'the target page must not null !');
+    return Navigator.of(context).pushAndRemoveUntil(buildRoute(targetPage.generateWidget(),
+        targetPage.runtimeType.toString(),animation: animation),predicate?? (route) => false);
   }
 
   @override
@@ -204,9 +205,9 @@ abstract class _RouteGenerator {
 abstract class _NavigateActor{
 
 
-  Future push<T extends PageState>(T page,{PageAnimation animation});
-  Future pushAndRemoveUntil<T extends PageState>(T page,{PageAnimation animation,RoutePredicate predicate});
-  Future pushReplacement<T extends Object,TO extends PageState>(TO page, {PageAnimation animation, T result });
+  Future push<T extends PageState>(T targetPage,{PageAnimation animation});
+  Future pushAndRemoveUntil<T extends PageState>(T targetPage,{PageAnimation animation,RoutePredicate predicate});
+  Future pushReplacement<T extends Object,TO extends PageState>(TO targetPage, {PageAnimation animation, T result });
 
   void pop<T extends Object>({T result,});
   void popUntil({RoutePredicate predicate});
