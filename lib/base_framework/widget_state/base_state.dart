@@ -140,7 +140,8 @@ mixin WidgetGenerator on BaseState implements _RouteGenerator,_NavigateActor{
 
   /// [routeName]  => 你的页面类名
   @override
-  PageRoute<T> buildRoute<T>(Widget page, String routeName, {PageAnimation animation, Object args}) {
+  PageRoute<T> buildRoute<T>(Widget page, String routeName, {PageAnimation animation = PageAnimation.Non
+    , Object args}) {
     var r = RouteSettings(
         name:routeName,
         arguments: args);
@@ -159,7 +160,7 @@ mixin WidgetGenerator on BaseState implements _RouteGenerator,_NavigateActor{
   }
 
   @override
-  Future push<T extends PageState>(T page,{PageAnimation animation = PageAnimation.Non}) {
+  Future push<T extends PageState>(T page,{PageAnimation animation}) {
     return Navigator.of(context).push(buildRoute(page.generateWidget(),
         page.runtimeType.toString(),animation: animation));
   }
@@ -167,13 +168,13 @@ mixin WidgetGenerator on BaseState implements _RouteGenerator,_NavigateActor{
   @override
   Future pushReplacement<T extends Object, TO extends PageState>(TO page, {PageAnimation animation, T result}) {
     return Navigator.of(context).pushReplacement(buildRoute(page.generateWidget(),
-        page.runtimeType.toString()),result: result);
+        page.runtimeType.toString(),animation: animation),result: result);
   }
 
   @override
   Future pushAndRemoveUntil<T extends PageState>(T page, {PageAnimation animation,RoutePredicate predicate}) {
     return Navigator.of(context).pushAndRemoveUntil(buildRoute(page.generateWidget(),
-        page.runtimeType.toString()),predicate?? (route) => false);
+        page.runtimeType.toString(),animation: animation),predicate?? (route) => false);
   }
 
   @override
