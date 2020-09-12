@@ -18,7 +18,7 @@ class Page2 extends PageState{
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           getSizeBox(height: getHeightPx(100)),
-          Text('page 3',style: TextStyle(color: Colors.black,fontSize: getSp(24)),),
+          Text('page 2',style: TextStyle(color: Colors.black,fontSize: getSp(24)),),
           getSizeBox(height: getHeightPx(40)),
           RaisedButton(
             child: Text('go page 3',style: TextStyle(color: Colors.black),),
