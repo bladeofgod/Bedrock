@@ -21,7 +21,7 @@ import 'package:flutter_bedrock/base_framework/widget_state/widget_state.dart';
 
 /// 此处扩展功能应该只与page相关
 
-abstract class PageState extends BaseState with WidgetGenerator,RouteAware{
+abstract class PageState extends BaseState with WidgetGenerator,RouteAware,_RouteHandler{
 
   double marginLeft = 0.0;
   double dragPosition = 0.0;
@@ -176,8 +176,8 @@ abstract class PageState extends BaseState with WidgetGenerator,RouteAware{
   //////////////////////////////////////////////////////
   @override
   void didChangeDependencies() {
-    super.didChangeDependencies();
     routeObserver.subscribe(this, ModalRoute.of(context));
+    super.didChangeDependencies();
   }
   @override
   void dispose() {
@@ -187,33 +187,65 @@ abstract class PageState extends BaseState with WidgetGenerator,RouteAware{
 
   @override
   void didPush() {
-    ///将要进入的页面
-    debugPrint("将要进入的页面 ${this.runtimeType}");
+    handleDidPush();
     super.didPush();
   }
 
   @override
   void didPop() {
-    ///将要弹出的页面
-    debugPrint("将要弹出的页面 ${this.runtimeType}");
+    handleDidPop();
     super.didPop();
   }
 
   @override
   void didPopNext() {
-    ///弹出后显示的页面
-    debugPrint("弹出后显示的页面 ${this.runtimeType}");
+    handleDidPopNext();
     super.didPopNext();
   }
 
   @override
   void didPushNext() {
-    ///进入后，被遮挡的页面
-    debugPrint("进入后，被遮挡的页面 ${this.runtimeType}");
+    handleDidPushNext();
     super.didPushNext();
   }
 
 }
+
+
+mixin _RouteHandler on BaseState implements HandleRouteNavigate{
+  @override
+  void handleDidPop() {
+    debugPrint("已经pop的页面 ${this.runtimeType}");
+  }
+  @override
+  void handleDidPush() {
+    debugPrint("push后,显示的页面 ${this.runtimeType}");
+  }
+
+  @override
+  void handleDidPopNext() {
+    debugPrint("pop后，将要显示的页面 ${this.runtimeType}");
+  }
+  @override
+  void handleDidPushNext() {
+    ///进入后，被遮挡的页面
+    debugPrint("push后，被遮挡的页面 ${this.runtimeType}");
+  }
+}
+
+abstract class HandleRouteNavigate{
+  void handleDidPush();
+  void handleDidPop();
+  void handleDidPopNext();
+  void handleDidPushNext();
+
+}
+
+
+
+
+
+
 
 
 
