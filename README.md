@@ -6,6 +6,8 @@
 
 [更新日志](https://github.com/bladeofgod/Bedrock/blob/master/update_log.md)
 
+[入门简介](https://juejin.im/post/6871905809886871565/)
+
 ## 主要特性
     1、MVVM+Provider，低耦合、逻辑分明、页面代码清晰。Provider提供的状态管理使页面控制和展现更为灵活方便
     
