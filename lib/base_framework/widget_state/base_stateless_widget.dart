@@ -7,11 +7,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bedrock/base_framework/ui/behavior/over_scroll_behavior.dart';
 import 'package:flutter_bedrock/base_framework/utils/image_helper.dart';
 
+/// Stateless widget 继承此类
 
 abstract class BaseStatelessWidget extends StatelessWidget{
-
-  BuildContext context;
-
 
 
   ///切换状态栏 模式：light or dark
@@ -39,91 +37,6 @@ abstract class BaseStatelessWidget extends StatelessWidget{
   }
 
 
-  /// 一般页面的通用APP BAR 具体根据项目需求调整
-  Widget commonAppBar({Widget leftWidget,String title,List<Widget> rightWidget ,
-    Color bgColor = Colors.white,@required double leftPadding,@required double rightPadding}){
-    return Container(
-      width: getWidthPx(750),
-      height: getHeightPx(115),
-      //padding: EdgeInsets.only(left: getWidthPx(40),right: getWidthPx(40)),
-      color: bgColor??Color.fromRGBO(241, 241, 241, 1),
-      padding: EdgeInsets.only(bottom: getHeightPx(10),left: leftPadding,right: rightPadding),
-      alignment: Alignment.bottomCenter,
-      child: Stack(
-        alignment: Alignment.bottomRight,
-        children: <Widget>[
-          Positioned(
-            left: 0,
-            child: leftWidget ?? Container(),
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Visibility(
-              visible:  title != null,
-              child: Text(
-                "$title",
-                style: TextStyle(fontSize: getSp(36),color: Colors.black,
-                    decoration: TextDecoration.none),
-              ),
-            ),
-          ),
-          if(rightWidget != null)
-            ...rightWidget,
-        ],
-      ),
-    );
-  }
-
-  Widget buildAppBarLeft(){
-    return GestureDetector(
-      onTap: (){
-        Navigator.of(context).pop();
-      },
-      child: Container(
-        color: Colors.white,
-        width: getWidthPx(150),
-        height: getHeightPx(90),
-        alignment: Alignment.bottomLeft,
-        child: Image.asset(ImageHelper.wrapAssetsIcon("icon_back_black.png"),width: getWidthPx(17),height: getHeightPx(32),),
-      ),
-    );
-  }
-
-  Widget buildMsgWidget({bool showDot = true,Function hitMsgWidget}){
-    return GestureDetector(
-      onTap: (){
-        if(hitMsgWidget != null){
-          hitMsgWidget();
-        }
-      },
-      child: Container(
-        width: getWidthPx(38),
-        height: getHeightPx(34),
-        child: Stack(
-          children: <Widget>[
-            Image.asset(ImageHelper.wrapAssetsIcon(showDot? "icon_msg_new.png":"icon_msg.png"),
-              width: getWidthPx(36),height: showDot ? getWidthPx(34):getWidthPx(28),),
-            ///dot
-//            Positioned(
-//              right: 0,
-//              top: 0,
-//              child: Visibility(
-//                visible: showDot,
-//                child: ClipOval(
-//                  child: Container(
-//                    width: getWidthPx(14),
-//                    height: getWidthPx(14),
-//                    color: Color.fromRGBO(232, 97, 97, 1),
-//                  ),
-//                ),
-//              ),
-//            ),
-          ],
-        ),
-      ),
-    );
-  }
-
   ///占位widget
   Widget getSizeBox({double width = 1,double height = 1}){
     return SizedBox(
@@ -131,10 +44,6 @@ abstract class BaseStatelessWidget extends StatelessWidget{
       height: height,
     );
   }
-
-
-
-
 
 
 

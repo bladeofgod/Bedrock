@@ -11,6 +11,7 @@ import 'package:flutter_bedrock/base_framework/ui/behavior/over_scroll_behavior.
 import 'package:flutter_bedrock/base_framework/ui/widget/progress_widget.dart';
 import 'package:flutter_bedrock/base_framework/ui/widget/route/route_aware_widget.dart';
 import 'package:flutter_bedrock/base_framework/utils/image_helper.dart';
+import 'package:flutter_bedrock/base_framework/widget_state/base_stateless_widget.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/widget_state.dart';
 import 'package:oktoast/oktoast.dart';
@@ -18,6 +19,7 @@ import 'package:oktoast/oktoast.dart';
 /// * 请勿直接继承此类
 /// * 如果是页面，继承 [PageState]
 /// * 如果是view，继承 [WidgetState]
+/// * 如果是stateless widget， 继承 [BaseStatelessWidget]
 ///
 /// 此处扩展功能应该是 page和view通用功能
 
