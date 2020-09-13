@@ -1,4 +1,4 @@
-# flutter_bedrock 简介            v 1.0.9
+# flutter_bedrock 简介            v 1.0.10
 
     一款基于MVVM+Provider的快速开发框架。
     欢迎提issue和pr，如果对你有帮助的话，给个star吧。 ^.^
@@ -11,7 +11,7 @@
     
     2、全局异常捕捉：接口业务型和语法型，业务型可根据需要进行处理（如未登录、未授权、超时、无网等等）并实现页面自动切换，语法型可以跳转到指定页面避免红屏（还可在此页面做日志上传）。
     
-    3、基础类Basestate-State、BaseStatelessWidget-StatelessWidget和BaseSkeletonWidget，对常用功能函数进行了封装，轻松配 置骨架屏、屏幕适配、异形屏适配等
+    3、基础类PageState/WidgetState-Basestate-State、BaseStatelessWidget-StatelessWidget和BaseSkeletonWidget，对常用功能函数进行了封装，轻松配 置骨架屏、屏幕适配、异形屏适配等
     
     4、基类ProviderWidget-Provider和ViewstateModel-ChangeNotifier对 provider等的封装、底层封装了一些常用状态和异常处理功能
     
@@ -24,6 +24,8 @@
     8、基于Intl的国际化、APP主题切换。
     
     9、你的viewmodel只要是继承ViewStateModel，并注册CacheDataFactory，就可以实现首次加载自动缓存，无网自动显示上次缓存（缓存方式采用的mmkv 高速缓存）
+    
+    ...更多可以查看更新日志
     
 ## 使用方法
 
