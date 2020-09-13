@@ -171,8 +171,7 @@ abstract class PageState extends BaseState with WidgetGenerator,RouteAware,_Rout
   }
 
   //////////////////////////////////////////////////////
-  ///路由出/入 监测
-  ///你可以在这里做一些路由记录或者埋点什么的
+  ///页面出/入 监测
   //////////////////////////////////////////////////////
   @override
   void didChangeDependencies() {
@@ -211,6 +210,9 @@ abstract class PageState extends BaseState with WidgetGenerator,RouteAware,_Rout
 
 }
 
+/// route aware's util
+/// you can do something in this
+/// e.g. create recordList at [_RouteHandler] and record something
 
 mixin _RouteHandler on BaseState implements HandleRouteNavigate{
   @override
@@ -228,7 +230,6 @@ mixin _RouteHandler on BaseState implements HandleRouteNavigate{
   }
   @override
   void handleDidPushNext() {
-    ///进入后，被遮挡的页面
     debugPrint("push后，被遮挡的页面 ${this.runtimeType}");
   }
 }
