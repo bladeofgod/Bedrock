@@ -35,9 +35,9 @@
 
     1、将项目clone(master分支)下来，（注意，clone后不要无脑next，其中一步更换项目名时，换为你的）
 
-    2、更换 pubspec.yaml中name属性为你的项目名称
+    2、更换 pubspec.yaml中name属性为你的项目名称, 点一下pub get （这时你的项目爆红）
 
-    3、全局查找 flutter_bedrock 替换为上面 name 的值
+    3、全局查找 flutter_bedrock 替换为上面 name 的值(这时项目恢复正常)
 
     4、删除page文件夹下的 demo_page和mine两个文件夹
 
