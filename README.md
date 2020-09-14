@@ -41,6 +41,8 @@
 
     4、删除page文件夹下的 demo_page和mine两个文件夹
 
+    5、根目录的 README.md和update_log.md 也删除
+
 
 ## 开发
 
