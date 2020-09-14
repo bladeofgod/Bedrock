@@ -28,8 +28,21 @@
     9、你的viewmodel只要是继承ViewStateModel，并注册CacheDataFactory，就可以实现首次加载自动缓存，无网自动显示上次缓存（缓存方式采用的mmkv 高速缓存）
     
     ...更多可以查看更新日志
-    
-## 使用方法
+
+# 使用方法
+
+## 引入
+
+    1、将项目clone(master分支)下来，（注意，clone后不要无脑next，其中一步更换项目名时，换为你的）
+
+    2、更换 pubspec.yaml中name属性为你的项目名称
+
+    3、全局查找 flutter_bedrock 替换为上面 name 的值
+
+    4、删除page文件夹下的 demo_page和mine两个文件夹
+
+
+## 开发
 
 **墙裂建议运行DEMO并查看源码和注释，以及pub中的注释（其中有很多使用频率很高的插件，可以查看他们的文档，熟练使用能提高开发效率）。**
 
