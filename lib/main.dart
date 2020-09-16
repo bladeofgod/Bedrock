@@ -76,7 +76,7 @@ class MyApp extends StatelessWidget {
                 localizationsDelegates: [
                   // Intl 插件（需要安装）
                   S.delegate,
-                  RefreshLocalizations.delegate, //下拉刷新
+                  //RefreshLocalizations.delegate, //下拉刷新
                   //系统控件 国际化
                   GlobalCupertinoLocalizations.delegate,
                   GlobalMaterialLocalizations.delegate,
