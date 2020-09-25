@@ -30,14 +30,14 @@ class ShowImageUtil{
   static Widget showImageWithDefaultError(String url,double width,
       double height,{
     String imageType = TEST,
-        double borderRadius = 0,
+        double borderRadius = 0,BorderRadius borderRStyle ,
     Widget defaultImg,
         Widget errorImg,
         BoxFit boxFit : BoxFit.cover}){
     //print("image url ________$url$W400");
     //debugPrint("banner circle radius  : $borderRadius");
     return ClipRRect(
-      borderRadius:BorderRadius.all(Radius.circular(borderRadius)) ,
+      borderRadius:borderRStyle??BorderRadius.all(Radius.circular(borderRadius)) ,
       child: ExtendedImage.network(
         "$url$imageType",
         width: width,
