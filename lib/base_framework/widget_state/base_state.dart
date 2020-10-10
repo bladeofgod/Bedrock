@@ -159,6 +159,10 @@ mixin WidgetGenerator on BaseState implements _RouteGenerator,_NavigateActor{
     }
   }
 
+  ///@param animation : 页面过度动画
+  ///@param animation : page transition's animation
+  ///see details in [PageAnimationBuilder]
+
   @override
   Future push<T extends PageState>(T targetPage,{PageAnimation animation}) {
     assert(targetPage != null,'the target page must not null !');

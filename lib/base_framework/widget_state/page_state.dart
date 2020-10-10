@@ -17,7 +17,11 @@ import 'package:flutter_bedrock/base_framework/widget_state/widget_state.dart';
 
 /// * 如果是页面，继承 [PageState]
 /// * 如果是view，继承 [WidgetState]
-
+/// 确保你的页面名字在项目中唯一，
+/// 否则一些页面跳转的结果可能非你预期
+/// ensure your page's name is unique in project,
+/// will cause unexpected in navigator action if not.
+///
 
 /// 此处扩展功能应该只与page相关
 
