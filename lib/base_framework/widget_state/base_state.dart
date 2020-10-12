@@ -143,7 +143,7 @@ mixin WidgetGenerator on BaseState implements _RouteGenerator,_NavigateActor{
   PageRoute<T> buildRoute<T>(Widget page, String routeName, {PageAnimation animation = PageAnimation.Non
     , Object args}) {
     assert(routeName != null && routeName.isNotEmpty,'route name must be not empty !');
-    var r = RouteSettings(
+    final r = RouteSettings(
         name:routeName,
         arguments: args);
 
