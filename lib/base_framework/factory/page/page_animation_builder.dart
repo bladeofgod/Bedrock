@@ -6,9 +6,12 @@ import 'package:flutter_bedrock/base_framework/ui/anim/page_route_anim/no_animat
 import 'package:flutter_bedrock/base_framework/ui/anim/page_route_anim/size_scale_animation.dart';
 import 'package:flutter_bedrock/base_framework/ui/anim/page_route_anim/slide_animation.dart';
 
-///后期对此扩建
 
 final PageAnimationBuilder pageBuilder = PageAnimationBuilder.getInstance();
+
+
+///动画枚举类，这个你可以根据需求自定义
+///但最好保持代码这个结构
 
 enum PageAnimation{
   Fade,Scale,Slide,Non
