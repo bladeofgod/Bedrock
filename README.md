@@ -6,7 +6,7 @@
 
 [更新日志](https://github.com/bladeofgod/Bedrock/blob/master/update_log.md)
 
-此项目的statefulWidget和路由及相关模块做了二次封装，请务必阅读下方文章加以了解
+## 此项目的statefulWidget和路由及相关模块做了二次封装，请务必阅读下方文章加以了解
 
 [请看我——bedrock框架的widget和路由入门简介](https://juejin.im/post/6871905809886871565/)
 
