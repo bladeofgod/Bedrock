@@ -11,6 +11,7 @@ class LocaleModel extends ChangeNotifier {
 ///Platform.localeName
 ///有些手机 简体中文是 zh_Hans_CN 繁体是 zh_Hant_TW
   ///有些手机 中文简体是 zh_CN 繁体是 zh_TW
+  ///台湾标识建议使用tw-CH，zh_TW可能引起问题
   //static const localeValueList = ['', 'zh-CH', 'en-US',"tw-CH"];
   static const localeValueList = ['', 'zh-CH', 'en-US'];
 
