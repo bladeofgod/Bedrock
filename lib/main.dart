@@ -103,6 +103,11 @@ class MyApp extends StatelessWidget {
 }
 
 
+///如果想删除下方代码以及相关模块，
+///可以移除pub中的
+///  reflectable: ^2.2.5
+///  build_runner: ^1.7.0
+///  之后，删除utils/isolate/factory文件夹即可。
 
 /*
 * 在此处添加(修改)你要执行的方法，之后在terminal运行下方代码
