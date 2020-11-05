@@ -21,10 +21,13 @@ class AppStatusModel {
   factory AppStatusModel() => _getInstance();
   static AppStatusModel _getInstance(){
     if(_singleton == null){
-      _singleton = AppStatusModel();
+      _singleton = AppStatusModel._();
     }
     return _singleton;
   }
+
+  AppStatusModel._();
+
 
   ///网络是否可用
   NetStatus netStatus = NetStatus.Enable;
