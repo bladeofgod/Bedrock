@@ -77,7 +77,7 @@ dependencies:
   # UI
   oktoast: ^2.1.7
 
-  pull_to_refresh: ^1.5.8
+  pull_to_refresh: ^1.6.2
 
   #swiper
   #flutter_swiper: ^1.1.6
