@@ -1,4 +1,4 @@
-# flutter_bedrock 简介            v 1.0.13
+# flutter_bedrock 简介            v 1.0.14
 
     一款基于MVVM+Provider的快速开发框架。
     欢迎提issue和pr，如果对你有帮助的话，给个star吧。 ^.^
