@@ -1,5 +1,9 @@
 # 更新日志
 
+## 1.0.14   2020年11月13日15:13:36
+    修复baseState loading 弹窗方法的逻辑错误
+    处理showProgressDialog 下，返回键的bug
+
 ## 1.0.13   2020年11月11日17:18:37
     更新一些插件
     showProgressDialog bug 修复

@@ -61,7 +61,13 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>  {
             return LoadingProgressState(controller: _dialogLoadingController
               ,progress: progress,bgColor: bgColor,).generateWidget();
           }
-      )).then((value) => afterDismiss??(){});
+      )).then((value){
+        _dialogLoadingController = null;
+        if(afterDismiss != null){
+          afterDismiss();
+        }
+
+      });
     }
   }
 

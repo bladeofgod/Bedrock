@@ -96,21 +96,28 @@ class LoadingProgressState extends WidgetState {
 
     final size = MediaQuery.of(context).size;
 
-    return Container(
+    return WillPopScope(child: Container(
       color: bgColor??Color.fromRGBO(34, 34, 34, 0.3),
       width: size.width,height: size.height,
       alignment: Alignment.center,
       child:progress?? CircularProgressIndicator(),
-    );
+    ), onWillPop: ()async{
+      controller.dismissDialog();
+      return false;
+    });
   }
 }
 
 class DialogLoadingController extends ChangeNotifier{
   bool isShow = true;
   dismissDialog(){
-    isShow = false;
-    notifyListeners();
+    if(isShow){
+      isShow = false;
+      notifyListeners();
+    }
+
   }
+
 }
 
 

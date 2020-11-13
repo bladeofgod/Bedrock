@@ -2,6 +2,7 @@
 
     一款基于MVVM+Provider的快速开发框架。
     欢迎提issue和pr，如果对你有帮助的话，给个star吧。 ^.^
+    我的联系方式：450103187@qq.com
 
 
 [更新日志](https://github.com/bladeofgod/Bedrock/blob/master/update_log.md)
