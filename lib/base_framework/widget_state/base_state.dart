@@ -195,7 +195,7 @@ mixin WidgetGenerator on BaseState implements _RouteGenerator,_NavigateActor{
   }
 
   @override
-  Future pushAndRemoveUntil<T extends PageState>(T targetPage, {PageAnimation animation,RoutePredicate predicate}) {
+  Future pushAndRemoveUntil<T extends PageState>(T targetPage, {PageAnimation animation,@required RoutePredicate predicate}) {
     assert(targetPage != null,'the target page must not null !');
     return Navigator.of(context).pushAndRemoveUntil(buildRoute(targetPage.generateWidget(),
         targetPage.runtimeType.toString(),animation: animation),predicate?? (route) => false);
@@ -206,7 +206,7 @@ mixin WidgetGenerator on BaseState implements _RouteGenerator,_NavigateActor{
     Navigator.of(context).pop(result);
   }
   @override
-  void popUntil({RoutePredicate predicate}) {
+  void popUntil({@required RoutePredicate predicate}) {
     Navigator.of(context).popUntil(predicate??(route) => false);
   }
 
