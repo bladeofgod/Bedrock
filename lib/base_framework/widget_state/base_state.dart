@@ -73,8 +73,17 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>  {
 
   dismissProgressDialog(){
     _dialogLoadingController?.dismissDialog();
-    _dialogLoadingController = null;
+    //_dialogLoadingController = null;
   }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _dialogLoadingController = null;
+    super.dispose();
+  }
+
+
 
   /*
   * size adapter with tool ScreenUtil
