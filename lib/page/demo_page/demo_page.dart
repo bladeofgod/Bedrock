@@ -73,7 +73,7 @@ class DemoPageState extends PageState {
             getSizeBox(height: getHeightPx(40)),
             buildIntro("局部刷新 demo"),
             RaisedButton(
-              child: Text("main page",style: TextStyle(color: Colors.black),),
+              child: Text("局部刷新 page",style: TextStyle(color: Colors.black),),
               onPressed: (){
                 push(PartRefreshPage());
               },

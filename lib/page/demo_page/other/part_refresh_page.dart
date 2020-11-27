@@ -58,7 +58,7 @@ class PartRefreshPage extends PageState{
 class PartWidget extends WidgetState{
 
   bool exp1 = false;
-  ///此为Demo 故书写随意
+  ///此为Demo 故,书写随意
   void switchColor(){
     if(!mounted)return;
     exp1 = !exp1;
@@ -69,7 +69,7 @@ class PartWidget extends WidgetState{
 
   @override
   Widget build(BuildContext context) {
-    debugPrint('part widget build');
+    debugPrint('DoubleColorWidget build');
     return  Container(
       height: getWidthPx(100),
       child: Row(
