@@ -48,6 +48,9 @@ dependencies:
   device_info: ^0.4.1
   package_info: ^0.4.0+6
 
+  # 加解密
+  encrypt: ^4.1.0
+
   # Data
   #  json_annotation: ^2.4.0
   #  dio: ^2.1.16
