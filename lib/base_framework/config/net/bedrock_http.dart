@@ -38,21 +38,21 @@ class ApiInterceptor extends InterceptorsWrapper{
   @override
   Future onRequest(RequestOptions options) async{
     ///这里将空值参数去除掉，可根据自己的需求更改
-    options.queryParameters.removeWhere((key, value) => value == null);
-
-    String params="";
-    String mark = "&";
-
-    if(!kReleaseMode){
-      debugPrint('---api-request--->url--> ${options.baseUrl}${options.path}' +
-          ' queryParameters: ${options.queryParameters}'
-              ' formdata  : ${options.data.toString()}' );
-      options.queryParameters.forEach((k,v){
-        if(v == null) return;
-        params = "$params${params.isEmpty?"":mark}$k=$v";
-      });
-      debugPrint("---api-request--->url--> ${options.baseUrl}${options.path}?$params");
-    }
+//    options.queryParameters.removeWhere((key, value) => value == null);
+//
+//    String params="";
+//    String mark = "&";
+//
+//    if(!kReleaseMode){
+//      debugPrint('---api-request--->url--> ${options.baseUrl}${options.path}' +
+//          ' queryParameters: ${options.queryParameters}'
+//              ' formdata  : ${options.data.toString()}' );
+//      options.queryParameters.forEach((k,v){
+//        if(v == null) return;
+//        params = "$params${params.isEmpty?"":mark}$k=$v";
+//      });
+//      debugPrint("---api-request--->url--> ${options.baseUrl}${options.path}?$params");
+//    }
 
 
 
