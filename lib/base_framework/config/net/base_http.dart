@@ -1,6 +1,6 @@
 
 
-// 必须是顶层函数
+
 import 'dart:convert';
 import 'dart:io';
 
@@ -14,7 +14,7 @@ import 'package:flutter_bedrock/base_framework/utils/platform_utils.dart';
 
 import '../frame_constant.dart';
 
-
+// 必须是顶层函数
 _parseAndDecode(String response) {
   return jsonDecode(response);
 }
@@ -29,8 +29,9 @@ abstract class BaseHttp extends DioForNative{
   final CancelToken rootCancelToken = CancelToken();
 
   BaseHttp(){
-    ///将原始 返回数据 json化
-    ///具体可以看源码注释
+    ///json 解析放在了子isolate，不过按文档来看，这个解析速度要慢于直接解析
+    ///优点就是不会造成ui卡顿（前提是你的json数据非常大）
+    ///需要自身来评估
     (transformer as DefaultTransformer).jsonDecodeCallback = parseJson;
     interceptors
           ..add(new HeaderInterceptor());
