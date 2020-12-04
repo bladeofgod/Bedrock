@@ -107,7 +107,7 @@ class DemoPageState extends PageState {
               },
             ),
             getSizeBox(height: getHeightPx(40)),
-            buildIntro("自定义dialog demo"),
+            buildIntro("自定义浮层 demo"),
             RaisedButton(
               child: Text("弹出自定义的widget 演示",style: TextStyle(color: Colors.black),),
               onPressed: (){
