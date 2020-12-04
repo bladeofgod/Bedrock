@@ -15,6 +15,7 @@ import 'package:flutter_bedrock/page/demo_page/image/pick_image_page.dart';
 import 'package:flutter_bedrock/page/demo_page/isolate/isolate_page.dart';
 import 'package:flutter_bedrock/page/demo_page/local_i10l/local_page.dart';
 import 'package:flutter_bedrock/page/demo_page/main_page.dart';
+import 'package:flutter_bedrock/page/demo_page/other/custom_dialog_page.dart';
 import 'package:flutter_bedrock/page/demo_page/other/part_refresh_page.dart';
 import 'package:flutter_bedrock/page/demo_page/other_demo_page.dart';
 import 'package:flutter_bedrock/page/demo_page/route_anim/route_animation_page.dart';
@@ -103,6 +104,14 @@ class DemoPageState extends PageState {
               child: Text("demo handle exception",style: TextStyle(color: Colors.black),),
               onPressed: (){
                 push(HandleExceptionPageState());
+              },
+            ),
+            getSizeBox(height: getHeightPx(40)),
+            buildIntro("自定义dialog demo"),
+            RaisedButton(
+              child: Text("弹出自定义的widget 演示",style: TextStyle(color: Colors.black),),
+              onPressed: (){
+                push(CustomDialogPage());
               },
             ),
 

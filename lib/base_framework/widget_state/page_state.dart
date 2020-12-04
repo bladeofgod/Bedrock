@@ -9,6 +9,7 @@ import 'package:flustars/flustars.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bedrock/base_framework/config/router_manager.dart';
+import 'package:flutter_bedrock/base_framework/ui/widget/float_container_widget.dart';
 import 'package:flutter_bedrock/base_framework/utils/image_helper.dart';
 import 'package:flutter_bedrock/base_framework/view_model/view_state.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
@@ -172,6 +173,23 @@ abstract class PageState extends BaseState with WidgetGenerator,RouteAware,_Rout
         child: Image.asset(ImageHelper.wrapAssetsIcon("icon_back_black"),width: getWidthPx(17),height: getHeightPx(32),),
       ),
     );
+  }
+
+  ///弹出自定义widget（效果类似dialog）
+  ///你可以调整你的widget来达到预期的表现效果
+  ///也可以通过PageRouteBuilder的参数进行调整
+  void floatWidget(Widget child,{
+    ///浮层背景色
+    Color bgColor = const Color.fromRGBO(34, 34, 34, 0.3),
+    ///浮层对齐方式
+    AlignmentGeometry alignment = Alignment.center,
+        Function afterPop,Function onComplete,}){
+    Navigator.of(context).push(PageRouteBuilder(
+      opaque: false,
+        pageBuilder:(ctx,animation,secondAnimation){
+          return FloatContainerWidget(child,bgColor: bgColor,alignment: alignment).generateWidget();
+        })).then((value) => afterPop??(){})
+          .whenComplete(() => onComplete??(){});
   }
 
   //////////////////////////////////////////////////////
