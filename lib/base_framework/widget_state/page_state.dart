@@ -179,17 +179,20 @@ abstract class PageState extends BaseState with WidgetGenerator,RouteAware,_Rout
   ///你可以调整你的widget来达到预期的表现效果
   ///也可以通过PageRouteBuilder的参数进行调整
   void floatWidget(Widget child,{
+    bool barrierDismissible = false,
     ///浮层背景色
     Color bgColor = const Color.fromRGBO(34, 34, 34, 0.3),
     ///浮层对齐方式
-    AlignmentGeometry alignment = Alignment.center,
+    Alignment alignment = Alignment.center,
         Function afterPop,Function onComplete,}){
-    Navigator.of(context).push(PageRouteBuilder(
-      opaque: false,
+    Navigator.of(context).push(
+        PageRouteBuilder(
+        opaque: false,
         pageBuilder:(ctx,animation,secondAnimation){
-          return FloatContainerWidget(child,bgColor: bgColor,alignment: alignment).generateWidget();
-        })).then((value) => afterPop??(){})
-          .whenComplete(() => onComplete??(){});
+          return FloatContainerWidget(child,barrierDismissible:barrierDismissible ,bgColor: bgColor,alignment: alignment).generateWidget();
+        }))
+        .then((value) => afterPop??(){})
+        .whenComplete(() => onComplete??(){});
   }
 
   //////////////////////////////////////////////////////

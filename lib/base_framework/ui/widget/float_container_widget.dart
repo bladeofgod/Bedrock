@@ -14,20 +14,28 @@ class FloatContainerWidget extends WidgetState{
 
   final Color bgColor;
   final Widget child;
-  final AlignmentGeometry alignment;
+  final Alignment alignment;
+  final bool barrierDismissible;
 
-  FloatContainerWidget(this.child,{this.bgColor,this.alignment})
+  FloatContainerWidget(this.child,{this.bgColor,this.alignment,this.barrierDismissible})
     :assert(child != null);
 
 
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    return Container(
-      color: bgColor,
-      width: size.width,height: size.height,
-      alignment:alignment,
-      child:child,
+    return GestureDetector(
+      onTap: (){
+        if(barrierDismissible){
+          Navigator.pop(context);
+        }
+      },
+      child: Container(
+        color: bgColor,
+        width: size.width,height: size.height,
+        alignment:alignment,
+        child:child,
+      ),
     );
   }
 

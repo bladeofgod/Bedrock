@@ -25,9 +25,46 @@ class CustomDialogPage extends PageState{
                 color: Colors.red,shape: BoxShape.circle
               ),));
           }),
+          getSizeBox(height: getWidthPx(100)),
+          buildBtn('弹窗 pageView', (){
+            floatWidget(pageView(),barrierDismissible: true);
+          }),
         ],
       ),
     ));
+  }
+
+  final PageController controller = PageController(viewportFraction: 0.8);
+
+  Widget pageView(){
+    return Material(
+      color: Colors.transparent,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Container(
+            width: getWidthPx(750),height: getWidthPx(700),
+            child: PageView(
+              controller: controller,
+              children: List.generate(3, (index){
+                return Container(
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(right: getWidthPx(80)),
+                  width: getWidthPx(590),height: getWidthPx(600),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(Radius.circular(getWidthPx(16)))
+                  ),
+                  child: Text('$index',style: TextStyle(color: Colors.blue,fontSize: getSp(60),
+                      fontWeight: FontWeight.bold),),
+                );
+              }),
+            ),
+          ),
+          getSizeBox(height: getWidthPx(60)),
+        ],
+      ),
+    );
   }
 
   Widget buildBtn(String title,Function onTap){
