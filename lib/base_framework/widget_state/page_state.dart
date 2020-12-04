@@ -184,9 +184,16 @@ abstract class PageState extends BaseState with WidgetGenerator,RouteAware,_Rout
     Color bgColor = const Color.fromRGBO(34, 34, 34, 0.3),
     ///浮层对齐方式
     Alignment alignment = Alignment.center,
-        Function afterPop,Function onComplete,}){
+    ///回调
+        Function afterPop,Function onComplete,
+    ///页面进入/退出时间
+    Duration transitionDuration = const Duration(milliseconds: 300),
+    Duration reverseTransitionDuration = const Duration(milliseconds: 300),
+  }){
     Navigator.of(context).push(
         PageRouteBuilder(
+          transitionDuration: transitionDuration,
+        reverseTransitionDuration: reverseTransitionDuration,
         opaque: false,
         pageBuilder:(ctx,animation,secondAnimation){
           return FloatContainerWidget(child,barrierDismissible:barrierDismissible ,bgColor: bgColor,alignment: alignment).generateWidget();

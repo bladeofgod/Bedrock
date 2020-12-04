@@ -27,7 +27,9 @@ class CustomDialogPage extends PageState{
           }),
           getSizeBox(height: getWidthPx(100)),
           buildBtn('弹窗 pageView', (){
-            floatWidget(pageView(),barrierDismissible: true);
+            floatWidget(pageView(),barrierDismissible: true,
+              transitionDuration: Duration(milliseconds: 0),
+                reverseTransitionDuration: Duration(milliseconds: 0));
           }),
         ],
       ),
