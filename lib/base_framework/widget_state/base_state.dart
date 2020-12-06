@@ -58,7 +58,7 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>  {
       Navigator.of(context).push(PageRouteBuilder(
           ///使用默认值效果可能不好
           transitionDuration: const Duration(milliseconds: 0),
-          reverseTransitionDuration: const Duration(milliseconds: 0),
+          //reverseTransitionDuration: const Duration(milliseconds: 0),
           opaque: false,
           pageBuilder: (ctx,animation,secondAnimation){
             return LoadingProgressState(controller: _dialogLoadingController

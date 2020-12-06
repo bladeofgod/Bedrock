@@ -193,7 +193,8 @@ abstract class PageState extends BaseState with WidgetGenerator,RouteAware,_Rout
     Navigator.of(context).push(
         PageRouteBuilder(
           transitionDuration: transitionDuration,
-        reverseTransitionDuration: reverseTransitionDuration,
+        ///新版本无此参数
+        //reverseTransitionDuration: reverseTransitionDuration,
         opaque: false,
         pageBuilder:(ctx,animation,secondAnimation){
           return FloatContainerWidget(child,barrierDismissible:barrierDismissible ,bgColor: bgColor,alignment: alignment).generateWidget();
