@@ -190,9 +190,9 @@ abstract class PageState extends BaseState with WidgetGenerator,RouteAware,_Rout
     ///回调
     Function afterPop,Function onComplete,
     ///页面进入/退出时间
-    Duration transitionDuration = const Duration(milliseconds: 300),
+    Duration transitionDuration = const Duration(milliseconds: 0),
     ///新版本 此参数已作废
-    Duration reverseTransitionDuration = const Duration(milliseconds: 300),
+    Duration reverseTransitionDuration = const Duration(milliseconds: 0),
   }){
     Navigator.of(context).push(
         PageRouteBuilder(
