@@ -44,8 +44,7 @@ class CustomDialogPage extends PageState{
                   ?.whenComplete(() => Navigator.pop(ctx));
                 },
                 barrierDismissible: true,
-                transitionDuration: Duration(milliseconds: 0),
-                reverseTransitionDuration: Duration(milliseconds: 0));
+                );
           }),
         ],
       ),

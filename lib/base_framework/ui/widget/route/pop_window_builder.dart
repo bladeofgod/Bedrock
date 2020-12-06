@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/semantics.dart';
 
 typedef PopWidgetBuilder = Widget Function(BuildContext context);
-
+///路由将无法观测到
 class PopWindowBuilder<T> extends OverlayRoute<T>{
 
   final PopWidgetBuilder builder;
