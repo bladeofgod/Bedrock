@@ -14,11 +14,15 @@ import 'package:flutter_bedrock/base_framework/widget_state/widget_state.dart';
 typedef FloatWidgetDismiss = void Function(BuildContext context);
 
 class FloatContainerWidget extends WidgetState{
-
+  ///背景颜色
   final Color bgColor;
   final Widget child;
+  ///对齐方式
   final Alignment alignment;
+  ///是否点击背景可以退出
   final bool barrierDismissible;
+  ///‘pop’ 退出 外置
+  ///例如，我们需要做一个动画后再弹出。
   final FloatWidgetDismiss floatWidgetDismiss;
 
   FloatContainerWidget(this.child,{@required this.floatWidgetDismiss,this.bgColor,this.alignment,this.barrierDismissible})

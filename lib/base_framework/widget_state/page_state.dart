@@ -188,7 +188,7 @@ abstract class PageState extends BaseState with WidgetGenerator,RouteAware,_Rout
     ///浮层对齐方式
     Alignment alignment = Alignment.center,
     ///回调
-        Function afterPop,Function onComplete,
+    Function afterPop,Function onComplete,
     ///页面进入/退出时间
     Duration transitionDuration = const Duration(milliseconds: 300),
     ///新版本 此参数已作废

@@ -39,13 +39,13 @@ class CustomBottomDrawerWidget extends WidgetState with SingleTickerProviderStat
   @override
   Widget build(BuildContext context) {
 
-    return Material(
-      color:const Color.fromRGBO(0, 0, 0, 0),
-      child: Stack(
-        alignment: Alignment.bottomCenter,
-        children: [
-          Positioned(
-            bottom: getHeightPx(bottom),
+    return Stack(
+      alignment: Alignment.bottomCenter,
+      children: [
+        Positioned(
+          bottom: getHeightPx(bottom),
+          child: Material(
+            color: const Color.fromRGBO(0, 0, 0, 0),
             child: Container(
               width: getWidthPx(750),height: getHeightPx(600),
               decoration: BoxDecoration(
@@ -69,9 +69,9 @@ class CustomBottomDrawerWidget extends WidgetState with SingleTickerProviderStat
                 ],
               ),
             ),
-          )
-        ],
-      ),
+          ),
+        )
+      ],
     );
   }
 
