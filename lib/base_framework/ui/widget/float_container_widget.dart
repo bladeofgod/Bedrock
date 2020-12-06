@@ -10,15 +10,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/widget_state.dart';
 
+
+typedef FloatWidgetDismiss = void Function(BuildContext context);
+
 class FloatContainerWidget extends WidgetState{
 
   final Color bgColor;
   final Widget child;
   final Alignment alignment;
   final bool barrierDismissible;
+  final FloatWidgetDismiss floatWidgetDismiss;
 
-  FloatContainerWidget(this.child,{this.bgColor,this.alignment,this.barrierDismissible})
-    :assert(child != null);
+  FloatContainerWidget(this.child,{@required this.floatWidgetDismiss,this.bgColor,this.alignment,this.barrierDismissible})
+    :assert(child != null),assert(floatWidgetDismiss != null);
 
 
   @override
@@ -27,7 +31,7 @@ class FloatContainerWidget extends WidgetState{
     return GestureDetector(
       onTap: (){
         if(barrierDismissible){
-          Navigator.pop(context);
+          floatWidgetDismiss(context);
         }
       },
       child: Container(

@@ -179,6 +179,9 @@ abstract class PageState extends BaseState with WidgetGenerator,RouteAware,_Rout
   ///你可以调整你的widget来达到预期的表现效果
   ///也可以通过PageRouteBuilder的参数进行调整
   void floatWidget(Widget child,{
+    ///弹出层的退出由此参数控制
+    ///默认值Navigator.pop(ctx)，或自定义
+    FloatWidgetDismiss floatWidgetDismiss,
     bool barrierDismissible = false,
     ///浮层背景色
     Color bgColor = const Color.fromRGBO(34, 34, 34, 0.3),
@@ -188,6 +191,7 @@ abstract class PageState extends BaseState with WidgetGenerator,RouteAware,_Rout
         Function afterPop,Function onComplete,
     ///页面进入/退出时间
     Duration transitionDuration = const Duration(milliseconds: 300),
+    ///新版本 此参数已作废
     Duration reverseTransitionDuration = const Duration(milliseconds: 300),
   }){
     Navigator.of(context).push(
@@ -197,7 +201,9 @@ abstract class PageState extends BaseState with WidgetGenerator,RouteAware,_Rout
         //reverseTransitionDuration: reverseTransitionDuration,
         opaque: false,
         pageBuilder:(ctx,animation,secondAnimation){
-          return FloatContainerWidget(child,barrierDismissible:barrierDismissible ,bgColor: bgColor,alignment: alignment).generateWidget();
+          return FloatContainerWidget(child,
+              floatWidgetDismiss: floatWidgetDismiss??(ctx)=>Navigator.pop(ctx),
+              barrierDismissible:barrierDismissible ,bgColor: bgColor,alignment: alignment).generateWidget();
         }))
         .then((value) => afterPop??(){})
         .whenComplete(() => onComplete??(){});
