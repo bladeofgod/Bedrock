@@ -1,4 +1,4 @@
-# :whale:flutter_bedrock
+# :whale:Flutter Bedrock
 
 ##  :seedling:v 1.0.20
 
