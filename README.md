@@ -1,6 +1,7 @@
-# flutter_bedrock 简介            v 1.0.20
+# flutter_bedrock:whale: 简介           :chestnut: :seedling:v 1.0.20
 
     一款基于MVVM+Provider的快速开发框架。
+
     欢迎提issue和pr，如果对你有帮助的话，给个⭐⭐star⭐⭐吧。 ^.^
 
     我的联系方式：450103187@qq.com
