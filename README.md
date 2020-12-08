@@ -1,4 +1,6 @@
-# flutter_bedrock:whale: 简介           :chestnut: :seedling:v 1.0.20
+# :whale:flutter_bedrock
+
+##  :seedling:v 1.0.20
 
     一款基于MVVM+Provider的快速开发框架。
 
