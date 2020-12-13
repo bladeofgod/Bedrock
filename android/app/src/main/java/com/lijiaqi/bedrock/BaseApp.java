@@ -1,5 +1,7 @@
 package com.lijiaqi.bedrock;
 
+import com.lijiaqi.bedrock.protect.AndroidPlatformProtect;
+
 import io.flutter.app.FlutterApplication;
 
 /**
@@ -11,8 +13,13 @@ class BaseApp extends FlutterApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        
-        ///处理子线程异常
-        AppCrashHandler.getInstance(this).initChildThreadProtect();
+        AndroidPlatformProtect.getInstance()
+                ///处理UI线程的异常
+                .protectUIThread()
+                ///处理 activity启动时的异常
+                .protectActivityStart()
+                ///处理子线程异常
+                .protectChildThread()
+                .init(this);
     }
 }
