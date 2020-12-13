@@ -12,6 +12,7 @@ import com.lijiaqi.bedrock.protect.IProtect;
  * @author LiJiaqi
  * @date 2020/12/13
  * Description:
+ * 处理UI线程触发的异常，如点击按钮抛出一个异常等.
  */
 public class UIThreadProtect implements IProtect {
     @Override

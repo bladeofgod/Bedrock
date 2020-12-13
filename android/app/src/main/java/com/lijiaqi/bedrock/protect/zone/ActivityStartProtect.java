@@ -16,6 +16,7 @@ import java.lang.reflect.Method;
  * @author LiJiaqi
  * @date 2020/12/13
  * Description:
+ * activity启动时触发的异常（onCreate,onResume 等生命周期）
  */
 
 public class ActivityStartProtect implements IProtect {

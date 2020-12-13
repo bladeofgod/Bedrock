@@ -11,8 +11,7 @@ import com.lijiaqi.bedrock.protect.IProtect;
  * @author LiJiaqi
  * @date 2020/12/13
  * Description:
- * handle the thread exception,and avoid app crash.
- * in fact,this Singleton doesn't make much sense...but,easy to use.
+ * 处理子线程触发的异常
  */
 
 public class ChildThreadProtect implements IProtect {
@@ -21,6 +20,9 @@ public class ChildThreadProtect implements IProtect {
         ChildThreadHandler.getInstance(application).initChildThreadProtect();
     }
 }
+
+/// handle the thread exception,and avoid app crash.
+/// in fact,this Singleton doesn't make much sense...but,easy to use.
 
 class ChildThreadHandler implements Thread.UncaughtExceptionHandler{
     static final String TAG = "Bedrock_Crash_Handler:";
