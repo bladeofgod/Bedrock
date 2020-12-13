@@ -33,7 +33,7 @@ class ActivityThreadHook{
             Method currentActivityT = ReflexUtil.getMethod(clazz, "currentActivityThread");
             if(currentActivityT == null) throw  new NullPointerException();
 
-            Object activity = currentActivityT.invoke(null, null);
+            Object activity = currentActivityT.invoke(null);
 
             Field mInstrumentationField = ReflexUtil.getField(clazz, "mInstrumentation");
             if(mInstrumentationField == null) throw new NullPointerException();

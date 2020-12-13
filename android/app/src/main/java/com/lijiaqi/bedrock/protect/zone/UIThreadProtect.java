@@ -13,6 +13,8 @@ import com.lijiaqi.bedrock.protect.IProtect;
  * @date 2020/12/13
  * Description:
  * 处理UI线程触发的异常，如点击按钮抛出一个异常等.
+ *
+ * 注意：混合项目下，简单的finish()可能并不能回到上一页
  */
 public class UIThreadProtect implements IProtect {
     @Override
@@ -42,6 +44,8 @@ public class UIThreadProtect implements IProtect {
                     Activity activity = ActivityStackManager.getInstance().exceptionBirthplaceActivity(e);
                     if(activity != null){
                         protectActivityStart(crashException);
+                        ///混合项目下，简单的finish可能并不能回到上一页
+                        ///建议自己定义接口
                         activity.finish();
                         return;
                     }

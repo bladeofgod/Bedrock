@@ -9,14 +9,19 @@ import io.flutter.app.FlutterApplication;
  * @date 2020/12/12
  * Description:
  */
-class BaseApp extends FlutterApplication {
+public class BaseApp extends FlutterApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        // 如果是纯flutter项目，
+        // 可以考虑注释掉这两个保护[protectUIThread]和[protectActivityStart]
         AndroidPlatformProtect.getInstance()
                 ///处理UI线程的异常
                 .protectUIThread()
                 ///处理 activity启动时的异常
+                //注释原因： <activity启动保护> 功能，使用了反射。
+                //          在混淆下可能会无效或者出现无法预知的问题，建议开启后反复测试
                 .protectActivityStart()
                 ///处理子线程异常
                 .protectChildThread()

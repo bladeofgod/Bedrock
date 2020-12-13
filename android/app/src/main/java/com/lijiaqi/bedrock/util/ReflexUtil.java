@@ -38,15 +38,13 @@ public class ReflexUtil {
 
     private static Field[] getFields(Class<?> clazz){
         try {
-            Object targetObject = clazz.newInstance();
-            Field[] targetFields = targetObject.getClass().getDeclaredFields();
+
+            Field[] targetFields = clazz.getDeclaredFields();
             for(Field field : targetFields){
                 field.setAccessible(true);
             }
             return targetFields;
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
