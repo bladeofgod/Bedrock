@@ -16,13 +16,13 @@
         android:layout_height="wrap_content"/>
     <Button
         android:id="@+id/btn_1"
-        android:text="hit me to throw a ui exception"
+        android:text="hit me to throw a ui-exception"
         android:layout_marginTop="60dp"
         android:layout_width="match_parent"
         android:layout_height="60dp"/>
     <Button
         android:id="@+id/btn_2"
-        android:text="hit me to throw a start exception. (will start a page 2)"
+        android:text="hit me to throw a start-up-exception. (will start a page 2)"
         android:layout_marginTop="60dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

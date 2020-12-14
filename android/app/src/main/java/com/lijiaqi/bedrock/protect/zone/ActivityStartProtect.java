@@ -3,6 +3,7 @@ package com.lijiaqi.bedrock.protect.zone;
 import android.app.Activity;
 import android.app.Application;
 import android.app.Instrumentation;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 
@@ -62,6 +63,12 @@ class InstrumentationProxy extends Instrumentation{
     private void onException(Exception e, Activity activity){
         e.printStackTrace();
         if(activity != null) activity.finish();
+    }
+
+    @Override
+    public Activity newActivity(ClassLoader cl, String className, Intent intent) throws ClassNotFoundException, IllegalAccessException, InstantiationException {
+        ///解决 android   P以上发生的异常"Uninitialized ActivityThread...."
+        return base.newActivity(cl, className, intent);
     }
 
     @Override
