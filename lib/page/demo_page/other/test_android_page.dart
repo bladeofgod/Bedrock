@@ -17,10 +17,15 @@ class TestAndroidPage extends PageState{
             NativeMethodManager.getInstance().throwChildThreadException();
 
           },child: Text('android ： 抛一个子线程异常'),),
+          getSizeBox(height: getWidthPx(40)),
+          Text("默认 ui线程保护 和 activity 启动保护是注释掉的，需要在原生端的 BaseApp开启。\n才能进行下面的测试",
+            style: TextStyle(color: Colors.black,fontSize: getSp(32)),),
+          getSizeBox(height: getWidthPx(40)),
           RaisedButton(onPressed: (){
             NativeMethodManager.getInstance().throwUiThreadException();
 
           },child: Text('android ： 抛一个子UI线程异常'),),
+          getSizeBox(height: getWidthPx(40)),
           RaisedButton(onPressed: (){
             NativeMethodManager.getInstance().throwStartUpException();
           },child: Text('android ： 抛一个生命周期异常'),),
