@@ -16,6 +16,8 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.core.content.FileProvider;
 
+import com.lijiaqi.bedrock.test.TestPage1;
+
 import java.io.File;
 import java.lang.ref.WeakReference;
 
@@ -28,6 +30,11 @@ import io.flutter.plugin.common.MethodChannel;
 public class BedrockPlugin implements FlutterPlugin, ActivityAware, MethodChannel.MethodCallHandler {
 
     private static final String PLUGIN_NAME = "com.lijiaqi.bedrock";
+
+    ///======Test zone=====
+    private static final String childThreadException = "child_exception";
+    private static final String uIThreadException = "ui_exception";
+    private static final String startUpException = "start_up_exception";
 
     private MethodChannel mMethodChannel;
     private Application mApplication;
@@ -60,6 +67,20 @@ public class BedrockPlugin implements FlutterPlugin, ActivityAware, MethodChanne
             case "install_apk":
                 invokeInstall(call.argument("path"));
                 break;
+                ///======= Test zone =======
+            case childThreadException:
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        throw new RuntimeException("抛出一个子线程异常");
+                    }
+                }).start();
+                break;
+            case uIThreadException:
+            case startUpException:
+                mActivity.get().startActivity(new Intent(mActivity.get(), TestPage1.class));
+                break;
+            ///======= Test zone =======
             default:
                 break;
         }

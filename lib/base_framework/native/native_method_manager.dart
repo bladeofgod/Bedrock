@@ -14,6 +14,7 @@ class NativeMethodManager{
 
   static final String methodInstall = 'install_apk';
 
+
   static NativeMethodManager _singleton;
 
   static NativeMethodManager getInstance(){
@@ -29,10 +30,38 @@ class NativeMethodManager{
 
   void installApk(String path)async{
     ///ios建议直接取应用市场
-    if(Platform.isAndroid){
+    if(isAndroid()){
       await _channel.invokeMethod(methodInstall,
           {"path":path});
     }
+  }
+
+  ///=====================Test===============================
+  ///android端异常测试
+  static final String childThreadException = 'child_exception';
+  static final String uIThreadException = 'ui_exception';
+  static final String startUpException = 'start_up_exception';
+
+  void throwChildThreadException()async{
+    if(isAndroid()){
+      await _channel.invokeMethod(childThreadException);
+    }
+  }
+
+  void throwUiThreadException()async{
+    if(isAndroid()){
+      await _channel.invokeMethod(uIThreadException);
+    }
+  }
+
+  void throwStartUpException()async{
+    if(isAndroid()){
+      await _channel.invokeMethod(startUpException);
+    }
+  }
+
+  bool isAndroid(){
+    return Platform.isAndroid;
   }
 
 
