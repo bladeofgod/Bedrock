@@ -18,7 +18,8 @@ class TestAndroidPage extends PageState{
 
           },child: Text('android ： 抛一个子线程异常'),),
           getSizeBox(height: getWidthPx(40)),
-          Text("默认 ui线程保护 和 activity 启动保护是注释掉的，需要在原生端的 BaseApp开启。\n才能进行下面的测试",
+          Text("默认 ui线程保护 和 activity 启动保护是注释掉的，需要在原生端的 BaseApp开启,才能进行下面的测试。\n"
+              "PS:你可以先点击下方的看一下效果，然后开启后再看一下效果",
             style: TextStyle(color: Colors.black,fontSize: getSp(32)),),
           getSizeBox(height: getWidthPx(40)),
           RaisedButton(onPressed: (){
