@@ -7,6 +7,7 @@ import android.os.Looper;
 
 import com.lijiaqi.bedrock.protect.ActivityStackManager;
 import com.lijiaqi.bedrock.protect.IProtect;
+import com.lijiaqi.bedrock.protect.handler.ActivityExceptionHandler;
 
 /**
  * @author LiJiaqi
@@ -17,6 +18,12 @@ import com.lijiaqi.bedrock.protect.IProtect;
  * 注意：混合项目下，简单的finish()可能并不能回到上一页
  */
 public class UIThreadProtect implements IProtect {
+    private final ActivityExceptionHandler exceptionHandler;
+
+    public UIThreadProtect(ActivityExceptionHandler exceptionHandler) {
+        this.exceptionHandler = exceptionHandler;
+    }
+
     @Override
     public void protect(Application application) {
         ActivityStackManager.getInstance().init(application);
@@ -45,8 +52,8 @@ public class UIThreadProtect implements IProtect {
                     if(activity != null){
                         protectActivityStart(crashException);
                         ///混合项目下，简单的finish可能并不能回到上一页
-                        ///建议自己定义接口
-                        activity.finish();
+                        //activity.finish();
+                        exceptionHandler.onException(activity,e);
                         return;
                     }
                 }

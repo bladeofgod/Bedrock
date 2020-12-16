@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 
 import com.lijiaqi.bedrock.protect.IProtect;
+import com.lijiaqi.bedrock.protect.handler.ActivityExceptionHandler;
 import com.lijiaqi.bedrock.util.ReflexUtil;
 
 import java.lang.reflect.Field;
@@ -21,13 +22,25 @@ import java.lang.reflect.Method;
  */
 
 public class ActivityStartProtect implements IProtect {
+    private final ActivityExceptionHandler exceptionHandler;
+
+    public ActivityStartProtect(ActivityExceptionHandler exceptionHandler) {
+        this.exceptionHandler = exceptionHandler;
+    }
+
     @Override
     public void protect(Application application) {
-        new ActivityThreadHook().hookInstrumentation();
+        new ActivityThreadHook(exceptionHandler).hookInstrumentation();
     }
 }
 
 class ActivityThreadHook{
+    private final ActivityExceptionHandler exceptionHandler;
+
+    ActivityThreadHook(ActivityExceptionHandler exceptionHandler) {
+        this.exceptionHandler = exceptionHandler;
+    }
+
     public void hookInstrumentation(){
         try {
             Class clazz = Class.forName("android.app.ActivityThread");
@@ -41,7 +54,7 @@ class ActivityThreadHook{
             mInstrumentationField.setAccessible(true);
             Instrumentation instrumentation = (Instrumentation) mInstrumentationField.get(activity);
 
-            InstrumentationProxy proxy = new InstrumentationProxy(instrumentation);
+            InstrumentationProxy proxy = new InstrumentationProxy(instrumentation,exceptionHandler);
 
             mInstrumentationField.set(activity, proxy);
 
@@ -52,17 +65,20 @@ class ActivityThreadHook{
 }
 
 class InstrumentationProxy extends Instrumentation{
+    private final ActivityExceptionHandler exceptionHandler;
     private final Instrumentation base;
 
-    InstrumentationProxy(Instrumentation base)throws Exception {
+    InstrumentationProxy(Instrumentation base,ActivityExceptionHandler exceptionHandler)throws Exception {
         super();
         this.base = base;
+        this.exceptionHandler = exceptionHandler;
         ReflexUtil.copyTo(base, this);
     }
 
     private void onException(Exception e, Activity activity){
         e.printStackTrace();
-        if(activity != null) activity.finish();
+        //if(activity != null) activity.finish();
+        exceptionHandler.onException(activity,e);
     }
 
     @Override

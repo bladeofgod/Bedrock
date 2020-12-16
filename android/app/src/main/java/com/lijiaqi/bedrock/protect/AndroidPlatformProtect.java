@@ -2,6 +2,7 @@ package com.lijiaqi.bedrock.protect;
 
 import android.app.Application;
 
+import com.lijiaqi.bedrock.protect.handler.ActivityExceptionHandler;
 import com.lijiaqi.bedrock.protect.zone.ActivityStartProtect;
 import com.lijiaqi.bedrock.protect.zone.ChildThreadProtect;
 import com.lijiaqi.bedrock.protect.zone.UIThreadProtect;
@@ -24,24 +25,30 @@ public class AndroidPlatformProtect {
 
     private static volatile AndroidPlatformProtect singleton;
 
-    public static AndroidPlatformProtect getInstance(){
+    public static AndroidPlatformProtect getInstance(ActivityExceptionHandler exceptionHandler){
         if(singleton == null){
             synchronized (AndroidPlatformProtect.class){
                 if(singleton == null){
-                    singleton = new AndroidPlatformProtect();
+                    singleton = new AndroidPlatformProtect(exceptionHandler);
                 }
             }
         }
         return singleton;
     }
+    private AndroidPlatformProtect(ActivityExceptionHandler exceptionHandler){
+        this.exceptionHandler = exceptionHandler;
+    }
+
+    ///activity 异常善后
+    private ActivityExceptionHandler exceptionHandler;
 
     public AndroidPlatformProtect protectActivityStart(){
-        protectStrategyList.add(new ActivityStartProtect());
+        protectStrategyList.add(new ActivityStartProtect(exceptionHandler));
         return singleton;
     }
 
     public AndroidPlatformProtect protectUIThread(){
-        protectStrategyList.add(new UIThreadProtect());
+        protectStrategyList.add(new UIThreadProtect(exceptionHandler));
         return singleton;
     }
 
