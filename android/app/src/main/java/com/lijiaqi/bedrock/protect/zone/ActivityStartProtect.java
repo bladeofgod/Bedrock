@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 
+import com.lijiaqi.bedrock.protect.AndroidPlatformProtect;
 import com.lijiaqi.bedrock.protect.IProtect;
 import com.lijiaqi.bedrock.protect.handler.ActivityExceptionHandler;
 import com.lijiaqi.bedrock.util.ReflexUtil;
@@ -22,24 +23,22 @@ import java.lang.reflect.Method;
  */
 
 public class ActivityStartProtect implements IProtect {
-    private final ActivityExceptionHandler exceptionHandler;
-
-    public ActivityStartProtect(ActivityExceptionHandler exceptionHandler) {
-        this.exceptionHandler = exceptionHandler;
-    }
+//    private final ActivityExceptionHandler exceptionHandler;
+//
+//    public ActivityStartProtect() {
+//        this.exceptionHandler = AndroidPlatformProtect.getInstance().getExceptionHandler();
+//        if(exceptionHandler == null) throw new RuntimeException("ActivityExceptionHandler is null," +
+//                " you must set a exceptionHandler, that subclass of the ActivityExceptionHandler.");
+//    }
 
     @Override
     public void protect(Application application) {
-        new ActivityThreadHook(exceptionHandler).hookInstrumentation();
+        new ActivityThreadHook().hookInstrumentation();
     }
 }
 
 class ActivityThreadHook{
-    private final ActivityExceptionHandler exceptionHandler;
 
-    ActivityThreadHook(ActivityExceptionHandler exceptionHandler) {
-        this.exceptionHandler = exceptionHandler;
-    }
 
     public void hookInstrumentation(){
         try {
@@ -54,7 +53,7 @@ class ActivityThreadHook{
             mInstrumentationField.setAccessible(true);
             Instrumentation instrumentation = (Instrumentation) mInstrumentationField.get(activity);
 
-            InstrumentationProxy proxy = new InstrumentationProxy(instrumentation,exceptionHandler);
+            InstrumentationProxy proxy = new InstrumentationProxy(instrumentation);
 
             mInstrumentationField.set(activity, proxy);
 
@@ -68,10 +67,12 @@ class InstrumentationProxy extends Instrumentation{
     private final ActivityExceptionHandler exceptionHandler;
     private final Instrumentation base;
 
-    InstrumentationProxy(Instrumentation base,ActivityExceptionHandler exceptionHandler)throws Exception {
+    InstrumentationProxy(Instrumentation base)throws Exception {
         super();
         this.base = base;
-        this.exceptionHandler = exceptionHandler;
+        this.exceptionHandler = AndroidPlatformProtect.getInstance().getExceptionHandler();
+        if(exceptionHandler == null) throw new RuntimeException("ActivityExceptionHandler is null," +
+                " you must set a exceptionHandler, that subclass of the ActivityExceptionHandler.");
         ReflexUtil.copyTo(base, this);
     }
 

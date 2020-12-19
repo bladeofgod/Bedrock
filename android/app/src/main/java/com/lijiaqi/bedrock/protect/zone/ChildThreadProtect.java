@@ -4,7 +4,9 @@ import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
+import com.lijiaqi.bedrock.protect.AndroidPlatformProtect;
 import com.lijiaqi.bedrock.protect.IProtect;
+import com.lijiaqi.bedrock.protect.handler.ActivityExceptionHandler;
 
 
 /**
@@ -25,8 +27,6 @@ public class ChildThreadProtect implements IProtect {
 /// in fact,this Singleton doesn't make much sense...but,easy to use.
 
 class ChildThreadHandler implements Thread.UncaughtExceptionHandler{
-    static final String TAG = "Bedrock_Crash_Handler:";
-    final String slash = "------------------";
 
     static private volatile ChildThreadHandler singleton;
 
@@ -40,9 +40,13 @@ class ChildThreadHandler implements Thread.UncaughtExceptionHandler{
         }
         return singleton;
     }
-    private Context context;
+    private final ActivityExceptionHandler exceptionHandler;
+    private final Context context;
     ChildThreadHandler(Context context){
         this.context = context;
+        this.exceptionHandler = AndroidPlatformProtect.getInstance().getExceptionHandler();
+        if(exceptionHandler == null) throw new RuntimeException("ActivityExceptionHandler is null," +
+                " you must set a exceptionHandler, that subclass of the ActivityExceptionHandler.");
     }
 
     ///处理子线程异常
@@ -52,10 +56,6 @@ class ChildThreadHandler implements Thread.UncaughtExceptionHandler{
     ///处理子线程异常
     @Override
     public void uncaughtException(Thread t, Throwable e) {
-        Log.d(TAG, slash+TAG+slash);
-        Log.d(TAG,t.getName());
-        e.printStackTrace();
-        Log.d(TAG, slash+TAG+slash);
-
+        exceptionHandler.onChildThreadException(t, e);
     }
 }

@@ -12,5 +12,6 @@ import android.app.Activity;
 public abstract class ActivityExceptionHandler {
 
     public abstract void onException(Activity activity,Exception e);
+    public abstract void onChildThreadException(Thread t, Throwable e);
 
 }

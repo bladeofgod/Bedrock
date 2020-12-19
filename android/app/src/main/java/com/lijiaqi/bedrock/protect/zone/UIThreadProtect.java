@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.Looper;
 
 import com.lijiaqi.bedrock.protect.ActivityStackManager;
+import com.lijiaqi.bedrock.protect.AndroidPlatformProtect;
 import com.lijiaqi.bedrock.protect.IProtect;
 import com.lijiaqi.bedrock.protect.handler.ActivityExceptionHandler;
 
@@ -20,8 +21,10 @@ import com.lijiaqi.bedrock.protect.handler.ActivityExceptionHandler;
 public class UIThreadProtect implements IProtect {
     private final ActivityExceptionHandler exceptionHandler;
 
-    public UIThreadProtect(ActivityExceptionHandler exceptionHandler) {
-        this.exceptionHandler = exceptionHandler;
+    public UIThreadProtect() {
+        this.exceptionHandler = AndroidPlatformProtect.getInstance().getExceptionHandler();
+        if(exceptionHandler == null) throw new RuntimeException("ActivityExceptionHandler is null," +
+                " you must set a exceptionHandler, that subclass of the ActivityExceptionHandler.");
     }
 
     @Override

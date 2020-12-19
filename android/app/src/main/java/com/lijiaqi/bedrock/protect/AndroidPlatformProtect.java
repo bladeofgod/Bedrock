@@ -25,7 +25,7 @@ public class AndroidPlatformProtect {
 
     private static volatile AndroidPlatformProtect singleton;
 
-    public static AndroidPlatformProtect getInstance(ActivityExceptionHandler exceptionHandler){
+    public static AndroidPlatformProtect initProtect(ActivityExceptionHandler exceptionHandler){
         if(singleton == null){
             synchronized (AndroidPlatformProtect.class){
                 if(singleton == null){
@@ -36,19 +36,29 @@ public class AndroidPlatformProtect {
         return singleton;
     }
     private AndroidPlatformProtect(ActivityExceptionHandler exceptionHandler){
+        if(exceptionHandler == null) throw new RuntimeException("ActivityExceptionHandler is null," +
+                " you must set a exceptionHandler, that subclass of the ActivityExceptionHandler.");
         this.exceptionHandler = exceptionHandler;
     }
 
+    public static AndroidPlatformProtect getInstance(){
+        if(singleton == null) throw new RuntimeException("you need call method 'initProtect' first than get a Instance.");
+        return singleton;
+    }
+
     ///activity 异常善后
-    private ActivityExceptionHandler exceptionHandler;
+    private final ActivityExceptionHandler exceptionHandler;
+    public ActivityExceptionHandler getExceptionHandler(){
+        return exceptionHandler;
+    }
 
     public AndroidPlatformProtect protectActivityStart(){
-        protectStrategyList.add(new ActivityStartProtect(exceptionHandler));
+        protectStrategyList.add(new ActivityStartProtect());
         return singleton;
     }
 
     public AndroidPlatformProtect protectUIThread(){
-        protectStrategyList.add(new UIThreadProtect(exceptionHandler));
+        protectStrategyList.add(new UIThreadProtect());
         return singleton;
     }
 
