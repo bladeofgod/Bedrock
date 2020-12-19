@@ -136,7 +136,7 @@ dependencies:
   mmkv_flutter: ^1.0.10
 
   #网络状态
-  connectivity: ^0.4.9+2
+  connectivity: ^2.0.2
 
   #  #高德地图
   #  amap_location: ^0.2.0
