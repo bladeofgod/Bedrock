@@ -15,6 +15,7 @@ import 'package:flutter_bedrock/page/demo_page/image/pick_image_page.dart';
 import 'package:flutter_bedrock/page/demo_page/isolate/isolate_page.dart';
 import 'package:flutter_bedrock/page/demo_page/local_i10l/local_page.dart';
 import 'package:flutter_bedrock/page/demo_page/main_page.dart';
+import 'package:flutter_bedrock/page/demo_page/notification/notification_page.dart';
 import 'package:flutter_bedrock/page/demo_page/other/custom_dialog_page.dart';
 import 'package:flutter_bedrock/page/demo_page/other/part_refresh_page.dart';
 import 'package:flutter_bedrock/page/demo_page/other_demo_page.dart';
@@ -86,6 +87,14 @@ class DemoPageState extends PageState {
               child: Text("app observe ",style: TextStyle(color: Colors.black),),
               onPressed: (){
                 push(IsolatePageState());
+              },
+            ),
+            getSizeBox(height: getHeightPx(40)),
+            buildIntro("app 内部通知演示"),
+            RaisedButton(
+              child: Text("app 内部通知 ",style: TextStyle(color: Colors.black),),
+              onPressed: (){
+                push(NotificationPage());
               },
             ),
 
