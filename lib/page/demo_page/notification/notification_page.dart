@@ -22,7 +22,6 @@ class NotificationPage extends PageState{
 
   @override
   Widget build(BuildContext context) {
-    debugPrint('notification page build');
     return switchStatusBar2Dark(child: Container(
       width: getWidthPx(750),height: getHeightPx(1334),
       child: Column(
