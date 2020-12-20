@@ -7,6 +7,17 @@ import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 
 
 class NotificationPage extends PageState{
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    NotificationHandler().addNotifyListener((notifyStatus) {
+      debugPrint('notify status : $notifyStatus');
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     debugPrint('notification page build');
