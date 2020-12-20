@@ -14,7 +14,7 @@ class NotificationPage extends PageState{
   void initState() {
     // TODO: implement initState
     super.initState();
-    NotificationHandler().addNotifyListener((notifyStatus) {
+    NotificationHandler(context).addNotifyListener((notifyStatus) {
       debugPrint('notify status : $notifyStatus');
     });
   }
@@ -28,36 +28,47 @@ class NotificationPage extends PageState{
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           buildBtn('弹出通知', (){
-            NotificationHandler()
-                ..showNotificationFromTop(context,notifyDwellTime: Duration(seconds: 2),
-                  child: Material(
-                    child: GestureDetector(
-                      onTap: (){
-                        push(NotifyTargetPage());
-                      },
-                      child: Container(
-                        margin: EdgeInsets.only(top: getWidthPx(80),left: getWidthPx(20),right: getWidthPx(20)),
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(getWidthPx(10)),
-                            boxShadow: [
-                              BoxShadow(
-                                  offset: Offset(0, 1),spreadRadius: 0.5,
-                                  blurRadius:0.5,color: Color.fromRGBO(34, 34, 34, 0.3)),
-                            ]
-                        ),
-
-                        alignment: Alignment.center,
-                        width: getWidthPx(750),height: getWidthPx(200),
-                        child: Text('notification'),
-                      ),
-                    ),
-                ),);
+            NotificationHandler(context)
+                ..showNotificationFromTop(notifyDwellTime: Duration(seconds: 2),
+                  child: buildNotifyChild('notification'),);
+          }),
+          ///
+          buildBtn('弹出多个通知', (){
+            NotificationHandler(context)
+              ..showNotifyListFromTop(notifyDwellTime: Duration(seconds: 2),
+                children:List<Widget>.generate(3, (index) => buildNotifyChild('notification $index')),)
+                .whenComplete(() => debugPrint('通知弹出完毕'));
           }),
 
         ],
       ),
     ));
+  }
+
+  Widget buildNotifyChild(String title){
+    return Material(
+      child: GestureDetector(
+        onTap: (){
+          push(NotifyTargetPage());
+        },
+        child: Container(
+          margin: EdgeInsets.only(top: getWidthPx(80),left: getWidthPx(20),right: getWidthPx(20)),
+          decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(getWidthPx(10)),
+              boxShadow: [
+                BoxShadow(
+                    offset: Offset(0, 1),spreadRadius: 0.5,
+                    blurRadius:0.5,color: Color.fromRGBO(34, 34, 34, 0.3)),
+              ]
+          ),
+
+          alignment: Alignment.center,
+          width: getWidthPx(750),height: getWidthPx(200),
+          child: Text(title,style: TextStyle(fontSize: getSp(32)),),
+        ),
+      ),
+    );
   }
 
   Widget buildBtn(String title,Function onTap){
