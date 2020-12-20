@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 
 typedef NotifyDone = void Function(bool notifyDone);
 
+/// 通知显示类型的widget（包裹层） 建议都在这个文件夹下创建
+
 class FromTopNotifyWidget extends WidgetState with SingleTickerProviderStateMixin {
 
 
