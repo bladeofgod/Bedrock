@@ -13,11 +13,12 @@ class FromTopNotifyWidget extends WidgetState with SingleTickerProviderStateMixi
   final Widget child;
   final Duration animationDuration;
   final Duration notifyDwellTime;
+  final NotifyDone notifyDone;
 
   AnimationController controller;
   Animation animation;
 
-  FromTopNotifyWidget(this.child, this.animationDuration, this.notifyDwellTime);
+  FromTopNotifyWidget(this.child,this.notifyDone, this.animationDuration, this.notifyDwellTime);
 
 
   @override
@@ -29,7 +30,7 @@ class FromTopNotifyWidget extends WidgetState with SingleTickerProviderStateMixi
     controller.addStatusListener((status) {
       if(status == AnimationStatus.completed){
         Future.delayed(notifyDwellTime)
-            .whenComplete(() => controller?.reverse());
+            .whenComplete(() => controller?.reverse()?.whenComplete(() => notifyDone(true)));
       }
     });
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
