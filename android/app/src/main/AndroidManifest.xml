@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.lijiaqi.flutter_bedrock">
     <!--
      io.flutter.app.FlutterApplication is an android.app.Application that
@@ -53,6 +54,7 @@
             android:name="flutterEmbedding"
             android:value="2" /> <!-- 自动升级获取文件uri -->
         <provider
+            tools:replace="android:authorities"
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.lijiaqi.flutter_bedrock.fileProvider"
             android:exported="false"
