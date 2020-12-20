@@ -1,6 +1,7 @@
 
 
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/base_framework/ui/widget/notification/notification_handler.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
@@ -26,13 +27,22 @@ class NotificationPage extends PageState{
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          buildBtn('顶部弹出通知', (){
+          buildBtn('弹出通知', (){
             NotificationHandler()
-                ..showNotificationFromTop(context,
+                ..showNotificationFromTop(context,notifyDwellTime: Duration(seconds: 3),
                   child: Material(
                     child: Container(
-                    margin: EdgeInsets.only(top: getWidthPx(80)),
-                    color: Colors.lightBlueAccent,
+                    margin: EdgeInsets.only(top: getWidthPx(80),left: getWidthPx(20),right: getWidthPx(20)),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(getWidthPx(10)),
+                      boxShadow: [
+                        BoxShadow(
+                            offset: Offset(0, 1),spreadRadius: 0.5,
+                            blurRadius:0.5,color: Color.fromRGBO(34, 34, 34, 0.3)),
+                      ]
+                    ),
+
                     alignment: Alignment.center,
                     width: getWidthPx(750),height: getWidthPx(200),
                     child: Text('notification'),
