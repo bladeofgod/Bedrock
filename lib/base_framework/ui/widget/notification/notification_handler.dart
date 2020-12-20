@@ -22,7 +22,7 @@ class NotificationHandler implements INotification{
   }
 
   final BuildContext context;
-
+  ///批量通知是否全部显示完毕
   bool streamDone = true;
 
   StreamController<NotifyListItemWrapper> _streamController;
@@ -164,7 +164,7 @@ class NotifyOverlayEntry{
   NotifyOverlayEntry(this.notifyWidget, this.animationDuration, this.notifyDwellTime,{@required this.callback,
     NotifyType notifyType = NotifyType.FromTop}){
     ///根据类型 构建不同显示方式的通知
-    ///目前只有一个从底部滑出的方式
+    ///目前只有一个从顶部滑出的方式
     ///如果需要拓展，请务必遵从下面的设计方式
     switch(notifyType){
       case NotifyType.FromTop:
