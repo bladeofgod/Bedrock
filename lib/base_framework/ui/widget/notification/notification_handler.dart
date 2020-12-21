@@ -133,10 +133,13 @@ class NotificationHandler implements INotification{
 
 }
 
+///通知状态
 enum NotifyStatus{
   Running,Completed
 }
 
+
+///NotificationHandler 基本行为
 abstract class INotification{
   Future showNotificationFromTop({@required Widget child,Duration animationDuration, Duration notifyDwellTime});
   Future showNotifyListFromTop({@required List<Widget> children,Duration animationDuration, Duration notifyDwellTime});
@@ -146,7 +149,10 @@ abstract class INotification{
   void clearAllListener();
 }
 
+
+//通知显示类型
 enum NotifyType{
+  ///顶部滑出
   FromTop
 }
 
@@ -158,6 +164,7 @@ class NotifyOverlayEntry{
   final Duration animationDuration;
   final Duration notifyDwellTime;
   final VoidCallback callback;
+  final NotifyType notifyType;
 
   OverlayEntry entry;
   bool notifyDone = false;
@@ -165,7 +172,11 @@ class NotifyOverlayEntry{
   OverlayEntry get  overlayEntry => entry;
 
   NotifyOverlayEntry(this.notifyWidget, this.animationDuration, this.notifyDwellTime,{@required this.callback,
-    NotifyType notifyType = NotifyType.FromTop}){
+     this.notifyType = NotifyType.FromTop}){
+    _generateOverlay();
+  }
+
+  void _generateOverlay(){
     ///根据类型 构建不同显示方式的通知
     ///目前只有一个从顶部滑出的方式
     ///如果需要拓展，请务必遵从下面的设计方式
@@ -181,7 +192,8 @@ class NotifyOverlayEntry{
         });
         break;
     }
-  }
+
+}
 
 
 
