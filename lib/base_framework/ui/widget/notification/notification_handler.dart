@@ -49,9 +49,9 @@ class NotificationHandler implements INotification{
       showNotificationFromTop(child: event.child,animationDuration: event.animationDuration,notifyDwellTime: event.notifyDwellTime);
     });
 
-    _streamController.done.then((v) {
-      streamDone = true;
-    });
+//    _streamController.done.then((v) {
+//      streamDone = true;
+//    });
     _subscription.pause();
 
 
@@ -117,12 +117,15 @@ class NotificationHandler implements INotification{
   @override
   Future showNotifyListFromTop({List<Widget> children, Duration animationDuration, Duration notifyDwellTime})async {
     listCompleter = Completer();
-    streamDone = false;
-    _subscription.resume();
+
     children.forEach((element) {
       _sink.add(NotifyListItemWrapper(element,animationDuration,notifyDwellTime));
     });
     _sink.add(null);
+    if(streamDone){
+      streamDone = false;
+      _subscription.resume();
+    }
 
     return listCompleter.future;
   }
