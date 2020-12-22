@@ -24,8 +24,9 @@
 ## Android
 
     Android端增加了异常保护 ：
-    全部开启后，理论上，应用在安卓端将不再会崩溃（极为严重的连续性异常和系统异常依然会崩溃，不过也可以通过调整策略）
-
+    全部开启后，理论上，应用在安卓端将不再会崩溃。
+    （极为严重的连续性异常和系统异常依然会崩溃，不过也可以通过调整策略避免崩溃，但不建议这样）
+                //在BaseApp的onCreate内
                 AndroidPlatformProtect.initProtect(new DefaultActivityExceptionHandler())
                         ///处理UI线程的异常
                         .protectUIThread()
@@ -35,10 +36,11 @@
                         .protectChildThread()
                         .init(this);
 
-    DefaultActivityExceptionHandler异常后的activity善后默认类:
-        回退到上一页(或者退出应用)，输出log。
+    DefaultActivityExceptionHandler,发生异常后的善后类:
+        默认是回退到上一页(或者退出应用)，并输出log。
 
-    Tip:建议继承ActivityExceptionHandler 并自定义相关操作。
+    Tip:
+    建议继承ActivityExceptionHandler 并自定义相关操作。
 
     Tip:
     如果是纯flutter项目，
