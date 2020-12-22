@@ -1,6 +1,6 @@
 # :whale:Flutter Bedrock
 
-##  :seedling:v 1.0.24
+##  :seedling:v 1.0.25
 
     一款基于MVVM+Provider的快速开发框架。
 
@@ -19,7 +19,35 @@
 
 [仿网易云音乐APP](https://juejin.im/post/6881093329317019662/)
 
-## 主要特性
+# 主要特性
+
+## Android
+
+    Android端增加了异常保护 ：
+    全部开启后，理论上，应用在安卓端将不再会崩溃（极为严重的连续性异常和系统异常依然会崩溃，不过也可以通过调整策略）
+
+                AndroidPlatformProtect.initProtect(new DefaultActivityExceptionHandler())
+                        ///处理UI线程的异常
+                        .protectUIThread()
+                        ///处理 activity生命周期的异常
+                        .protectActivityStart()
+                        ///处理子线程异常
+                        .protectChildThread()
+                        .init(this);
+
+    DefaultActivityExceptionHandler异常后的activity善后默认类:
+        回退到上一页(或者退出应用)，输出log。
+
+    Tip:建议继承ActivityExceptionHandler 并自定义相关操作。
+
+    Tip:
+    如果是纯flutter项目，
+    可以考虑注释掉这两个保护[protectUIThread]和[protectActivityStart]
+    混合项目(或引入的插件含有原生端)的话，可以考虑开启
+    [protectActivityStart]在混淆下可能会无效或者出现无法预知的问题，建议混淆方案中忽视它(或者屏蔽它)。
+
+## Common
+
     1、MVVM+Provider，低耦合、逻辑分明、页面代码清晰。Provider提供的状态管理使页面控制和展现更为灵活方便
     
     2、全局异常捕捉：接口业务型和语法型，业务型可根据需要进行处理（如未登录、未授权、超时、无网等等）并实现页面自动切换，语法型可以跳转到指定页面避免红屏（还可在此页面做日志上传）。
@@ -39,6 +67,7 @@
     9、你的viewmodel只要是继承ViewStateModel，并注册CacheDataFactory，就可以实现首次加载自动缓存，无网自动显示上次缓存（缓存方式采用的mmkv 高速缓存）
     
     ...更多可以查看更新日志
+
 
 # 使用方法
 

@@ -12,8 +12,8 @@ import android.util.Log;
 
 
 public class DefaultActivityExceptionHandler extends ActivityExceptionHandler {
-    static final String TAG = "Exception_Handler:";
-    final String slash = "------------------";
+    static private final String TAG = "Exception_Handler:";
+    private final String slash = "------------------";
     ///
 
     /**
@@ -26,7 +26,7 @@ public class DefaultActivityExceptionHandler extends ActivityExceptionHandler {
     @Override
     public void onException(Activity activity, Exception e) {
         Log.i(TAG,"==========Activity(UI thread) 发生了一个异常=========");
-        if(e != null)Log.d(TAG,e.getMessage());
+        if(e != null)Log.d(TAG,""+e.getMessage());
         if(activity != null) activity.finish();
     }
     
