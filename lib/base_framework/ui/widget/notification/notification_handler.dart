@@ -49,20 +49,17 @@ class NotificationHandler implements INotification{
       showNotificationFromTop(child: event.child,animationDuration: event.animationDuration,notifyDwellTime: event.notifyDwellTime);
     });
 
-//    _streamController.done.then((v) {
-//      streamDone = true;
-//    });
     _subscription.pause();
-
-
 
   }
 
-  final List<NotifyStatusListener> listeners = [];
+
+  ///注册监听列表
+  final List<NotifyStatusListener> _listeners = [];
 
 
   void _notifyListener(NotifyStatus notifyStatus){
-    listeners.forEach((element) {
+    _listeners.forEach((element) {
       element(notifyStatus);
     });
   }
@@ -97,17 +94,17 @@ class NotificationHandler implements INotification{
 
   @override
   void addNotifyListener(NotifyStatusListener listener) {
-    listeners.add(listener);
+    _listeners.add(listener);
   }
 
   @override
   void removeNotifyListener(NotifyStatusListener listener) {
-    listeners.remove(listener);
+    _listeners.remove(listener);
   }
 
   @override
   void clearAllListener() {
-    listeners.clear();
+    _listeners.clear();
   }
 
   ///批量显示通知

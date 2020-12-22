@@ -30,6 +30,7 @@
     <application
         android:name="com.lijiaqi.bedrock.BaseApp"
         android:icon="@mipmap/ic_launcher"
+        android:requestLegacyExternalStorage="true"
         android:label="flutter_bedrock">
         <activity android:name="com.lijiaqi.bedrock.test.TestPage2"/>
         <activity android:name="com.lijiaqi.bedrock.test.TestPage1" />
