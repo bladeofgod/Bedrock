@@ -1,6 +1,7 @@
 import 'package:connectivity/connectivity.dart';
 import 'package:flustars/flustars.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bedrock/base_framework/view_model/interface/cache_data_factory.dart';
 import 'package:mmkv_flutter/mmkv_flutter.dart';
 import 'package:oktoast/oktoast.dart';
 
@@ -30,7 +31,7 @@ abstract class ListViewStateModel<T> extends ViewStateModel {
       bool netStatus =await checkNet();
       if(netStatus){
         ///没网 的情况下
-        await showCacheData();
+        await cacheDataFactory.showCacheData();
         return;
       }
     }
@@ -38,29 +39,7 @@ abstract class ListViewStateModel<T> extends ViewStateModel {
   }
 
 
-  ///加载上一次的缓存并提示
-  showCacheData()async{
-    showToast('请检查网络状态');
-    final mmkv = await MmkvFlutter.getInstance();
-    ///总是取第一页作为临时展示
-    List<String> cacheList = [];
-    List<Future<String>> futures = [];
-    for(int i=0 ; i < 10; i++){
-      futures.add(mmkv.getString('${this.runtimeType.toString()}$i'));
-    }
-    Future.wait(futures).then((value){
-      cacheList.addAll(value);
-      cacheList.removeWhere((element) => (element.isEmpty || element.contains('null')));
-      if(cacheList.isEmpty ){
-        setEmpty();
-      }else{
-        cacheDataFactory.fetchListCacheData(cacheList);
-        setBusy(false);
-      }
-    });
 
-
-  }
 
   // 下拉刷新
   refresh({bool init = false}) async {

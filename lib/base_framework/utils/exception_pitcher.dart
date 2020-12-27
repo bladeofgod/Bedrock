@@ -22,6 +22,7 @@ class ExceptionPitcher{
     return _instance;
   }
 
+  /// * 根据code 抛出业务异常
   Exception transformException(ResponseData responseData){
     switch(responseData.code){
       ///仅为以下测试代码

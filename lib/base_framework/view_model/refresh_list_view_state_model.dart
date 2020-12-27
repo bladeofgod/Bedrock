@@ -50,7 +50,7 @@ abstract class RefreshListViewStateModel<T> extends ListViewStateModel<T> {
         onRefreshCompleted();
         ///第一次加载且已注册缓存功能的，才进行缓存
         if(init && cacheDataFactory != null){
-          cacheRefreshData();
+          cacheDataFactory.cacheRefreshData();
         }
       }
       return data;
@@ -60,15 +60,7 @@ abstract class RefreshListViewStateModel<T> extends ListViewStateModel<T> {
     }
   }
 
-  cacheRefreshData()async{
-    final mmkv = await MmkvFlutter.getInstance();
-    int i=0;
-    for(String str in cacheDataFactory.cacheListData()){
-      await mmkv.setString('${this.runtimeType.toString()}$i',str);
-      i +=1;
-    }
 
-  }
 
   /// 上拉加载更多
   Future<List<T>> loadMore() async {

@@ -12,7 +12,7 @@ import 'package:flutter_bedrock/base_framework/exception/user_unbind_exception.d
 import 'view_state.dart';
 
 
-class ViewStateModel with ChangeNotifier {
+abstract class ViewStateModel with ChangeNotifier {
 
   bool disposed = false;
 

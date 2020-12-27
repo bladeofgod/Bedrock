@@ -23,19 +23,15 @@ class ShowImageUtil{
   static const String W600 = "-w600";
   static const String W1000 = "-w1000";
 
-  /*
-  * show image with default & error widget
-  *
-  * */
-  static Widget showImageWithDefaultError(String url,double width,
-      double height,{
-    String imageType = TEST,
-        double borderRadius = 0,BorderRadius borderRStyle ,
-    Widget defaultImg,
-        Widget errorImg,
-        BoxFit boxFit : BoxFit.cover}){
-    //print("image url ________$url$W400");
-    //debugPrint("banner circle radius  : $borderRadius");
+
+  /// 获取一个图片widget
+  /// * 支持全圆角，或者自定义圆角风格
+  /// * 支持根据图片连接结果，显示缺省图（需释放注释）
+  static Widget showImageWithDefaultError(String url,double width, double height,{
+    String imageType = TEST, double borderRadius = 0,BorderRadius borderRStyle ,
+    /// 缺省widget         ///错误widget
+    Widget defaultImg, Widget errorImg, BoxFit boxFit : BoxFit.cover}){
+
     return ClipRRect(
       borderRadius:borderRStyle??BorderRadius.all(Radius.circular(borderRadius)) ,
       child: ExtendedImage.network(
@@ -69,38 +65,6 @@ class ShowImageUtil{
 
 
 
-
-//  static Widget showImageSmallWithDefaultError(String url,double width,
-//      double height,{
-//        Widget defaultImg,
-//        Widget errorImg,
-//        BoxFit boxFit : BoxFit.fill}){
-//    return CachedNetworkImage(
-//      imageUrl: "$url.small.webp",
-//      placeholder: (_,__){
-//        return defaultImg??ImageHelper.placeHolderGoodsDefaultImg(width:
-//        width,height:
-//        height);
-//      },
-//      errorWidget: (_,__,___){
-//        return errorImg??ImageHelper.goodsErrorStatusImg(width: width,height:
-//        height);
-//      },
-//      width: width,height: height,fit: BoxFit.fill,);
-//  }
-
-  /// out of stock widget
-//  static Widget showOutOfStock(String label,double labelSize,double width,double height){
-//    return Container(
-//      alignment: Alignment.center,
-//      width: width,
-//      height: height,
-//      color: Color.fromRGBO(229, 229, 229, 0.3),
-//      child: Text(
-//        "$label",style: TextStyle(color: Colors.white,fontSize: labelSize),
-//      ),
-//    );
-//  }
 
 
 

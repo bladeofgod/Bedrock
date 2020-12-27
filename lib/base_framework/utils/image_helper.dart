@@ -17,7 +17,7 @@ class ImageHelper {
   static const String imagePrefix = '$baseUrl/uimg/';
 
   ///图片扩展名，：建议使用webP，使用前先了解一下它（据说安卓4.0以下可能不兼容，不过微信都放弃4.0了）
-  static const String imageTail = ".png";
+  static const String extensionsType = ".png";
 
 
   static String addWebp(String url){
@@ -43,27 +43,27 @@ class ImageHelper {
 
 
 
-  static String wrapAssets(String url) {
-    return "assets/images/" + url + imageTail;
+  static String wrapAssets(String url,{String fileExtensions = extensionsType}) {
+    return "assets/images/" + url + fileExtensions;
   }
 
-  static String wrapAssetsIcon(String url,{bool need1x = false}){
-    return 'assets/images/icons/${need1x?"/1.0x":""}' + url + imageTail;
+  static String wrapAssetsIcon(String url,{bool need1x = false,String fileExtensions = extensionsType}){
+    return 'assets/images/icons/${need1x?"/1.0x":""}' + url + fileExtensions;
   }
 
-  static String wrapAssetsBG(String url){
-    return 'assets/images/backgrounds/' + url + imageTail;
+  static String wrapAssetsBG(String url,{String fileExtensions = extensionsType}){
+    return 'assets/images/backgrounds/' + url + fileExtensions;
   }
 
-  static String wrapAssetsLogo(String url){
-    return 'assets/images/logos/' + url + imageTail;
+  static String wrapAssetsLogo(String url,{String fileExtensions = extensionsType}){
+    return 'assets/images/logos/' + url + fileExtensions;
   }
 
-  static String wrapAssetsDefault(String url){
-    return 'assets/images/default/' + url + imageTail;
+  static String wrapAssetsDefault(String url,{String fileExtensions = extensionsType}){
+    return 'assets/images/default/' + url + fileExtensions;
   }
-  static String wrapAssetsBanner(String url){
-    return 'assets/images/backgrounds/banner/' + url + imageTail;
+  static String wrapAssetsBanner(String url,{String fileExtensions = extensionsType}){
+    return 'assets/images/backgrounds/banner/' + url + fileExtensions;
   }
 
   static Widget placeHolder({double width, double height}) {
@@ -91,7 +91,7 @@ class ImageHelper {
 
 
 
-  ///从相册选择或者拍照一张照片picker   插件：MultiImagePicker
+  /// * 从相册选择或者拍照一张照片picker   插件：MultiImagePicker
 
   static Future<List<Asset>> pickImage()async{
     List<Asset> images = List<Asset>();
@@ -119,7 +119,7 @@ class ImageHelper {
 
   }
 
-
+  /// * 保存图片到临时路径
   static Future<String> saveImage(String name, Uint8List fileData) async {
     //Image image = Image.memory(fileData);
     Directory tempDir = await getTemporaryDirectory();
