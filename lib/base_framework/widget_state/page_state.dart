@@ -28,35 +28,29 @@ import 'package:flutter_bedrock/base_framework/widget_state/widget_state.dart';
 
 abstract class PageState extends BaseState with WidgetGenerator,RouteAware,_RouteHandler{
 
-  double marginLeft = 0.0;
-  double dragPosition = 0.0;
-  bool slideOutActive = false;
 
 
 
   ///所有页面请务必使用此方法作为根布局
-  ///切换状态栏 模式：light or dark
-  ///应在根位置调用此方法
-  ///needSlideOut是否支持右滑返回、如果整个项目不需要，可以配置默认值为false
+  ///[isSetDark]切换状态栏 模式：light or dark
+  ///[child] 你的页面
+  ///[edgeInsets] 一般用于屏幕虚拟的适配
+  ///[needSlideOut]是否支持右滑返回、如果整个项目不需要，可以配置默认值为false
   Widget switchStatusBar2Dark({bool isSetDark = true,@required Widget child,
-    ///适配、
     EdgeInsets edgeInsets,bool needSlideOut = false}){
     if(! needSlideOut){
-      //不含侧滑退出
-      return getNormalPage(isSetDark: isSetDark,child: child,edgeInsets: edgeInsets,
-          needSlideOut: needSlideOut);
+      ///不含侧滑退出
+      return getNormalPage(isSetDark: isSetDark,child: child,edgeInsets: edgeInsets);
 
     }else{
-      //侧滑退出
-      return getPageWithSlideOut(isSetDark: isSetDark,child: child,edgeInsets: edgeInsets,
-          needSlideOut: needSlideOut);
+      ///侧滑退出
+      return getPageWithSlideOut(isSetDark: isSetDark,child: child,edgeInsets: edgeInsets,);
     }
 
   }
 
   Widget getNormalPage({bool isSetDark = true,@required Widget child,
-    ///适配、
-    EdgeInsets edgeInsets,bool needSlideOut = false}){
+    EdgeInsets edgeInsets}){
     return AnnotatedRegion(
         value: isSetDark ? SystemUiOverlayStyle.dark : SystemUiOverlayStyle.light,
         child: Material(
@@ -69,9 +63,15 @@ abstract class PageState extends BaseState with WidgetGenerator,RouteAware,_Rout
     );
   }
 
+  ///页面左边距
+  double marginLeft = 0.0;
+  ///拖动位置
+  double dragPosition = 0.0;
+  ///触发页面滑动动画
+  bool slideOutActive = false;
+
   Widget getPageWithSlideOut({bool isSetDark = true,@required Widget child,
-    ///适配、
-    EdgeInsets edgeInsets,bool needSlideOut = false}){
+    EdgeInsets edgeInsets}){
     return AnnotatedRegion(
         value: isSetDark ? SystemUiOverlayStyle.dark : SystemUiOverlayStyle.light,
         child: Material(
@@ -192,6 +192,7 @@ abstract class PageState extends BaseState with WidgetGenerator,RouteAware,_Rout
     ///页面进入/退出时间
     Duration transitionDuration = const Duration(milliseconds: 0),
     ///新版本 此参数已作废
+    @deprecated
     Duration reverseTransitionDuration = const Duration(milliseconds: 0),
   }){
     Navigator.of(context).push(
