@@ -1,6 +1,6 @@
 # :whale:Flutter Bedrock
 
-##  :seedling:v 1.0.26
+##  :seedling:v 1.0.27
 
     一款基于MVVM+Provider的快速开发框架。
 
@@ -67,7 +67,9 @@
     8、基于Intl的国际化、APP主题切换。
     
     9、你的viewmodel只要是继承ViewStateModel，并注册CacheDataFactory，就可以实现首次加载自动缓存，无网自动显示上次缓存（缓存方式采用的mmkv 高速缓存）
-    
+
+    10、viewmodel 混入ExceptionBinding后，可以在内部对所有api 业务异常进行监听。
+
     ...更多可以查看更新日志
 
 
