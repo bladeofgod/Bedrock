@@ -2,7 +2,7 @@
 
 ##  1.0.27  2021年1月8日14:33:21
     拓展ExceptionPitcher，对外通知功能
-    增加ExceptionBinding，使viewModel可以对内所有api接口的异常捕获，并通知。
+    增加ExceptionBinding，使viewModel可以对内部的所有api接口的异常捕获，并获取通知。
     增加对应demo
     隐藏部分方法
 
