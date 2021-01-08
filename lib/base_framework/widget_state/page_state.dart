@@ -40,16 +40,16 @@ abstract class PageState extends BaseState with WidgetGenerator,RouteAware,_Rout
     EdgeInsets edgeInsets,bool needSlideOut = false}){
     if(! needSlideOut){
       ///不含侧滑退出
-      return getNormalPage(isSetDark: isSetDark,child: child,edgeInsets: edgeInsets);
+      return _getNormalPage(isSetDark: isSetDark,child: child,edgeInsets: edgeInsets);
 
     }else{
       ///侧滑退出
-      return getPageWithSlideOut(isSetDark: isSetDark,child: child,edgeInsets: edgeInsets,);
+      return _getPageWithSlideOut(isSetDark: isSetDark,child: child,edgeInsets: edgeInsets,);
     }
 
   }
 
-  Widget getNormalPage({bool isSetDark = true,@required Widget child,
+  Widget _getNormalPage({bool isSetDark = true,@required Widget child,
     EdgeInsets edgeInsets}){
     return AnnotatedRegion(
         value: isSetDark ? SystemUiOverlayStyle.dark : SystemUiOverlayStyle.light,
@@ -70,7 +70,7 @@ abstract class PageState extends BaseState with WidgetGenerator,RouteAware,_Rout
   ///触发页面滑动动画
   bool slideOutActive = false;
 
-  Widget getPageWithSlideOut({bool isSetDark = true,@required Widget child,
+  Widget _getPageWithSlideOut({bool isSetDark = true,@required Widget child,
     EdgeInsets edgeInsets}){
     return AnnotatedRegion(
         value: isSetDark ? SystemUiOverlayStyle.dark : SystemUiOverlayStyle.light,

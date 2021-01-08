@@ -5,6 +5,8 @@ import 'package:dio/dio.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'package:flustars/flustars.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_bedrock/base_framework/view_model/handle/exception_handler.dart';
+import 'package:flutter_bedrock/base_framework/view_model/view_state_model.dart';
 import '../../utils/exception_pitcher.dart';
 import 'package:flutter_bedrock/base_framework/config/net/base_http.dart';
 import 'package:flutter_bedrock/base_framework/config/storage_manager.dart';
@@ -61,6 +63,11 @@ class ApiInterceptor extends InterceptorsWrapper{
     return options;
   }
 
+  ///这里可以根据不同的业务代码 扔出不同的异常
+  ///具体要根据后台进行协商
+  /// [ViewStateModel] 的子类会对此处进行捕捉，捕捉后逻辑可以在[ExceptionHandler]中处理
+  /// * 此处的异常捕捉功能仅在[loadData]中有效
+  /// * 如果需要独立收到Api的业务异常，见此类[ExceptionBinding]
 
   @override
   Future onResponse(Response response) {
@@ -69,11 +76,7 @@ class ApiInterceptor extends InterceptorsWrapper{
     if(responseData.success){
       return bedRock.resolve(responseData);
     }else{
-      ///这里可以根据不同的业务代码 扔出不同的异常
-      ///具体要根据后台进行协商
-      /// [ViewStateModel] 的子类会对此处进行捕捉，捕捉后逻辑可以在[ExceptionHandler]中处理
-      /// * 此处的异常捕捉功能仅在[loadData]中有效
-      /// * 如果需要独立收到Api的业务异常，见此类[ExceptionBinding]
+      ///抛出业务异常
       throw ExceptionPitcher().transformException(responseData);
     }
 

@@ -10,6 +10,7 @@ import 'package:flutter_bedrock/base_framework/ui/widget/web/html_page.dart';
 import 'package:flutter_bedrock/base_framework/ui/widget/web/web_page.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
+import 'package:flutter_bedrock/page/demo_page/exception/exception_main_page.dart';
 import 'package:flutter_bedrock/page/demo_page/exception/handle_exception_page.dart';
 import 'package:flutter_bedrock/page/demo_page/image/pick_image_page.dart';
 import 'package:flutter_bedrock/page/demo_page/isolate/isolate_page.dart';
@@ -112,7 +113,7 @@ class DemoPageState extends PageState {
             RaisedButton(
               child: Text("demo handle exception",style: TextStyle(color: Colors.black),),
               onPressed: (){
-                push(HandleExceptionPageState());
+                push(ExceptionMainPage());
               },
             ),
             getSizeBox(height: getHeightPx(40)),
