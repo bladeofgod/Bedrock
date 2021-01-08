@@ -71,6 +71,9 @@ class ApiInterceptor extends InterceptorsWrapper{
     }else{
       ///这里可以根据不同的业务代码 扔出不同的异常
       ///具体要根据后台进行协商
+      /// [ViewStateModel] 的子类会对此处进行捕捉，捕捉后逻辑可以在[ExceptionHandler]中处理
+      /// * 此处的异常捕捉功能仅在[loadData]中有效
+      /// * 如果需要独立收到Api的业务异常，见此类[ExceptionBinding]
       throw ExceptionPitcher().transformException(responseData);
     }
 
