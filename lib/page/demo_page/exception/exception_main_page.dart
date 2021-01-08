@@ -29,7 +29,7 @@ class ExceptionMainPage extends PageState{
             },
           ),
           getSizeBox(height: getHeightPx(40)),
-          buildIntro("页面/widget 对异常的监听(即，非initData()所触发的异常)。"),
+          buildIntro("页面/widget 对业务异常的监听(即，非initData()所触发的业务异常)。"),
           RaisedButton(
             child: Text("demo handle exception",style: TextStyle(color: Colors.black),),
             onPressed: (){
