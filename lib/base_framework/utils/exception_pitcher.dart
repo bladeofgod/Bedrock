@@ -32,6 +32,7 @@ class ExceptionPitcher with _ExceptionNotifyBinding{
 
   /// * 根据code 转换Exception
   Exception transformException(ResponseData responseData){
+    assert(responseData!=null,'responseData can not be null!');
     final Exception exception = _transferException(responseData);
 
     return exception;
