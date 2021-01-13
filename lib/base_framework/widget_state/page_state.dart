@@ -197,6 +197,7 @@ abstract class PageState extends BaseState with WidgetGenerator,RouteAware,_Rout
   }){
     Navigator.of(context).push(
         PageRouteBuilder(
+          settings: RouteSettings(name: floatLayerRouteName),
           transitionDuration: transitionDuration,
         ///新版本无此参数
         //reverseTransitionDuration: reverseTransitionDuration,

@@ -14,7 +14,7 @@ import 'package:flutter_bedrock/base_framework/exception/user_unbind_exception.d
 
 
 
-class ExceptionPitcher{
+class ExceptionPitcher with _ExceptionNotifyBinding{
   static ExceptionPitcher _instance;
   factory ExceptionPitcher()=>getSingleton();
   ExceptionPitcher._internal(){
@@ -28,27 +28,11 @@ class ExceptionPitcher{
     return _instance;
   }
 
-  final LinkedList<_ExceptionPackage> _packages = LinkedList<_ExceptionPackage>();
 
-  /// 增加一个回调，页面发生时，会通知所有listener
-  /// 页面使用后务必移除 [removeListener]
-  void addListener(ExceptionListener listener){
-    _packages.add(_ExceptionPackage(listener));
-
-  }
-
-  /// 移除一个回调
-  void removeListener(ExceptionListener listener){
-    for(final _ExceptionPackage package in _packages){
-      if(package._listener == listener){
-        package.unlink();
-        return;
-      }
-    }
-  }
 
   /// * 根据code 转换Exception
   Exception transformException(ResponseData responseData){
+    assert(responseData!=null,'responseData can not be null!');
     final Exception exception = _transferException(responseData);
 
     return exception;
@@ -65,6 +49,30 @@ class ExceptionPitcher{
         return UserUnbindException(responseData.message??"user unBind");
       default:
         return UnHandleException(responseData.message??"un handle exception");
+    }
+  }
+
+}
+
+/// mixin [_ExceptionNotifyBinding] can notified a Exception to all the [ExceptionListener] listener.
+
+mixin _ExceptionNotifyBinding{
+  final LinkedList<_ExceptionPackage> _packages = LinkedList<_ExceptionPackage>();
+
+  /// 增加一个回调，页面发生时，会通知所有listener
+  /// 页面使用后务必移除 [removeListener]
+  void addListener(ExceptionListener listener){
+    _packages.add(_ExceptionPackage(listener));
+
+  }
+
+  /// 移除一个回调
+  void removeListener(ExceptionListener listener){
+    for(final _ExceptionPackage package in _packages){
+      if(package._listener == listener){
+        package.unlink();
+        return;
+      }
     }
   }
 

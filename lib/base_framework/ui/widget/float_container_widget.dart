@@ -13,7 +13,12 @@ import 'package:flutter_bedrock/base_framework/widget_state/widget_state.dart';
 
 typedef FloatWidgetDismiss = void Function(BuildContext context);
 
+///浮层(页面)的 [RouteSettings].name
+/// * 某些情况，可能需要当前route的名字，故这里标记上。
+final String floatLayerRouteName = 'FloatContainerWidget';
+
 class FloatContainerWidget extends WidgetState{
+
   ///背景颜色
   final Color bgColor;
   final Widget child;

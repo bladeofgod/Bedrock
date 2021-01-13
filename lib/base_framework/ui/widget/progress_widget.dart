@@ -58,6 +58,9 @@ class FullPageCircleProgressWidget extends BaseStatelessWidget{
 
 //typedef LoadingCreate = void Function(DialogLoadingController controller);
 
+/// 加载弹窗 [showProgressDialog] (页面)的 [RouteSettings].name
+/// * 某些情况，可能需要当前route的名字，故这里标记上。
+final String loadingLayerRouteName = 'LoadingProgressState';
 
 class LoadingProgressState extends WidgetState {
 
