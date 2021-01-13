@@ -49,8 +49,8 @@ abstract class ListViewStateModel<T> extends ViewStateModel {
       if (data.isEmpty) {
         setEmpty();
       } else {
-        onCompleted(data);
         list = data;
+        onCompleted(data);
         if (init) {
           firstInit = false;
           //改变页面状态为非加载中

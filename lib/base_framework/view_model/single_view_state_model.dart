@@ -23,8 +23,8 @@ abstract class SingleViewStateModel<T> extends ViewStateModel{
       if(temp == null){
         setEmpty();
       }else{
-        onCompleted(temp);
         data = temp;
+        onCompleted(temp);
         if(fetch){
           setBusy(false);
         }else{
@@ -38,7 +38,9 @@ abstract class SingleViewStateModel<T> extends ViewStateModel{
 
 
   Future<T> loadData();
-
+  //数据获取后会调用此方法,此方法在notifyListeners（）之前
+  ///此方法仅在页面状态变化前，对外暴露一下数据
+  /// * e.g. 需要对接口返回的数据进行二次处理
   onCompleted(T data);
 
 }

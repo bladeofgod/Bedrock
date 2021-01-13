@@ -70,8 +70,8 @@ abstract class RefreshListViewStateModel<T> extends ListViewStateModel<T> {
         _currentPageNum--;
         refreshController.loadNoData();
       } else {
-        onCompleted(data);
         list.addAll(data);
+        onCompleted(data);
         if (data.length < pageSize) {
           refreshController.loadNoData();
         } else {
