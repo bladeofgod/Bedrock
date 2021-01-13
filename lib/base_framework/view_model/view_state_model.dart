@@ -149,14 +149,25 @@ mixin ExceptionBinding on ViewStateModel implements ExceptionListener{
   bindToExceptionHandler(ExceptionListener listener){
     if(listener == null) return;
     _listener = listener;
-    ExceptionPitcher().addListener(listener);
+    addExceptionListener();
   }
+
+  ///增加(业务)异常监听
+  addExceptionListener(){
+    ExceptionPitcher().addListener(_listener);
+  }
+  ///移除(业务)异常监听
+  /// * 默认会在dispose中自动移除
+  removeExceptionListener(){
+    if(_listener != null)
+      ExceptionPitcher().removeListener(_listener);
+  }
+
 
   ///理论上，不需要你手动移除[ExceptionListener]，此处会自动处理
   @override
   void dispose() {
-    if(_listener != null)
-      ExceptionPitcher().removeListener(_listener);
+    removeExceptionListener();
     super.dispose();
   }
 
