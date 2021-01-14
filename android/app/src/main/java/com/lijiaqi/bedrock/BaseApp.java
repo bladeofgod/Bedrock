@@ -9,6 +9,10 @@ import io.flutter.app.FlutterApplication;
  * @author LiJiaqi
  * @date 2020/12/12
  * Description:
+ *
+ * Tip 1:
+ *      如果你有闪屏页优化需求，可以参考这篇文章，也许对你有所帮助。
+ *      https://juejin.cn/post/6913360134429376525
  */
 public class BaseApp extends FlutterApplication {
     @Override
