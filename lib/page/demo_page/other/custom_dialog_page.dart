@@ -6,7 +6,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 import 'package:flutter_bedrock/page/demo_widget/custom_drawer.dart';
-
+import 'float_layer_widget/shake_float_widget.dart';
 class CustomDialogPage extends PageState{
 
 
@@ -23,11 +23,14 @@ class CustomDialogPage extends PageState{
             floatWidget(Container(width: getWidthPx(400),height: getWidthPx(400),color: Colors.blue,));
           }),
           getSizeBox(height: getWidthPx(80)),
-          buildBtn('显示一个红色圆', (){
-            floatWidget(Container(width: getWidthPx(400),height: getWidthPx(400),
-              decoration: BoxDecoration(
-                color: Colors.red,shape: BoxShape.circle
-              ),));
+          buildBtn('elasticOut 式的动画：红方块 ', (){
+            final ShakeFloatState shake = ShakeFloatState();
+            floatWidget(shake.generateWidget(),
+              floatWidgetDismiss: (ctx){
+              shake.controller.reverse()
+                .whenComplete(() => Navigator.pop(ctx));
+              
+              });
           }),
           getSizeBox(height: getWidthPx(80)),
           buildBtn('弹窗 pageView', (){
