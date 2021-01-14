@@ -62,12 +62,12 @@ public class BedrockPlugin implements FlutterPlugin, ActivityAware, MethodChanne
 
     @Override
     public void onMethodCall(@NonNull MethodCall call, @NonNull MethodChannel.Result result) {
-        log("call");
         switch (call.method){
             case "install_apk":
                 invokeInstall(call.argument("path"));
                 break;
-                ///======= Test zone =======
+            ///======= Test zone =======
+            ///you can delete the code in this =Test zone=.
             case childThreadException:
                 new Thread(new Runnable() {
                     @Override

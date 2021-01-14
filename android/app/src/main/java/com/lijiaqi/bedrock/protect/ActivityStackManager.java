@@ -28,7 +28,7 @@ public class ActivityStackManager{
         return singleton;
     }
 
-    LinkedList<Activity> activities = new LinkedList<>();
+    final private LinkedList<Activity> activities = new LinkedList<>();
 
     public void init(Application app){
         app.registerActivityLifecycleCallbacks(new Application.ActivityLifecycleCallbacks() {
