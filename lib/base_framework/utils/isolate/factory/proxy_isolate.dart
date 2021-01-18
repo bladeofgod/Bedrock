@@ -11,7 +11,7 @@ import 'dart:isolate';
 
 
 /*
-* sendPort发送的messages格式统一为 [key,dynamic]
+* sendPort发送的messages格式统一为 [key,dynamic]，ps：这是list不是map ！
 * 格式保持一致，减少if嵌套
 *
 * */

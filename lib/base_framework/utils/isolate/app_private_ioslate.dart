@@ -42,6 +42,7 @@ class AppPrivateIsolate{
   Isolate _netIsolate ;
 
   ///监测网络状态和连接类型
+  ///此方法工作在 main isolate
   void initNetObserver()async{
     if(_netIsolate != null )return;
     _netIsolate =await Isolate.spawn(appObserve.observerNetState, _netReceivePort.sendPort);
