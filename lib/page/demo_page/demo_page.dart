@@ -12,6 +12,7 @@ import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 import 'package:flutter_bedrock/page/demo_page/exception/exception_main_page.dart';
 import 'package:flutter_bedrock/page/demo_page/exception/handle_exception_page.dart';
+import 'package:flutter_bedrock/page/demo_page/image/image_main_demo.dart';
 import 'package:flutter_bedrock/page/demo_page/image/pick_image_page.dart';
 import 'package:flutter_bedrock/page/demo_page/isolate/isolate_page.dart';
 import 'package:flutter_bedrock/page/demo_page/local_i10l/local_page.dart';
@@ -154,7 +155,7 @@ class DemoPageState extends PageState {
             RaisedButton(
               child: Text("image page",style: TextStyle(color: Colors.black),),
               onPressed: (){
-                push(PickImagePageState());
+                push(ImageMainDemo());
               },
             ),
             getSizeBox(height: getHeightPx(40)),
