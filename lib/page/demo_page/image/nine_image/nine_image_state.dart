@@ -9,6 +9,8 @@ import 'package:flutter_bedrock/base_framework/utils/image_helper.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/widget_state.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bedrock/page/demo_page/image/nine_image/nine_flow_delegate.dart';
+import 'package:markdown_widget/markdown_helper.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -34,22 +36,47 @@ class NineImageEditorState extends WidgetState {
 
   @override
   Widget build(BuildContext context) {
-    return ProviderWidget<NineImageVM>(
-      model: nineImageVM,
-      onModelReady: (model){},
-      builder: (ctx,model,child){
-        return Container(
-          color: Color.fromRGBO(238, 238, 238, 1),
-          margin: EdgeInsets.symmetric(horizontal: getWidthPx(40)),
-          //constraints: BoxConstraints().tighten(width: getWidthPx(670),height: getWidthPx(170)),
-          height: getWidthPx(nineImageVM.row/3 * 520),
-          child: GridView.count(
-            crossAxisCount: 3,childAspectRatio: 168/121,
-            crossAxisSpacing: getWidthPx(15),mainAxisSpacing: getWidthPx(20),
-            padding: const EdgeInsets.all(0),
-            children: nineImageVM.imageList.map<Widget>((e) => buildItem(e)).toList(),),
-        );
-      },
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          width: getWidthPx(750),height: getHeightPx(700),
+          child: ProviderWidget<NineImageVM>(
+            model: nineImageVM,
+            onModelReady: (model){},
+            builder: (ctx,model,child){
+              return flowWay();
+            },
+          ),
+        )
+      ],
+    );
+  }
+
+  Widget flowWay(){
+    final List<RepaintBoundary> list = RepaintBoundary
+        .wrapAll(nineImageVM.imageList.map<Widget>((e) => buildItem(e)).toList());
+    final List<LayoutId> children = [];
+    for(int i = 0 ; i< list.length ;i++){
+      children.add(LayoutId(id: i, child: list[i]));
+    }
+    return CustomMultiChildLayout(
+      delegate: NineFlowDelegate(list.length),
+      children: children,
+    );
+  }
+
+  Widget gridWay(){
+    return Container(
+      color: Color.fromRGBO(238, 238, 238, 1),
+      margin: EdgeInsets.symmetric(horizontal: getWidthPx(40)),
+      //constraints: BoxConstraints().tighten(width: getWidthPx(670),height: getWidthPx(170)),
+      height: getWidthPx(nineImageVM.row/3 * 520),
+      child: GridView.count(
+        crossAxisCount: 3,childAspectRatio: 168/121,
+        crossAxisSpacing: getWidthPx(15),mainAxisSpacing: getWidthPx(20),
+        padding: const EdgeInsets.all(0),
+        children: nineImageVM.imageList.map<Widget>((e) => buildItem(e)).toList(),),
     );
   }
 
