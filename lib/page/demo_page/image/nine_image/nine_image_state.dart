@@ -17,14 +17,18 @@ import 'package:permission_handler/permission_handler.dart';
 
 import 'nine_image_vm.dart';
 
-class NineImageEditorState extends WidgetState {
+/// 此 demo 只是针对九宫图的性能研究
+/// 如果你需要使用此功能，可能样式还需要调整一下，或在pub上找找。
 
-  final NineImageVM nineImageVM = NineImageVM();
+
+class NineImageEditorState extends WidgetState implements ImageWidgetChangeListener {
+
+  NineImageVM nineImageVM ;
 
 
   @override
   void initState() {
-
+    nineImageVM = NineImageVM(this);
     super.initState();
   }
 
@@ -43,29 +47,58 @@ class NineImageEditorState extends WidgetState {
           width: getWidthPx(750),height: getHeightPx(700),
           child: ProviderWidget<NineImageVM>(
             model: nineImageVM,
-            onModelReady: (model){},
+            onModelReady: (model){
+              nineImageVM.addImageData();
+            },
             builder: (ctx,model,child){
-              return flowWay();
+              return gridWay();
             },
           ),
         )
       ],
     );
   }
+  /// * 性能要优于 [gridWay]
 
+  final List<LayoutId> children = [];
   Widget flowWay(){
-    final List<RepaintBoundary> list = RepaintBoundary
-        .wrapAll(nineImageVM.imageList.map<Widget>((e) => buildItem(e)).toList());
-    final List<LayoutId> children = [];
-    for(int i = 0 ; i< list.length ;i++){
-      children.add(LayoutId(id: i, child: list[i]));
-    }
+    // final List<RepaintBoundary> list = RepaintBoundary
+    //     .wrapAll(nineImageVM.imageList.map<Widget>((e) => buildItem(e)).toList());
+    // final List<LayoutId> children = [];
+    // for(int i = 0 ; i< list.length ;i++){
+    //   children.add(LayoutId(id: i, child: list[i]));
+    // }
     return CustomMultiChildLayout(
-      delegate: NineFlowDelegate(list.length),
+      delegate: NineFlowDelegate(children.length),
       children: children,
     );
   }
 
+  ///接口相关
+
+  @override
+  void addChildWidget(ImageDataWrapper dataWrapper) {
+    children.insert(0, LayoutId(child: RepaintBoundary(child: buildItem(dataWrapper)),id: dataWrapper.asset.name,));
+
+  }
+
+  @override
+  void addChildrenWidget(List<ImageDataWrapper> datas) {
+    // TODO: implement addChildrenWidget
+  }
+
+  @override
+  void removeChildWidget(ImageDataWrapper dataWrapper) {
+    // TODO: implement removeChildWidget
+  }
+
+
+
+
+
+  ///过渡绘制
+  /// * 如果使用此方法，需要调整 [NineImageVM]的代码
+  @Deprecated('low quality performance')
   Widget gridWay(){
     return Container(
       color: Color.fromRGBO(238, 238, 238, 1),
@@ -219,5 +252,6 @@ class NineImageEditorState extends WidgetState {
   void  tapOpenAppSettings()async{
     await openAppSettings();
   }
+
 
 }
