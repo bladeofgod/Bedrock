@@ -228,9 +228,18 @@ class NineImageEditorState extends WidgetState implements ImageWidgetChangeListe
         if((assetList.length + nineImageVM.imageList.length) >10){
           showToast('maximum of 9 images');
         }else{
-          if(assetList == null || assetList.isEmpty)return;
-          //nineImageVM.addImageList(assetList);
+          if(assetList.isEmpty)return;
+
+
+          ///去除重复图片
+          nineImageVM.imageList.forEach((element) {
+            assetList.removeWhere((origin)=>element.asset.name == origin.name);
+          });
+          if(assetList.length == 0){
+            return ;
+          }
           showProgressDialog();
+
 
           final List<Future<ByteData>> futures = [];
           assetList.forEach((element) {
@@ -242,9 +251,8 @@ class NineImageEditorState extends WidgetState implements ImageWidgetChangeListe
             for(int i = 0;i<value.length;i++){
               datas.add(ImageDataWrapper(assetList[i],value[i]));
             }
-            dismissProgressDialog();
             nineImageVM.addImageList(datas);
-          });
+          }).whenComplete(() => dismissProgressDialog());
           //nineImageVM.checkLength(nineImageVM.imageList.length);
           //widget.lengthCallback(nineImageVM.imageList.length);
         }

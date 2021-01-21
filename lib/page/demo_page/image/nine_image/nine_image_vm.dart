@@ -95,6 +95,7 @@ class NineImageVM extends SingleViewStateModel{
     notifyListeners();
   }
 
+
   void clearAllData(){
     imageList.clear();
   }
