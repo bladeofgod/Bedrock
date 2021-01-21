@@ -70,7 +70,7 @@ class NineImageEditorState extends WidgetState implements ImageWidgetChangeListe
     // }
     return CustomMultiChildLayout(
       delegate: NineFlowDelegate(children.length),
-      children: children,
+      children: children.length > 9 ? children.sublist(0,9):children,
     );
   }
 
@@ -84,12 +84,19 @@ class NineImageEditorState extends WidgetState implements ImageWidgetChangeListe
 
   @override
   void addChildrenWidget(List<ImageDataWrapper> datas) {
-    // TODO: implement addChildrenWidget
+
+    for(ImageDataWrapper data in datas){
+      final RepaintBoundary repaintBoundary = RepaintBoundary(child: buildItem(data),);
+      final LayoutId layoutId = LayoutId(child: repaintBoundary,id: data.asset.name,);
+      children.add(layoutId);
+    }
+
   }
 
   @override
   void removeChildWidget(ImageDataWrapper dataWrapper) {
     // TODO: implement removeChildWidget
+    children.removeWhere((element) => element.id == dataWrapper.asset.name);
   }
 
 

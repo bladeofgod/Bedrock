@@ -50,6 +50,8 @@ class NineImageVM extends SingleViewStateModel{
       ///如果是9张自选图片，移除最后一张。
       imageList.removeLast();
     }
+    _changeListener.addChildrenWidget(list);
+    notifyListeners();
     //checkLength(imageList.length);
 
 
@@ -73,6 +75,8 @@ class NineImageVM extends SingleViewStateModel{
     }else{
       imageList.removeWhere((element) => element.asset.name == asset.asset.name);
     }
+    _changeListener.removeChildWidget(asset);
+    notifyListeners();
 
     //checkLength(imageList.length);
   }
