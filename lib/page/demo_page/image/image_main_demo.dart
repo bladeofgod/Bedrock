@@ -33,7 +33,7 @@ class ImageMainDemo extends PageState{
             getSizeBox(height: getHeightPx(40)),
             buildIntro("选择图片九宫格"),
             RaisedButton(
-              child: Text("九宫图演示demo(还有优化空间)",style: TextStyle(color: Colors.black),),
+              child: Text("九宫图演示demo",style: TextStyle(color: Colors.black),),
               onPressed: (){
                 push(NineImagePage());
               },
