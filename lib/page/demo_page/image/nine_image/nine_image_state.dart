@@ -51,7 +51,12 @@ class NineImageEditorState extends WidgetState implements ImageWidgetChangeListe
               nineImageVM.addImageData();
             },
             builder: (ctx,model,child){
-              return gridWay();
+              // if(model.imageList.isEmpty){
+              //   return Container(
+              //     color: Colors.white,
+              //   );
+              // }
+              return flowWay();
             },
           ),
         )
@@ -62,14 +67,9 @@ class NineImageEditorState extends WidgetState implements ImageWidgetChangeListe
 
   final List<LayoutId> children = [];
   Widget flowWay(){
-    // final List<RepaintBoundary> list = RepaintBoundary
-    //     .wrapAll(nineImageVM.imageList.map<Widget>((e) => buildItem(e)).toList());
-    // final List<LayoutId> children = [];
-    // for(int i = 0 ; i< list.length ;i++){
-    //   children.add(LayoutId(id: i, child: list[i]));
-    // }
+
     return CustomMultiChildLayout(
-      delegate: NineFlowDelegate(children.length),
+      delegate: NineFlowDelegate(children),
       children: children.length > 9 ? children.sublist(0,9):children,
     );
   }
@@ -88,7 +88,7 @@ class NineImageEditorState extends WidgetState implements ImageWidgetChangeListe
     for(ImageDataWrapper data in datas){
       final RepaintBoundary repaintBoundary = RepaintBoundary(child: buildItem(data),);
       final LayoutId layoutId = LayoutId(child: repaintBoundary,id: data.asset.name,);
-      children.add(layoutId);
+      children.insert(0, layoutId);
     }
 
   }
@@ -127,7 +127,8 @@ class NineImageEditorState extends WidgetState implements ImageWidgetChangeListe
           checkPermission();
         },
         child: Container(
-
+          width: getWidthPx(180),height: getWidthPx(180),
+          margin: EdgeInsets.only(right: getWidthPx(20)),
           alignment: Alignment.center,
           decoration: BoxDecoration(
               color: Colors.white,
@@ -151,6 +152,7 @@ class NineImageEditorState extends WidgetState implements ImageWidgetChangeListe
     }else{
       if(data.byteData?.buffer?.lengthInBytes != 0){
         return Container(
+          margin: EdgeInsets.only(right: getWidthPx(20)),
           child: Stack(
             children: [
               ///image
@@ -158,7 +160,7 @@ class NineImageEditorState extends WidgetState implements ImageWidgetChangeListe
                 left: 0,bottom: 0,
                 child: Container(
                   color: const Color.fromRGBO(250, 250, 250, 1),
-                  width: getWidthPx(200),height: getWidthPx(140),
+                  width: getWidthPx(170),height: getWidthPx(180),
                   //margin: EdgeInsets.only(top: getWidthPx(16),right: getWidthPx(16)),
                   child: Image.memory(data.byteData.buffer.asUint8List(),fit: BoxFit.fill,),
                 ),
