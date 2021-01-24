@@ -51,11 +51,7 @@ class NineImageEditorState extends WidgetState implements ImageWidgetChangeListe
               nineImageVM.addImageData();
             },
             builder: (ctx,model,child){
-              // if(model.imageList.isEmpty){
-              //   return Container(
-              //     color: Colors.white,
-              //   );
-              // }
+
               return flowWay();
             },
           ),
