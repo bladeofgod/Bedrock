@@ -128,7 +128,7 @@ abstract class ViewStateModel with ChangeNotifier {
   }
 
   ///检查网络状态
-  checkNet()async{
+  Future<bool> checkNet()async{
     debugPrint('检查网络');
     var connectivityResult = await (Connectivity().checkConnectivity());
     return connectivityResult == ConnectivityResult.none;
