@@ -7,6 +7,22 @@ import 'package:flutter_bedrock/base_framework/view_model/view_state_model.dart'
 import 'package:mmkv_flutter/mmkv_flutter.dart';
 import 'package:oktoast/oktoast.dart';
 
+
+///页面数据缓存，用于在无网的情况下显示缓存数据
+/// * 如果你的数据实体没有基类，那么泛型[T] 只能是String。
+/// * 如果有基类，例如
+/// ```dart
+/// abstract class BaseEntity{
+///     fromJson(json);
+///     Map toJson();
+///
+/// }
+///
+/// ```
+///
+/// 那么你可以调整<T> 为 <T extends BaseEntity>
+/// 之后便可以直接交付对应数据实体，而非raw data.
+
 mixin CacheDataFactory<T> on ViewStateModel{
   /// 缓存单一数据
   /// * 一般情况下是json string
