@@ -55,9 +55,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    ///设计图尺寸
+    //设计图尺寸
     setDesignWHD(750, 1334,density: 1.0);
-
     return OKToast(
       child: MultiProvider(
           providers: providers,

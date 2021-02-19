@@ -20,7 +20,7 @@ class FromTopNotifyWidget extends WidgetState with SingleTickerProviderStateMixi
   AnimationController controller;
   Animation animation;
 
-  FromTopNotifyWidget(this.child,this.notifyDone, this.animationDuration, this.notifyDwellTime);
+  FromTopNotifyWidget(this.child, this.animationDuration, this.notifyDwellTime,this.notifyDone);
 
 
   @override

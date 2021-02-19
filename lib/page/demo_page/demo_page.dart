@@ -6,6 +6,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/base_framework/config/router_manager.dart';
+import 'package:flutter_bedrock/base_framework/ui/widget/notification/notification_handler.dart';
 import 'package:flutter_bedrock/base_framework/ui/widget/web/html_page.dart';
 import 'package:flutter_bedrock/base_framework/ui/widget/web/web_page.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
@@ -48,7 +49,8 @@ class DemoPageState extends PageState {
 
   @override
   Widget build(BuildContext context) {
-
+    //初始化通知模块
+    NotificationHandler().init(context);
     return switchStatusBar2Dark(child: Container(
       width: getWidthPx(750),height: getHeightPx(1334),
       color: Colors.white,

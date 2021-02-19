@@ -14,9 +14,15 @@ class NotificationPage extends PageState{
   void initState() {
     // TODO: implement initState
     super.initState();
-    NotificationHandler(context).addNotifyListener((notifyStatus) {
+    NotificationHandler().addNotifyListener((notifyStatus) {
       debugPrint('notify status : $notifyStatus');
     });
+  }
+  @override
+  void dispose() {
+    NotificationHandler().clearAllListener();
+    // TODO: implement dispose
+    super.dispose();
   }
 
 
@@ -28,13 +34,13 @@ class NotificationPage extends PageState{
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           buildBtn('弹出通知', (){
-            NotificationHandler(context)
+            NotificationHandler()
                 ..showNotificationFromTop(notifyDwellTime: Duration(seconds: 2),
                   child: buildNotifyChild('notification'),);
           }),
           ///
           buildBtn('弹出多个通知', (){
-            NotificationHandler(context)
+            NotificationHandler()
               ..showNotifyListFromTop(notifyDwellTime: Duration(seconds: 2),
                 children:List<Widget>.generate(3, (index) => buildNotifyChild('notification $index')),)
                 .whenComplete(() => debugPrint('通知弹出完毕'));
