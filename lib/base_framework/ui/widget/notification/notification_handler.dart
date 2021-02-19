@@ -200,6 +200,7 @@ abstract class Notification {
 
   BuildContext context;
 
+  ///建议在跟页面调用此方法
   void init(BuildContext context){
     if(this.context != null)return;
     this.context = context;
