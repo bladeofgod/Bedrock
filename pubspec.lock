@@ -5,329 +5,329 @@ packages:
     dependency: transitive
     description:
       name: _fe_analyzer_shared
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "14.0.0"
   analyzer:
     dependency: transitive
     description:
       name: analyzer
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.41.1"
   args:
     dependency: transitive
     description:
       name: args
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.6.0"
   asn1lib:
     dependency: transitive
     description:
       name: asn1lib
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.8.1"
   async:
     dependency: transitive
     description:
       name: async
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.5.0-nullsafety.1"
   boolean_selector:
     dependency: transitive
     description:
       name: boolean_selector
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.1.0-nullsafety.1"
   build:
     dependency: transitive
     description:
       name: build
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.6.1"
+    version: "1.6.2"
   build_config:
     dependency: transitive
     description:
       name: build_config
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.4.5"
   build_daemon:
     dependency: transitive
     description:
       name: build_daemon
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.1.6"
+    version: "2.1.7"
   build_resolvers:
     dependency: transitive
     description:
       name: build_resolvers
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.5.2"
+    version: "1.5.3"
   build_runner:
     dependency: "direct main"
     description:
       name: build_runner
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.11.0"
+    version: "1.11.1"
   build_runner_core:
     dependency: transitive
     description:
       name: build_runner_core
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "6.1.6"
+    version: "6.1.7"
   built_collection:
     dependency: transitive
     description:
       name: built_collection
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "4.3.2"
   built_value:
     dependency: transitive
     description:
       name: built_value
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "7.1.0"
   carousel_slider:
     dependency: "direct main"
     description:
       name: carousel_slider
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.4.1"
   characters:
     dependency: transitive
     description:
       name: characters
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.1.0-nullsafety.3"
   charcode:
     dependency: transitive
     description:
       name: charcode
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.2.0-nullsafety.1"
   checked_yaml:
     dependency: transitive
     description:
       name: checked_yaml
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.4"
   cli_util:
     dependency: transitive
     description:
       name: cli_util
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.2.0"
   clock:
     dependency: transitive
     description:
       name: clock
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.1.0-nullsafety.1"
   code_builder:
     dependency: transitive
     description:
       name: code_builder
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "3.6.0"
+    version: "3.7.0"
   collection:
     dependency: "direct main"
     description:
       name: collection
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.15.0-nullsafety.3"
   common_utils:
     dependency: "direct main"
     description:
       name: common_utils
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.2.1"
+    version: "1.2.4"
   connectivity:
     dependency: "direct main"
     description:
       name: connectivity
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.0.2"
   connectivity_for_web:
     dependency: transitive
     description:
       name: connectivity_for_web
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.3.1+4"
   connectivity_macos:
     dependency: transitive
     description:
       name: connectivity_macos
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.1.0+7"
   connectivity_platform_interface:
     dependency: transitive
     description:
       name: connectivity_platform_interface
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.6"
   convert:
     dependency: transitive
     description:
       name: convert
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.1.1"
   cookie_jar:
     dependency: "direct main"
     description:
       name: cookie_jar
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.1"
   crypto:
     dependency: transitive
     description:
       name: crypto
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.1.5"
   csslib:
     dependency: transitive
     description:
       name: csslib
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.16.2"
   cupertino_icons:
     dependency: "direct main"
     description:
       name: cupertino_icons
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.1.3"
   dart_style:
     dependency: transitive
     description:
       name: dart_style
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.3.11"
+    version: "1.3.12"
   decimal:
     dependency: transitive
     description:
       name: decimal
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.3.5"
   device_info:
     dependency: "direct main"
     description:
       name: device_info
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.4.2+10"
   device_info_platform_interface:
     dependency: transitive
     description:
       name: device_info_platform_interface
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.1"
   dio:
     dependency: "direct main"
     description:
       name: dio
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "3.0.10"
   dio_cookie_manager:
     dependency: "direct main"
     description:
       name: dio_cookie_manager
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.0"
   encrypt:
     dependency: "direct main"
     description:
       name: encrypt
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "4.1.0"
   extended_image:
     dependency: "direct main"
     description:
       name: extended_image
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.8.0"
   extended_image_library:
     dependency: transitive
     description:
       name: extended_image_library
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.2.3"
   fake_async:
     dependency: transitive
     description:
       name: fake_async
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.2.0-nullsafety.1"
   ffi:
     dependency: transitive
     description:
       name: ffi
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.1.3"
   ffloat:
     dependency: "direct main"
     description:
       name: ffloat
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.1"
   file:
     dependency: transitive
     description:
       name: file
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "5.2.1"
   fixnum:
     dependency: transitive
     description:
       name: fixnum
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.10.11"
   flustars:
     dependency: "direct main"
     description:
       name: flustars
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.3.3"
   flutter:
@@ -339,21 +339,21 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_custom_dialog
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.20"
   flutter_datetime_picker:
     dependency: "direct main"
     description:
       name: flutter_datetime_picker
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.5.0"
   flutter_highlight:
     dependency: transitive
     description:
       name: flutter_highlight
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.6.0"
   flutter_localizations:
@@ -375,434 +375,434 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_webview_plugin
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.3.11"
   glob:
     dependency: transitive
     description:
       name: glob
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.2.0"
   graphs:
     dependency: transitive
     description:
       name: graphs
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.2.0"
   highlight:
     dependency: transitive
     description:
       name: highlight
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.6.0"
   html:
     dependency: transitive
     description:
       name: html
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.14.0+4"
   http:
     dependency: transitive
     description:
       name: http
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.12.2"
   http_client_helper:
     dependency: transitive
     description:
       name: http_client_helper
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.2.1"
   http_multi_server:
     dependency: transitive
     description:
       name: http_multi_server
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.2.0"
   http_parser:
     dependency: transitive
     description:
       name: http_parser
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "3.1.4"
   image_editor:
     dependency: "direct main"
     description:
       name: image_editor
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.1.6"
   intl:
     dependency: transitive
     description:
       name: intl
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.16.1"
   io:
     dependency: transitive
     description:
       name: io
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.3.4"
+    version: "0.3.5"
   js:
     dependency: transitive
     description:
       name: js
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.6.2"
   json_annotation:
     dependency: transitive
     description:
       name: json_annotation
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "3.1.1"
   launch_review:
     dependency: "direct main"
     description:
       name: launch_review
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.0.0"
   logging:
     dependency: transitive
     description:
       name: logging
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.11.4"
   markdown:
     dependency: transitive
     description:
       name: markdown
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "3.0.0"
   markdown_widget:
     dependency: "direct main"
     description:
       name: markdown_widget
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.2.6"
   matcher:
     dependency: transitive
     description:
       name: matcher
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.12.10-nullsafety.1"
   meta:
     dependency: transitive
     description:
       name: meta
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.3.0-nullsafety.3"
   mime:
     dependency: transitive
     description:
       name: mime
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.9.7"
   mmkv_flutter:
     dependency: "direct main"
     description:
       name: mmkv_flutter
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.10"
   multi_image_picker:
     dependency: "direct main"
     description:
       name: multi_image_picker
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "4.7.14"
+    version: "4.7.15"
   nested:
     dependency: transitive
     description:
       name: nested
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.0.4"
   node_interop:
     dependency: transitive
     description:
       name: node_interop
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.2.1"
   node_io:
     dependency: transitive
     description:
       name: node_io
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.2.0"
   oktoast:
     dependency: "direct main"
     description:
       name: oktoast
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.3.2"
   open_file:
     dependency: "direct main"
     description:
       name: open_file
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.1.1"
   package_config:
     dependency: transitive
     description:
       name: package_config
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.9.3"
   package_info:
     dependency: "direct main"
     description:
       name: package_info
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.4.3+2"
+    version: "0.4.3+4"
   path:
     dependency: transitive
     description:
       name: path
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.8.0-nullsafety.1"
   path_provider:
     dependency: "direct main"
     description:
       name: path_provider
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.6.27"
+    version: "1.6.28"
   path_provider_linux:
     dependency: transitive
     description:
       name: path_provider_linux
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.0.1+2"
   path_provider_macos:
     dependency: transitive
     description:
       name: path_provider_macos
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.0.4+8"
   path_provider_platform_interface:
     dependency: transitive
     description:
       name: path_provider_platform_interface
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.4"
   path_provider_windows:
     dependency: transitive
     description:
       name: path_provider_windows
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.0.4+3"
   pedantic:
     dependency: transitive
     description:
       name: pedantic
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.9.2"
   permission_handler:
     dependency: "direct main"
     description:
       name: permission_handler
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "5.0.1+1"
+    version: "5.1.0+2"
   permission_handler_platform_interface:
     dependency: transitive
     description:
       name: permission_handler_platform_interface
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.0.1"
+    version: "2.0.2"
   platform:
     dependency: transitive
     description:
       name: platform
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.2.1"
   plugin_platform_interface:
     dependency: transitive
     description:
       name: plugin_platform_interface
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.3"
   pointycastle:
     dependency: transitive
     description:
       name: pointycastle
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.0.1"
   pool:
     dependency: transitive
     description:
       name: pool
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.4.0"
   process:
     dependency: transitive
     description:
       name: process
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "3.0.13"
   provider:
     dependency: "direct main"
     description:
       name: provider
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "4.3.3"
   pub_semver:
     dependency: transitive
     description:
       name: pub_semver
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.4.4"
   pubspec_parse:
     dependency: transitive
     description:
       name: pubspec_parse
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.1.7"
+    version: "0.1.8"
   pull_to_refresh:
     dependency: "direct main"
     description:
       name: pull_to_refresh
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.6.4"
   quiver:
     dependency: transitive
     description:
       name: quiver
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.1.5"
   rational:
     dependency: transitive
     description:
       name: rational
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.3.8"
   reflectable:
     dependency: "direct main"
     description:
       name: reflectable
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.2.9"
   scrollable_positioned_list:
     dependency: "direct main"
     description:
       name: scrollable_positioned_list
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.1.9"
+    version: "0.1.10"
   share:
     dependency: "direct main"
     description:
       name: share
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.6.2+1"
   shared_preferences:
     dependency: transitive
     description:
       name: shared_preferences
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.5.12+4"
   shared_preferences_linux:
     dependency: transitive
     description:
       name: shared_preferences_linux
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.0.2+4"
   shared_preferences_macos:
     dependency: transitive
     description:
       name: shared_preferences_macos
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.0.1+11"
   shared_preferences_platform_interface:
     dependency: transitive
     description:
       name: shared_preferences_platform_interface
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.4"
   shared_preferences_web:
     dependency: transitive
     description:
       name: shared_preferences_web
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.1.2+7"
   shared_preferences_windows:
     dependency: transitive
     description:
       name: shared_preferences_windows
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.0.2+2"
+    version: "0.0.2+3"
   shelf:
     dependency: transitive
     description:
       name: shelf
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.7.9"
   shelf_web_socket:
     dependency: transitive
     description:
       name: shelf_web_socket
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.2.3"
+    version: "0.2.4+1"
   shimmer:
     dependency: "direct main"
     description:
       name: shimmer
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.1.2"
   sky_engine:
@@ -814,182 +814,182 @@ packages:
     dependency: transitive
     description:
       name: source_span
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.8.0-nullsafety.2"
   sp_util:
     dependency: transitive
     description:
       name: sp_util
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.0.1"
+    version: "1.0.2"
   stack_trace:
     dependency: transitive
     description:
       name: stack_trace
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.10.0-nullsafety.1"
   stream_channel:
     dependency: transitive
     description:
       name: stream_channel
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.1.0-nullsafety.1"
   stream_transform:
     dependency: transitive
     description:
       name: stream_transform
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.2.0"
   string_scanner:
     dependency: transitive
     description:
       name: string_scanner
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.1.0-nullsafety.1"
   synchronized:
     dependency: transitive
     description:
       name: synchronized
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.2.0+2"
   term_glyph:
     dependency: transitive
     description:
       name: term_glyph
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.2.0-nullsafety.1"
   test_api:
     dependency: transitive
     description:
       name: test_api
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.2.19-nullsafety.2"
   timing:
     dependency: transitive
     description:
       name: timing
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.1.1+3"
   typed_data:
     dependency: transitive
     description:
       name: typed_data
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.3.0-nullsafety.3"
   url_launcher:
     dependency: "direct main"
     description:
       name: url_launcher
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "5.7.10"
   url_launcher_linux:
     dependency: transitive
     description:
       name: url_launcher_linux
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.0.1+4"
   url_launcher_macos:
     dependency: transitive
     description:
       name: url_launcher_macos
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.0.1+9"
   url_launcher_platform_interface:
     dependency: transitive
     description:
       name: url_launcher_platform_interface
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.9"
   url_launcher_web:
     dependency: transitive
     description:
       name: url_launcher_web
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.1.5+1"
+    version: "0.1.5+3"
   url_launcher_windows:
     dependency: transitive
     description:
       name: url_launcher_windows
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.0.1+3"
   vector_math:
     dependency: transitive
     description:
       name: vector_math
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.1.0-nullsafety.3"
   video_player:
     dependency: transitive
     description:
       name: video_player
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.1"
   video_player_platform_interface:
     dependency: transitive
     description:
       name: video_player_platform_interface
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.2.0"
   video_player_web:
     dependency: transitive
     description:
       name: video_player_web
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.1.4+1"
   watcher:
     dependency: transitive
     description:
       name: watcher
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.9.7+15"
   web_socket_channel:
     dependency: transitive
     description:
       name: web_socket_channel
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.2.0"
   win32:
     dependency: transitive
     description:
       name: win32
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.7.4"
+    version: "1.7.4+1"
   xdg_directories:
     dependency: transitive
     description:
       name: xdg_directories
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.1.2"
   yaml:
     dependency: transitive
     description:
       name: yaml
-      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.2.1"
 sdks:

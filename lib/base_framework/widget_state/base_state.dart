@@ -66,6 +66,7 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>  {
               ,progress: progress,bgColor: bgColor,).generateWidget();
           }
       )).then((value){
+        _dialogLoadingController?.invokeAfterPopTask();
         _dialogLoadingController = null;
         if(afterDismiss != null){
           afterDismiss();
@@ -75,10 +76,14 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>  {
     }
   }
 
-  dismissProgressDialog(){
+  ///隐藏loading
+  /// * 注意： [afterPopTask] 会在loading隐藏后被调用，但是如果用户主动取消的话，将不会被调用
+  /// *       用户主动取消的将会调用[showLoading]的[afterDismiss]
+  void dismissProgressDialog({Function afterPopTask}) {
+    if(afterPopTask != null)_dialogLoadingController?.holdAfterPopTask(task: afterPopTask);
     _dialogLoadingController?.dismissDialog();
-    //_dialogLoadingController = null;
   }
+
 
   @override
   void dispose() {

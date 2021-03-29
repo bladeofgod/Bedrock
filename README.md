@@ -1,6 +1,6 @@
 # :whale:Flutter Bedrock
 
-##  :seedling:v 1.0.31
+##  :seedling:v 1.0.32
 
     一款基于MVVM+Provider的快速开发框架。
 
@@ -10,6 +10,11 @@
 
 
 [更新日志](https://github.com/bladeofgod/Bedrock/blob/master/update_log.md)
+
+## 关于集成
+
+    框架与插件性质不太相同，且由于个人精力有限可能更新不太及时，建议clone后本地添加，或者fork后yaml依赖。
+    这样可以解决更新不及时，和定制化需要。
 
 ## 此项目的statefulWidget和路由及相关模块做了二次封装，请务必阅读下方文章加以了解
 

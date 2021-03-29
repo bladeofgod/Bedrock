@@ -112,15 +112,26 @@ class LoadingProgressState extends WidgetState {
 }
 
 class DialogLoadingController extends ChangeNotifier{
+  Function _afterPopTask;
+
   bool isShow = true;
-  dismissDialog(){
-    if(isShow){
+
+  ///隐藏loading
+  dismissDialog() {
+    if (isShow) {
       isShow = false;
       notifyListeners();
     }
-
   }
 
+  ///[task] 将在loading消失后执行
+  void holdAfterPopTask({Function task}) {
+    _afterPopTask = task;
+  }
+
+  void invokeAfterPopTask() {
+    if (_afterPopTask != null) _afterPopTask();
+  }
 }
 
 
