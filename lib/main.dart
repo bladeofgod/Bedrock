@@ -22,8 +22,9 @@ import 'package:reflectable/reflectable.dart';
 import 'base_framework/config/router_manager.dart';
 import 'generated/l10n.dart';
 
-void main()async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   ///横竖屏
 //  SystemChrome.setPreferredOrientations([
 //    DeviceOrientation.portraitUp,
@@ -32,61 +33,60 @@ void main()async{
 
   await AppConfig.init();
 
-
-
-  runZoned((){
-    ErrorWidget.builder = (FlutterErrorDetails details){
+  runZonedGuarded(() {
+    ErrorWidget.builder = (FlutterErrorDetails details) {
       Zone.current.handleUncaughtError(details.exception, details.stack);
+
       ///出现异常时会进入下方页面（flutter原有的红屏），
-      return ExceptionPageState(details.exception.toString(),details.stack.toString()).generateWidget();
+      return ExceptionPageState(
+              details.exception.toString(), details.stack.toString())
+          .generateWidget();
     };
-  },onError: (Object object,StackTrace trace){
+  }, (Object object, StackTrace trace) {
     ///你可以将下面日志上传到服务器，用于release后的错误处理
     debugPrint(object);
     debugPrint(trace.toString());
   });
   runApp(MyApp());
   //状态栏置透明
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+  SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(statusBarColor: Colors.transparent));
 }
-
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     //设计图尺寸
-    setDesignWHD(750, 1334,density: 1.0);
+    setDesignWHD(750, 1334, density: 1.0);
     return OKToast(
       child: MultiProvider(
-          providers: providers,
-        child: Consumer<LocaleModel>(
-          builder: (ctx,localModel,child){
-            return RefreshConfiguration(
-              hideFooterWhenNotFull: true,//列表数据不满一页,不触发加载更多
-              child: MaterialApp(
-                navigatorKey: navigatorKey,
+        providers: providers,
+        child: Consumer<LocaleModel>(builder: (ctx, localModel, child) {
+          return RefreshConfiguration(
+            hideFooterWhenNotFull: true, //列表数据不满一页,不触发加载更多
+            child: MaterialApp(
+              navigatorKey: navigatorKey,
 //                theme: ThemeData(
 //                  //项目配置字体，其他主题颜色配置的可以百度
 ////                  fontFamily: Theme.of(context).platform == TargetPlatform.android? (localModel.localeIndex == 1 ?  "HanSans":"DIN") : "IOSGILROY",
 //                ),
-                debugShowCheckedModeBanner: false,
-                locale: localModel.locale,
-                //国际化工厂代理
-                localizationsDelegates: [
-                  // Intl 插件（需要安装）
-                  S.delegate,
-                  //RefreshLocalizations.delegate, //下拉刷新
-                  //系统控件 国际化
-                  GlobalCupertinoLocalizations.delegate,
-                  GlobalMaterialLocalizations.delegate,
-                  GlobalWidgetsLocalizations.delegate//文本方向等
-                ],
-                supportedLocales: S.delegate.supportedLocales,
-                navigatorObservers: [
-                  routeObserver
-                ],
+              debugShowCheckedModeBanner: false,
+              locale: localModel.locale,
+              //国际化工厂代理
+              localizationsDelegates: [
+                // Intl 插件（需要安装）
+                S.delegate,
+                //RefreshLocalizations.delegate, //下拉刷新
+                //系统控件 国际化
+                GlobalCupertinoLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate //文本方向等
+              ],
+              supportedLocales: S.delegate.supportedLocales,
+              navigatorObservers: [routeObserver],
               home: DemoPageState().generateWidget(),
+
               ///改版啦，这里用不到，你可以删除
 //                onGenerateRoute: Router.generateRoute,
 //                onUnknownRoute: (settings){
@@ -95,13 +95,13 @@ class MyApp extends StatelessWidget {
 //                  });
 //                },
 //                initialRoute: RouteName.demo_page,
-              ),
-            );
-          }),),
+            ),
+          );
+        }),
+      ),
     );
   }
 }
-
 
 ///如果想删除下方代码以及相关模块，
 ///可以移除pub中的
@@ -126,22 +126,14 @@ class MyApp extends StatelessWidget {
 * */
 
 @myReflect
-class WorkList{
-
-  test({String n,String m}){
+class WorkList {
+  test({String n, String m}) {
     print('  test method   $n');
   }
-
-
 }
-
 
 const myReflect = MyReflectable();
 
-class MyReflectable extends Reflectable{
-  const MyReflectable():super(invokingCapability);
+class MyReflectable extends Reflectable {
+  const MyReflectable() : super(invokingCapability);
 }
-
-
-
-

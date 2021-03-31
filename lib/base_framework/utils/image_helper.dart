@@ -94,8 +94,8 @@ class ImageHelper {
   /// * 从相册选择或者拍照一张照片picker   插件：MultiImagePicker
 
   static Future<List<Asset>> pickImage({int maxImages = 1})async{
-    List<Asset> images = List<Asset>();
-    List<Asset> resultList = List<Asset>();
+    List<Asset> images = [];
+    List<Asset> resultList = [];
     String error = 'No Error Dectected';
     try {
       resultList = await MultiImagePicker.pickImages(
