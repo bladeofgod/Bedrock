@@ -14,7 +14,7 @@ description: A new Flutter application.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.6.0 <3.0.0"
+  sdk: ">=2.10.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -49,15 +49,15 @@ dependencies:
   package_info: ^0.4.0+6
 
   # 加解密
-  encrypt: ^4.1.0
+  encrypt: ^5.0.0
 
   # Data
   #  json_annotation: ^2.4.0
   #  dio: ^2.1.16
-  dio: ^3.0.9
-  dio_cookie_manager: ^1.0.0
-  cookie_jar: ^1.0.0
-  path_provider: ^1.6.1
+  dio: ^4.0.0
+  dio_cookie_manager: ^2.0.0
+  cookie_jar: ^3.0.0
+  path_provider: ^2.0.1
   #应用更新
   #flutter_downloader: ^1.4.4
   #install_plugin: ^2.0.1
@@ -71,7 +71,7 @@ dependencies:
   # 解析html标签
   #flutter_html: ^0.11.1
   #解析富文本建议使用 markdown
-  markdown_widget: ^1.1.9
+#  markdown_widget: ^1.1.9
 
   # 判断list是否相等
   collection: ^1.14.11
@@ -87,7 +87,7 @@ dependencies:
   #很强大的插件，瀑布流、滑动退出、手势放大等等等等，请查看文档
   #大佬的文章 https://juejin.im/post/5dee2ab36fb9a01610796a20
   #https://github.com/fluttercandies/extended_image
-  extended_image: ^0.8.0
+  extended_image: ^4.0.0
   #https://pub.dev/packages/flutter_xupdate 漂亮的更新弹窗
   #flutter_xupdate: ^0.0.3
   #刮刮卡  https://github.com/826327700/flutter_plugins_demo
@@ -185,8 +185,8 @@ dependencies:
 
   #flutter_bugly: ^0.2.8
 
-  reflectable: ^2.2.5
-  build_runner: ^1.7.0
+  reflectable: ^3.0.1
+  build_runner: ^1.12.2
 
 
 
