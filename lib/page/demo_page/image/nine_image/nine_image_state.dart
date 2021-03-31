@@ -4,13 +4,11 @@
 */
 import 'dart:typed_data';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/base_framework/ui/widget/provider_widget.dart';
 import 'package:flutter_bedrock/base_framework/utils/image_helper.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/widget_state.dart';
-
-import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/page/demo_page/image/nine_image/nine_flow_delegate.dart';
-import 'package:markdown_widget/markdown_helper.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:permission_handler/permission_handler.dart';
