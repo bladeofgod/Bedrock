@@ -1,15 +1,10 @@
-
-
-
 import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:dio/native_imp.dart';
-import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'package:flustars/flustars.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_bedrock/base_framework/config/net/bedrock_http.dart';
 import 'package:flutter_bedrock/base_framework/utils/platform_utils.dart';
 
 import '../frame_constant.dart';
@@ -24,38 +19,35 @@ parseJson(String text) {
 }
 
 //具体应用配置http类继承此类
-abstract class BaseHttp extends DioForNative{
-
+abstract class BaseHttp extends DioForNative {
   final CancelToken rootCancelToken = CancelToken();
 
-  BaseHttp(){
+  BaseHttp() {
     ///json 解析放在了子isolate，不过按文档来看，这个解析速度要慢于直接解析
     ///优点就是不会造成ui卡顿（前提是你的json数据非常大）
     ///需要自身来评估
     (transformer as DefaultTransformer).jsonDecodeCallback = parseJson;
-    interceptors
-          ..add(new HeaderInterceptor());
+    interceptors..add(new HeaderInterceptor());
 
     init();
   }
 
   void init();
 
-  cancelAllRequest(){
+  cancelAllRequest() {
     _cancelToken.cancel(['no available net']);
   }
-
 }
 
 ///默认项目所有cancelToken使用这一个，用于断网下取消
 ///如有特殊需要可以 在ApiInterceptor进行覆盖或者注释
 final CancelToken _cancelToken = CancelToken();
 
-
 ///添加拦截器
-class HeaderInterceptor extends InterceptorsWrapper{
+class HeaderInterceptor extends InterceptorsWrapper {
   @override
-  Future onRequest(RequestOptions options) async{
+  void onRequest(
+      RequestOptions options, RequestInterceptorHandler handler) async {
     options.connectTimeout = 1000 * 45;
     options.receiveTimeout = 1000 * 45;
 
@@ -74,10 +66,8 @@ class HeaderInterceptor extends InterceptorsWrapper{
     options.headers['version'] = version;
     options.headers['platform'] = Platform.operatingSystem;
     options.headers['clint_id'] = deviceInfo;
-    return options;
+    super.onRequest(options, handler);
   }
-
-
 }
 
 /// 子类需要重写
@@ -95,13 +85,3 @@ abstract class BaseResponseData {
     return 'BaseRespData{code: $code, message: $message, data: $data}';
   }
 }
-
-
-
-
-
-
-
-
-
-
