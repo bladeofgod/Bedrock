@@ -13,7 +13,7 @@ class TestAndroidPage extends PageState{
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          RaisedButton(onPressed: (){
+          ElevatedButton(onPressed: (){
             NativeMethodManager.getInstance().throwChildThreadException();
 
           },child: Text('android ： 抛一个子线程异常'),),
@@ -22,12 +22,12 @@ class TestAndroidPage extends PageState{
               "PS:你可以先点击下方的看一下效果，然后开启后再看一下效果",
             style: TextStyle(color: Colors.black,fontSize: getSp(32)),),
           getSizeBox(height: getWidthPx(40)),
-          RaisedButton(onPressed: (){
+          ElevatedButton(onPressed: (){
             NativeMethodManager.getInstance().throwUiThreadException();
 
           },child: Text('android ： 抛一个子UI线程异常'),),
           getSizeBox(height: getWidthPx(40)),
-          RaisedButton(onPressed: (){
+          ElevatedButton(onPressed: (){
             NativeMethodManager.getInstance().throwStartUpException();
           },child: Text('android ： 抛一个生命周期异常'),),
         ],

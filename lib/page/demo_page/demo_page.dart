@@ -61,7 +61,7 @@ class DemoPageState extends PageState {
             getSizeBox(height: getWidthPx(100)),
 
             buildIntro("看这里！入门第一步"),
-            RaisedButton(
+            ElevatedButton(
               child: Text("build page & push/pop demo ",style: TextStyle(color: Colors.black),),
               onPressed: (){
                 push(StartPage());
@@ -69,7 +69,7 @@ class DemoPageState extends PageState {
             ),
             getSizeBox(height: getHeightPx(40)),
             buildIntro("综合性框架功能演示DEMO"),
-            RaisedButton(
+            ElevatedButton(
               child: Text("main page",style: TextStyle(color: Colors.black),),
               onPressed: (){
                 push(MainPageState());
@@ -78,7 +78,7 @@ class DemoPageState extends PageState {
             /// part refresh
             getSizeBox(height: getHeightPx(40)),
             buildIntro("局部刷新 demo"),
-            RaisedButton(
+            ElevatedButton(
               child: Text("局部刷新 page",style: TextStyle(color: Colors.black),),
               onPressed: (){
                 push(PartRefreshPage());
@@ -87,7 +87,7 @@ class DemoPageState extends PageState {
 
             getSizeBox(height: getHeightPx(40)),
             buildIntro("app observe 功能演示"),
-            RaisedButton(
+            ElevatedButton(
               child: Text("app observe ",style: TextStyle(color: Colors.black),),
               onPressed: (){
                 push(IsolatePageState());
@@ -95,7 +95,7 @@ class DemoPageState extends PageState {
             ),
             getSizeBox(height: getHeightPx(40)),
             buildIntro("app 内部通知演示"),
-            RaisedButton(
+            ElevatedButton(
               child: Text("app 内部通知 ",style: TextStyle(color: Colors.black),),
               onPressed: (){
                 push(NotificationPage());
@@ -105,7 +105,7 @@ class DemoPageState extends PageState {
             getSizeBox(height: getWidthPx(40)),
             ///重构后不再使用pushname，所以屏蔽这里
 //            buildIntro("路由丢失DEMO"),
-//            RaisedButton(
+//            ElevatedButton(
 //              child: Text("route missing",style: TextStyle(color: Colors.black),),
 //              onPressed: (){
 //                Navigator.of(context).pushNamed("missing");
@@ -113,7 +113,7 @@ class DemoPageState extends PageState {
 //            ),
 //            getSizeBox(height: getHeightPx(40)),
             buildIntro("API请求的异常捕获和处理DEMO"),
-            RaisedButton(
+            ElevatedButton(
               child: Text("demo handle exception",style: TextStyle(color: Colors.black),),
               onPressed: (){
                 push(ExceptionMainPage());
@@ -121,7 +121,7 @@ class DemoPageState extends PageState {
             ),
             getSizeBox(height: getHeightPx(40)),
             buildIntro("自定义浮层 demo"),
-            RaisedButton(
+            ElevatedButton(
               child: Text("弹出自定义的widget 演示",style: TextStyle(color: Colors.black),),
               onPressed: (){
                 push(CustomDialogPage());
@@ -130,7 +130,7 @@ class DemoPageState extends PageState {
 
             getSizeBox(height: getHeightPx(40)),
             buildIntro("左侧滑动返回上一页"),
-            RaisedButton(
+            ElevatedButton(
               child: Text("left slide to pop page",style: TextStyle(color: Colors.black),),
               onPressed: (){
                 push(SlideOutPageState());
@@ -138,7 +138,7 @@ class DemoPageState extends PageState {
             ),
             getSizeBox(height: getHeightPx(40)),
             buildIntro("web/html DEMO"),
-            RaisedButton(
+            ElevatedButton(
               child: Text("web page",style: TextStyle(color: Colors.black),),
               onPressed: (){
                 String url = 'https://github.com/bladeofgod/Bedrock';
@@ -146,7 +146,7 @@ class DemoPageState extends PageState {
               },
             ),
             getSizeBox(height: getHeightPx(20)),
-            RaisedButton(
+            ElevatedButton(
               child: Text("html page",style: TextStyle(color: Colors.black),),
               onPressed: (){
                 push(HtmlPageState(htmlData));
@@ -154,7 +154,7 @@ class DemoPageState extends PageState {
             ),
             getSizeBox(height: getHeightPx(40)),
             buildIntro("图片相关 DEMO"),
-            RaisedButton(
+            ElevatedButton(
               child: Text("image page",style: TextStyle(color: Colors.black),),
               onPressed: (){
                 push(ImageMainDemo());
@@ -162,7 +162,7 @@ class DemoPageState extends PageState {
             ),
             getSizeBox(height: getHeightPx(40)),
             buildIntro("页面跳转动画 DEMO"),
-            RaisedButton(
+            ElevatedButton(
               child: Text("route animation page",style: TextStyle(color: Colors.black),),
               onPressed: (){
                 push(RouteAnimationPageState());
@@ -170,7 +170,7 @@ class DemoPageState extends PageState {
             ),
             getSizeBox(height: getHeightPx(40)),
             buildIntro("国际化 DEMO"),
-            RaisedButton(
+            ElevatedButton(
               child: Text("i10l page",style: TextStyle(color: Colors.black),),
               onPressed: (){
                 push(LocalPageState());
@@ -178,7 +178,7 @@ class DemoPageState extends PageState {
             ),
             getSizeBox(height: getHeightPx(40)),
             buildIntro("实验室 DEMO"),
-            RaisedButton(
+            ElevatedButton(
               child: Text("laboratory page",style: TextStyle(color: Colors.black),),
               onPressed: (){
                 push(OtherDemoPageState());
@@ -186,7 +186,7 @@ class DemoPageState extends PageState {
             ),
             getSizeBox(height: getHeightPx(40)),
             buildIntro("dialog 式 loading 演示"),
-            RaisedButton(
+            ElevatedButton(
               child: Text("dialog progress page",style: TextStyle(color: Colors.black),),
               onPressed: (){
                 showProgressDialog();

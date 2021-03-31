@@ -22,7 +22,7 @@ class WithValuePage extends PageState{
           getSizeBox(height: getHeightPx(100)),
           Text(value,style: TextStyle(color: Colors.black,fontSize: getSp(24)),),
           getSizeBox(height: getHeightPx(40)),
-          RaisedButton(
+          ElevatedButton(
             child: Text('go page 2',style: TextStyle(color: Colors.black),),
             onPressed: (){
               pop(result: 'WithValuePage页面返回了一个苹果');

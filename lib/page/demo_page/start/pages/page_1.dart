@@ -20,7 +20,7 @@ class Page1 extends PageState{
           getSizeBox(height: getHeightPx(100)),
           Text('page 1',style: TextStyle(color: Colors.black,fontSize: getSp(24)),),
           getSizeBox(height: getHeightPx(40)),
-          RaisedButton(
+          ElevatedButton(
             child: Text('go page 2',style: TextStyle(color: Colors.black),),
             onPressed: (){
               push(Page2());

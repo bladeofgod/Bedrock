@@ -18,7 +18,7 @@ class Page3 extends PageState{
           getSizeBox(height: getHeightPx(100)),
           Text('page 3',style: TextStyle(color: Colors.black,fontSize: getSp(24)),),
           getSizeBox(height: getHeightPx(40)),
-          RaisedButton(
+          ElevatedButton(
             child: Text('pop',style: TextStyle(color: Colors.black),),
             onPressed: (){
               pop();

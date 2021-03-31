@@ -78,7 +78,7 @@ class NotificationPage extends PageState{
   }
 
   Widget buildBtn(String title,Function onTap){
-    return RaisedButton(
+    return ElevatedButton(
         onPressed: onTap,
         child: Text(title),
     );

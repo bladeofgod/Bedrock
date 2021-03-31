@@ -25,7 +25,7 @@ class LittleUtilPageState extends PageState {
           getSizeBox(height: getWidthPx(100)),
           Divider(color: Colors.black,height: getWidthPx(4),),
           Text('开始自加 : $count'),
-          RaisedButton(
+          ElevatedButton(
             onPressed: startCalculate,
             child: Text('cycle Util'),
           ),

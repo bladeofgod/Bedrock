@@ -19,7 +19,7 @@ class RouteAnimationPageState extends PageState {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              RaisedButton(
+              ElevatedButton(
                 onPressed: (){
                   push(SlidePageState(),animation: PageAnimation.Slide);
 
@@ -27,7 +27,7 @@ class RouteAnimationPageState extends PageState {
                 child: Text("滑动跳转"),
               ),
               getSizeBox(height: getWidthPx(40)),
-              RaisedButton(
+              ElevatedButton(
                 onPressed: (){
                   push(ScalePageState(),animation: PageAnimation.Scale);
 
@@ -35,7 +35,7 @@ class RouteAnimationPageState extends PageState {
                 child: Text("缩放跳转"),
               ),
               getSizeBox(height: getWidthPx(40)),
-              RaisedButton(
+              ElevatedButton(
                 onPressed: (){
                   push(FadePageState(),animation: PageAnimation.Fade);
 

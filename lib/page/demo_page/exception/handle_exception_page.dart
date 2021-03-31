@@ -61,7 +61,7 @@ class HandleExceptionPageState extends PageState {
               style: TextStyle(color: Colors.black),),
 
               getSizeBox(height: getWidthPx(60)),
-              RaisedButton(
+              ElevatedButton(
                 child: Text("click request api"),
                 onPressed: (){
                   model.initData();

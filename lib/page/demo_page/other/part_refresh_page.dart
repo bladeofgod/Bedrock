@@ -19,7 +19,7 @@ class PartRefreshPage extends PageState{
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          RaisedButton(onPressed: (){
+          ElevatedButton(onPressed: (){
             exp1 = !exp1;
             setState(() {
 
@@ -43,7 +43,7 @@ class PartRefreshPage extends PageState{
             ),
           ),
           getSizeBox(height: getWidthPx(100)),
-          RaisedButton(onPressed: (){
+          ElevatedButton(onPressed: (){
             partWidget.switchColor();
           },
             child: Text('change color By part refresh'),),

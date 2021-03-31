@@ -26,7 +26,7 @@ class TimerPageState extends PageState {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Text(text,style: TextStyle(color: Colors.black,fontSize: getSp(28)),),
-          RaisedButton(
+          ElevatedButton(
             child: Text('请求一下接口'),
             onPressed: (){
               request();

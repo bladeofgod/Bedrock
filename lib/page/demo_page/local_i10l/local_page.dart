@@ -36,14 +36,14 @@ class LocalPageState extends PageState{
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      RaisedButton(
+                      ElevatedButton(
                         onPressed: (){
                           localModel.switchLocale(1);
                         },
                         child: Text("切换中文"),
                       ),
                       getSizeBox(width: getWidthPx(40)),
-                      RaisedButton(
+                      ElevatedButton(
                         onPressed: (){
                           localModel.switchLocale(2);
                         },

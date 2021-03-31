@@ -20,7 +20,7 @@ class RequestPermissionsPageState extends PageState {
         children: <Widget>[
           Text(status,style: TextStyle(color: Colors.black,fontSize: getSp(30)),),
           getSizeBox(height: getWidthPx(100)),
-          RaisedButton(
+          ElevatedButton(
             child: Text('request location permission'),
             onPressed: (){
               request();

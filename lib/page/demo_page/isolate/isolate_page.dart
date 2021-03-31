@@ -30,21 +30,21 @@ class IsolatePageState extends PageState {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(result),
-              RaisedButton(onPressed: ()async{
+              ElevatedButton(onPressed: ()async{
                 ///结果 在 log里
                 AppPrivateIsolate.getInstance().initNetObserver();
 
               },
               child: Text('get work 注意日志'),),
               SizedBox(width: 1,height: 20,),
-              RaisedButton(onPressed: ()async{
+              ElevatedButton(onPressed: ()async{
                 debugPrint('请求 google');
                 bedRock.get('https://www.google.com');
 
               },
                 child: Text('测试无网 取消所有连接，需要先启动上面的按钮'),),
               SizedBox(width: 1,height: 20,),
-              RaisedButton(onPressed: ()async{
+              ElevatedButton(onPressed: ()async{
                 List.generate(100, (index){
                   WorkerMainProxy.getInstance()
                   ///参数一：方法名字，参数二：方法对应的命名参数，

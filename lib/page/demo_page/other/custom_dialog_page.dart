@@ -6,6 +6,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 import 'package:flutter_bedrock/page/demo_widget/custom_drawer.dart';
+
 import 'float_layer_widget/shake_float_widget.dart';
 class CustomDialogPage extends PageState{
 
@@ -90,7 +91,7 @@ class CustomDialogPage extends PageState{
   Widget buildBtn(String title,Function onTap){
     return Container(
       width: getWidthPx(500),height: getWidthPx(100),
-      child: RaisedButton(
+      child: ElevatedButton(
         onPressed: onTap,
         child: Text(title,style: TextStyle(
           color: Colors.black,fontSize: getSp(28)

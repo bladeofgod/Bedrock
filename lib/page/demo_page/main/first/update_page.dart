@@ -35,14 +35,14 @@ class UpdatePageState extends PageState {
                 children: <Widget>[
                   Text(text,),
                   getSizeBox(height: getWidthPx(50)),
-                  RaisedButton(
+                  ElevatedButton(
                     child: Text('升级',style: TextStyle(color: Colors.black),),
                     onPressed: updateVM.getNewApk,
                   ),
                   getSizeBox(height: getWidthPx(50)),
                   Text('下载进度： ${updateVM.progress}/100',style: TextStyle(color: Colors.lightBlue),),
                   getSizeBox(height: getWidthPx(50)),
-                  RaisedButton(
+                  ElevatedButton(
                     child: Text('取消',style: TextStyle(color: Colors.black),),
                     onPressed: updateVM.cancelTask,
                   ),

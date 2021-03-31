@@ -42,7 +42,7 @@ class PickImagePageState extends PageState {
           ),
 
           getSizeBox(height: getWidthPx(40)),
-          RaisedButton(
+          ElevatedButton(
             child: Text("选择/拍照头像",style: TextStyle(color: Colors.black,fontSize: getSp(30)),),
             onPressed: (){
               checkPermission();

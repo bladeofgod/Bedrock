@@ -22,7 +22,7 @@ class ExceptionMainPage extends PageState{
         children: [
 
           buildIntro("页面 viewModel.initData() 触发的api 业务异常"),
-          RaisedButton(
+          ElevatedButton(
             child: Text("demo handle exception",style: TextStyle(color: Colors.black),),
             onPressed: (){
               push(HandleExceptionPageState());
@@ -30,7 +30,7 @@ class ExceptionMainPage extends PageState{
           ),
           getSizeBox(height: getHeightPx(40)),
           buildIntro("页面/widget 对业务异常的监听(即，非initData()所触发的业务异常)。"),
-          RaisedButton(
+          ElevatedButton(
             child: Text("demo handle exception",style: TextStyle(color: Colors.black),),
             onPressed: (){
               push(ExceptionNotifyPage());

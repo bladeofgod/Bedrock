@@ -60,7 +60,7 @@ class CustomBottomDrawerWidget extends WidgetState with SingleTickerProviderStat
                       color: Colors.black,fontSize: getSp(32)
                   ),),
                   getSizeBox(height: getWidthPx(70)),
-                  RaisedButton(
+                  ElevatedButton(
                     onPressed: (){
                       animationController.reverse().then((value) => Navigator.pop(context));
                     },
