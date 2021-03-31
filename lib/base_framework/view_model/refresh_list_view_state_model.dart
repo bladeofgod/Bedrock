@@ -1,10 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bedrock/base_framework/view_model/handle/exception_handler.dart';
-import 'package:mmkv_flutter/mmkv_flutter.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import 'list_view_state_model.dart';
-import 'package:flutter_bedrock/base_framework/extension/list_extension.dart';
 
 /// 基于
 abstract class RefreshListViewStateModel<T> extends ListViewStateModel<T> {

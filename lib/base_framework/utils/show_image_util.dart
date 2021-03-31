@@ -1,10 +1,8 @@
 
 
 import 'package:extended_image/extended_image.dart';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bedrock/base_framework/utils/image_helper.dart';
 
 /*
 * 图片格式是否是webp要等于后端和IOS确定在做更改，目前是webp的

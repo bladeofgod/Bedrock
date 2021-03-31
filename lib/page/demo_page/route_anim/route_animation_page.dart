@@ -2,9 +2,7 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bedrock/base_framework/config/router_manager.dart';
 import 'package:flutter_bedrock/base_framework/factory/page/page_animation_builder.dart';
-import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 import 'package:flutter_bedrock/page/demo_page/route_anim/fade_page.dart';
 import 'package:flutter_bedrock/page/demo_page/route_anim/scale_page.dart';

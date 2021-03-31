@@ -57,6 +57,7 @@ class NineImageEditorState extends WidgetState implements ImageWidgetChangeListe
       ],
     );
   }
+  // ignore: deprecated_member_use
   /// * 性能要优于 [gridWay]
 
   final List<LayoutId> children = [];

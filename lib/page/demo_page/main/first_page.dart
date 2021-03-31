@@ -2,13 +2,11 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bedrock/base_framework/config/router_manager.dart';
 import 'package:flutter_bedrock/base_framework/ui/widget/provider_widget.dart';
 import 'package:flutter_bedrock/base_framework/utils/refresh_helper.dart';
 import 'package:flutter_bedrock/base_framework/utils/show_image_util.dart';
 import 'package:flutter_bedrock/base_framework/view_model/app_model/app_cache_model.dart';
 import 'package:flutter_bedrock/base_framework/view_model/app_model/user_view_model.dart';
-import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 import 'package:flutter_bedrock/page/demo_page/main/first/cache_data_page.dart';
 import 'package:flutter_bedrock/page/demo_page/main/first/ffloat_page.dart';

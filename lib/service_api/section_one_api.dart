@@ -6,7 +6,6 @@
 
 
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_bedrock/base_framework/config/net/bedrock_http.dart';
 import 'package:flutter_bedrock/page/demo_page/main/fake_constant.dart';
 import 'package:flutter_bedrock/page/demo_page/main/first/entity/cache_entity.dart';

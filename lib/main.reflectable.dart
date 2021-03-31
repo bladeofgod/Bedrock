@@ -2,19 +2,17 @@
 // https://github.com/dart-lang/reflectable.
 
 import 'dart:core';
-import 'main.dart' as prefix0;
-
-// ignore_for_file: prefer_adjacent_string_concatenation
-// ignore_for_file: prefer_collection_literals
-// ignore_for_file: unnecessary_const
-// ignore_for_file: implementation_imports
 
 // ignore:unused_import
 import 'package:reflectable/mirrors.dart' as m;
-// ignore:unused_import
-import 'package:reflectable/src/reflectable_builder_based.dart' as r;
+
 // ignore:unused_import
 import 'package:reflectable/reflectable.dart' as r show Reflectable;
+
+// ignore: implementation_imports
+import 'package:reflectable/src/reflectable_builder_based.dart' as r;
+
+import 'main.dart' as prefix0;
 
 final _data = <r.Reflectable, r.ReflectorData>{
   const prefix0.MyReflectable(): r.ReflectorData(

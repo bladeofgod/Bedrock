@@ -1,13 +1,7 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-
-
-
-class BottomNavBarNoInk extends StatefulWidget{
-
+class BottomNavBarNoInk extends StatefulWidget {
   IndexModel indexModel;
 
   final width;
@@ -17,21 +11,21 @@ class BottomNavBarNoInk extends StatefulWidget{
   int currentIndex;
   ValueChanged<int> onTap;
 
-  BottomNavBarNoInk({@required this.width
-    ,@required this.
-    height,@required this.items,
-    this.currentIndex,this.onTap}) : indexModel = IndexModel(currentIndex);
-
+  BottomNavBarNoInk(
+      {@required this.width,
+      @required this.height,
+      @required this.items,
+      this.currentIndex,
+      this.onTap})
+      : indexModel = IndexModel(currentIndex);
 
   @override
   State<StatefulWidget> createState() {
-
     return BottomNavBarNoInkState();
   }
 }
 
 class BottomNavBarNoInkState extends State<BottomNavBarNoInk> {
-
   List<Widget> barItems = [];
 
   @override
@@ -39,44 +33,45 @@ class BottomNavBarNoInkState extends State<BottomNavBarNoInk> {
     // TODO: implement initState
     super.initState();
 
-
     transfer2Widget();
   }
 
-  transfer2Widget(){
-    for(int i=0; i< widget.items.length;i++){
+  transfer2Widget() {
+    for (int i = 0; i < widget.items.length; i++) {
       barItems.add(GestureDetector(
-        onTap: (){
+        onTap: () {
           widget.onTap(i);
           model?.setIndex(i);
 //          Provider.of<IndexModel>(context)
 //            ..setIndex(i);
         },
-        child: BottomNoInkBarItem(item: widget.items[i],index: i,),
+        child: BottomNoInkBarItem(
+          item: widget.items[i],
+          index: i,
+        ),
       ));
     }
   }
-  IndexModel model ;
+
+  IndexModel model;
 
   @override
   Widget build(BuildContext context) {
-
     return ChangeNotifierProvider(
-      create: (ctx){
+      create: (ctx) {
         model = IndexModel(widget.currentIndex);
         return model;
       },
-      child:Container(
+      child: Container(
         width: widget.width,
         height: widget.height,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: barItems,
         ),
-      ) ,
-    ) ;
+      ),
+    );
   }
-
 
 //  List<Widget> generateNoInkWidgets(){
 //    return widget.items.map((widget){
@@ -89,29 +84,24 @@ class BottomNavBarNoInkState extends State<BottomNavBarNoInk> {
 
 }
 
-
-class BottomNoInkBarItem extends StatefulWidget{
-
+class BottomNoInkBarItem extends StatefulWidget {
   int index;
   BottomNavigationBarItem item;
 
-
-  BottomNoInkBarItem({this.item,this.index});
+  BottomNoInkBarItem({this.item, this.index});
 
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
     return BottomNoInkBarItemState();
   }
-
 }
 
 class BottomNoInkBarItemState extends State<BottomNoInkBarItem> {
   @override
   Widget build(BuildContext context) {
-
     return Consumer<IndexModel>(
-      builder: (ctx,model,child){
+      builder: (ctx, model, child) {
         //print("model inde ${model.index}----- widget index ${widget.index}");
         return Container(
           child: Column(
@@ -130,9 +120,9 @@ class BottomNoInkBarItemState extends State<BottomNoInkBarItem> {
                   ),
                 ],
               ),
+
               ///title
-              if(widget.item.title != null)
-              widget.item.title
+              if (widget.item.label != null) Text(widget.item.label)
             ],
           ),
         );
@@ -141,27 +131,15 @@ class BottomNoInkBarItemState extends State<BottomNoInkBarItem> {
   }
 }
 
-
-class IndexModel extends ChangeNotifier{
+class IndexModel extends ChangeNotifier {
   int selectIndex;
 
   IndexModel(@required this.selectIndex);
 
   get index => selectIndex;
 
-  setIndex(int index){
+  setIndex(int index) {
     selectIndex = index;
     notifyListeners();
   }
-
 }
-
-
-
-
-
-
-
-
-
-

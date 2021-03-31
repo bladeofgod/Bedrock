@@ -11,7 +11,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bedrock/base_framework/config/router_manager.dart';
 import 'package:flutter_bedrock/base_framework/ui/widget/float_container_widget.dart';
 import 'package:flutter_bedrock/base_framework/utils/image_helper.dart';
-import 'package:flutter_bedrock/base_framework/view_model/view_state.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/widget_state.dart';
 

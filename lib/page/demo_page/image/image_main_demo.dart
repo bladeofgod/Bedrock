@@ -4,8 +4,8 @@
 */
 
 
-import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 import 'package:flutter_bedrock/page/demo_page/image/nine_image_page.dart';
 import 'package:flutter_bedrock/page/demo_page/image/pick_image_page.dart';
 class ImageMainDemo extends PageState{

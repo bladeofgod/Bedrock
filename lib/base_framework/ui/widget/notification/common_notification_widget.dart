@@ -1,9 +1,8 @@
 
 
 
-import 'package:flutter_bedrock/base_framework/widget_state/widget_state.dart';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bedrock/base_framework/widget_state/widget_state.dart';
 
 typedef NotifyDone = void Function(bool notifyDone);
 

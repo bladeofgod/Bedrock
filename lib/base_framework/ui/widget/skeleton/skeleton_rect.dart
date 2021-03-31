@@ -7,7 +7,6 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 import 'base_skeleton/base_skeleton_widget.dart';
 

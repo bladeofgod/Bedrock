@@ -4,7 +4,6 @@
 * 注意： 请勿使用任何dart:ui内的东西（即涉及到flutter的代码）
 */
 
-import 'dart:async';
 import 'dart:isolate';
 
 import 'package:flutter_bedrock/base_framework/utils/isolate/factory/worker_isolate.dart';

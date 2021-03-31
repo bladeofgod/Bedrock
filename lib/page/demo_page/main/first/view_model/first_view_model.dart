@@ -5,7 +5,6 @@
 
 
 
-import 'package:flutter_bedrock/base_framework/view_model/refresh_list_view_state_model.dart';
 import 'package:flutter_bedrock/base_framework/view_model/single_view_state_model.dart';
 import 'package:flutter_bedrock/page/demo_page/main/first/entity/first_card_entity.dart';
 import 'package:flutter_bedrock/page/demo_page/main/first/entity/first_entity.dart';

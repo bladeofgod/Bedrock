@@ -3,7 +3,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/base_framework/view_model/app_model/locale_model.dart';
-import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 import 'package:flutter_bedrock/generated/l10n.dart';
 import 'package:provider/provider.dart';

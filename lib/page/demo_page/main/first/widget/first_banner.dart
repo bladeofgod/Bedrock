@@ -6,10 +6,8 @@
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bedrock/base_framework/config/router_manager.dart';
 import 'package:flutter_bedrock/base_framework/ui/widget/detail_image_widget.dart';
 import 'package:flutter_bedrock/base_framework/utils/show_image_util.dart';
-import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/widget_state.dart';
 
 
