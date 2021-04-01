@@ -20,7 +20,7 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class CacheDataPageState extends PageState {
 
-  UserViewModel userViewModel;
+  late UserViewModel userViewModel;
 
   @override
   Widget build(BuildContext context) {

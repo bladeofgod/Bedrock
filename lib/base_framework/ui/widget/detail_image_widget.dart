@@ -11,7 +11,7 @@ import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 
 class DetailImageWidgetState extends PageState {
 
-  final List<String> imageList;
+  final List<String?>? imageList;
   final int initIndex;
   int indexStr=1;
 
@@ -35,15 +35,15 @@ class DetailImageWidgetState extends PageState {
                 ///可增加滑动退出等功能、具体可以查看插件的文档
                 child: ExtendedImageGesturePageView.builder(
                   controller: new PageController(initialPage: this.initIndex),
-                  itemCount: imageList.length,
+                  itemCount: imageList!.length,
                   itemBuilder: (ctx,index){
-                    var url = "${imageList[index]}";
+                    var url = "${imageList![index]}";
                     //var url = "http://a0.att.hudong.com/78/52/01200000123847134434529793168.jpg";
                     Widget image = ExtendedImage.network(
                       url,fit: BoxFit.contain,mode: ExtendedImageMode.gesture,
                       initGestureConfigHandler: (state){
                         return GestureConfig(
-                            inPageView: imageList.length>1
+                            inPageView: imageList!.length>1
                         );
                       },
                     );
@@ -57,7 +57,7 @@ class DetailImageWidgetState extends PageState {
                 ),
               ),
               commonAppBar(
-                  title: "$indexStr/${imageList.length}",
+                  title: "$indexStr/${imageList!.length}",
                   leftWidget: buildAppBarLeft(),
                   leftPadding: getWidthPx(40),
                   rightPadding: getWidthPx(40)),

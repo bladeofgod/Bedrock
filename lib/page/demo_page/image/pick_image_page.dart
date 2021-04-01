@@ -15,7 +15,7 @@ import 'package:permission_handler/permission_handler.dart';
 
 class PickImagePageState extends PageState {
 
-  String avatarPath = "";
+  String? avatarPath = "";
 
   @override
   Widget build(BuildContext context) {
@@ -26,14 +26,14 @@ class PickImagePageState extends PageState {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text("${avatarPath.isEmpty?"请选择图片":"图片路径：$avatarPath"}"),
+          Text("${avatarPath!.isEmpty?"请选择图片":"图片路径：$avatarPath"}"),
           getSizeBox(height: getWidthPx(60)),
           ///avatar
           ClipOval(
             child: Container(
               width: getWidthPx(120),height: getWidthPx(120),
-              child: avatarPath.isEmpty ? Icon(Icons.camera,size: getWidthPx(120),)
-                  : Image.file(File(avatarPath),width: getWidthPx(110),height: getWidthPx(110),),
+              child: avatarPath!.isEmpty ? Icon(Icons.camera,size: getWidthPx(120),)
+                  : Image.file(File(avatarPath!),width: getWidthPx(110),height: getWidthPx(110),),
             ),
           ),
 

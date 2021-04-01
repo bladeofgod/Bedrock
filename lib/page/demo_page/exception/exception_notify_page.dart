@@ -58,7 +58,7 @@ class NotifyPageVM extends SingleViewStateModel
   ///我们通过model.initData()进行页面主数据的请求。
   ///父类会对此处的业务异常进行捕捉
   @override
-  Future loadData() {
+  Future? loadData() {
 
     ///调用页面 数据接口
     return null;
@@ -71,7 +71,7 @@ class NotifyPageVM extends SingleViewStateModel
 
   ///此 ViewModel内的所有 api业务异常都会通知到下面这个方法
   @override
-  void notifyException({Exception exception, BaseResponseData rawData}) {
+  void notifyException({Exception? exception, BaseResponseData? rawData}) {
     // 根据异常实现对应逻辑
   }
 

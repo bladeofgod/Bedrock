@@ -10,7 +10,7 @@ import 'package:flutter_bedrock/base_framework/utils/show_image_util.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/widget_state.dart';
 
 class FirstBannerState extends WidgetState {
-  final List<String> imageList;
+  final List<String>? imageList;
 
   final bool canShowBigImage;
 
@@ -39,7 +39,7 @@ class FirstBannerState extends WidgetState {
               });
             },
           ),
-          items: imageList.map((item) {
+          items: imageList!.map((item) {
             if (canShowBigImage) {
               return GestureDetector(
                 onTap: () {
@@ -50,7 +50,7 @@ class FirstBannerState extends WidgetState {
                 },
                 child: ClipRRect(
                   borderRadius:
-                      borderRadius ?? BorderRadius.circular(getHeightPx(10)),
+                      borderRadius,
                   child: ShowImageUtil.showImageWithDefaultError(
                       item, getWidthPx(622), getHeightPx(292),
                       boxFit: BoxFit.cover),
@@ -59,7 +59,7 @@ class FirstBannerState extends WidgetState {
             } else {
               return ClipRRect(
                 borderRadius:
-                    borderRadius ?? BorderRadius.circular(getHeightPx(10)),
+                    borderRadius,
                 child: ShowImageUtil.showImageWithDefaultError(
                     item, getWidthPx(622), getHeightPx(292),
                     boxFit: BoxFit.cover, borderRadius: getHeightPx(10)),
@@ -79,7 +79,7 @@ class FirstBannerState extends WidgetState {
                 color: Color.fromRGBO(51, 51, 51, 0.1),
                 borderRadius: BorderRadius.circular(getHeightPx(14))),
             child: Text(
-              "$imageIndex/${imageList.length}",
+              "$imageIndex/${imageList!.length}",
               style: TextStyle(fontSize: getSp(22), color: Colors.white),
             ),
           ),

@@ -15,9 +15,9 @@ import 'package:package_info/package_info.dart';
 class AppCacheModel extends ChangeNotifier{
 
   //以下只是DEMO 演示，
-  PackageInfo packageInfo;
-  String appVersion;
-  String buildNum;
+  late PackageInfo packageInfo;
+  late String appVersion;
+  String? buildNum;
 
   AppCacheModel(){
     ///这里只是demo使用

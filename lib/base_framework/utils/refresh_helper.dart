@@ -19,7 +19,7 @@ class HomeRefreshHeader extends BaseStatelessWidget {
     var strings = RefreshLocalizations.of(context)?.currentLocalization ??
         EnRefreshString();
     return ClassicHeader(
-      canTwoLevelText: S.of(context).refreshTwoLevel,
+      canTwoLevelText: S.of(context)!.refreshTwoLevel,
       textStyle: TextStyle(color: textColor),
       //二楼
       //outerBuilder: (child) => HomeSecondFloorOuter(child),

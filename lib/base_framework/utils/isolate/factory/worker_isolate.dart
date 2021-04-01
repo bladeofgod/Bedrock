@@ -40,22 +40,22 @@ const String kNameArgs = 'kNameArgs';
 * 此类在 main isolate
 * */
 class WorkerMainProxy{
-  static WorkerMainProxy _instance;
-  static WorkerMainProxy getInstance(){
+  static WorkerMainProxy? _instance;
+  static WorkerMainProxy? getInstance(){
     if(_instance == null){
       _instance = WorkerMainProxy._();
     }
     return _instance;
   }
 
-  factory WorkerMainProxy()=>getInstance();
+  factory WorkerMainProxy()=>getInstance()!;
 
 
   WorkerMainProxy._();
 
   final ReceivePort receivePort = ReceivePort();
-  Isolate isolate;
-  SendPort childPort;
+  Isolate? isolate;
+  SendPort? childPort;
 
   List<TaskWrapper> taskCache = [];
 
@@ -64,7 +64,7 @@ class WorkerMainProxy{
   ///nameArgs  key: params name
   ///value: params value .
   ///and type can only 'num,null,double,String'
-  void invokeWorker({String methodName,Map<String,dynamic> nameArgs})async{
+  void invokeWorker({String? methodName,Map<String,dynamic>? nameArgs})async{
     taskCache.add(TaskWrapper(methodName, nameArgs));
     if(isolate == null && !initializing){
       initializing = true;
@@ -88,7 +88,7 @@ class WorkerMainProxy{
   void sendTask(){
     if(taskCache.length > 0){
       taskCache.forEach((element) {
-        childPort.send([kTaskKey,element.methodName,element.nameArgs]);
+        childPort!.send([kTaskKey,element.methodName,element.nameArgs]);
       });
       taskCache.clear();
     }
@@ -114,8 +114,8 @@ void proxyHandler(SendPort mainPort)async{
 
   receiveMainPort.listen((message) {
     if(message[0] == kTaskKey){
-      String name = message[1];
-      Map<String,dynamic> args = message[2];
+      String? name = message[1];
+      Map<String,dynamic>? args = message[2];
       TaskWrapper wrapper = TaskWrapper(name,args);
       taskLog.add(wrapper);
     }
@@ -168,7 +168,7 @@ void runProxy(){
           if(value.isStandBy()){
             TaskWrapper task = taskLog.first;
             value.setStatus(false);// not free
-            value.workSendPort.send([kTaskKey,{kMethodName:task.methodName,
+            value.workSendPort!.send([kTaskKey,{kMethodName:task.methodName,
               kNameArgs:task.nameArgs}]);
             taskLog.removeWhere((element) => element == task);
           }
@@ -201,7 +201,7 @@ void _workerIsolate(SendPort proxyPort){
     if(message[0] == kTaskKey){
       ///执行任务
       Map method = message[1];
-      String mn = method[kMethodName];
+      String? mn = method[kMethodName];
       Map<Symbol,dynamic> nameArguments = {};
       if(method[kNameArgs] is Map){
         ///为了避免顺序错误导致的参数异常，这里不使用positionalArguments
@@ -212,7 +212,7 @@ void _workerIsolate(SendPort proxyPort){
         final WorkList workerList = WorkList();
         final InstanceMirror instanceMirror = myReflect.reflect(workerList);
         //final ClassMirror classMirror = myReflect.reflectType(WorkList);
-        instanceMirror.invoke(mn, [],nameArguments);
+        instanceMirror.invoke(mn!, [],nameArguments);
         ///work done
         ///结构暂定为 [order flag, result(Map)]
         ///个人认为这种多线程处理任务，最好不要有返回结果 ....待设计

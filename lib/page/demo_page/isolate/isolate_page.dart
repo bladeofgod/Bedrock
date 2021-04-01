@@ -30,7 +30,7 @@ class IsolatePageState extends PageState {
               Text(result),
               ElevatedButton(onPressed: ()async{
                 ///结果 在 log里
-                AppPrivateIsolate.getInstance().initNetObserver();
+                AppPrivateIsolate.getInstance()!.initNetObserver();
 
               },
               child: Text('get work 注意日志'),),
@@ -44,7 +44,7 @@ class IsolatePageState extends PageState {
               SizedBox(width: 1,height: 20,),
               ElevatedButton(onPressed: ()async{
                 List.generate(100, (index){
-                  WorkerMainProxy.getInstance()
+                  WorkerMainProxy.getInstance()!
                   ///参数一：方法名字，参数二：方法对应的命名参数，
                   ///务必确保参数名与WorkList中的一致
                       .invokeWorker(methodName: 'test',nameArgs: {'n':'第$index次唤起','m':'第二个参数'});

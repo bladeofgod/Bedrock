@@ -30,7 +30,7 @@ void main() async {
 
   runZonedGuarded(() {
     ErrorWidget.builder = (FlutterErrorDetails details) {
-      Zone.current.handleUncaughtError(details.exception, details.stack);
+      Zone.current.handleUncaughtError(details.exception, details.stack!);
 
       ///出现异常时会进入下方页面（flutter原有的红屏），
       return ExceptionPageState(
@@ -39,7 +39,7 @@ void main() async {
     };
   }, (Object object, StackTrace trace) {
     ///你可以将下面日志上传到服务器，用于release后的错误处理
-    debugPrint(object);
+    debugPrint(object as String?);
     debugPrint(trace.toString());
   });
   runApp(MyApp());
@@ -122,7 +122,7 @@ class MyApp extends StatelessWidget {
 
 @myReflect
 class WorkList {
-  test({String n, String m}) {
+  test({String? n, String? m}) {
     print('  test method   $n');
   }
 }

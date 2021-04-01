@@ -31,7 +31,7 @@ class CustomDialogPage extends PageState {
           buildBtn('elasticOut 式的动画：红方块 ', () {
             final ShakeFloatState shake = ShakeFloatState();
             floatWidget(shake.generateWidget(), floatWidgetDismiss: (ctx) {
-              shake.controller.reverse().whenComplete(() => Navigator.pop(ctx));
+              shake.controller!.reverse().whenComplete(() => Navigator.pop(ctx));
             });
           }),
           getSizeBox(height: getWidthPx(80)),
@@ -106,7 +106,7 @@ class CustomDialogPage extends PageState {
       width: getWidthPx(500),
       height: getWidthPx(100),
       child: ElevatedButton(
-        onPressed: onTap,
+        onPressed: onTap as void Function()?,
         child: Text(
           title,
           style: TextStyle(color: Colors.black, fontSize: getSp(28)),

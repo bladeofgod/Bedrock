@@ -14,7 +14,7 @@ import 'package:provider/provider.dart';
 class LoginPageState extends PageState {
 
 
-  LoginViewModel loginViewModel;
+  late LoginViewModel loginViewModel;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class LoginPageState extends PageState {
 
 
                 if(userModel.hasUser){
-                  WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+                  WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
                     pop();
                   });
                 }

@@ -26,7 +26,7 @@ class FirstPageState extends PageState with AutomaticKeepAliveClientMixin {
 
   final TransportScrollController transportScrollController;
 
-  ScrollController scrollController;
+  ScrollController? scrollController;
 
   FirstPageState(this.transportScrollController);
 
@@ -38,8 +38,8 @@ class FirstPageState extends PageState with AutomaticKeepAliveClientMixin {
   }
 
 
-  UserViewModel userViewModel;
-  FirstViewModel firstViewModel;
+  UserViewModel? userViewModel;
+  late FirstViewModel firstViewModel;
 
   @override
   Widget build(BuildContext context) {
@@ -112,7 +112,7 @@ class FirstPageState extends PageState with AutomaticKeepAliveClientMixin {
                           delegate: SliverChildBuilderDelegate(
                               (ctx,index){
                                 return buildItem(index,firstModel.cardList[index]);
-                              },childCount: firstModel.cardList?.length ?? 0
+                              },childCount: firstModel.cardList.length
                           ),
                         ),
 
@@ -164,7 +164,7 @@ class FirstPageState extends PageState with AutomaticKeepAliveClientMixin {
           shape: BoxShape.circle,
           color: color,
           boxShadow: [
-            BoxShadow(color: Colors.grey[400],spreadRadius: 1.0,offset: Offset(0.8, 0.8),)
+            BoxShadow(color: Colors.grey[400]!,spreadRadius: 1.0,offset: Offset(0.8, 0.8),)
           ],
         ),
         child: Text(str,style: TextStyle(color: Colors.white,fontSize: getSp(28)),),
@@ -197,7 +197,7 @@ class FirstPageState extends PageState with AutomaticKeepAliveClientMixin {
       height: getWidthPx(292),
       child: FirstBannerState(
         borderRadius: BorderRadius.circular(getHeightPx(6)),
-        imageList: firstViewModel.firstEntity.banner,
+        imageList: firstViewModel.firstEntity!.banner,
       ).generateWidget(),
     );
   }

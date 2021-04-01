@@ -67,7 +67,7 @@ final _data = <r.Reflectable, r.ReflectorData>{
       ])
 };
 
-final _memberSymbolMap = null;
+final dynamic _memberSymbolMap = null;
 
 void initializeReflectable() {
   r.data = _data;

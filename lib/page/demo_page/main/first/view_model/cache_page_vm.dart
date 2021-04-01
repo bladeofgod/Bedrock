@@ -17,7 +17,7 @@ import 'package:flutter_bedrock/service_api/bedrock_repository_proxy.dart';
 /// * 一般情况下直接缓存以string进行缓存，缓存工具是mmkv
 /// * 你可以在CacheDataFactory 类里更改缓存方式
 
-class CachePageVM extends RefreshListViewStateModel<CacheEntity> with CacheDataFactory<String> {
+class CachePageVM extends RefreshListViewStateModel<CacheEntity> with CacheDataFactory<String?> {
 
   CachePageVM(){
     ///注册缓存功能
@@ -27,8 +27,8 @@ class CachePageVM extends RefreshListViewStateModel<CacheEntity> with CacheDataF
 
 
   @override
-  Future<List<CacheEntity>> loadData({int pageNum}) {
-   return BedrockRepositoryProxy.getInstance().getSectionOne().getCacheList(pageNum);
+  Future<List<CacheEntity>?> loadData({int? pageNum}) {
+   return BedrockRepositoryProxy.getInstance()!.getSectionOne().getCacheList(pageNum);
   }
 
   @override
@@ -46,7 +46,7 @@ class CachePageVM extends RefreshListViewStateModel<CacheEntity> with CacheDataF
   }
 
   @override
-  void fetchCacheData(String cache) {
+  void fetchCacheData(String? cache) {
 
   }
   /*
@@ -55,9 +55,9 @@ class CachePageVM extends RefreshListViewStateModel<CacheEntity> with CacheDataF
   *
   * */
   @override
-  void fetchListCacheData(List<String> cacheList) {
+  void fetchListCacheData(List<String?> cacheList) {
     cacheList.forEach((element) {
-      list.add(CacheEntity.fromJson(jsonDecode(element)));
+      list.add(CacheEntity.fromJson(jsonDecode(element!)));
     });
 
   }

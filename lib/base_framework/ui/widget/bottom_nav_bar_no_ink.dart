@@ -8,13 +8,13 @@ class BottomNavBarNoInk extends StatefulWidget {
   final height;
   List<BottomNavigationBarItem> items;
 
-  int currentIndex;
-  ValueChanged<int> onTap;
+  int? currentIndex;
+  ValueChanged<int>? onTap;
 
   BottomNavBarNoInk(
-      {@required this.width,
-      @required this.height,
-      @required this.items,
+      {required this.width,
+      required this.height,
+      required this.items,
       this.currentIndex,
       this.onTap})
       : indexModel = IndexModel(currentIndex);
@@ -40,7 +40,7 @@ class BottomNavBarNoInkState extends State<BottomNavBarNoInk> {
     for (int i = 0; i < widget.items.length; i++) {
       barItems.add(GestureDetector(
         onTap: () {
-          widget.onTap(i);
+          widget.onTap!(i);
           model?.setIndex(i);
 //          Provider.of<IndexModel>(context)
 //            ..setIndex(i);
@@ -53,7 +53,7 @@ class BottomNavBarNoInkState extends State<BottomNavBarNoInk> {
     }
   }
 
-  IndexModel model;
+  IndexModel? model;
 
   @override
   Widget build(BuildContext context) {
@@ -85,8 +85,8 @@ class BottomNavBarNoInkState extends State<BottomNavBarNoInk> {
 }
 
 class BottomNoInkBarItem extends StatefulWidget {
-  int index;
-  BottomNavigationBarItem item;
+  int? index;
+  BottomNavigationBarItem? item;
 
   BottomNoInkBarItem({this.item, this.index});
 
@@ -112,17 +112,17 @@ class BottomNoInkBarItemState extends State<BottomNoInkBarItem> {
                   //未激活状态
                   Offstage(
                     offstage: model.index == widget.index,
-                    child: widget.item.icon,
+                    child: widget.item!.icon,
                   ),
                   Offstage(
                     offstage: model.index != widget.index,
-                    child: widget.item.activeIcon,
+                    child: widget.item!.activeIcon,
                   ),
                 ],
               ),
 
               ///title
-              if (widget.item.label != null) Text(widget.item.label)
+              if (widget.item!.label != null) Text(widget.item!.label!)
             ],
           ),
         );
@@ -132,7 +132,7 @@ class BottomNoInkBarItemState extends State<BottomNoInkBarItem> {
 }
 
 class IndexModel extends ChangeNotifier {
-  int selectIndex;
+  int? selectIndex;
 
   IndexModel(@required this.selectIndex);
 

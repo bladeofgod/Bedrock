@@ -40,7 +40,7 @@ mixin CacheDataFactory<T> on ViewStateModel{
     final mmkv = await MmkvFlutter.getInstance();
     int i=0;
     for(T t in cacheListData()){
-      await mmkv.setString('${this.runtimeType.toString()}$i','$t');
+      await mmkv!.setString('${this.runtimeType.toString()}$i','$t');
       i +=1;
     }
 
@@ -51,18 +51,18 @@ mixin CacheDataFactory<T> on ViewStateModel{
     showToast('请检查网络状态');
     final mmkv = await MmkvFlutter.getInstance();
     ///总是取第一页作为临时展示
-    List<String> cacheList = [];
-    List<Future<String>> futures = [];
+    List<String?> cacheList = [];
+    List<Future<String?>> futures = [];
     for(int i=0 ; i < 10; i++){
-      futures.add(mmkv.getString('${this.runtimeType.toString()}$i'));
+      futures.add(mmkv!.getString('${this.runtimeType.toString()}$i'));
     }
     Future.wait(futures).then((value){
       cacheList.addAll(value);
-      cacheList.removeWhere((element) => (element.isEmpty || element.contains('null')));
+      cacheList.removeWhere((element) => (element!.isEmpty || element.contains('null')));
       if(cacheList.isEmpty ){
         setEmpty();
       }else{
-        cacheDataFactory.fetchListCacheData(cacheList);
+        cacheDataFactory!.fetchListCacheData(cacheList);
         setBusy(false);
       }
     });

@@ -60,7 +60,7 @@ class StringHelper{
 
   ///with symbol no camel
   static Widget getPriceWithoutCamel(String price,double markSp,double priceSp,
-      {String moneySymbol :"\$ ",Color priceColor : Colors.black,Color
+      {String moneySymbol :"\$ ",Color priceColor : Colors.black,Color?
       symbolColor,FontWeight fontWeight:FontWeight.normal}){
     return Text.rich(TextSpan(
         children: [
@@ -79,7 +79,7 @@ class StringHelper{
   }
 
   static Widget getPriceWithoutCamelInt(String price,double markSp,double priceSp,
-      {String moneySymbol :"\$ ",Color priceColor : Colors.black,Color
+      {String moneySymbol :"\$ ",Color priceColor : Colors.black,Color?
       symbolColor,FontWeight fontWeight:FontWeight.normal}){
     return Text.rich(TextSpan(
         children: [
@@ -98,9 +98,9 @@ class StringHelper{
   }
 
   ///美式价格 没有驼峰
-  static Widget getUsaStylePrice({@required String originPrice,String priceTail = "",
+  static Widget getUsaStylePrice({required String originPrice,String priceTail = "",
     String symbol = "\$",Color priceColor = Colors.black,
-    Color symbolColor = Colors.black, double priceSize,double symbolSize,
+    Color symbolColor = Colors.black, double? priceSize,double? symbolSize,
     FontWeight priceWeight = FontWeight.w500,FontWeight symbolWeight = FontWeight.w500}){
 
     String price = formatPriceWithComma(originPrice);
@@ -124,7 +124,7 @@ class StringHelper{
 
   ///with symbol
   static Widget getCamelPrice(String price,double markSp,double intSp,double
-  decimalSp ,{String moneySymbol :"\$ ",Color priceColor : Colors.black,Color
+  decimalSp ,{String moneySymbol :"\$ ",Color priceColor : Colors.black,Color?
   symbolColor,FontWeight fontWeight : FontWeight.bold}){
     return Text.rich(TextSpan(
       children: [

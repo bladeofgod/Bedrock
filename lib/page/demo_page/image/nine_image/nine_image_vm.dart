@@ -10,7 +10,7 @@ import 'package:multi_image_picker/multi_image_picker.dart';
 
 class ImageDataWrapper {
   final Asset asset;
-  final ByteData byteData;
+  final ByteData? byteData;
 
   const ImageDataWrapper(this.asset, this.byteData);
 }
@@ -33,7 +33,7 @@ class NineImageVM extends SingleViewStateModel {
 
   NineImageVM(this._changeListener);
 
-  void addImageData({ImageDataWrapper data}) {
+  void addImageData({ImageDataWrapper? data}) {
     imageList.add(data ?? editWrapper);
     _changeListener.addChildWidget(data ?? editWrapper);
     notifyListeners();
@@ -93,7 +93,7 @@ class NineImageVM extends SingleViewStateModel {
   }
 
   @override
-  Future loadData() {
+  Future? loadData() {
     return null;
   }
 

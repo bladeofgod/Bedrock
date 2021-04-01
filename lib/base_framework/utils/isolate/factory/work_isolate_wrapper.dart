@@ -26,10 +26,10 @@ class WorkIsolateWrapper {
     _isFree = status;
   }
 
-  SendPort workSendPort;
+  SendPort? workSendPort;
   bool initSuccess = false;
   init() {
-    _isolate.resume(_isolate.pauseCapability);
+    _isolate.resume(_isolate.pauseCapability!);
     proxyPort.listen((message) {
       if (message[0] == kSendPortKey) {
         workSendPort = message[1];

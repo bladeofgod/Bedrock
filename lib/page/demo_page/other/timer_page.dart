@@ -37,12 +37,12 @@ class TimerPageState extends PageState {
     ));
   }
   
-  Timer singleTimer;
+  Timer? singleTimer;
   
   request(){
-    if(singleTimer != null &&  singleTimer.isActive){
+    if(singleTimer != null &&  singleTimer!.isActive){
       debugPrint('取消上一次请求');
-      singleTimer.cancel();
+      singleTimer!.cancel();
     }
     ///假设用户停止500ms后 请求
     singleTimer = Timer(Duration(milliseconds: 500),()async{

@@ -35,10 +35,10 @@ class LittleUtilPageState extends PageState {
       ),
     ));
   }
-  StreamSubscription streamSubscription;
+  StreamSubscription? streamSubscription;
   startCalculate()async{
     if(streamSubscription != null){
-      await streamSubscription.cancel();
+      await streamSubscription!.cancel();
     }
      streamSubscription = LittleUtil.cycleUtil((){
 
@@ -49,7 +49,7 @@ class LittleUtilPageState extends PageState {
         });
       }else{
         ///避免内存泄漏
-        streamSubscription.cancel();
+        streamSubscription!.cancel();
       }
 
     },period: Duration(seconds: 1));

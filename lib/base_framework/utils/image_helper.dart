@@ -69,14 +69,14 @@ class ImageHelper {
     return 'assets/images/backgrounds/banner/' + url + fileExtensions;
   }
 
-  static Widget placeHolder({double width, double height}) {
+  static Widget placeHolder({required double width, double? height}) {
     return SizedBox(
         width: width,
         height: height,
         child: CupertinoActivityIndicator(radius: min(10.0, width / 3)));
   }
 
-  static Widget placeHolderGoodsDefaultImg({double width, double height}) {
+  static Widget placeHolderGoodsDefaultImg({double? width, double? height}) {
     return SizedBox(
       width: width,
       height: height,
@@ -87,7 +87,7 @@ class ImageHelper {
     );
   }
 
-  static Widget goodsErrorStatusImg({double width, double height}) {
+  static Widget goodsErrorStatusImg({double? width, double? height}) {
     return SizedBox(
       width: width,
       height: height,

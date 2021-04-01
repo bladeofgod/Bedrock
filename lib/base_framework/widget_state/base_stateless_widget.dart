@@ -13,8 +13,8 @@ abstract class BaseStatelessWidget extends StatelessWidget{
 
   ///切换状态栏 模式：light or dark
   ///应在根位置调用此方法
-  Widget switchStatusBar2Dark({bool isSetDark = false,@required Widget child,
-    EdgeInsets edgeInsets}){
+  Widget switchStatusBar2Dark({bool isSetDark = false,required Widget child,
+    EdgeInsets? edgeInsets}){
     return AnnotatedRegion(
       value: isSetDark ? SystemUiOverlayStyle.dark : SystemUiOverlayStyle.light,
       child: Material(
@@ -28,7 +28,7 @@ abstract class BaseStatelessWidget extends StatelessWidget{
 
   ///去掉 scroll view的 水印  e.g : listView scrollView
   ///
-  Widget getNoInkWellListView({@required Widget scrollView}){
+  Widget getNoInkWellListView({required Widget scrollView}){
     return ScrollConfiguration(
       behavior: OverScrollBehavior(),
       child: scrollView,

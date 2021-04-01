@@ -20,17 +20,17 @@ final String floatLayerRouteName = 'FloatContainerWidget';
 class FloatContainerWidget extends WidgetState{
 
   ///背景颜色
-  final Color bgColor;
+  final Color? bgColor;
   final Widget child;
   ///对齐方式
-  final Alignment alignment;
+  final Alignment? alignment;
   ///是否点击背景可以退出
-  final bool barrierDismissible;
+  final bool? barrierDismissible;
   ///‘pop’ 退出 外置
   ///例如，我们需要做一个动画后再弹出。
   final FloatWidgetDismiss floatWidgetDismiss;
 
-  FloatContainerWidget(this.child,{@required this.floatWidgetDismiss,this.bgColor,this.alignment,this.barrierDismissible})
+  FloatContainerWidget(this.child,{required this.floatWidgetDismiss,this.bgColor,this.alignment,this.barrierDismissible})
     :assert(child != null),assert(floatWidgetDismiss != null);
 
 
@@ -39,7 +39,7 @@ class FloatContainerWidget extends WidgetState{
     final Size size = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: (){
-        if(barrierDismissible){
+        if(barrierDismissible!){
           floatWidgetDismiss(context);
         }
       },

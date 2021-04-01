@@ -76,7 +76,7 @@ class FirstSkeletonPage extends BaseSkeletonWidget {
         color: color,
         boxShadow: [
           BoxShadow(
-            color: Colors.grey[400],
+            color: Colors.grey[400]!,
             spreadRadius: 1.0,
             offset: Offset(0.8, 0.8),
           )

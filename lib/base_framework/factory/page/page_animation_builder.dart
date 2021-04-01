@@ -7,7 +7,7 @@ import 'package:flutter_bedrock/base_framework/ui/anim/page_route_anim/size_scal
 import 'package:flutter_bedrock/base_framework/ui/anim/page_route_anim/slide_animation.dart';
 
 
-final PageAnimationBuilder pageBuilder = PageAnimationBuilder.getInstance();
+final PageAnimationBuilder? pageBuilder = PageAnimationBuilder.getInstance();
 
 
 ///动画枚举类，这个你可以根据需求自定义
@@ -20,9 +20,9 @@ enum PageAnimation{
 
 class PageAnimationBuilder{
 
-  static PageAnimationBuilder singleton;
+  static PageAnimationBuilder? singleton;
 
-  static PageAnimationBuilder getInstance(){
+  static PageAnimationBuilder? getInstance(){
     if(singleton == null){
       singleton = PageAnimationBuilder._();
     }

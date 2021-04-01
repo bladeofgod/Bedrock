@@ -12,7 +12,7 @@ import 'package:provider/provider.dart';
 
 class ThirdPagePageState extends PageState with AutomaticKeepAliveClientMixin {
 
-  UserViewModel userViewModel;
+  late UserViewModel userViewModel;
 
   @override
   Widget build(BuildContext context) {

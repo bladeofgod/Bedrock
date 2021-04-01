@@ -23,7 +23,7 @@ class ImageEditorState extends PageState {
 
   ///图片数量
 
-  ImageEditorState({@required this.name, @required this.memoryImage});
+  ImageEditorState({required this.name, required this.memoryImage});
 
   final GlobalKey<ExtendedImageEditorState> editorKey =
       GlobalKey<ExtendedImageEditorState>();
@@ -73,7 +73,7 @@ class ImageEditorState extends PageState {
         children: <Widget>[
           OutlinedButton(
             onPressed: () {
-              editorKey.currentState.reset();
+              editorKey.currentState!.reset();
             },
             style: ButtonStyle(
               side: MaterialStateProperty.resolveWith<BorderSide>(
@@ -84,7 +84,7 @@ class ImageEditorState extends PageState {
               ),
             ),
             child: Text(
-              S.of(context).reset,
+              S.of(context)!.reset,
               style: TextStyle(color: Colors.black54, fontSize: getSp(28)),
             ),
           ),
@@ -101,7 +101,7 @@ class ImageEditorState extends PageState {
               ),
             ),
             child: Text(
-              S.of(context).confirm,
+              S.of(context)!.confirm,
               style: TextStyle(color: Colors.black54, fontSize: getSp(28)),
             ),
           ),
@@ -111,13 +111,13 @@ class ImageEditorState extends PageState {
   }
 
   saveImage() async {
-    Rect rect = editorKey.currentState.getCropRect();
-    var data = editorKey.currentState.rawImageData;
+    Rect rect = editorKey.currentState!.getCropRect()!;
+    var data = editorKey.currentState!.rawImageData;
     ie.ImageEditorOption option = ie.ImageEditorOption();
     option.addOption(ie.ClipOption.fromRect(rect));
     await ie.ImageEditor.editImage(image: data, imageEditorOption: option)
         .then((result) {
-      ImageHelper.saveImage(name, result).then((path) {
+      ImageHelper.saveImage(name, result!).then((path) {
         pop(result: path);
       });
     });

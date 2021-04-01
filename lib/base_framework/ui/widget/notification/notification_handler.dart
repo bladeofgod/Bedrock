@@ -16,11 +16,11 @@ enum NotifyType {
 typedef NotifyStatusListener = void Function(NotifyStatus notifyStatus);
 
 class NotificationHandler extends Notification {
-  static NotificationHandler _singleton;
+  static NotificationHandler? _singleton;
 
-  factory NotificationHandler() => getInstance();
+  factory NotificationHandler() => getInstance()!;
 
-  static NotificationHandler getInstance() {
+  static NotificationHandler? getInstance() {
     if (_singleton == null) {
       _singleton = new NotificationHandler._();
     }
@@ -30,13 +30,13 @@ class NotificationHandler extends Notification {
   ///批量通知是否全部显示完毕
   bool streamDone = true;
 
-  StreamController<NotifyListItemWrapper> _streamController;
-  StreamSink<NotifyListItemWrapper> _sink;
+  late StreamController<NotifyListItemWrapper?> _streamController;
+  late StreamSink<NotifyListItemWrapper?> _sink;
 
-  StreamSubscription<NotifyListItemWrapper> _subscription;
+  late StreamSubscription<NotifyListItemWrapper?> _subscription;
 
   NotificationHandler._() {
-    _streamController = StreamController<NotifyListItemWrapper>();
+    _streamController = StreamController<NotifyListItemWrapper?>();
     _sink = _streamController.sink;
     _subscription = _streamController.stream.listen((event) {
       if (event == null) {
@@ -45,7 +45,7 @@ class NotificationHandler extends Notification {
           _subscription.pause();
         }
         if (listCompleter != null) {
-          listCompleter.complete();
+          listCompleter!.complete();
           listCompleter = null;
         }
         return;
@@ -73,9 +73,9 @@ class NotificationHandler extends Notification {
   /// @param [notifyDwellTime]  通知 停留时间
   @override
   Future showNotificationFromTop(
-      {@required Widget child,
-      Duration animationDuration,
-      Duration notifyDwellTime}) async {
+      {required Widget child,
+      Duration? animationDuration,
+      Duration? notifyDwellTime}) async {
     Completer completer = Completer();
     NotifyOverlayEntry notifyOverlayEntry = NotifyOverlayEntry(
         child,
@@ -92,15 +92,15 @@ class NotificationHandler extends Notification {
 
     /// assume [.insert] is start notify in [NotifyStatus.Running].
     _notifyListener(NotifyStatus.Running);
-    Overlay.of(context).insert(notifyOverlayEntry.overlayEntry);
+    Overlay.of(context!)!.insert(notifyOverlayEntry.overlayEntry!);
     return completer.future;
   }
 
   /// if you wanna custom show type or anyway,
   /// plz refer to the [showNotificationFromTop] method.
   @override
-  Future showNotificationCustom(
-      {Widget child, Duration animationDuration, Duration notifyDwellTime}) {
+  Future? showNotificationCustom(
+      {Widget? child, Duration? animationDuration, Duration? notifyDwellTime}) {
     // TODO: implement showNotificationCustom
     return null;
   }
@@ -120,15 +120,15 @@ class NotificationHandler extends Notification {
     _listeners.clear();
   }
 
-  Completer listCompleter;
+  Completer? listCompleter;
 
   ///批量显示通知
   /// * 依然要慎重使用，例如： 服务器积压过多通知，导致用户界面长期弹出通知造成较差的用户体验
   @override
   Future showNotifyListFromTop(
-      {List<Widget> children,
-      Duration animationDuration,
-      Duration notifyDwellTime}) async {
+      {required List<Widget> children,
+      Duration? animationDuration,
+      Duration? notifyDwellTime}) async {
     listCompleter = Completer();
 
     children.forEach((element) {
@@ -141,7 +141,7 @@ class NotificationHandler extends Notification {
       _subscription.resume();
     }
 
-    return listCompleter.future;
+    return listCompleter!.future;
   }
 }
 
@@ -161,14 +161,14 @@ class NotifyOverlayEntry {
   ///通知类型（动画）
   final NotifyType notifyType;
 
-  OverlayEntry entry;
+  OverlayEntry? entry;
   bool notifyDone = false;
 
-  OverlayEntry get overlayEntry => entry;
+  OverlayEntry? get overlayEntry => entry;
 
   NotifyOverlayEntry(
       this.notifyWidget, this.animationDuration, this.notifyDwellTime,
-      {@required this.callback, this.notifyType = NotifyType.FromTop}) {
+      {required this.callback, this.notifyType = NotifyType.FromTop}) {
     _generateOverlay();
   }
 
@@ -182,7 +182,7 @@ class NotifyOverlayEntry {
           return FromTopNotifyWidget(
               notifyWidget, animationDuration, notifyDwellTime, (notifyDone) {
             this.notifyDone = notifyDone;
-            if (notifyDone) overlayEntry.remove();
+            if (notifyDone) overlayEntry!.remove();
             callback();
           }).generateWidget();
         });
@@ -194,8 +194,8 @@ class NotifyOverlayEntry {
 ///通知操作模块
 class NotifyListItemWrapper {
   final Widget child;
-  final Duration animationDuration;
-  final Duration notifyDwellTime;
+  final Duration? animationDuration;
+  final Duration? notifyDwellTime;
 
   NotifyListItemWrapper(
       this.child, this.animationDuration, this.notifyDwellTime);
@@ -203,7 +203,7 @@ class NotifyListItemWrapper {
 
 ///通知基类
 abstract class Notification {
-  BuildContext context;
+  BuildContext? context;
 
   ///建议在跟页面调用此方法
   void init(BuildContext context) {
@@ -212,19 +212,19 @@ abstract class Notification {
   }
 
   Future showNotificationFromTop(
-      {@required Widget child,
-      Duration animationDuration,
-      Duration notifyDwellTime});
+      {required Widget child,
+      Duration? animationDuration,
+      Duration? notifyDwellTime});
 
   Future showNotifyListFromTop(
-      {@required List<Widget> children,
-      Duration animationDuration,
-      Duration notifyDwellTime});
+      {required List<Widget> children,
+      Duration? animationDuration,
+      Duration? notifyDwellTime});
 
-  Future showNotificationCustom(
-      {@required Widget child,
-      Duration animationDuration,
-      Duration notifyDwellTime});
+  Future? showNotificationCustom(
+      {required Widget child,
+      Duration? animationDuration,
+      Duration? notifyDwellTime});
 
   void addNotifyListener(NotifyStatusListener listener);
 

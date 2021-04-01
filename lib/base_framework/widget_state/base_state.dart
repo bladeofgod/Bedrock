@@ -1,6 +1,3 @@
-
-
-
 import 'package:flustars/flustars.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/base_framework/factory/page/page_animation_builder.dart';
@@ -17,22 +14,18 @@ import 'package:flutter_bedrock/base_framework/widget_state/widget_state.dart';
 ///
 /// 此处扩展功能应该是 page和view通用功能
 
-
-abstract class BaseState<T extends StatefulWidget> extends State<T>  {
-
-
+abstract class BaseState<T extends StatefulWidget> extends State<T> {
   ///去掉 scroll view的 水印  e.g : listView scrollView
   ///当滑动到顶部或者底部时，继续拖动出现的蓝色水印
-  Widget getNoInkWellListView({@required Widget scrollView}){
+  Widget getNoInkWellListView({required Widget scrollView}) {
     return ScrollConfiguration(
       behavior: OverScrollBehavior(),
       child: scrollView,
     );
   }
 
-
   ///占位widget
-  Widget getSizeBox({double width = 1,double height = 1}){
+  Widget getSizeBox({double width = 1, double height = 1}) {
     return SizedBox(
       width: width,
       height: height,
@@ -44,28 +37,33 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>  {
   ///具体参见 : progress_widget.dart
   ///如果需要在 [dismissProgressDialog] 方法后跳转到其他页面或者执行什么
   ///使用 参数 [afterDismiss]
-  DialogLoadingController _dialogLoadingController;
-  showProgressDialog({Widget progress,
-    Color bgColor,Function afterDismiss}){
-    if(_dialogLoadingController == null){
+  DialogLoadingController? _dialogLoadingController;
+
+  showProgressDialog(
+      {Widget? progress, Color? bgColor, Function? afterDismiss}) {
+    if (_dialogLoadingController == null) {
       _dialogLoadingController = DialogLoadingController();
-      Navigator.of(context).push(PageRouteBuilder(
-        settings: RouteSettings(name: loadingLayerRouteName),
-          ///使用默认值效果可能不好
-          transitionDuration: const Duration(milliseconds: 0),
-          //reverseTransitionDuration: const Duration(milliseconds: 0),
-          opaque: false,
-          pageBuilder: (ctx,animation,secondAnimation){
-            return LoadingProgressState(controller: _dialogLoadingController
-              ,progress: progress,bgColor: bgColor,).generateWidget();
-          }
-      )).then((value){
+      Navigator.of(context)
+          .push(PageRouteBuilder(
+              settings: RouteSettings(name: loadingLayerRouteName),
+
+              ///使用默认值效果可能不好
+              transitionDuration: const Duration(milliseconds: 0),
+              //reverseTransitionDuration: const Duration(milliseconds: 0),
+              opaque: false,
+              pageBuilder: (ctx, animation, secondAnimation) {
+                return LoadingProgressState(
+                  controller: _dialogLoadingController,
+                  progress: progress,
+                  bgColor: bgColor,
+                ).generateWidget();
+              }))
+          .then((value) {
         _dialogLoadingController?.invokeAfterPopTask();
         _dialogLoadingController = null;
-        if(afterDismiss != null){
+        if (afterDismiss != null) {
           afterDismiss();
         }
-
       });
     }
   }
@@ -73,11 +71,11 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>  {
   ///隐藏loading
   /// * 注意： [afterPopTask] 会在loading隐藏后被调用，但是如果用户主动取消的话，将不会被调用
   /// *       用户主动取消的将会调用[showLoading]的[afterDismiss]
-  void dismissProgressDialog({Function afterPopTask}) {
-    if(afterPopTask != null)_dialogLoadingController?.holdAfterPopTask(task: afterPopTask);
+  void dismissProgressDialog({Function? afterPopTask}) {
+    if (afterPopTask != null)
+      _dialogLoadingController?.holdAfterPopTask(task: afterPopTask);
     _dialogLoadingController?.dismissDialog();
   }
-
 
   @override
   void dispose() {
@@ -86,31 +84,31 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>  {
     super.dispose();
   }
 
-
-
   /*
   * size adapter with tool ScreenUtil
   *
   * */
 
   ///得到适配后的高度
-  double getHeightPx(double height) => ScreenUtil.getInstance().getHeightPx
-    (height);
+  double getHeightPx(double height) =>
+      ScreenUtil.getInstance().getHeightPx(height);
+
   ///得到适配后的宽度
   double getWidthPx(double width) => ScreenUtil.getInstance().getWidthPx(width);
 
   ///屏幕宽度
-  double getScreenWidth()=>ScreenUtil.getInstance().screenWidth;
-  ///屏幕高度
-  double getScreenHeight()=>ScreenUtil.getInstance().screenHeight;
+  double getScreenWidth() => ScreenUtil.getInstance().screenWidth;
 
+  ///屏幕高度
+  double getScreenHeight() => ScreenUtil.getInstance().screenHeight;
 
   //目前仅对于手机： 因为手机大多数情况下是长度变化较大，
   // 所以以高度来算出半径，保证异形屏的弧度不会缩小
   //有其他需求，还需要重改
   /// 得到适配后的圆角半径
-  double getRadiusFromHeight(double radius) => ScreenUtil.getInstance()
-      .getHeightPx(radius) ;
+  double getRadiusFromHeight(double radius) =>
+      ScreenUtil.getInstance().getHeightPx(radius);
+
   ///得到适配后的字号
   double getSp(double fontSize) => ScreenUtil.getInstance().getSp(fontSize);
 
@@ -145,37 +143,37 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>  {
 //
 //  }
 
-
 }
 
 ///widget生成器
 ///并且装配原flutter Widget的功能
 
-mixin WidgetGenerator on BaseState implements _RouteGenerator,_NavigateActor{
-
+mixin WidgetGenerator on BaseState implements _RouteGenerator, _NavigateActor {
   ///为state生成widget
-  Widget generateWidget({Key key}){
-    return _CommonWidget(state: this,key: key,);
+  Widget generateWidget({Key? key}) {
+    return _CommonWidget(
+      state: this,
+      key: key,
+    );
   }
 
   /// [routeName]  => 你的页面类名
   @override
-  PageRoute<T> buildRoute<T>(Widget page, String routeName, {PageAnimation animation = PageAnimation.Non
-    , Object args}) {
-    assert(routeName != null && routeName.isNotEmpty,'route name must be not empty !');
-    final r = RouteSettings(
-        name:routeName,
-        arguments: args);
+  PageRoute<T> buildRoute<T>(Widget page, String routeName,
+      {PageAnimation? animation = PageAnimation.Non, Object? args}) {
+    assert(routeName != null && routeName.isNotEmpty,
+        'route name must be not empty !');
+    final r = RouteSettings(name: routeName, arguments: args);
 
-    switch(animation){
+    switch (animation) {
       case PageAnimation.Fade:
-        return pageBuilder.wrapWithFadeAnim(page,r);
+        return pageBuilder!.wrapWithFadeAnim(page, r) as PageRoute<T>;
       case PageAnimation.Scale:
-        return pageBuilder.wrapWithScaleAnim(page,r);
+        return pageBuilder!.wrapWithScaleAnim(page, r) as PageRoute<T>;
       case PageAnimation.Slide:
-        return pageBuilder.wrapWithSlideAnim(page,r);
+        return pageBuilder!.wrapWithSlideAnim(page, r) as PageRoute<T>;
       default:
-        return pageBuilder.wrapWithNoAnim(page,r);
+        return pageBuilder!.wrapWithNoAnim(page, r) as PageRoute<T>;
     }
   }
 
@@ -184,70 +182,83 @@ mixin WidgetGenerator on BaseState implements _RouteGenerator,_NavigateActor{
   ///see details in [PageAnimationBuilder]
 
   @override
-  Future push<T extends PageState>(T targetPage,{PageAnimation animation}) {
-    assert(targetPage != null,'the target page must not null !');
-    return Navigator.of(context).push(buildRoute(targetPage.generateWidget(),
-        targetPage.runtimeType.toString(),animation: animation));
+  Future push<T extends PageState>(T targetPage, {PageAnimation? animation}) {
+    assert(targetPage != null, 'the target page must not null !');
+    return Navigator.of(context).push(buildRoute(
+        targetPage.generateWidget(), targetPage.runtimeType.toString(),
+        animation: animation));
   }
 
   @override
-  Future pushReplacement<T extends Object, TO extends PageState>(TO targetPage, {PageAnimation animation, T result}) {
-    assert(targetPage != null,'the target page must not null !');
-    return Navigator.of(context).pushReplacement(buildRoute(targetPage.generateWidget(),
-        targetPage.runtimeType.toString(),animation: animation),result: result);
+  Future pushReplacement<T extends Object, TO extends PageState>(TO targetPage,
+      {PageAnimation? animation, T? result}) {
+    assert(targetPage != null, 'the target page must not null !');
+    return Navigator.of(context).pushReplacement(
+        buildRoute(
+            targetPage.generateWidget(), targetPage.runtimeType.toString(),
+            animation: animation),
+        result: result);
   }
 
   @override
-  Future pushAndRemoveUntil<T extends PageState>(T targetPage, {PageAnimation animation,@required RoutePredicate predicate}) {
-    assert(targetPage != null,'the target page must not null !');
-    return Navigator.of(context).pushAndRemoveUntil(buildRoute(targetPage.generateWidget(),
-        targetPage.runtimeType.toString(),animation: animation),predicate?? (route) => false);
+  Future pushAndRemoveUntil<T extends PageState>(T targetPage,
+      {PageAnimation? animation, predicate}) {
+    return Navigator.of(context).pushAndRemoveUntil(
+        buildRoute(
+            targetPage.generateWidget(), targetPage.runtimeType.toString(),
+            animation: animation),
+        predicate ?? (route) => false);
   }
 
   @override
-  void pop<T extends Object>({T result}) {
+  void pop<T extends Object>({T? result}) {
     Navigator.of(context).pop(result);
   }
+
   @override
-  void popUntil({@required RoutePredicate predicate}) {
-    Navigator.of(context).popUntil(predicate??(route) => false);
+  void popUntil({predicate}) {
+    Navigator.of(context).popUntil(predicate ?? (route) => false);
   }
 
   @override
   bool canPop() {
     return Navigator.of(context).canPop();
   }
-
 }
 
 ///构建 route
 
 abstract class _RouteGenerator {
-  PageRoute<T> buildRoute<T>(Widget page,String routeName,{PageAnimation animation,Object args});
+  PageRoute<T> buildRoute<T>(Widget page, String routeName,
+      {PageAnimation? animation, Object? args});
 }
 
-
 ///路由操作
-abstract class _NavigateActor{
+abstract class _NavigateActor {
+  Future push<T extends PageState>(T targetPage, {PageAnimation? animation});
 
+  Future pushAndRemoveUntil<T extends PageState>(T targetPage,
+      {PageAnimation? animation, RoutePredicate? predicate});
 
-  Future push<T extends PageState>(T targetPage,{PageAnimation animation});
-  Future pushAndRemoveUntil<T extends PageState>(T targetPage,{PageAnimation animation,RoutePredicate predicate});
-  Future pushReplacement<T extends Object,TO extends PageState>(TO targetPage, {PageAnimation animation, T result });
+  Future pushReplacement<T extends Object, TO extends PageState>(TO targetPage,
+      {PageAnimation? animation, T? result});
 
-  void pop<T extends Object>({T result,});
-  void popUntil({RoutePredicate predicate});
+  void pop<T extends Object>({
+    T? result,
+  });
+
+  void popUntil({RoutePredicate? predicate});
 
   bool canPop();
 }
 
-class _CommonWidget extends StatefulWidget{
-  final State state;
+class _CommonWidget extends StatefulWidget {
+  final State? state;
 
-  const _CommonWidget({Key key, this.state}) : super(key: key);
+  const _CommonWidget({Key? key, this.state}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() {
-    return state;
+    return state!;
   }
-
 }

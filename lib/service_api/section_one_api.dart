@@ -15,11 +15,11 @@ import 'package:flutter_bedrock/page/demo_page/main/second/entity/second_entity.
 import 'package:flutter_bedrock/page/mine/entity/user_entity.dart';
 
 class SectionOne{
-  static SectionOne _singleton;
+  static SectionOne? _singleton;
 
-  factory SectionOne()=>getSingleton();
+  factory SectionOne()=>getSingleton()!;
 
-  static SectionOne getSingleton(){
+  static SectionOne? getSingleton(){
     if(_singleton == null){
       _singleton = SectionOne._internal();
     }
@@ -41,12 +41,12 @@ class SectionOne{
       'password':'123'
     };
 
-    var response = await bedRock.post("user/login",data: FormData.fromMap(map));
+    Response<dynamic> response = await bedRock.post("user/login",data: FormData.fromMap(map));
 
     return response;
   }
 
-  Future<FirstEntity> getFirstEntity()async{
+  Future<FirstEntity?> getFirstEntity()async{
     ///模拟请求、实体解析
     var response ;
     await Future.delayed(Duration(seconds: 2)).then((value){
@@ -62,8 +62,8 @@ class SectionOne{
     'https://iknow-pic.cdn.bcebos.com/d4628535e5dde7119b460cf5a3efce1b9d166118?x-bce-process=image/resize,m_lfit,w_600,h_800,limit_1'
   ];
 
-  Future<List<FirstCardEntity>> getFirstListCard(int pageNum,int pageSize)async{
-    List<FirstCardEntity> response;
+  Future<List<FirstCardEntity>?> getFirstListCard(int pageNum,int pageSize)async{
+    List<FirstCardEntity>? response;
     await Future.delayed(Duration(seconds: 2)).then((value){
       if(pageNum > 3){
         response = [];
@@ -77,10 +77,10 @@ class SectionOne{
     return response;
   }
 
-  Future<List<SecondEntity>> getSecondList(int pageNum)async{
-    List<SecondEntity> listData;
+  Future<List<SecondEntity>?> getSecondList(int? pageNum)async{
+    List<SecondEntity>? listData;
     await Future.delayed(Duration(seconds: 2)).then((value){
-      if(pageNum > 4){
+      if(pageNum! > 4){
         listData = [];
       }else{
         listData = List.generate(10, (index){
@@ -92,10 +92,10 @@ class SectionOne{
 
   }
 
-  Future<List<CacheEntity>> getCacheList(int pageNum)async{
-    List<CacheEntity> listData;
+  Future<List<CacheEntity>?> getCacheList(int? pageNum)async{
+    List<CacheEntity>? listData;
     await Future.delayed(Duration(seconds: 2)).then((value){
-      if(pageNum > 4){
+      if(pageNum! > 4){
         listData = [];
       }else{
         listData = List.generate(10, (index){
@@ -106,8 +106,8 @@ class SectionOne{
     return listData;
   }
 
-  Future<UserEntity> login(String name,String pass)async{
-    UserEntity userEntity;
+  Future<UserEntity?> login(String? name,String? pass)async{
+    UserEntity? userEntity;
     await Future.delayed(Duration(seconds: 2)).then((value){
       userEntity = UserEntity(nickName:name,id:pass);
     });

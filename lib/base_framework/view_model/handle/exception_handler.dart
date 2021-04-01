@@ -12,9 +12,9 @@ import 'package:flutter_bedrock/base_framework/view_model/view_state_model.dart'
 
 class ExceptionHandler{
 
-  static ExceptionHandler _singleton;
+  static ExceptionHandler? _singleton;
 
-  static ExceptionHandler getInstance(){
+  static ExceptionHandler? getInstance(){
     if(_singleton == null){
       _singleton = ExceptionHandler._();
     }

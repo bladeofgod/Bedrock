@@ -7,7 +7,7 @@ import 'handle/exception_handler.dart';
 
 abstract class SingleViewStateModel<T> extends ViewStateModel{
 
-  T data ;
+  T? data ;
 
   initData()async{
     setBusy(true);
@@ -16,7 +16,7 @@ abstract class SingleViewStateModel<T> extends ViewStateModel{
 
   fetchData({bool fetch = false})async{
     try{
-      T temp = await loadData();
+      T temp = await loadData()!;
       if(temp == null){
         setEmpty();
       }else{
@@ -29,12 +29,12 @@ abstract class SingleViewStateModel<T> extends ViewStateModel{
         }
       }
     } catch (e,s){
-      ExceptionHandler.getInstance().handleException(this, e, s);
+      ExceptionHandler.getInstance()!.handleException(this, e, s);
       }
   }
 
 
-  Future<T> loadData();
+  Future<T>? loadData();
   //数据获取后会调用此方法,此方法在notifyListeners（）之前
   ///此方法仅在页面状态变化前，对外暴露一下数据
   /// * e.g. 需要对接口返回的数据进行二次处理

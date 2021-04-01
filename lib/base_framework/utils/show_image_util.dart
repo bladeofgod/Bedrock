@@ -25,10 +25,10 @@ class ShowImageUtil{
   /// 获取一个图片widget
   /// * 支持全圆角，或者自定义圆角风格
   /// * 支持根据图片连接结果，显示缺省图（需释放注释）
-  static Widget showImageWithDefaultError(String url,double width, double height,{
-    String imageType = TEST, double borderRadius = 0,BorderRadius borderRStyle ,
+  static Widget showImageWithDefaultError(String? url,double width, double height,{
+    String imageType = TEST, double borderRadius = 0,BorderRadius? borderRStyle ,
     /// 缺省widget         ///错误widget
-    Widget defaultImg, Widget errorImg, BoxFit boxFit : BoxFit.cover}){
+    Widget? defaultImg, Widget? errorImg, BoxFit boxFit : BoxFit.cover}){
 
     return ClipRRect(
       borderRadius:borderRStyle??BorderRadius.all(Radius.circular(borderRadius)) ,

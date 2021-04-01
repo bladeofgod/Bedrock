@@ -18,15 +18,15 @@ class LocaleModel extends ChangeNotifier {
   //
   static const kLocaleIndex = 'kLocaleIndex';
 
-  int _localeIndex = 1;
+  int? _localeIndex = 1;
 
-  int get localeIndex => _localeIndex;
+  int? get localeIndex => _localeIndex;
 
-  Locale get locale {
+  Locale? get locale {
     //初始化放在全局， 放在下面会导致每次刷新index 并且导致国际化切换失败
     //_localeIndex = 1;
-    if (_localeIndex > 0) {
-      var value = localeValueList[_localeIndex].split("-");
+    if (_localeIndex! > 0) {
+      var value = localeValueList[_localeIndex!].split("-");
       return Locale(value[0], value.length == 2 ? value[1] : '');
     }
     // 跟随系统
@@ -46,7 +46,7 @@ class LocaleModel extends ChangeNotifier {
   static String localeName(index, context) {
     switch (index) {
       case 0:
-        return S.of(context).autoBySystem;
+        return S.of(context)!.autoBySystem;
       case 1:
         return '简体中文';
       case 2:

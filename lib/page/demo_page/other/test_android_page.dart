@@ -14,7 +14,7 @@ class TestAndroidPage extends PageState{
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ElevatedButton(onPressed: (){
-            NativeMethodManager.getInstance().throwChildThreadException();
+            NativeMethodManager.getInstance()!.throwChildThreadException();
 
           },child: Text('android ： 抛一个子线程异常'),),
           getSizeBox(height: getWidthPx(40)),
@@ -23,12 +23,12 @@ class TestAndroidPage extends PageState{
             style: TextStyle(color: Colors.black,fontSize: getSp(32)),),
           getSizeBox(height: getWidthPx(40)),
           ElevatedButton(onPressed: (){
-            NativeMethodManager.getInstance().throwUiThreadException();
+            NativeMethodManager.getInstance()!.throwUiThreadException();
 
           },child: Text('android ： 抛一个子UI线程异常'),),
           getSizeBox(height: getWidthPx(40)),
           ElevatedButton(onPressed: (){
-            NativeMethodManager.getInstance().throwStartUpException();
+            NativeMethodManager.getInstance()!.throwStartUpException();
           },child: Text('android ： 抛一个生命周期异常'),),
         ],
       ),

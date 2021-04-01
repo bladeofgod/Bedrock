@@ -7,13 +7,13 @@
 import 'package:flutter_bedrock/service_api/section_one_api.dart';
 
 class BedrockRepositoryProxy{
-  static BedrockRepositoryProxy _singleton;
+  static BedrockRepositoryProxy? _singleton;
 
   BedrockRepositoryProxy._internal(){
     //do something
   }
 
-  static BedrockRepositoryProxy getInstance(){
+  static BedrockRepositoryProxy? getInstance(){
     if(_singleton == null){
       _singleton = BedrockRepositoryProxy._internal();
     }

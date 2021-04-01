@@ -9,11 +9,11 @@ import 'package:flutter_bedrock/base_framework/widget_state/base_stateless_widge
 
 
 class CircleBorderContainer extends BaseStatelessWidget{
-  final double width,height;
-  final Color borderColor;
-  final double borderWidth;
-  final String text;
-  final TextStyle style;
+  final double? width,height;
+  final Color? borderColor;
+  final double? borderWidth;
+  final String? text;
+  final TextStyle? style;
 
 
   CircleBorderContainer({this.width, this.height, this.borderColor,
@@ -28,9 +28,9 @@ class CircleBorderContainer extends BaseStatelessWidget{
       height: height,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        border: Border.all(width: borderWidth,color: borderColor)
+        border: Border.all(width: borderWidth!,color: borderColor!)
       ),
-      child: Text(text,style: style,),
+      child: Text(text!,style: style,),
     );
   }
 
