@@ -150,7 +150,7 @@ dependencies:
   #抛物线动画
   #add_cart_parabola: ^0.0.6
   #banner
-  carousel_slider: ^1.4.1
+  carousel_slider: ^4.0.0-nullsafety.0
 
 
 
