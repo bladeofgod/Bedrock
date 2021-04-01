@@ -1,9 +1,8 @@
 
 
 
-import 'package:flutter_bedrock/base_framework/widget_state/widget_state.dart';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bedrock/base_framework/widget_state/widget_state.dart';
 
 typedef NotifyDone = void Function(bool notifyDone);
 
@@ -17,8 +16,8 @@ class FromTopNotifyWidget extends WidgetState with SingleTickerProviderStateMixi
   final Duration notifyDwellTime;
   final NotifyDone notifyDone;
 
-  AnimationController controller;
-  Animation animation;
+  AnimationController? controller;
+  late Animation animation;
 
   FromTopNotifyWidget(this.child, this.animationDuration, this.notifyDwellTime,this.notifyDone);
 
@@ -28,15 +27,15 @@ class FromTopNotifyWidget extends WidgetState with SingleTickerProviderStateMixi
     // TODO: implement initState
     super.initState();
     controller = AnimationController(vsync: this,duration: animationDuration);
-    animation = Tween<Offset>(begin: Offset(0,-1),end: Offset.zero).animate(controller);
-    controller.addStatusListener((status) {
+    animation = Tween<Offset>(begin: Offset(0,-1),end: Offset.zero).animate(controller!);
+    controller!.addStatusListener((status) {
       if(status == AnimationStatus.completed){
         Future.delayed(notifyDwellTime)
             .whenComplete(() => controller?.reverse()?.whenComplete(() => notifyDone(true)));
       }
     });
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      controller.forward();
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      controller!.forward();
     });
   }
   @override
@@ -53,7 +52,7 @@ class FromTopNotifyWidget extends WidgetState with SingleTickerProviderStateMixi
         animation: animation,
         builder: (ctx,c){
           return SlideTransition(
-            position:animation ,
+            position:animation as Animation<Offset> ,
             child: child,);
         },
       )],

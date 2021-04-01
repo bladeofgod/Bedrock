@@ -9,8 +9,8 @@ import 'package:flutter/material.dart';
 
 class ShakeFloatState extends WidgetState with SingleTickerProviderStateMixin{
 
-  AnimationController controller;
-  Animation<double> animation;
+  AnimationController? controller;
+  late Animation<double> animation;
   @override
   void dispose() {
     controller?.dispose();
@@ -21,14 +21,14 @@ class ShakeFloatState extends WidgetState with SingleTickerProviderStateMixin{
     controller = AnimationController(vsync: this,duration: const Duration(milliseconds: 300));
     animation = Tween<double>(begin: 0.1,end: 1.0)
         .animate(CurvedAnimation(curve: Curves.elasticOut,
-          reverseCurve: Curves.easeOut,parent: controller));
+          reverseCurve: Curves.easeOut,parent: controller!));
     super.initState();
-    controller.addListener(() {
+    controller!.addListener(() {
       setState(() {
       });
     });
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      controller.forward();
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      controller!.forward();
     });
   }
 
@@ -41,7 +41,7 @@ class ShakeFloatState extends WidgetState with SingleTickerProviderStateMixin{
     return Opacity(opacity: animation.value.clamp(0.0, 1.0),
       child: GestureDetector(
         onTap: (){
-          controller.reverse();
+          controller!.reverse();
         },
         child: Container(
           width: getWidthPx(width * animation.value),height: getWidthPx(width * animation.value),

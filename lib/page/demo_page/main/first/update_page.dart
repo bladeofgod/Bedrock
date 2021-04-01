@@ -3,7 +3,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/base_framework/ui/widget/provider_widget.dart';
-import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 import 'package:flutter_bedrock/page/demo_page/main/first/view_model/update_view_model.dart';
 
@@ -35,14 +34,14 @@ class UpdatePageState extends PageState {
                 children: <Widget>[
                   Text(text,),
                   getSizeBox(height: getWidthPx(50)),
-                  RaisedButton(
+                  ElevatedButton(
                     child: Text('升级',style: TextStyle(color: Colors.black),),
                     onPressed: updateVM.getNewApk,
                   ),
                   getSizeBox(height: getWidthPx(50)),
                   Text('下载进度： ${updateVM.progress}/100',style: TextStyle(color: Colors.lightBlue),),
                   getSizeBox(height: getWidthPx(50)),
-                  RaisedButton(
+                  ElevatedButton(
                     child: Text('取消',style: TextStyle(color: Colors.black),),
                     onPressed: updateVM.cancelTask,
                   ),

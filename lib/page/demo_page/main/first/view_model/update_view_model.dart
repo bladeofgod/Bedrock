@@ -5,11 +5,8 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_bedrock/base_framework/config/net/bedrock_http.dart';
 import 'package:flutter_bedrock/base_framework/config/storage_manager.dart';
 import 'package:flutter_bedrock/base_framework/native/native_method_manager.dart';
-import 'package:flutter_bedrock/base_framework/utils/platform_utils.dart';
 import 'package:flutter_bedrock/base_framework/view_model/single_view_state_model.dart';
 //import 'package:install_plugin/install_plugin.dart';
 import 'package:oktoast/oktoast.dart';
@@ -44,13 +41,13 @@ class UpdateViewModel extends SingleViewStateModel{
   }
 
   String getSavePath(){
-    String path = StorageManager.externalDirectory.path + '/test/bedrock.apk';
+    String path = StorageManager.externalDirectory!.path + '/test/bedrock.apk';
     debugPrint(path);
     return path;
   }
 
   void cancelTask(){
-    cancelToken?.cancel();
+    cancelToken.cancel();
   }
   ///没有自己的服务器，所以使用了应用宝的下载链接
   ///请求直接由DIO完成，在实际使用的时候，需要更换自己的
@@ -71,7 +68,7 @@ class UpdateViewModel extends SingleViewStateModel{
               installAPK();
             }
       });
-    }catch(e,s){
+    }catch(e){
       ///如果通过cancelToken取消任务，那么会抛出一个dio exception . cancel
       ///你可以对它进行捕捉并操作，也可以啥都不做
     }
@@ -79,7 +76,7 @@ class UpdateViewModel extends SingleViewStateModel{
 
   ///一些第三方安装插件可能有问题，自己写一个，你也可以根据需求自己在原生端修改
   installAPK(){
-    NativeMethodManager.getInstance().installApk(getSavePath());
+    NativeMethodManager.getInstance()!.installApk(getSavePath());
 
   }
 
@@ -99,7 +96,7 @@ class UpdateViewModel extends SingleViewStateModel{
   }
   
   @override
-  Future loadData() {
+  Future? loadData() {
     return null;
   }
 

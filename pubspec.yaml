@@ -14,7 +14,7 @@ description: A new Flutter application.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.6.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
   flutter:
@@ -28,36 +28,38 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   # State
-  provider: ^4.3.2+3
+  provider: ^5.0.0
 
   #FFloat: 阿里闲鱼旗下的插件系列之一
   #墙裂！推荐阅读他们的系列文章，https://juejin.im/post/5ec17d6a5188256d7674b942#heading-12
-  ffloat: ^1.0.1
+  # 因为官方还没升级到2.12.0, 所以用这个代替了 => lib\base_framework\ui\widget\ffloat.dart
+  #  ffloat: ^1.0.1
+
   # Base Component
   # WebView iOS添加键值对 o.flutter.embedded_views_preview = YES
   #flutter 官方插件，
   #这个不会覆盖widget，但是html支持不好。
-  #webview_flutter: ^0.3.19+9
+  webview_flutter: ^2.0.2
   #  webview_flutter: ^0.3.21
   #这个文档齐全(支持富文本的显示：这个插件有个bug、会覆盖其它widget(不用页面切换动画是没问题的)，你用的时候更一下看看修复没有)
   #此插件为flutter社区开发，非官方，但是性能比官方号（所写时的版本），如果遇到上面所提bug
   #解决办法 参考这里：https://juejin.im/post/6864487800969003016
-  flutter_webview_plugin: ^0.3.11
+  #  flutter_webview_plugin: ^0.3.11
 
   #设备信息、包信息
-  device_info: ^0.4.1
-  package_info: ^0.4.0+6
+  device_info: ^2.0.0
+  package_info: ^2.0.0
 
   # 加解密
-  encrypt: ^4.1.0
+  encrypt: ^5.0.0
 
   # Data
   #  json_annotation: ^2.4.0
   #  dio: ^2.1.16
-  dio: ^3.0.9
-  dio_cookie_manager: ^1.0.0
-  cookie_jar: ^1.0.0
-  path_provider: ^1.6.1
+  dio: ^4.0.0
+  dio_cookie_manager: ^2.0.0
+  cookie_jar: ^3.0.0
+  path_provider: ^2.0.1
   #应用更新
   #flutter_downloader: ^1.4.4
   #install_plugin: ^2.0.1
@@ -71,23 +73,23 @@ dependencies:
   # 解析html标签
   #flutter_html: ^0.11.1
   #解析富文本建议使用 markdown
-  markdown_widget: ^1.1.9
+  #  markdown_widget: ^1.1.9
 
   # 判断list是否相等
   collection: ^1.14.11
   #  crypto: ^2.0.6
 
   # UI
-  oktoast: ^2.1.7
+  oktoast: ^3.0.0
 
-  pull_to_refresh: ^1.6.2
+  pull_to_refresh: ^1.6.4-nullsafety.0
 
   #swiper
   #flutter_swiper: ^1.1.6
   #很强大的插件，瀑布流、滑动退出、手势放大等等等等，请查看文档
   #大佬的文章 https://juejin.im/post/5dee2ab36fb9a01610796a20
   #https://github.com/fluttercandies/extended_image
-  extended_image: ^0.8.0
+  extended_image: ^4.0.0
   #https://pub.dev/packages/flutter_xupdate 漂亮的更新弹窗
   #flutter_xupdate: ^0.0.3
   #刮刮卡  https://github.com/826327700/flutter_plugins_demo
@@ -98,15 +100,16 @@ dependencies:
   #image_picker_saver: ^0.3.0
   #image_gallery_saver: ^1.2.2
   #图片拾取
-  multi_image_picker: ^4.6.6+rc.1
+  multi_image_picker: ^4.8.0
+  nested: ^1.0.0
   #裁剪
-  image_editor: ^0.1.6
+  image_editor: ^1.0.0
 
   #cached_network_image: ^2.0.0-rc.1
   # 类iOS侧滑菜单
   #flutter_slidable: 0.5.3
   # 谁用谁闪亮 (骨架屏)
-  shimmer: ^1.1.1
+  shimmer: ^2.0.0-nullsafety.0
   #chart
   #mp_chart: ^0.1.9
   # 更新展示支持mark_down
@@ -122,21 +125,23 @@ dependencies:
 
   # android权限弹窗
   #  permission_handler: ^3.3.0
-  permission_handler: ^5.0.0+hotfix.5
+  permission_handler: ^6.1.1
   #屏幕适配
   #flutter_screenutil: ^0.5.3
   #数据库
   #sqflite: ^1.1.7
   #下方两个为常用工具类 详见文档：https://github.com/Sky24n/common_utils
   #适配、sp本地缓存、路径util等
-  flustars: ^0.3.2
+  flustars: ^2.0.1
   #字符串util、日期格式化、加解密、日志、等等
-  common_utils: ^1.2.1
+  common_utils: ^2.0.2
+
   #微信 mmkv 比sp更快
-  mmkv_flutter: ^1.0.10
+  # 没有实现NullSafety, 用lib\base_framework\utils\mmkv_flutter.dart代替
+  # mmkv_flutter: ^1.0.10
 
   #网络状态
-  connectivity: ^2.0.2
+  connectivity: ^3.0.3
 
   #  #高德地图
   #  amap_location: ^0.2.0
@@ -150,7 +155,7 @@ dependencies:
   #抛物线动画
   #add_cart_parabola: ^0.0.6
   #banner
-  carousel_slider: ^1.4.1
+  carousel_slider: ^4.0.0-nullsafety.0
 
 
 
@@ -185,8 +190,8 @@ dependencies:
 
   #flutter_bugly: ^0.2.8
 
-  reflectable: ^2.2.5
-  build_runner: ^1.7.0
+  reflectable: ^3.0.1
+  build_runner: ^1.12.2
 
 
 

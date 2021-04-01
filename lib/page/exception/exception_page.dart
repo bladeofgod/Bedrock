@@ -6,7 +6,6 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 
 ///非业务型异常展示的页面

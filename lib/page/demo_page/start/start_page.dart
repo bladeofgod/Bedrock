@@ -30,7 +30,7 @@ class StartPage extends PageState{
             getSizeBox(height: getHeightPx(20)),
             Text(info,style: TextStyle(color: Colors.black),),
             getSizeBox(height: getHeightPx(40)),
-            RaisedButton(
+            ElevatedButton(
               child: Text('go page 1 with pushAndRemoveUntil',style: TextStyle(color: Colors.black),),
               onPressed: (){
                 push(Page1());
@@ -42,7 +42,7 @@ class StartPage extends PageState{
             ),
             getSizeBox(height: getHeightPx(40)),
             Text(backValue,style: TextStyle(color: Colors.black,fontSize: getSp(24)),),
-            RaisedButton(
+            ElevatedButton(
               child: Text('push with value',style: TextStyle(color: Colors.black),),
               onPressed: (){
                 push(WithValuePage('start page送了一个西瓜'))

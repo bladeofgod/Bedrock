@@ -4,38 +4,6 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bedrock/base_framework/factory/page/page_animation_builder.dart';
-import 'package:flutter_bedrock/base_framework/ui/anim/page_route_anim/fade_animation.dart';
-import 'package:flutter_bedrock/base_framework/ui/anim/page_route_anim/no_animation.dart';
-import 'package:flutter_bedrock/base_framework/ui/anim/page_route_anim/size_scale_animation.dart';
-import 'package:flutter_bedrock/base_framework/ui/anim/page_route_anim/slide_animation.dart';
-import 'package:flutter_bedrock/base_framework/ui/widget/detail_image_widget.dart';
-import 'package:flutter_bedrock/base_framework/ui/widget/image/image_editor.dart';
-import 'package:flutter_bedrock/base_framework/ui/widget/progress_widget.dart';
-import 'package:flutter_bedrock/base_framework/ui/widget/route/route_aware_widget.dart';
-import 'package:flutter_bedrock/base_framework/ui/widget/web/html_page.dart';
-import 'package:flutter_bedrock/base_framework/ui/widget/web/web_page.dart';
-import 'package:flutter_bedrock/main.dart';
-import 'package:flutter_bedrock/page/demo_page/demo_page.dart';
-import 'package:flutter_bedrock/page/demo_page/exception/handle_exception_page.dart';
-import 'package:flutter_bedrock/page/demo_page/image/pick_image_page.dart';
-import 'package:flutter_bedrock/page/demo_page/isolate/isolate_page.dart';
-import 'package:flutter_bedrock/page/demo_page/local_i10l/local_page.dart';
-import 'package:flutter_bedrock/page/demo_page/main/first/cache_data_page.dart';
-import 'package:flutter_bedrock/page/demo_page/main/first/ffloat_page.dart';
-import 'package:flutter_bedrock/page/demo_page/main/first/update_page.dart';
-import 'package:flutter_bedrock/page/demo_page/main/login/login_page.dart';
-import 'package:flutter_bedrock/page/demo_page/main_page.dart';
-import 'package:flutter_bedrock/page/demo_page/other/little_util_page.dart';
-import 'package:flutter_bedrock/page/demo_page/other/request_permission_page.dart';
-import 'package:flutter_bedrock/page/demo_page/other/scroll_page.dart';
-import 'package:flutter_bedrock/page/demo_page/other/timer_page.dart';
-import 'package:flutter_bedrock/page/demo_page/other_demo_page.dart';
-import 'package:flutter_bedrock/page/demo_page/route_anim/fade_page.dart';
-import 'package:flutter_bedrock/page/demo_page/route_anim/route_animation_page.dart';
-import 'package:flutter_bedrock/page/demo_page/route_anim/scale_page.dart';
-import 'package:flutter_bedrock/page/demo_page/route_anim/slide_page.dart';
-import 'package:flutter_bedrock/page/demo_page/slide_out_page.dart';
 
 
 ///观测路由，可以对路由的push和pop进行观测

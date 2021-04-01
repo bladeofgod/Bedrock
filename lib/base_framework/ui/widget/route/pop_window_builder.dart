@@ -16,7 +16,7 @@ class PopWindowBuilder<T> extends OverlayRoute<T>{
 
   // We cache the part of the modal scope that doesn't change from frame to
   // frame so that we minimize the amount of building that happens.
-  Widget _modalScopeCache;
+  Widget? _modalScopeCache;
 
 
 
@@ -31,7 +31,7 @@ class PopWindowBuilder<T> extends OverlayRoute<T>{
     );
   }
 
-  OverlayEntry _modalScope;
+  OverlayEntry? _modalScope;
 
   @override
   Iterable<OverlayEntry> createOverlayEntries()sync* {

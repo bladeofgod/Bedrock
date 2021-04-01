@@ -1,16 +1,11 @@
-import 'dart:convert';
-import 'dart:math';
 
 import 'package:connectivity/connectivity.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/base_framework/utils/exception_pitcher.dart';
 import 'package:flutter_bedrock/base_framework/view_model/interface/cache_data_factory.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/widget_state.dart';
 import 'package:oktoast/oktoast.dart';
-import 'package:flutter_bedrock/base_framework/exception/un_authorized_exception.dart';
-import 'package:flutter_bedrock/base_framework/exception/user_unbind_exception.dart';
 
 import 'view_state.dart';
 
@@ -24,7 +19,7 @@ abstract class ViewStateModel with ChangeNotifier {
   /// 根据状态构造
   ///
   /// 子类可以在构造函数指定需要的页面状态
-  ViewStateModel({ViewState viewState})
+  ViewStateModel({ViewState? viewState})
       : _viewState = viewState ?? ViewState.idle;
 
   ViewState get viewState => _viewState;
@@ -35,9 +30,9 @@ abstract class ViewStateModel with ChangeNotifier {
   }
 
   /// 出错时的message
-  String _errorMessage;
+  String? _errorMessage;
 
-  String get errorMessage => _errorMessage;
+  String? get errorMessage => _errorMessage;
 
 
   bool get busy => viewState == ViewState.busy;
@@ -67,7 +62,7 @@ abstract class ViewStateModel with ChangeNotifier {
 
   void setError(String message) {
     _errorMessage = message;
-    showToast(_errorMessage);
+    showToast(_errorMessage!);
     viewState = ViewState.error;
   }
 
@@ -76,25 +71,25 @@ abstract class ViewStateModel with ChangeNotifier {
     viewState = ViewState.idle;
   }
 
-  void setUnAuthorized({String toast}) {
+  void setUnAuthorized({String? toast}) {
     _errorMessage = toast;
     showShortToast(toast);
     viewState = ViewState.unAuthorized;
   }
 
-  void setUnBind({String toast}){
+  void setUnBind({String? toast}){
     _errorMessage = toast;
     showShortToast(toast);
     viewState = ViewState.unBind;
   }
 
-  void setNoNet({String toast}){
+  void setNoNet({String? toast}){
     _errorMessage = toast;
     showShortToast(toast);
     viewState = ViewState.noNet;
   }
 
-  showShortToast(String toast){
+  showShortToast(String? toast){
     if(toast != null && toast.isNotEmpty){
       showToast(toast);
     }
@@ -122,7 +117,7 @@ abstract class ViewStateModel with ChangeNotifier {
   /// 刷新等操作是不会缓存数据的。之后，在没网的情况下会显示上次缓存的数据并提示用户网络状态，以达到更好的用户体验
   /// 你也可以根据自己的需求定制
 
-  CacheDataFactory cacheDataFactory;
+  CacheDataFactory? cacheDataFactory;
   injectCache(CacheDataFactory cacheDataFactory){
     this.cacheDataFactory = cacheDataFactory;
   }
@@ -144,7 +139,7 @@ abstract class ViewStateModel with ChangeNotifier {
 /// 可以为ViewModel混入此类
 
 mixin ExceptionBinding on ViewStateModel implements ExceptionListener{
-  ExceptionListener _listener;
+  ExceptionListener? _listener;
   ///混入此类后，实现[ExceptionListener]并调用此方法进行注册
   bindToExceptionHandler(ExceptionListener listener){
     if(listener == null) return;

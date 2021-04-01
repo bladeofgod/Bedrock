@@ -7,8 +7,8 @@
 import 'dart:core';
 
 class CacheEntity{
-  String img;
-  String title;
+  String? img;
+  String? title;
 
   CacheEntity(this.img, this.title);
 

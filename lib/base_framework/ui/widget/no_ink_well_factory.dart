@@ -1,7 +1,4 @@
-
-
 import 'package:flutter/material.dart';
-
 
 /*
 *    Theme(
@@ -12,33 +9,34 @@ import 'package:flutter/material.dart';
 *
 * */
 
-
-class NoInkWellFactory extends InteractiveInkFeatureFactory{
+class NoInkWellFactory extends InteractiveInkFeatureFactory {
   @override
-  InteractiveInkFeature create({MaterialInkController controller, RenderBox referenceBox, Offset position,
-    Color color, TextDirection textDirection, bool containedInkWell = false, rectCallback, BorderRadius borderRadius,
-    ShapeBorder customBorder, double radius, onRemoved}) {
-
+  InteractiveInkFeature create(
+      {required MaterialInkController controller,
+      required RenderBox referenceBox,
+      Offset? position,
+      required Color color,
+      TextDirection? textDirection,
+      bool containedInkWell = false,
+      rectCallback,
+      BorderRadius? borderRadius,
+      ShapeBorder? customBorder,
+      double? radius,
+      onRemoved}) {
     return NoInkWell(
-      controller: controller,referenceBox: referenceBox
-    );
+        color: color, controller: controller, referenceBox: referenceBox);
   }
-
-
-
 }
 
-
-class NoInkWell extends InteractiveInkFeature{
-
-  NoInkWell({@required MaterialInkController controller,@required RenderBox referenceBox})
+class NoInkWell extends InteractiveInkFeature {
+  NoInkWell(
+      {required Color color,
+      required MaterialInkController controller,
+      required RenderBox referenceBox})
       : assert(controller != null),
         assert(referenceBox != null),
-        super(controller:controller,referenceBox:referenceBox);
+        super(color: color, controller: controller, referenceBox: referenceBox);
 
   @override
-  void paintFeature(Canvas canvas, Matrix4 transform) {
-
-  }
-
+  void paintFeature(Canvas canvas, Matrix4 transform) {}
 }

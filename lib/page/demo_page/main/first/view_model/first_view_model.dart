@@ -5,7 +5,6 @@
 
 
 
-import 'package:flutter_bedrock/base_framework/view_model/refresh_list_view_state_model.dart';
 import 'package:flutter_bedrock/base_framework/view_model/single_view_state_model.dart';
 import 'package:flutter_bedrock/page/demo_page/main/first/entity/first_card_entity.dart';
 import 'package:flutter_bedrock/page/demo_page/main/first/entity/first_entity.dart';
@@ -17,14 +16,14 @@ class FirstViewModel extends SingleViewStateModel{
   int pageNum = 1;
   int pageSize = 8;
 
-  RefreshController refreshController;
+  late RefreshController refreshController;
 
 
   FirstViewModel(){
     refreshController = RefreshController();
   }
 
-  FirstEntity firstEntity;
+  FirstEntity? firstEntity;
   List<FirstCardEntity> cardList = [];
 
 
@@ -32,8 +31,8 @@ class FirstViewModel extends SingleViewStateModel{
   Future loadData() {
     cardList.clear();
     List<Future> futures = [];
-    futures.add(BedrockRepositoryProxy.getInstance().getSectionOne().getFirstEntity());
-    futures.add(BedrockRepositoryProxy.getInstance().getSectionOne().getFirstListCard(pageNum, pageSize));
+    futures.add(BedrockRepositoryProxy.getInstance()!.getSectionOne().getFirstEntity());
+    futures.add(BedrockRepositoryProxy.getInstance()!.getSectionOne().getFirstListCard(pageNum, pageSize));
     var result = Future.wait(futures);
     return result;
   }
@@ -42,9 +41,9 @@ class FirstViewModel extends SingleViewStateModel{
     setBusy(true);
     cardList.clear();
     pageNum = 1;
-    BedrockRepositoryProxy.getInstance().getSectionOne()
+    BedrockRepositoryProxy.getInstance()!.getSectionOne()
         .getFirstListCard(pageNum, pageSize).then((list){
-      cardList.addAll(list);
+      cardList.addAll(list!);
       refreshController.refreshCompleted();
       notifyListeners();
     }).whenComplete((){
@@ -55,9 +54,9 @@ class FirstViewModel extends SingleViewStateModel{
 
   loadMore()async{
     pageNum +=1;
-    BedrockRepositoryProxy.getInstance().getSectionOne()
+    BedrockRepositoryProxy.getInstance()!.getSectionOne()
         .getFirstListCard(pageNum, pageSize).then((list){
-          if(list.isEmpty){
+          if(list!.isEmpty){
             refreshController.loadNoData();
           }else{
             cardList.addAll(list);

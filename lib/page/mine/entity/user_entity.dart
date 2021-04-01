@@ -4,12 +4,12 @@
 */
 
 class UserEntity {
-  String nickName;
-  String id;
+  String? nickName;
+  String? id;
 
   UserEntity({this.nickName, this.id});
 
-  UserEntity.fromJson(Map<String, dynamic> json) {
+  UserEntity.fromJson(Map<String?, dynamic> json) {
     nickName = json['nick_name'];
     id = json['id'];
   }

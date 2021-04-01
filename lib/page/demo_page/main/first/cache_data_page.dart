@@ -5,13 +5,11 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bedrock/base_framework/config/router_manager.dart';
 import 'package:flutter_bedrock/base_framework/ui/widget/detail_image_widget.dart';
 import 'package:flutter_bedrock/base_framework/ui/widget/provider_widget.dart';
 import 'package:flutter_bedrock/base_framework/utils/refresh_helper.dart';
 import 'package:flutter_bedrock/base_framework/utils/show_image_util.dart';
 import 'package:flutter_bedrock/base_framework/view_model/app_model/user_view_model.dart';
-import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 import 'package:flutter_bedrock/page/demo_page/main/first/entity/cache_entity.dart';
 import 'package:flutter_bedrock/page/demo_page/main/first/view_model/cache_page_vm.dart';
@@ -22,7 +20,7 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class CacheDataPageState extends PageState {
 
-  UserViewModel userViewModel;
+  late UserViewModel userViewModel;
 
   @override
   Widget build(BuildContext context) {

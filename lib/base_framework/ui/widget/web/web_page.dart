@@ -6,31 +6,30 @@
 */
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
-import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
-
-class WebPageState extends PageState{
-
-
+class WebPageState extends PageState {
   final String url;
-
 
   WebPageState(this.url);
 
   @override
   Widget build(BuildContext context) {
-    return switchStatusBar2Dark(child: Container(
+    return switchStatusBar2Dark(
+        child: Container(
       width: getWidthPx(750),
       height: getHeightPx(1334),
       child: Column(
         children: <Widget>[
-          commonAppBar(leftWidget: buildAppBarLeft(),leftPadding: getWidthPx(40), rightPadding: getWidthPx(40)),
+          commonAppBar(
+              leftWidget: buildAppBarLeft(),
+              leftPadding: getWidthPx(40),
+              rightPadding: getWidthPx(40)),
           Expanded(
-            child: WebviewScaffold(
-              url: url,
-              withJavascript: true,
+            child: WebView(
+              initialUrl: url,
+              javascriptMode: JavascriptMode.unrestricted,
             ),
           ),
         ],
@@ -38,20 +37,3 @@ class WebPageState extends PageState{
     ));
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

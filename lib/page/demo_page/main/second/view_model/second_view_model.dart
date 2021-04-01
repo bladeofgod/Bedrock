@@ -10,8 +10,8 @@ import 'package:flutter_bedrock/service_api/bedrock_repository_proxy.dart';
 
 class SecondViewModel extends RefreshListViewStateModel<SecondEntity>{
   @override
-  Future<List<SecondEntity>> loadData({int pageNum}) {
-    return BedrockRepositoryProxy.getInstance().getSectionOne().getSecondList(pageNum);
+  Future<List<SecondEntity>?> loadData({int? pageNum}) {
+    return BedrockRepositoryProxy.getInstance()!.getSectionOne().getSecondList(pageNum);
   }
 
 

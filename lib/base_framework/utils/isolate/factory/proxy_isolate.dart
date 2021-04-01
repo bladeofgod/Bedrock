@@ -26,7 +26,7 @@ const String kNameArgs = 'kNameArgs';
 
 
 
-final List<String> orders = [];
+final List<String?> orders = [];
 
 void main( args,SendPort mainPort)async{
 
@@ -49,7 +49,7 @@ void main( args,SendPort mainPort)async{
   final SendPort proxySendPort = proxyPort.sendPort;
   final Isolate isolate = await Isolate.spawnUri(new Uri(path: './worker_isolate.dart'), args, proxySendPort);
 
-  SendPort childSendPort;
+  SendPort? childSendPort;
 
   proxyPort.listen((message) {
     print('msg from child $message');
@@ -63,10 +63,10 @@ void main( args,SendPort mainPort)async{
 
 }
 
-void runTask(SendPort port){
+void runTask(SendPort? port){
   final timer = Timer.periodic(Duration(seconds: 1), (timer) {
-    String methodName = orders.first;
-    port.send([kTaskKey,{kMethodName:methodName,
+    String? methodName = orders.first;
+    port!.send([kTaskKey,{kMethodName:methodName,
       kNameArgs:{'bb':'你好'}}]);
     orders.removeWhere((element) => element==methodName);
   });

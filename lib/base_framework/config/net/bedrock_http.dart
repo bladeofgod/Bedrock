@@ -1,44 +1,33 @@
-
-
 import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
-import 'package:flustars/flustars.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter_bedrock/base_framework/view_model/handle/exception_handler.dart';
-import 'package:flutter_bedrock/base_framework/view_model/view_state_model.dart';
-import '../../utils/exception_pitcher.dart';
 import 'package:flutter_bedrock/base_framework/config/net/base_http.dart';
 import 'package:flutter_bedrock/base_framework/config/storage_manager.dart';
+import 'package:flutter_bedrock/base_framework/view_model/handle/exception_handler.dart';
+import 'package:flutter_bedrock/base_framework/view_model/view_state_model.dart';
 
-
+import '../../utils/exception_pitcher.dart';
 
 final BedRock bedRock = BedRock();
 
-
-class BedRock extends BaseHttp{
-
+class BedRock extends BaseHttp {
   final String china = "https://wanandroid.com/";
-
 
   @override
   void init() {
-
     options.baseUrl = china;
     interceptors
-      ..add(CookieManager(PersistCookieJar(dir: StorageManager.appDirectory.path)))
+      ..add(CookieManager(PersistCookieJar(
+          storage: FileStorage(StorageManager.appDirectory.path))))
       ..add(ApiInterceptor())
       ..add(LogInterceptor());
   }
-
 }
 
-
-
-class ApiInterceptor extends InterceptorsWrapper{
-
+class ApiInterceptor extends InterceptorsWrapper {
   @override
-  Future onRequest(RequestOptions options) async{
+  void onRequest(
+      RequestOptions options, RequestInterceptorHandler handler) async {
     ///这里将空值参数去除掉，可根据自己的需求更改
 //    options.queryParameters.removeWhere((key, value) => value == null);
 //
@@ -56,11 +45,8 @@ class ApiInterceptor extends InterceptorsWrapper{
 //      debugPrint("---api-request--->url--> ${options.baseUrl}${options.path}?$params");
 //    }
 
-
-
-
     //debugPrint("request header  :  ${options.headers.toString()}");
-    return options;
+    super.onRequest(options, handler);
   }
 
   ///这里可以根据不同的业务代码 扔出不同的异常
@@ -70,26 +56,16 @@ class ApiInterceptor extends InterceptorsWrapper{
   /// * 如果需要独立收到Api的业务异常，见此类[ExceptionBinding]
 
   @override
-  Future onResponse(Response response) {
-
+  void onResponse(Response response, ResponseInterceptorHandler handler) {
     ResponseData responseData = ResponseData.fromJson(response.data);
-    if(responseData.success){
-      return bedRock.resolve(responseData);
-    }else{
+    if (responseData.success) {
+      return super.onResponse(response, handler);
+    } else {
       ///抛出业务异常
       throw ExceptionPitcher().transformException(responseData);
     }
-
-
   }
-
-
-
 }
-
-
-
-
 
 class ResponseData extends BaseResponseData {
   bool get success => (code == 1 || code == 200);

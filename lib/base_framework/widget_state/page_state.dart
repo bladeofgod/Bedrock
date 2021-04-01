@@ -11,7 +11,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bedrock/base_framework/config/router_manager.dart';
 import 'package:flutter_bedrock/base_framework/ui/widget/float_container_widget.dart';
 import 'package:flutter_bedrock/base_framework/utils/image_helper.dart';
-import 'package:flutter_bedrock/base_framework/view_model/view_state.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/widget_state.dart';
 
@@ -36,8 +35,8 @@ abstract class PageState extends BaseState with WidgetGenerator,RouteAware,_Rout
   ///[child] 你的页面
   ///[edgeInsets] 一般用于屏幕虚拟的适配
   ///[needSlideOut]是否支持右滑返回、如果整个项目不需要，可以配置默认值为false
-  Widget switchStatusBar2Dark({bool isSetDark = true,@required Widget child,
-    EdgeInsets edgeInsets,bool needSlideOut = false}){
+  Widget switchStatusBar2Dark({bool isSetDark = true,required Widget child,
+    EdgeInsets? edgeInsets,bool needSlideOut = false}){
     if(! needSlideOut){
       ///不含侧滑退出
       return _getNormalPage(isSetDark: isSetDark,child: child,edgeInsets: edgeInsets);
@@ -49,8 +48,8 @@ abstract class PageState extends BaseState with WidgetGenerator,RouteAware,_Rout
 
   }
 
-  Widget _getNormalPage({bool isSetDark = true,@required Widget child,
-    EdgeInsets edgeInsets}){
+  Widget _getNormalPage({bool isSetDark = true,required Widget child,
+    EdgeInsets? edgeInsets}){
     return AnnotatedRegion(
         value: isSetDark ? SystemUiOverlayStyle.dark : SystemUiOverlayStyle.light,
         child: Material(
@@ -70,8 +69,8 @@ abstract class PageState extends BaseState with WidgetGenerator,RouteAware,_Rout
   ///触发页面滑动动画
   bool slideOutActive = false;
 
-  Widget _getPageWithSlideOut({bool isSetDark = true,@required Widget child,
-    EdgeInsets edgeInsets}){
+  Widget _getPageWithSlideOut({bool isSetDark = true,required Widget child,
+    EdgeInsets? edgeInsets}){
     return AnnotatedRegion(
         value: isSetDark ? SystemUiOverlayStyle.dark : SystemUiOverlayStyle.light,
         child: Material(
@@ -121,12 +120,12 @@ abstract class PageState extends BaseState with WidgetGenerator,RouteAware,_Rout
   }
 
   /// 一般页面的通用APP BAR 具体根据项目需求调整
-  Widget commonAppBar({Widget leftWidget,String title,List<Widget> rightWidget ,
-    Color bgColor = Colors.white,@required double leftPadding,@required double rightPadding}){
+  Widget commonAppBar({Widget? leftWidget,String? title,List<Widget>? rightWidget ,
+    Color bgColor = Colors.white,required double leftPadding,required double rightPadding}){
     return Container(
       width: getWidthPx(750),
       height: getHeightPx(115),
-      color: bgColor??Color.fromRGBO(241, 241, 241, 1),
+      color: bgColor,
       padding: EdgeInsets.only(bottom: getHeightPx(10),left: leftPadding,right: rightPadding),
       alignment: Alignment.bottomCenter,
       child: Stack(
@@ -181,14 +180,14 @@ abstract class PageState extends BaseState with WidgetGenerator,RouteAware,_Rout
   void floatWidget(Widget child,{
     ///弹出层的退出由此参数控制
     ///默认值Navigator.pop(ctx)，或自定义
-    FloatWidgetDismiss floatWidgetDismiss,
+    FloatWidgetDismiss? floatWidgetDismiss,
     bool barrierDismissible = false,
     ///浮层背景色
     Color bgColor = const Color.fromRGBO(34, 34, 34, 0.3),
     ///浮层对齐方式
     Alignment alignment = Alignment.center,
     ///回调
-    Function afterPop,Function onComplete,
+    Function? afterPop,Function? onComplete,
     ///页面进入/退出时间
     Duration transitionDuration = const Duration(milliseconds: 0),
     ///新版本 此参数已作废
@@ -216,7 +215,7 @@ abstract class PageState extends BaseState with WidgetGenerator,RouteAware,_Rout
   //////////////////////////////////////////////////////
   @override
   void didChangeDependencies() {
-    routeObserver.subscribe(this, ModalRoute.of(context));
+    routeObserver.subscribe(this, ModalRoute.of(context) as PageRoute<dynamic>);
     super.didChangeDependencies();
   }
   @override

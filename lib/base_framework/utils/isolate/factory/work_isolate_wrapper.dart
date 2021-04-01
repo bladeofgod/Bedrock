@@ -4,7 +4,6 @@
 * 注意： 请勿使用任何dart:ui内的东西（即涉及到flutter的代码）
 */
 
-import 'dart:async';
 import 'dart:isolate';
 
 import 'package:flutter_bedrock/base_framework/utils/isolate/factory/worker_isolate.dart';
@@ -27,10 +26,10 @@ class WorkIsolateWrapper {
     _isFree = status;
   }
 
-  SendPort workSendPort;
+  SendPort? workSendPort;
   bool initSuccess = false;
   init() {
-    _isolate.resume(_isolate.pauseCapability);
+    _isolate.resume(_isolate.pauseCapability!);
     proxyPort.listen((message) {
       if (message[0] == kSendPortKey) {
         workSendPort = message[1];

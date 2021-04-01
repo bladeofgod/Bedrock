@@ -37,11 +37,11 @@ class DeviceModel extends ChangeNotifier{
     }
   }
 
-  bool isAndroid = false;
-  bool isIOS = false;
+  bool? isAndroid = false;
+  bool? isIOS = false;
 
-  AndroidDeviceInfo androidDeviceInfo;
-  IosDeviceInfo iosDeviceInfo;
+  AndroidDeviceInfo? androidDeviceInfo;
+  IosDeviceInfo? iosDeviceInfo;
 
 
 }

@@ -4,13 +4,11 @@
 */
 import 'dart:typed_data';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/base_framework/ui/widget/provider_widget.dart';
 import 'package:flutter_bedrock/base_framework/utils/image_helper.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/widget_state.dart';
-
-import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/page/demo_page/image/nine_image/nine_flow_delegate.dart';
-import 'package:markdown_widget/markdown_helper.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -23,7 +21,7 @@ import 'nine_image_vm.dart';
 
 class NineImageEditorState extends WidgetState implements ImageWidgetChangeListener {
 
-  NineImageVM nineImageVM ;
+  NineImageVM? nineImageVM ;
 
 
   @override
@@ -34,7 +32,7 @@ class NineImageEditorState extends WidgetState implements ImageWidgetChangeListe
 
   @override
   void dispose() {
-    nineImageVM.clearAllData();
+    nineImageVM!.clearAllData();
     super.dispose();
   }
 
@@ -45,10 +43,10 @@ class NineImageEditorState extends WidgetState implements ImageWidgetChangeListe
       children: [
         Container(
           width: getWidthPx(750),height: getHeightPx(700),
-          child: ProviderWidget<NineImageVM>(
+          child: ProviderWidget<NineImageVM?>(
             model: nineImageVM,
             onModelReady: (model){
-              nineImageVM.addImageData();
+              nineImageVM!.addImageData();
             },
             builder: (ctx,model,child){
 
@@ -59,6 +57,7 @@ class NineImageEditorState extends WidgetState implements ImageWidgetChangeListe
       ],
     );
   }
+  // ignore: deprecated_member_use
   /// * 性能要优于 [gridWay]
 
   final List<LayoutId> children = [];
@@ -74,7 +73,7 @@ class NineImageEditorState extends WidgetState implements ImageWidgetChangeListe
 
   @override
   void addChildWidget(ImageDataWrapper dataWrapper) {
-    children.insert(0, LayoutId(child: RepaintBoundary(child: buildItem(dataWrapper)),id: dataWrapper.asset.name,));
+    children.insert(0, LayoutId(child: RepaintBoundary(child: buildItem(dataWrapper)),id: dataWrapper.asset.name!,));
 
   }
 
@@ -83,7 +82,7 @@ class NineImageEditorState extends WidgetState implements ImageWidgetChangeListe
 
     for(ImageDataWrapper data in datas){
       final RepaintBoundary repaintBoundary = RepaintBoundary(child: buildItem(data),);
-      final LayoutId layoutId = LayoutId(child: repaintBoundary,id: data.asset.name,);
+      final LayoutId layoutId = LayoutId(child: repaintBoundary,id: data.asset.name!,);
       children.insert(0, layoutId);
     }
 
@@ -107,17 +106,17 @@ class NineImageEditorState extends WidgetState implements ImageWidgetChangeListe
       color: Color.fromRGBO(238, 238, 238, 1),
       margin: EdgeInsets.symmetric(horizontal: getWidthPx(40)),
       //constraints: BoxConstraints().tighten(width: getWidthPx(670),height: getWidthPx(170)),
-      height: getWidthPx(nineImageVM.row/3 * 520),
+      height: getWidthPx(nineImageVM!.row/3 * 520),
       child: GridView.count(
         crossAxisCount: 3,childAspectRatio: 168/121,
         crossAxisSpacing: getWidthPx(15),mainAxisSpacing: getWidthPx(20),
         padding: const EdgeInsets.all(0),
-        children: nineImageVM.imageList.map<Widget>((e) => buildItem(e)).toList(),),
+        children: nineImageVM!.imageList.map<Widget>((e) => buildItem(e)).toList(),),
     );
   }
 
   Widget buildItem(ImageDataWrapper data){
-    if(data.asset.name == nineImageVM.tag){
+    if(data.asset.name == nineImageVM!.tag){
       return GestureDetector(
         onTap: (){
           checkPermission();
@@ -158,7 +157,7 @@ class NineImageEditorState extends WidgetState implements ImageWidgetChangeListe
                   color: const Color.fromRGBO(250, 250, 250, 1),
                   width: getWidthPx(170),height: getWidthPx(180),
                   //margin: EdgeInsets.only(top: getWidthPx(16),right: getWidthPx(16)),
-                  child: Image.memory(data.byteData.buffer.asUint8List(),fit: BoxFit.fill,),
+                  child: Image.memory(data.byteData!.buffer.asUint8List(),fit: BoxFit.fill,),
                 ),
               ),
               ///delete
@@ -166,7 +165,7 @@ class NineImageEditorState extends WidgetState implements ImageWidgetChangeListe
                 right: 0,top: 0,
                 child: GestureDetector(
                   onTap: (){
-                    nineImageVM.deleteImage(data);
+                    nineImageVM!.deleteImage(data);
                     //widget.lengthCallback(nineImageVM.imageList.length);
                   },
                   child: Container(
@@ -223,14 +222,14 @@ class NineImageEditorState extends WidgetState implements ImageWidgetChangeListe
       if(assetList == null){
         showToast("need one more image");
       }else{
-        if((assetList.length + nineImageVM.imageList.length) >10){
+        if((assetList.length + nineImageVM!.imageList.length) >10){
           showToast('maximum of 9 images');
         }else{
           if(assetList.isEmpty)return;
 
 
           ///去除重复图片
-          nineImageVM.imageList.forEach((element) {
+          nineImageVM!.imageList.forEach((element) {
             assetList.removeWhere((origin)=>element.asset.name == origin.name);
           });
           if(assetList.length == 0){
@@ -249,7 +248,7 @@ class NineImageEditorState extends WidgetState implements ImageWidgetChangeListe
             for(int i = 0;i<value.length;i++){
               datas.add(ImageDataWrapper(assetList[i],value[i]));
             }
-            nineImageVM.addImageList(datas);
+            nineImageVM!.addImageList(datas);
           }).whenComplete(() => dismissProgressDialog());
           //nineImageVM.checkLength(nineImageVM.imageList.length);
           //widget.lengthCallback(nineImageVM.imageList.length);

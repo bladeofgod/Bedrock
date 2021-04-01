@@ -7,7 +7,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/base_framework/utils/little_util.dart';
-import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 
 
@@ -25,7 +24,7 @@ class LittleUtilPageState extends PageState {
           getSizeBox(height: getWidthPx(100)),
           Divider(color: Colors.black,height: getWidthPx(4),),
           Text('开始自加 : $count'),
-          RaisedButton(
+          ElevatedButton(
             onPressed: startCalculate,
             child: Text('cycle Util'),
           ),
@@ -36,10 +35,10 @@ class LittleUtilPageState extends PageState {
       ),
     ));
   }
-  StreamSubscription streamSubscription;
+  StreamSubscription? streamSubscription;
   startCalculate()async{
     if(streamSubscription != null){
-      await streamSubscription.cancel();
+      await streamSubscription!.cancel();
     }
      streamSubscription = LittleUtil.cycleUtil((){
 
@@ -50,7 +49,7 @@ class LittleUtilPageState extends PageState {
         });
       }else{
         ///避免内存泄漏
-        streamSubscription.cancel();
+        streamSubscription!.cancel();
       }
 
     },period: Duration(seconds: 1));

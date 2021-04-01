@@ -7,7 +7,6 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
 
 import 'package:flutter_bedrock/base_framework/widget_state/base_stateless_widget.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/widget_state.dart';
@@ -64,10 +63,10 @@ final String loadingLayerRouteName = 'LoadingProgressState';
 
 class LoadingProgressState extends WidgetState {
 
-  final Widget progress;
-  final Color bgColor;
+  final Widget? progress;
+  final Color? bgColor;
   //final LoadingCreate loadingCreate;
-  final DialogLoadingController controller;
+  final DialogLoadingController? controller;
 
   LoadingProgressState({this.progress, this.bgColor, this.controller});
 
@@ -76,11 +75,11 @@ class LoadingProgressState extends WidgetState {
   void initState() {
     super.initState();
 
-    controller.addListener(() {
-      if(controller.isShow){
+    controller!.addListener(() {
+      if(controller!.isShow){
         //todo
       }else{
-        WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+        WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
           Navigator.of(context).pop();
         });
       }
@@ -89,7 +88,7 @@ class LoadingProgressState extends WidgetState {
 
   @override
   void dispose() {
-    controller.isShow = false;
+    controller!.isShow = false;
     controller?.dispose();
     super.dispose();
   }
@@ -105,14 +104,14 @@ class LoadingProgressState extends WidgetState {
       alignment: Alignment.center,
       child:progress?? CircularProgressIndicator(),
     ), onWillPop: ()async{
-      controller.dismissDialog();
+      controller!.dismissDialog();
       return false;
     });
   }
 }
 
 class DialogLoadingController extends ChangeNotifier{
-  Function _afterPopTask;
+  Function? _afterPopTask;
 
   bool isShow = true;
 
@@ -125,12 +124,12 @@ class DialogLoadingController extends ChangeNotifier{
   }
 
   ///[task] 将在loading消失后执行
-  void holdAfterPopTask({Function task}) {
+  void holdAfterPopTask({Function? task}) {
     _afterPopTask = task;
   }
 
   void invokeAfterPopTask() {
-    if (_afterPopTask != null) _afterPopTask();
+    if (_afterPopTask != null) _afterPopTask!();
   }
 }
 

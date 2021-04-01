@@ -3,7 +3,7 @@
 * Date : 2020/8/28
 */
 
-import 'package:flutter/material.dart';
+
 
 enum NetStatus{
   Enable,Disable
@@ -17,9 +17,9 @@ enum NetType{
 * 仅做参考
 * */
 class AppStatusModel {
-  static AppStatusModel _singleton;
-  factory AppStatusModel() => _getInstance();
-  static AppStatusModel _getInstance(){
+  static AppStatusModel? _singleton;
+  factory AppStatusModel() => _getInstance()!;
+  static AppStatusModel? _getInstance(){
     if(_singleton == null){
       _singleton = AppStatusModel._();
     }
@@ -37,7 +37,7 @@ class AppStatusModel {
 
   ///网络连接方式
 
-  NetType netType ;
+  NetType? netType ;
   setNetType(NetType type){
     netType = type;
   }

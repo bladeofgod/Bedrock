@@ -23,11 +23,11 @@ class AppPrivateIsolate{
   final AppStatusModel appStatusModel = AppStatusModel();
 
   ///
-  static AppPrivateIsolate _appPrivateIsolate;
+  static AppPrivateIsolate? _appPrivateIsolate;
 
-  factory AppPrivateIsolate()=>getInstance();
+  factory AppPrivateIsolate()=>getInstance()!;
 
-  static AppPrivateIsolate getInstance(){
+  static AppPrivateIsolate? getInstance(){
     if(_appPrivateIsolate == null){
       _appPrivateIsolate = AppPrivateIsolate._();
     }
@@ -38,8 +38,8 @@ class AppPrivateIsolate{
 
 
   final ReceivePort _netReceivePort = ReceivePort();
-  SendPort _netSendPort ;
-  Isolate _netIsolate ;
+  SendPort? _netSendPort ;
+  Isolate? _netIsolate ;
 
   ///监测网络状态和连接类型
   ///此方法工作在 main isolate
@@ -50,14 +50,14 @@ class AppPrivateIsolate{
     /// message<String,dynamic>
     _netReceivePort.listen((message) {
       debugPrint('$message');
-      String key = message[0];
+      String? key = message[0];
       var value = message[1];
       if(key == appObserve.kNetPortKey){
         _netSendPort = value;
       }else if(key == appObserve.kNetAvailable){
         ///网络是否可用
         debugPrint('${message[1]}');
-        String available = message[1];
+        String? available = message[1];
         ///可以根据状态做对应的操作 具体看你的业务需求
         if(available == appObserve.kNetDisable){
           showToast('网络不可用');
@@ -90,8 +90,8 @@ class AppPrivateIsolate{
   ///服务器通知监测
 
   final ReceivePort _serverRP = ReceivePort();
-  SendPort _serverOBSendPort;
-  Isolate _serverOBIsolate;
+  SendPort? _serverOBSendPort;
+  Isolate? _serverOBIsolate;
 
   void initServerNotifyWatch()async{
     if(_serverOBIsolate != null)return;

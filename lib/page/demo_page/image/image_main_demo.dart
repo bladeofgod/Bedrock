@@ -4,8 +4,8 @@
 */
 
 
-import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 import 'package:flutter_bedrock/page/demo_page/image/nine_image_page.dart';
 import 'package:flutter_bedrock/page/demo_page/image/pick_image_page.dart';
 class ImageMainDemo extends PageState{
@@ -23,7 +23,7 @@ class ImageMainDemo extends PageState{
 
             getSizeBox(height: getHeightPx(40)),
             buildIntro("选择一个图片"),
-            RaisedButton(
+            ElevatedButton(
               child: Text("弹出自定义的widget 演示",style: TextStyle(color: Colors.black),),
               onPressed: (){
                 push(PickImagePageState());
@@ -32,7 +32,7 @@ class ImageMainDemo extends PageState{
 
             getSizeBox(height: getHeightPx(40)),
             buildIntro("选择图片九宫格"),
-            RaisedButton(
+            ElevatedButton(
               child: Text("九宫图演示demo",style: TextStyle(color: Colors.black),),
               onPressed: (){
                 push(NineImagePage());

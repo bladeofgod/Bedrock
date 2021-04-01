@@ -19,12 +19,12 @@ class UserViewModel extends ChangeNotifier{
 
 
 
-  UserEntity _userEntity;
+  UserEntity? _userEntity;
 
   get user => _userEntity;
 
-  String get getUserId => _userEntity.id.toString();
-  String get getUserName => _userEntity.nickName;
+  String get getUserId => _userEntity!.id.toString();
+  String? get getUserName => _userEntity!.nickName;
 
 
 
@@ -32,7 +32,7 @@ class UserViewModel extends ChangeNotifier{
 
 
 
-  String get userId => _userEntity == null ? "": _userEntity.id;
+  String? get userId => _userEntity == null ? "": _userEntity!.id;
 
 //  是否显示 动态轮播图
 
@@ -41,7 +41,7 @@ class UserViewModel extends ChangeNotifier{
     ///用户登陆后会在本地缓存用户实体，可以根据自己的实际需求改变
     var entity = SpUtil.getObject(last_user_id);
     if(entity != null){
-      _userEntity = UserEntity.fromJson(entity);
+      _userEntity = UserEntity.fromJson(entity as Map<String?, dynamic>);
     }else{
       _userEntity = null;
     }

@@ -3,14 +3,12 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bedrock/base_framework/config/router_manager.dart';
 import 'package:flutter_bedrock/base_framework/ui/widget/detail_image_widget.dart';
 import 'package:flutter_bedrock/base_framework/ui/widget/provider_widget.dart';
 import 'package:flutter_bedrock/base_framework/utils/refresh_helper.dart';
 import 'package:flutter_bedrock/base_framework/utils/show_image_util.dart';
 import 'package:flutter_bedrock/base_framework/view_model/app_model/app_cache_model.dart';
 import 'package:flutter_bedrock/base_framework/view_model/app_model/user_view_model.dart';
-import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 import 'package:flutter_bedrock/page/demo_page/main/second/entity/second_entity.dart';
 import 'package:flutter_bedrock/page/demo_page/main/second/view_model/second_view_model.dart';
@@ -24,8 +22,8 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 class SecondPageState extends PageState with AutomaticKeepAliveClientMixin {
 
 
-  SecondViewModel secondViewModel;
-  UserViewModel userViewModel;
+  late SecondViewModel secondViewModel;
+  late UserViewModel userViewModel;
 
   @override
   // ignore: must_call_super

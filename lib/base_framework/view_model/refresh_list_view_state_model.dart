@@ -1,15 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bedrock/base_framework/view_model/handle/exception_handler.dart';
-import 'package:mmkv_flutter/mmkv_flutter.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import 'list_view_state_model.dart';
-import 'package:flutter_bedrock/base_framework/extension/list_extension.dart';
 
 /// 基于
 abstract class RefreshListViewStateModel<T> extends ListViewStateModel<T> {
-
-
   RefreshController _refreshController =
       RefreshController(initialRefresh: false);
 
@@ -17,12 +13,14 @@ abstract class RefreshListViewStateModel<T> extends ListViewStateModel<T> {
 
   /// 当前页码
   int _currentPageNum = 1;
+
   get currentPageNum => pageNumFirst;
+
   ///每页加载数量
   get pageDataSize => pageSize;
 
   /// 下拉刷新
-  Future<List<T>> refresh({bool init = false}) async {
+  Future<List<T>?> refresh({bool init = false}) async {
     //firstInit = init;
     try {
       _currentPageNum = pageNumFirst;
@@ -48,25 +46,24 @@ abstract class RefreshListViewStateModel<T> extends ListViewStateModel<T> {
           notifyListeners();
         }
         onRefreshCompleted();
+
         ///第一次加载且已注册缓存功能的，才进行缓存
-        if(init && cacheDataFactory != null){
-          cacheDataFactory.cacheRefreshData();
+        if (init && cacheDataFactory != null) {
+          cacheDataFactory!.cacheRefreshData();
         }
       }
       return data;
     } catch (e, s) {
-      ExceptionHandler.getInstance().handleException(this, e, s);
+      ExceptionHandler.getInstance()!.handleException(this, e, s);
       return null;
     }
   }
 
-
-
   /// 上拉加载更多
-  Future<List<T>> loadMore() async {
+  Future<List<T>?> loadMore() async {
     try {
-      var data = await loadData(pageNum: ++_currentPageNum);
-      if (data.isEmpty) {
+      List<T>? data = await loadData(pageNum: ++_currentPageNum);
+      if (data == null || data.isEmpty) {
         _currentPageNum--;
         refreshController.loadNoData();
       } else {
@@ -90,7 +87,7 @@ abstract class RefreshListViewStateModel<T> extends ListViewStateModel<T> {
   }
 
   // 加载数据
-  Future<List<T>> loadData({int pageNum});
+  Future<List<T>?> loadData({int? pageNum});
 
   @override
   void dispose() {

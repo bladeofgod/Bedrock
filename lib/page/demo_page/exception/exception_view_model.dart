@@ -18,7 +18,7 @@ class ExceptionViewModel extends SingleViewStateModel{
 
   @override
   Future loadData() {
-    return BedrockRepositoryProxy.getInstance().getSectionOne().getTest();
+    return BedrockRepositoryProxy.getInstance()!.getSectionOne().getTest();
   }
 
   @override

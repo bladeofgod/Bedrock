@@ -7,22 +7,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_stateless_widget.dart';
 import 'package:shimmer/shimmer.dart';
 
-
 ///骨架屏 建议用stateless
 
-abstract class BaseSkeletonWidget extends BaseStatelessWidget{
-
-  BuildContext upperContext;
+abstract class BaseSkeletonWidget extends BaseStatelessWidget {
   ///确保全局骨架 颜色一致
   final Color skeletonColor = Color.fromRGBO(221, 221, 221, 1);
   final Color baseColor = Color(0xFFE0E0E0);
   final Color highLightColor = Color(0xFFF5F5F5);
 
-  bool _enabled = true;
+  final bool _enabled = true;
 
   ///自动给child 增加 闪闪亮特效！
-  Widget getShimmer(Widget child){
-    return  Shimmer(
+  Widget getShimmer(Widget child) {
+    return Shimmer(
       gradient: LinearGradient(
           begin: Alignment.centerLeft,
           end: Alignment.centerRight,
@@ -46,10 +43,4 @@ abstract class BaseSkeletonWidget extends BaseStatelessWidget{
       child: child,
     );
   }
-
 }
-
-
-
-
-

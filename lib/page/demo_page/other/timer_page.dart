@@ -26,7 +26,7 @@ class TimerPageState extends PageState {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Text(text,style: TextStyle(color: Colors.black,fontSize: getSp(28)),),
-          RaisedButton(
+          ElevatedButton(
             child: Text('请求一下接口'),
             onPressed: (){
               request();
@@ -37,12 +37,12 @@ class TimerPageState extends PageState {
     ));
   }
   
-  Timer singleTimer;
+  Timer? singleTimer;
   
   request(){
-    if(singleTimer != null &&  singleTimer.isActive){
+    if(singleTimer != null &&  singleTimer!.isActive){
       debugPrint('取消上一次请求');
-      singleTimer.cancel();
+      singleTimer!.cancel();
     }
     ///假设用户停止500ms后 请求
     singleTimer = Timer(Duration(milliseconds: 500),()async{

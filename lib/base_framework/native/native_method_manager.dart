@@ -15,9 +15,9 @@ class NativeMethodManager{
   static final String methodInstall = 'install_apk';
 
 
-  static NativeMethodManager _singleton;
+  static NativeMethodManager? _singleton;
 
-  static NativeMethodManager getInstance(){
+  static NativeMethodManager? getInstance(){
     if(_singleton == null){
       _singleton = NativeMethodManager._();
     }

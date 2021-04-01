@@ -3,22 +3,18 @@
 * Date : 2020/6/16
 */
 
-import 'dart:io';
 
-import 'package:connectivity/connectivity.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bedrock/base_framework/view_model/interface/cache_data_factory.dart';
-import 'package:oktoast/oktoast.dart';
 import 'package:flutter_bedrock/base_framework/exception/un_authorized_exception.dart';
 import 'package:flutter_bedrock/base_framework/exception/user_unbind_exception.dart';
 import 'package:flutter_bedrock/base_framework/view_model/view_state_model.dart';
 
 class ExceptionHandler{
 
-  static ExceptionHandler _singleton;
+  static ExceptionHandler? _singleton;
 
-  static ExceptionHandler getInstance(){
+  static ExceptionHandler? getInstance(){
     if(_singleton == null){
       _singleton = ExceptionHandler._();
     }
@@ -43,7 +39,7 @@ class ExceptionHandler{
       if(e.error is UserUnbindException){
         model.setUnBind();
       }
-      if(e.type == DioErrorType.CONNECT_TIMEOUT ){
+      if(e.type == DioErrorType.connectTimeout ){
         //todo
       }
       ///以下是demo 代码，实际项目最好删除掉

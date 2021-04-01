@@ -3,7 +3,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/base_framework/view_model/app_model/locale_model.dart';
-import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 import 'package:flutter_bedrock/generated/l10n.dart';
 import 'package:provider/provider.dart';
@@ -31,19 +30,19 @@ class LocalPageState extends PageState{
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text(S.of(context).hello,style: TextStyle(color: Colors.black,fontSize: getSp(28)),),
+                  Text(S.of(context)!.hello,style: TextStyle(color: Colors.black,fontSize: getSp(28)),),
                   getSizeBox(height: getWidthPx(40)),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      RaisedButton(
+                      ElevatedButton(
                         onPressed: (){
                           localModel.switchLocale(1);
                         },
                         child: Text("切换中文"),
                       ),
                       getSizeBox(width: getWidthPx(40)),
-                      RaisedButton(
+                      ElevatedButton(
                         onPressed: (){
                           localModel.switchLocale(2);
                         },

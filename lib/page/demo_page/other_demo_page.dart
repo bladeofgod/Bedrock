@@ -5,8 +5,6 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bedrock/base_framework/config/router_manager.dart';
-import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 import 'package:flutter_bedrock/page/demo_page/other/little_util_page.dart';
 import 'package:flutter_bedrock/page/demo_page/other/request_permission_page.dart';
@@ -27,35 +25,35 @@ class OtherDemoPageState extends PageState {
       child: Column(
         children: <Widget>[
           getSizeBox(height: getWidthPx(100)),
-          RaisedButton(
+          ElevatedButton(
             child: Text('滚动事件的监听'),
             onPressed: (){
               push(ScrollPageState());
             },
           ),
           getSizeBox(height: getWidthPx(40)),
-          RaisedButton(
+          ElevatedButton(
             child: Text('stream Util'),
             onPressed: (){
               push(LittleUtilPageState());
             },
           ),
           getSizeBox(height: getWidthPx(40)),
-          RaisedButton(
+          ElevatedButton(
             child: Text('滑动中适时刷新view的经验'),
             onPressed: (){
               push(TimerPageState());
             },
           ),
           getSizeBox(height: getWidthPx(40)),
-          RaisedButton(
+          ElevatedButton(
             child: Text('请求权限'),
             onPressed: (){
               push(RequestPermissionsPageState());
             },
           ),
           getSizeBox(height: getWidthPx(40)),
-          RaisedButton(
+          ElevatedButton(
             child: Text('android 异常保护'),
             onPressed: (){
               push(TestAndroidPage());
