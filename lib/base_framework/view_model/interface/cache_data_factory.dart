@@ -3,8 +3,8 @@
 * Date : 2020/6/15
 */
 
+import 'package:flutter_bedrock/base_framework/utils/mmkv_flutter.dart';
 import 'package:flutter_bedrock/base_framework/view_model/view_state_model.dart';
-import 'package:mmkv_flutter/mmkv_flutter.dart';
 import 'package:oktoast/oktoast.dart';
 
 

@@ -135,7 +135,7 @@ class DemoPageState extends PageState {
             ElevatedButton(
               child: Text("web page",style: TextStyle(color: Colors.black),),
               onPressed: (){
-                String url = 'https://github.com/bladeofgod/Bedrock';
+                String url = 'https://wwww.baidu.com';
                 push(WebPageState(url));
               },
             ),
