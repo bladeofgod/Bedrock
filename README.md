@@ -1,12 +1,17 @@
 # :whale:Flutter Bedrock
 
-##  :seedling:v 1.0.32
+##  :seedling:v 2.0.0
 
     一款基于MVVM+Provider的快速开发框架。
 
     欢迎提issue和pr，如果对你有帮助的话，给个⭐⭐star⭐⭐吧。 ^.^
 
     我的联系方式：450103187@qq.com
+    
+##  声明
+    
+    已由 SheepYang1993 迁移到Flutter 2.0， 非常感谢帮助。
+    框架版本也从2.0.x开始增长。
 
 
 [更新日志](https://github.com/bladeofgod/Bedrock/blob/master/update_log.md)
