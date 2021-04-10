@@ -57,6 +57,18 @@ class FullPageCircleProgressWidget extends BaseStatelessWidget{
 
 //typedef LoadingCreate = void Function(DialogLoadingController controller);
 
+enum LoadingPopType{
+  byUser,//用户结束
+  byTimeOut,//超时结束
+  byDismissMethod,//通过[dismissProgressDialog] 结束
+}
+
+class LoadingPopEntity{
+  final LoadingPopType type;
+
+  LoadingPopEntity(this.type);
+}
+
 /// 加载弹窗 [showProgressDialog] (页面)的 [RouteSettings].name
 /// * 某些情况，可能需要当前route的名字，故这里标记上。
 final String loadingLayerRouteName = 'LoadingProgressState';
@@ -65,22 +77,29 @@ class LoadingProgressState extends WidgetState {
 
   final Widget? progress;
   final Color? bgColor;
+  final int? loadingTimeOut;
   //final LoadingCreate loadingCreate;
-  final DialogLoadingController? controller;
+  DialogLoadingController? controller;
 
-  LoadingProgressState({this.progress, this.bgColor, this.controller});
+  LoadingProgressState({this.progress, this.bgColor, this.controller,this.loadingTimeOut});
 
 
   @override
   void initState() {
     super.initState();
 
+    Future.delayed(Duration(seconds: loadingTimeOut ?? 15)).then((value) {
+      if(mounted) {
+        Navigator.of(context).pop(LoadingPopEntity(LoadingPopType.byTimeOut));
+      }
+    });
+
     controller!.addListener(() {
       if(controller!.isShow){
         //todo
       }else{
         WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-          Navigator.of(context).pop();
+          Navigator.of(context).pop(LoadingPopEntity(LoadingPopType.byDismissMethod));
         });
       }
     });
@@ -104,7 +123,7 @@ class LoadingProgressState extends WidgetState {
       alignment: Alignment.center,
       child:progress?? CircularProgressIndicator(),
     ), onWillPop: ()async{
-      controller!.dismissDialog();
+      Navigator.of(context).pop(LoadingPopEntity(LoadingPopType.byUser));
       return false;
     });
   }

@@ -32,15 +32,20 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
     );
   }
 
+
+  DialogLoadingController? _dialogLoadingController;
+
   ///在页面上方显示一个 loading widget
   ///共有两种方法，showProgressDialog是其中一种
   ///具体参见 : progress_widget.dart
   ///如果需要在 [dismissProgressDialog] 方法后跳转到其他页面或者执行什么
-  ///使用 参数 [afterDismiss]
-  DialogLoadingController? _dialogLoadingController;
-
+  ///使用 参数 [afterDismiss] 和 [dismissProgressDialog.afterPopTask] 不建议同时用使用。
+  ///[loadingTimeOut] 超时时间，单位秒。
+  /// * 抵达这个时间后，将自动关闭loading widget,默认15秒
   showProgressDialog(
-      {Widget? progress, Color? bgColor, Function? afterDismiss}) {
+      {Widget? progress,
+        Color? bgColor, int loadingTimeOut = 15,
+        Function? afterDismiss}) {
     if (_dialogLoadingController == null) {
       _dialogLoadingController = DialogLoadingController();
       Navigator.of(context)
@@ -56,6 +61,7 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
                   controller: _dialogLoadingController,
                   progress: progress,
                   bgColor: bgColor,
+                  loadingTimeOut: loadingTimeOut
                 ).generateWidget();
               }))
           .then((value) {
