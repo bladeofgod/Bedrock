@@ -1,6 +1,7 @@
 
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bedrock/base_framework/ui/widget/provider_widget.dart';
 import 'package:flutter_bedrock/base_framework/utils/exception_pitcher.dart';
 import 'package:flutter_bedrock/base_framework/view_model/interface/cache_data_factory.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
@@ -100,9 +101,15 @@ abstract class ViewStateModel with ChangeNotifier {
     return 'BaseModel{_viewState: $viewState, _errorMessage: $_errorMessage}';
   }
 
+  int notifyInvokeCount = 0;
+
+  ///[refreshSelector]用于控制刷新范围
+  /// * [false] 刷新[ProviderWidget] 的 builder范围
+  /// * [true]  刷新[ProviderWidget] 内的[Selector] 的builder 范围
   @override
-  void notifyListeners() {
+  void notifyListeners({bool refreshSelector = false}) {
     if (!disposed) {
+      if(!refreshSelector) notifyInvokeCount ++ ;
       super.notifyListeners();
     }
   }

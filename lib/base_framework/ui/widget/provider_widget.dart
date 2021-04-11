@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bedrock/base_framework/view_model/view_state_model.dart';
 import 'package:provider/provider.dart';
 
 /// Provider封装类
 /// 方便数据初始化
-class ProviderWidget<T extends ChangeNotifier?> extends StatefulWidget {
+class ProviderWidget<T extends ViewStateModel?> extends StatefulWidget {
   final ValueWidgetBuilder<T> builder;
 
   ///根据model状态构建页面
@@ -28,7 +29,7 @@ class ProviderWidget<T extends ChangeNotifier?> extends StatefulWidget {
   _ProviderWidgetState<T> createState() => _ProviderWidgetState<T>();
 }
 
-class _ProviderWidgetState<T extends ChangeNotifier?>
+class _ProviderWidgetState<T extends ViewStateModel?>
     extends State<ProviderWidget<T>> {
   late T model;
 
@@ -47,15 +48,20 @@ class _ProviderWidgetState<T extends ChangeNotifier?>
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<T>(
       create: (context) => model,
-      child: Consumer<T>(
-        builder: widget.builder,
+      child: Selector<T,int>(
+        selector: (ctx,model) {
+          return model.notifyInvokeCount;
+        },
+        builder: (ctx,value,child) {
+          return widget.builder();
+        },
         child: widget.child,
       ),
     );
   }
 }
 
-class ProviderWidget2<A extends ChangeNotifier?, B extends ChangeNotifier?>
+class ProviderWidget2<A extends ViewStateModel?, B extends ViewStateModel?>
     extends StatefulWidget {
   final Widget Function(BuildContext context, A model1, B model2, Widget? child)
       builder;
@@ -76,8 +82,8 @@ class ProviderWidget2<A extends ChangeNotifier?, B extends ChangeNotifier?>
   _ProviderWidgetState2<A, B> createState() => _ProviderWidgetState2<A, B>();
 }
 
-class _ProviderWidgetState2<A extends ChangeNotifier?,
-    B extends ChangeNotifier?> extends State<ProviderWidget2<A?, B?>> {
+class _ProviderWidgetState2<A extends ViewStateModel?,
+    B extends ViewStateModel?> extends State<ProviderWidget2<A?, B?>> {
   A? model1;
   B? model2;
 
@@ -112,10 +118,10 @@ class _ProviderWidgetState2<A extends ChangeNotifier?,
 }
 
 class ProviderWidget4<
-    A extends ChangeNotifier?,
-    B extends ChangeNotifier?,
-    C extends ChangeNotifier?,
-    D extends ChangeNotifier?> extends StatefulWidget {
+    A extends ViewStateModel?,
+    B extends ViewStateModel?,
+    C extends ViewStateModel?,
+    D extends ViewStateModel?> extends StatefulWidget {
   final Widget Function(BuildContext context, A model_1, B model_2, C model_3,
       D model_4, Widget? child)? builder;
 
@@ -145,10 +151,10 @@ class ProviderWidget4<
 }
 
 class ProviderWidgetState4<
-    A extends ChangeNotifier?,
-    B extends ChangeNotifier?,
-    C extends ChangeNotifier?,
-    D extends ChangeNotifier?> extends State<ProviderWidget4<A?, B?, C?, D?>> {
+    A extends ViewStateModel?,
+    B extends ViewStateModel?,
+    C extends ViewStateModel?,
+    D extends ViewStateModel?> extends State<ProviderWidget4<A?, B?, C?, D?>> {
   A? model_1;
   B? model_2;
   C? model_3;
