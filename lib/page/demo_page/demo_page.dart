@@ -229,9 +229,13 @@ class DemoPageState extends PageState {
                 style: TextStyle(color: Colors.black),
               ),
               onPressed: () {
-                showProgressDialog();
+                showProgressDialog(afterDismiss: (result) {
+                  debugPrint('after dismiss ${result.type}');
+                },loadingTimeOut: 4);
                 Future.delayed(Duration(seconds: 2))
-                    .then((value) => dismissProgressDialog());
+                    .then((value) => dismissProgressDialog(afterPopTask: (result) {
+                      debugPrint('after pop  ${result.type}');
+                }));
               },
             ),
             getSizeBox(height: getHeightPx(40)),

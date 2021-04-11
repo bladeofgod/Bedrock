@@ -63,11 +63,17 @@ enum LoadingPopType{
   byDismissMethod,//通过[dismissProgressDialog] 结束
 }
 
+///loading widget 返回的数据实体
+
 class LoadingPopEntity{
   final LoadingPopType type;
 
   LoadingPopEntity(this.type);
 }
+
+typedef AfterLoadingCallback = void Function(LoadingPopEntity entity);
+
+
 
 /// 加载弹窗 [showProgressDialog] (页面)的 [RouteSettings].name
 /// * 某些情况，可能需要当前route的名字，故这里标记上。
@@ -130,7 +136,7 @@ class LoadingProgressState extends WidgetState {
 }
 
 class DialogLoadingController extends ChangeNotifier{
-  Function? _afterPopTask;
+  AfterLoadingCallback? _afterPopTask;
 
   bool isShow = true;
 
@@ -143,12 +149,12 @@ class DialogLoadingController extends ChangeNotifier{
   }
 
   ///[task] 将在loading消失后执行
-  void holdAfterPopTask({Function? task}) {
+  void holdAfterPopTask({AfterLoadingCallback? task}) {
     _afterPopTask = task;
   }
 
-  void invokeAfterPopTask() {
-    if (_afterPopTask != null) _afterPopTask!();
+  void invokeAfterPopTask(LoadingPopEntity result) {
+    if (_afterPopTask != null) _afterPopTask!(result);
   }
 }
 
