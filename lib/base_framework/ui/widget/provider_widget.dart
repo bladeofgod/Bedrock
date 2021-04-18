@@ -50,16 +50,20 @@ class _ProviderWidgetState<T extends ViewStateModel?>
       create: (context) => model,
       child: Selector<T,int>(
         selector: (ctx,model) {
-          return model.notifyInvokeCount;
+          return model!.notifyInvokeCount;
         },
         builder: (ctx,value,child) {
-          return widget.builder();
+          return widget.builder(ctx,model,child);
         },
         child: widget.child,
       ),
     );
   }
 }
+
+
+///由于多vm，所以具体selector的刷新范围如何确定，可以参考上面[ProviderWidget]的调整，
+///根据自身需求修改
 
 class ProviderWidget2<A extends ViewStateModel?, B extends ViewStateModel?>
     extends StatefulWidget {

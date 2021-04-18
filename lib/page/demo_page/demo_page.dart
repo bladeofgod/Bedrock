@@ -16,6 +16,7 @@ import 'package:flutter_bedrock/page/demo_page/main_page.dart';
 import 'package:flutter_bedrock/page/demo_page/notification/notification_page.dart';
 import 'package:flutter_bedrock/page/demo_page/other/custom_dialog_page.dart';
 import 'package:flutter_bedrock/page/demo_page/other/part_refresh_page.dart';
+import 'package:flutter_bedrock/page/demo_page/other/selector_demo_page.dart';
 import 'package:flutter_bedrock/page/demo_page/other_demo_page.dart';
 import 'package:flutter_bedrock/page/demo_page/route_anim/route_animation_page.dart';
 import 'package:flutter_bedrock/page/demo_page/slide_out_page.dart';
@@ -85,6 +86,17 @@ class DemoPageState extends PageState {
               ),
               onPressed: () {
                 push(PartRefreshPage());
+              },
+            ),
+            getSizeBox(height: getHeightPx(40)),
+            buildIntro("局部刷新 selector demo"),
+            ElevatedButton(
+              child: Text(
+                "selector demo",
+                style: TextStyle(color: Colors.black),
+              ),
+              onPressed: () {
+                push(SelectorDemo());
               },
             ),
 
