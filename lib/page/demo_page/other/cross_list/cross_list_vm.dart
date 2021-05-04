@@ -37,7 +37,7 @@ class CrossListVM extends SingleViewStateModel {
   int tabsScrollDuration = 300;
 
   ///用于分片滚动时间
-  final int standardSingleTime = 80;
+  final int standardSingleTime = 128;
 
   ///list 当前滚动的位置
   int currentItemIndex = 0;
