@@ -150,22 +150,34 @@ class CrossListVM extends SingleViewStateModel {
     isTapAnimateList = true;
 
     if (dis == 1) {
+      final StatefulElement element = bodyChildCtx[index] as StatefulElement;
+      if(!element.state.mounted)return;
       scrollDuration = 500;
-      await Scrollable.ensureVisible(bodyChildCtx[index]!, duration: Duration(milliseconds: scrollDuration));
+      await Scrollable.ensureVisible(element, duration: Duration(milliseconds: scrollDuration));
     } else {
       scrollDuration = math.max((dis / tabsTitle.length * standardSingleTime).ceil(), onCardScrollDuration);
       if (index > selectTabIndex) {
         //tab 向右  ，list 向下 滑动
         int i = selectTabIndex + 1;
         while (i <= index) {
-          await Scrollable.ensureVisible(bodyChildCtx[i]!, duration: Duration(milliseconds: scrollDuration));
+          final StatefulElement element = bodyChildCtx[i] as StatefulElement;
+          if(!element.state.mounted) {
+            i--;
+            continue;
+          }
+          await Scrollable.ensureVisible(element, duration: Duration(milliseconds: scrollDuration));
           i++;
         }
       } else {
         //tab 向左  ，list 向上 滑动
         int i = selectTabIndex - 1;
         while (i >= index) {
-          await Scrollable.ensureVisible(bodyChildCtx[i]!, duration: Duration(milliseconds: scrollDuration));
+          final StatefulElement element = bodyChildCtx[i] as StatefulElement;
+          if(!element.state.mounted) {
+            i--;
+            continue;
+          }
+          await Scrollable.ensureVisible(element, duration: Duration(milliseconds: scrollDuration));
           i--;
         }
       }
