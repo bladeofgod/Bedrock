@@ -56,7 +56,12 @@ class CrossListPage extends PageState{
         scrollDirection: Axis.horizontal,
         itemCount: vm.tabsTitle.length,
         itemBuilder: (ctx,e) {
-          return TabItemWidget(e).generateWidget();
+          return GestureDetector(
+            onTap: () {
+              vm.tapTab(e);
+            },
+            child: TabItemWidget(e).generateWidget(),
+          );
         },
       ),
     );
