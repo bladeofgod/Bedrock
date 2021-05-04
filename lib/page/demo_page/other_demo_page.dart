@@ -6,6 +6,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
+import 'package:flutter_bedrock/page/demo_page/other/cross_list/cross_list_page.dart';
 import 'package:flutter_bedrock/page/demo_page/other/little_util_page.dart';
 import 'package:flutter_bedrock/page/demo_page/other/request_permission_page.dart';
 import 'package:flutter_bedrock/page/demo_page/other/scroll_page.dart';
@@ -36,6 +37,13 @@ class OtherDemoPageState extends PageState {
             child: Text('stream Util'),
             onPressed: (){
               push(LittleUtilPageState());
+            },
+          ),
+          getSizeBox(height: getWidthPx(40)),
+          ElevatedButton(
+            child: Text('交叉联动列表'),
+            onPressed: (){
+              push(CrossListPage());
             },
           ),
           getSizeBox(height: getWidthPx(40)),
