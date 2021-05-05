@@ -21,6 +21,13 @@ class CrossListPage extends PageState{
   }
 
   @override
+  void dispose() {
+    vm.releaseRes();
+    // TODO: implement dispose
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return switchStatusBar2Dark(
         child: ProviderWidget<CrossListVM>(

@@ -32,6 +32,14 @@ class CrossListVM extends SingleViewStateModel {
     tabsChildCtx.update(index, (value) => ctx,ifAbsent: () => ctx);
   }
 
+  void releaseRes() {
+    tabsChildCtx.clear();
+    bodyChildCtx.clear();
+    itemOffsetY.clear();
+    tabController.dispose();
+    bodyController.dispose();
+  }
+
 
   ///tab 滚动时间
   int tabsScrollDuration = 300;
