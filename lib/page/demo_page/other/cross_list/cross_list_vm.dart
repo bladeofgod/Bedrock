@@ -39,7 +39,7 @@ class CrossListVM extends SingleViewStateModel {
   ///用于分片滚动时间
   final int standardSingleTime = 128;
 
-  ///list 当前滚动的位置
+  ///垂直list 当前滚动的位置
   int currentItemIndex = 0;
 
   ///选择了第几个tab
@@ -94,7 +94,7 @@ class CrossListVM extends SingleViewStateModel {
         .toList();
   }
 
-  ///返回当前垂直列表 在屏的index
+  ///返回当前垂直列表 在屏(顶端)的index
   int currentIndexOnScreen() {
     if (unMountedList == null || (unMountedList?.isEmpty ?? true)) return 0;
     if (bodyController.position.pixels == bodyController.position.minScrollExtent) {
@@ -142,7 +142,7 @@ class CrossListVM extends SingleViewStateModel {
   }
 
 
-    ///滚动到第[index]施工进度卡片
+    ///滚动到第[index]卡片
   void jumpToItem(int index) async {
     final int dis = (index - selectTabIndex).abs();
     if (dis == 0) return;
