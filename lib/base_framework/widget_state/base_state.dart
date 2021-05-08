@@ -6,6 +6,10 @@ import 'package:flutter_bedrock/base_framework/ui/widget/progress_widget.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_stateless_widget.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/widget_state.dart';
+import 'package:flutter_bedrock/base_framework/extension/size_adapter_extension.dart';
+export 'package:flutter_bedrock/base_framework/extension/size_adapter_extension.dart';
+
+
 
 /// * 请勿直接继承此类
 /// * 如果是页面，继承 [PageState]

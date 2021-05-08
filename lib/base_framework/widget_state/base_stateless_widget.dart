@@ -5,6 +5,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bedrock/base_framework/ui/behavior/over_scroll_behavior.dart';
+import 'package:flutter_bedrock/base_framework/extension/size_adapter_extension.dart';
+export 'package:flutter_bedrock/base_framework/extension/size_adapter_extension.dart';
+
 
 /// Stateless widget 继承此类
 

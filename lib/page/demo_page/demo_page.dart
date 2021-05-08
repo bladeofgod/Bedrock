@@ -22,6 +22,7 @@ import 'package:flutter_bedrock/page/demo_page/route_anim/route_animation_page.d
 import 'package:flutter_bedrock/page/demo_page/slide_out_page.dart';
 import 'package:flutter_bedrock/page/demo_page/start/start_page.dart';
 
+
 ///demo，代码分包比较随意
 
 class DemoPageState extends PageState {
@@ -38,6 +39,13 @@ class DemoPageState extends PageState {
           <!--You can pretty much put any html in here!-->
         </div>
       """;
+
+
+  @override
+  void initState() {
+    super.initState();
+    debugPrint('size info --- ${750.w}  :   ${getWidthPx(750)}');
+  }
 
   @override
   Widget build(BuildContext context) {
