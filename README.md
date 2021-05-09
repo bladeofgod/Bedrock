@@ -1,6 +1,6 @@
 # :whale:Flutter Bedrock
 
-##  :seedling:v 2.0.3
+##  :seedling:v 2.0.4
 
     一款基于MVVM+Provider的快速开发框架。
 
