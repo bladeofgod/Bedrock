@@ -7,6 +7,8 @@ import 'package:flutter_bedrock/base_framework/widget_state/base_stateless_widge
 import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/widget_state.dart';
 import 'package:flutter_bedrock/base_framework/extension/size_adapter_extension.dart';
+
+import 'binding/manipulate_widget_binding.dart';
 export 'package:flutter_bedrock/base_framework/extension/size_adapter_extension.dart';
 
 
@@ -18,7 +20,7 @@ export 'package:flutter_bedrock/base_framework/extension/size_adapter_extension.
 ///
 /// 此处扩展功能应该是 page和view通用功能
 
-abstract class BaseState<T extends StatefulWidget> extends State<T> {
+abstract class BaseState<T extends StatefulWidget> extends State<T> with ManipulateWidgetBinding {
   ///去掉 scroll view的 水印  e.g : listView scrollView
   ///当滑动到顶部或者底部时，继续拖动出现的蓝色水印
   Widget getNoInkWellListView({required Widget scrollView}) {
@@ -29,6 +31,9 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
   }
 
   ///占位widget
+  /// * 可以直接使用 [num.vGap] 或 [num.hGap]
+  /// * 参考[SizeAdapterExtension]
+  @Deprecated("已废弃，建议使用size_adapter_extension中的方法")
   Widget getSizeBox({double width = 1, double height = 1}) {
     return SizedBox(
       width: width,
@@ -100,11 +105,16 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
   * */
 
   ///得到适配后的高度
-  double getHeightPx(double height) =>
-      ScreenUtil.getInstance().getHeightPx(height);
+  /// * 可以直接使用 [num.w] 或 [num.h] 来获取适配后的尺寸
+  /// * 参考[SizeAdapterExtension]
+  @Deprecated("已废弃，建议使用size_adapter_extension中的方法")
+  double getHeightPx(double height) => height.h;
 
   ///得到适配后的宽度
-  double getWidthPx(double width) => ScreenUtil.getInstance().getWidthPx(width);
+  /// * 可以直接使用 [num.w] 或 [num.h] 来获取适配后的尺寸
+  /// * 参考[SizeAdapterExtension]
+  @Deprecated("已废弃，建议使用size_adapter_extension中的方法")
+  double getWidthPx(double width) => width.w;
 
   ///屏幕宽度
   double getScreenWidth() => ScreenUtil.getInstance().screenWidth;
@@ -120,7 +130,10 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
       ScreenUtil.getInstance().getHeightPx(radius);
 
   ///得到适配后的字号
-  double getSp(double fontSize) => ScreenUtil.getInstance().getSp(fontSize);
+  /// * 可以直接使用 [num.w] 或 [num.h] 来获取适配后的尺寸
+  /// * 参考[SizeAdapterExtension]
+  @Deprecated("已废弃，建议使用size_adapter_extension中的方法")
+  double getSp(double fontSize) => fontSize.sp;
 
 /*
   * app 生命周期，建议在需要的地方自己注册监听

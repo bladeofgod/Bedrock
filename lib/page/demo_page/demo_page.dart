@@ -44,7 +44,6 @@ class DemoPageState extends PageState {
   @override
   void initState() {
     super.initState();
-    debugPrint('size info --- ${750.w}  :   ${getWidthPx(750)}');
   }
 
   @override
@@ -53,14 +52,14 @@ class DemoPageState extends PageState {
     NotificationHandler().init(context);
     return switchStatusBar2Dark(
         child: Container(
-      width: getWidthPx(750),
-      height: getHeightPx(1334),
+      width: 750.w,
+      height: 1334.h,
       color: Colors.white,
       child: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            getSizeBox(height: getWidthPx(100)),
+            100.vGap,
 
             buildIntro("看这里！入门第一步"),
             ElevatedButton(
@@ -72,7 +71,7 @@ class DemoPageState extends PageState {
                 push(StartPage());
               },
             ),
-            getSizeBox(height: getHeightPx(40)),
+            40.vGap,
             buildIntro("综合性框架功能演示DEMO"),
             ElevatedButton(
               child: Text(

@@ -16,7 +16,7 @@ extension SizeAdapterExtension on num{
 
   ///获取一个用于纵向占位的[SizedBox]
   /// * eg. [Column] 的空间占位
-  SizedBox get vGap => SizedBox(width: 1,height: h,);
+  SizedBox get vGap => SizedBox(width: 1,height: w,);
 
   ///获取一个用于横向占位的sizeBox[SizedBox]
   /// * eg. [Row] 的空间占位
