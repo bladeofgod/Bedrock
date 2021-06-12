@@ -67,7 +67,7 @@ class CrossListPage extends PageState{
             onTap: () {
               vm.tapTab(e);
             },
-            child: TabItemWidget(e).generateWidget(),
+            child: generateWidget(() => TabItemWidget(e)),
           );
         },
       ),
@@ -81,7 +81,7 @@ class CrossListPage extends PageState{
         controller: vm.bodyController,
         itemCount: vm.tabsTitle.length,
         padding: EdgeInsets.symmetric(horizontal: getWidthPx(32)),
-        itemBuilder: (ctx,e) => BodyItemWidget(e).generateWidget(),
+        itemBuilder: (ctx,e) => generateWidget(() => BodyItemWidget(e)),
       ),
     );
   }

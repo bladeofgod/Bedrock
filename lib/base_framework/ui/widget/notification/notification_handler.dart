@@ -184,7 +184,7 @@ class NotifyOverlayEntry {
             this.notifyDone = notifyDone;
             if (notifyDone) overlayEntry!.remove();
             callback();
-          }).generateWidget();
+          }).transformToPageWidget();
         });
         break;
     }

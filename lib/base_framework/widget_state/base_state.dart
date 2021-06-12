@@ -11,7 +11,8 @@ import 'package:flutter_bedrock/base_framework/extension/size_adapter_extension.
 import 'binding/manipulate_widget_binding.dart';
 export 'package:flutter_bedrock/base_framework/extension/size_adapter_extension.dart';
 
-
+///用于创建 state
+typedef StateBuilder = State Function();
 
 /// * 请勿直接继承此类
 /// * 如果是页面，继承 [PageState]
@@ -71,7 +72,7 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> with Manipul
                   progress: progress,
                   bgColor: bgColor,
                   loadingTimeOut: loadingTimeOut
-                ).generateWidget();
+                ).transformToPageWidget();
               }))
           .then((value) {
         _dialogLoadingController?.invokeAfterPopTask(value);
@@ -172,11 +173,24 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> with Manipul
 ///并且装配原flutter Widget的功能
 
 mixin WidgetGenerator on BaseState implements _RouteGenerator, _NavigateActor {
-  ///为state生成widget
-  Widget generateWidget({Key? key}) {
+
+  ///为state生成 页面widget
+  /// * 仅用于页面跳转生成widget
+  /// * 用于生成页面内的widget 应使用[generateWidget]，否则可能会引起一些重建bug
+  /// * 如通知、和悬浮窗依然使用此方法(其本质是页面)
+  Widget transformToPageWidget({Key? key}) {
     return _CommonWidget(
-      state: this,
-      key: key,
+      key: key,stateBuilder: () => this,
+    );
+  }
+
+  ///为state 生成 widget
+  /// * [StateBuilder] 用于回调生成一个新的state
+  /// * 此方法生成的widget 为通用型widget
+  /// * 相较于老版，用于解决 widget/state重建时出现的bug
+  Widget generateWidget(StateBuilder stateBuilder) {
+    return _CommonWidget(
+      stateBuilder: stateBuilder,
     );
   }
 
@@ -205,7 +219,7 @@ mixin WidgetGenerator on BaseState implements _RouteGenerator, _NavigateActor {
   @override
   Future push<T extends PageState>(T targetPage, {PageAnimation? animation}) {
     return Navigator.of(context).push(buildRoute(
-        targetPage.generateWidget(), targetPage.runtimeType.toString(),
+        targetPage.transformToPageWidget(), targetPage.runtimeType.toString(),
         animation: animation));
   }
 
@@ -214,7 +228,7 @@ mixin WidgetGenerator on BaseState implements _RouteGenerator, _NavigateActor {
       {PageAnimation? animation, T? result}) {
     return Navigator.of(context).pushReplacement(
         buildRoute(
-            targetPage.generateWidget(), targetPage.runtimeType.toString(),
+            targetPage.transformToPageWidget(), targetPage.runtimeType.toString(),
             animation: animation),
         result: result);
   }
@@ -224,7 +238,7 @@ mixin WidgetGenerator on BaseState implements _RouteGenerator, _NavigateActor {
       {PageAnimation? animation, predicate}) {
     return Navigator.of(context).pushAndRemoveUntil(
         buildRoute(
-            targetPage.generateWidget(), targetPage.runtimeType.toString(),
+            targetPage.transformToPageWidget(), targetPage.runtimeType.toString(),
             animation: animation),
         predicate ?? (route) => false);
   }
@@ -272,12 +286,13 @@ abstract class _NavigateActor {
 }
 
 class _CommonWidget extends StatefulWidget {
-  final State? state;
 
-  const _CommonWidget({Key? key, this.state}) : super(key: key);
+  final StateBuilder? stateBuilder;
+
+  const _CommonWidget({Key? key, this.stateBuilder}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return state!;
+    return stateBuilder!();
   }
 }

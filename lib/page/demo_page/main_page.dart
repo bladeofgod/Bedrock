@@ -60,9 +60,9 @@ class MainPageState extends PageState {
                       children: <Widget>[
                         FirstPageState((controller){
                           firstController = controller;
-                        }).generateWidget(),
-                        SecondPageState().generateWidget(),
-                        ThirdPagePageState().generateWidget(),
+                        }).transformToPageWidget(),
+                        SecondPageState().transformToPageWidget(),
+                        ThirdPagePageState().transformToPageWidget(),
                       ],
                       onPageChanged: (index){
                         setState(() {

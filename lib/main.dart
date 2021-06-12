@@ -35,7 +35,7 @@ void main() async {
       ///出现异常时会进入下方页面（flutter原有的红屏），
       return ExceptionPageState(
               details.exception.toString(), details.stack.toString())
-          .generateWidget();
+          .transformToPageWidget();
     };
   }, (Object object, StackTrace trace) {
     ///你可以将下面日志上传到服务器，用于release后的错误处理
@@ -80,7 +80,7 @@ class MyApp extends StatelessWidget {
               ],
               supportedLocales: S.delegate.supportedLocales,
               navigatorObservers: [routeObserver],
-              home: DemoPageState().generateWidget(),
+              home: DemoPageState().transformToPageWidget(),
 
               ///改版啦，这里用不到，你可以删除
 //                onGenerateRoute: Router.generateRoute,

@@ -10,6 +10,11 @@ import 'package:flutter_bedrock/page/demo_widget/custom_drawer.dart';
 import 'float_layer_widget/shake_float_widget.dart';
 
 class CustomDialogPage extends PageState {
+
+  late ShakeFloatState shake ;
+
+  late CustomBottomDrawerWidget bottomDrawerWidget ;
+
   @override
   Widget build(BuildContext context) {
     return switchStatusBar2Dark(
@@ -29,8 +34,11 @@ class CustomDialogPage extends PageState {
           }),
           getSizeBox(height: getWidthPx(80)),
           buildBtn('elasticOut 式的动画：红方块 ', () {
-            final ShakeFloatState shake = ShakeFloatState();
-            floatWidget(shake.generateWidget(), floatWidgetDismiss: (ctx) {
+
+            floatWidget(generateWidget(() {
+              shake = ShakeFloatState();
+              return shake;
+            }), floatWidgetDismiss: (ctx) {
               shake.controller!.reverse().whenComplete(() => Navigator.pop(ctx));
             });
           }),
@@ -44,14 +52,15 @@ class CustomDialogPage extends PageState {
           }),
           getSizeBox(height: getWidthPx(80)),
           buildBtn('底部滑出抽屉', () {
-            final CustomBottomDrawerWidget bottomDrawerWidget =
-                CustomBottomDrawerWidget();
+
             floatWidget(
-              bottomDrawerWidget.generateWidget(),
+              generateWidget(() {
+                bottomDrawerWidget = CustomBottomDrawerWidget();
+                return bottomDrawerWidget;
+              }),
               floatWidgetDismiss: (ctx) {
                 bottomDrawerWidget.animationController
-                    ?.reverse()
-                    ?.whenComplete(() => Navigator.pop(ctx));
+                    !.reverse().whenComplete(() => Navigator.pop(ctx));
               },
               barrierDismissible: true,
             );

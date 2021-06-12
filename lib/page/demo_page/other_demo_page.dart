@@ -13,6 +13,8 @@ import 'package:flutter_bedrock/page/demo_page/other/scroll_page.dart';
 import 'package:flutter_bedrock/page/demo_page/other/test_android_page.dart';
 import 'package:flutter_bedrock/page/demo_page/other/timer_page.dart';
 
+import 'other/simple_list/simple_list_page.dart';
+
 ///实验室 随便写的。
 
 
@@ -67,6 +69,14 @@ class OtherDemoPageState extends PageState {
               push(TestAndroidPage());
             },
           ),
+          40.vGap,
+          ElevatedButton(
+            child: Text('简单列表页'),
+            onPressed: (){
+              push(SimpleListPage());
+            },
+          ),
+
         ],
       ),
     ));

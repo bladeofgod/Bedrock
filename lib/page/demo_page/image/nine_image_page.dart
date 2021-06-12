@@ -15,7 +15,7 @@ class NineImagePage extends PageState{
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          NineImageEditorState().generateWidget(),
+          generateWidget(() => NineImageEditorState()),
           //getSizeBox(height: getWidthPx(80)),
 
         ],

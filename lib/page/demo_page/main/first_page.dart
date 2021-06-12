@@ -195,10 +195,10 @@ class FirstPageState extends PageState with AutomaticKeepAliveClientMixin {
     return Container(
       width: getWidthPx(622),
       height: getWidthPx(292),
-      child: FirstBannerState(
+      child: generateWidget(() => FirstBannerState(
         borderRadius: BorderRadius.circular(getHeightPx(6)),
         imageList: firstViewModel.firstEntity!.banner,
-      ).generateWidget(),
+      )),
     );
   }
 

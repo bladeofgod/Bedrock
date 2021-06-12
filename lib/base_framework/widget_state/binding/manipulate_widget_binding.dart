@@ -41,7 +41,7 @@ mixin ManipulateWidgetBinding<T extends StatefulWidget> on State<T> {
             pageBuilder:(ctx,animation,secondAnimation){
               return FloatContainerWidget(child,
                   floatWidgetDismiss: floatWidgetDismiss??(ctx)=>Navigator.pop(ctx),
-                  barrierDismissible:barrierDismissible ,bgColor: bgColor,alignment: alignment).generateWidget();
+                  barrierDismissible:barrierDismissible ,bgColor: bgColor,alignment: alignment).transformToPageWidget();
             }))
         .then((value) => afterPop??(){})
         .whenComplete(() => onComplete??(){});

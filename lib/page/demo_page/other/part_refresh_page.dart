@@ -8,10 +8,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/page_state.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/widget_state.dart';
 
+///仅作为一种刷新方式
+
 class PartRefreshPage extends PageState{
 
   bool exp1 = false;
-  final PartWidget partWidget = PartWidget();
+
+  late PartWidget partWidget;
+
   @override
   Widget build(BuildContext context) {
     debugPrint('page build');
@@ -45,9 +49,11 @@ class PartRefreshPage extends PageState{
           getSizeBox(height: getWidthPx(100)),
           ElevatedButton(onPressed: (){
             partWidget.switchColor();
-          },
-            child: Text('change color By part refresh'),),
-          partWidget.generateWidget(),
+          }, child: Text('change color By part refresh'),),
+          generateWidget(() {
+            partWidget = PartWidget();
+            return partWidget;
+          }),
         ],
       ),
     ));
