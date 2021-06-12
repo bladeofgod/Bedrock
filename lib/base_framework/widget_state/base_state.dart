@@ -184,8 +184,6 @@ mixin WidgetGenerator on BaseState implements _RouteGenerator, _NavigateActor {
   @override
   PageRoute<T> buildRoute<T>(Widget page, String routeName,
       {PageAnimation? animation = PageAnimation.Non, Object? args}) {
-    assert(routeName != null && routeName.isNotEmpty,
-        'route name must be not empty !');
     final r = RouteSettings(name: routeName, arguments: args);
 
     switch (animation) {
@@ -206,7 +204,6 @@ mixin WidgetGenerator on BaseState implements _RouteGenerator, _NavigateActor {
 
   @override
   Future push<T extends PageState>(T targetPage, {PageAnimation? animation}) {
-    assert(targetPage != null, 'the target page must not null !');
     return Navigator.of(context).push(buildRoute(
         targetPage.generateWidget(), targetPage.runtimeType.toString(),
         animation: animation));
@@ -215,7 +212,6 @@ mixin WidgetGenerator on BaseState implements _RouteGenerator, _NavigateActor {
   @override
   Future pushReplacement<T extends Object, TO extends PageState>(TO targetPage,
       {PageAnimation? animation, T? result}) {
-    assert(targetPage != null, 'the target page must not null !');
     return Navigator.of(context).pushReplacement(
         buildRoute(
             targetPage.generateWidget(), targetPage.runtimeType.toString(),
