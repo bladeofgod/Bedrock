@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:dokit/dokit.dart';
 import 'package:flustars/flustars.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -42,7 +43,11 @@ void main() async {
     debugPrint(object as String?);
     debugPrint(trace.toString());
   });
-  runApp(MyApp());
+
+  DoKit.runApp(
+    app: DoKitApp(MyApp()),
+  );
+
   //状态栏置透明
   SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(statusBarColor: Colors.transparent));

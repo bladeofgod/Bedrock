@@ -46,6 +46,9 @@ dependencies:
   #解决办法 参考这里：https://juejin.im/post/6864487800969003016
   #  flutter_webview_plugin: ^0.3.11
 
+  # 滴滴调试工具
+  dokit: ^0.8.0-nullsafety.0
+
   #设备信息、包信息
   device_info: ^2.0.0
   package_info: ^2.0.0

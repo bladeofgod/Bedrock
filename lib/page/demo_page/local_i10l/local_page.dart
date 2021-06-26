@@ -30,7 +30,7 @@ class LocalPageState extends PageState{
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text(S.of(context)!.hello,style: TextStyle(color: Colors.black,fontSize: getSp(28)),),
+                  Text(S.of(context).hello,style: TextStyle(color: Colors.black,fontSize: getSp(28)),),
                   getSizeBox(height: getWidthPx(40)),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

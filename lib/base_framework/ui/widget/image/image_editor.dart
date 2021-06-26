@@ -84,7 +84,7 @@ class ImageEditorState extends PageState {
               ),
             ),
             child: Text(
-              S.of(context)!.reset,
+              S.of(context).reset,
               style: TextStyle(color: Colors.black54, fontSize: getSp(28)),
             ),
           ),
@@ -101,7 +101,7 @@ class ImageEditorState extends PageState {
               ),
             ),
             child: Text(
-              S.of(context)!.confirm,
+              S.of(context).confirm,
               style: TextStyle(color: Colors.black54, fontSize: getSp(28)),
             ),
           ),

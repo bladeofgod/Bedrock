@@ -46,7 +46,7 @@ class LocaleModel extends ChangeNotifier {
   static String localeName(index, context) {
     switch (index) {
       case 0:
-        return S.of(context)!.autoBySystem;
+        return S.of(context).autoBySystem;
       case 1:
         return '简体中文';
       case 2:

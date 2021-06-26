@@ -64,6 +64,7 @@ class _ProviderWidgetState<T extends ViewStateModel?>
 
 ///由于多vm，所以具体selector的刷新范围如何确定，可以参考上面[ProviderWidget]的调整，
 ///根据自身需求修改
+///* 默认参照放上面的规范进行处理，更多ViewModel可以以此类推
 
 class ProviderWidget2<A extends ViewStateModel?, B extends ViewStateModel?>
     extends StatefulWidget {
@@ -114,8 +115,11 @@ class _ProviderWidgetState2<A extends ViewStateModel?,
             create: (context) => model2,
           )
         ],
-        child: Consumer2<A, B>(
-          builder: widget.builder,
+        child: Selector2<A, B,int>(
+          selector: (ctx, m1, m2) => (m1!.notifyInvokeCount + m2!.notifyInvokeCount),
+          builder: (ctx, value, child) {
+            return widget.builder(ctx, model1, model2, child);
+          },
           child: widget.child,
         ));
   }
