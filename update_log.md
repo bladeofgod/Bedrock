@@ -1,5 +1,10 @@
 # 更新日志
 
+##  2.1.1   2021年6月26日13点22分
+    遵循provider_widget设计 修改provider_widget2 无法局部刷新的问题，
+    增加调试工具dokit
+    解决黄色警告
+
 ##  2.1.0   2021年6月12日19点23分
     重写generateWidget()方法
     增加transformToPageWidget()
