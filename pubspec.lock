@@ -700,6 +700,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.1.10"
+  sensors:
+    dependency: "direct main"
+    description:
+      name: sensors
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.0.3"
   share:
     dependency: "direct main"
     description:

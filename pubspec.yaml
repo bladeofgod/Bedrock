@@ -196,6 +196,9 @@ dependencies:
   reflectable: ^3.0.1
   build_runner: ^1.12.2
 
+  #传感器
+  sensors: ^2.0.3
+
 
 
 dev_dependencies:
