@@ -84,7 +84,7 @@ class DemoPageState extends PageState {
             ),
 
             /// part refresh
-            getSizeBox(height: getHeightPx(40)),
+            40.vGap,
             buildIntro("局部刷新 demo"),
             ElevatedButton(
               child: Text(
@@ -95,7 +95,7 @@ class DemoPageState extends PageState {
                 push(PartRefreshPage());
               },
             ),
-            getSizeBox(height: getHeightPx(40)),
+            40.vGap,
             buildIntro("局部刷新 selector demo"),
             ElevatedButton(
               child: Text(
@@ -107,7 +107,7 @@ class DemoPageState extends PageState {
               },
             ),
 
-            getSizeBox(height: getHeightPx(40)),
+            40.vGap,
             buildIntro("app observe 功能演示"),
             ElevatedButton(
               child: Text(
@@ -118,7 +118,7 @@ class DemoPageState extends PageState {
                 push(IsolatePageState());
               },
             ),
-            getSizeBox(height: getHeightPx(40)),
+            40.vGap,
             buildIntro("app 内部通知演示"),
             ElevatedButton(
               child: Text(
@@ -130,7 +130,7 @@ class DemoPageState extends PageState {
               },
             ),
 
-            getSizeBox(height: getWidthPx(40)),
+            40.vGap,
 
             ///重构后不再使用pushname，所以屏蔽这里
 //            buildIntro("路由丢失DEMO"),
@@ -151,7 +151,7 @@ class DemoPageState extends PageState {
                 push(ExceptionMainPage());
               },
             ),
-            getSizeBox(height: getHeightPx(40)),
+            40.vGap,
             buildIntro("自定义浮层 demo"),
             ElevatedButton(
               child: Text(
@@ -163,7 +163,7 @@ class DemoPageState extends PageState {
               },
             ),
 
-            getSizeBox(height: getHeightPx(40)),
+            40.vGap,
             buildIntro("左侧滑动返回上一页"),
             ElevatedButton(
               child: Text(
@@ -174,7 +174,7 @@ class DemoPageState extends PageState {
                 push(SlideOutPageState());
               },
             ),
-            getSizeBox(height: getHeightPx(40)),
+            40.vGap,
             buildIntro("web/html DEMO"),
             ElevatedButton(
               child: Text(
@@ -186,7 +186,7 @@ class DemoPageState extends PageState {
                 push(WebPageState(url));
               },
             ),
-            getSizeBox(height: getHeightPx(20)),
+            40.vGap,
             ElevatedButton(
               child: Text(
                 "html page",
@@ -196,7 +196,7 @@ class DemoPageState extends PageState {
                 push(HtmlPageState(htmlData));
               },
             ),
-            getSizeBox(height: getHeightPx(40)),
+            40.vGap,
             buildIntro("图片相关 DEMO"),
             ElevatedButton(
               child: Text(
@@ -207,7 +207,7 @@ class DemoPageState extends PageState {
                 push(ImageMainDemo());
               },
             ),
-            getSizeBox(height: getHeightPx(40)),
+            40.vGap,
             buildIntro("页面跳转动画 DEMO"),
             ElevatedButton(
               child: Text(
@@ -218,7 +218,7 @@ class DemoPageState extends PageState {
                 push(RouteAnimationPageState());
               },
             ),
-            getSizeBox(height: getHeightPx(40)),
+            40.vGap,
             buildIntro("国际化 DEMO"),
             ElevatedButton(
               child: Text(
@@ -229,7 +229,7 @@ class DemoPageState extends PageState {
                 push(LocalPageState());
               },
             ),
-            getSizeBox(height: getHeightPx(40)),
+            40.vGap,
             buildIntro("实验室 DEMO"),
             ElevatedButton(
               child: Text(
