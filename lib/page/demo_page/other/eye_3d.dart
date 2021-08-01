@@ -55,7 +55,7 @@ class Eye3dState extends PageState {
                 Positioned(
                     child: _middle()),
                 AnimatedPositioned(
-                    bottom: y ,
+                    bottom: y - 10 ,
                     left: x + size.width / 3,
                     duration: Duration(milliseconds: duration),
                     child: _top()),
@@ -75,12 +75,15 @@ class Eye3dState extends PageState {
   }
 
   Widget _middle() {
-    return Text('悄悄滴进村，打枪滴不要',style: TextStyle(fontSize: 22),);
+    return Container(
+      width: size.width - 20,height: 80,
+      child: Image.asset('assets/images/sds.png',fit: BoxFit.fill,),
+    );
   }
 
   Widget _top() {
     return Container(
-      width: 100, height: 100,
+      width: 150, height: 150,
       child: Image.asset('assets/images/car.png',fit: BoxFit.fill),
     );
   }
