@@ -4,9 +4,12 @@ import 'dart:typed_data';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 
+///图片相关操作类
+/// * update: 关于asset图片的引入，建议使用插件:FlutterImgSync
 class ImageHelper {
   ///这里需要更换为对应地址
   static const String baseUrl = 'http://www.baidu.com';
@@ -103,7 +106,6 @@ class ImageHelper {
   static Future<List<Asset>> pickImage({int maxImages = 1}) async {
     List<Asset> images = [];
     List<Asset> resultList = [];
-    String error = 'No Error Dectected';
     try {
       resultList = await MultiImagePicker.pickImages(
         maxImages: maxImages,
@@ -119,7 +121,7 @@ class ImageHelper {
         ),
       );
     } on Exception catch (e) {
-      error = e.toString();
+      debugPrint(e.toString());
     }
 
     return resultList;
@@ -136,5 +138,51 @@ class ImageHelper {
     return file.path;
 
     //return await ImagePickerSaver.saveFile(fileData: fileData);
+  }
+
+  ///压缩图片
+  static Future<File?> imageCompressAndGetFile(File file) async {
+    if (file.lengthSync() < 200 * 1024) {
+      return file;
+    }
+    var quality = 100;
+    if (file.lengthSync() > 4 * 1024 * 1024) {
+      quality = 50;
+    } else if (file.lengthSync() > 2 * 1024 * 1024) {
+      quality = 60;
+    } else if (file.lengthSync() > 1 * 1024 * 1024) {
+      quality = 70;
+    } else if (file.lengthSync() > 0.5 * 1024 * 1024) {
+      quality = 80;
+    } else if (file.lengthSync() > 0.25 * 1024 * 1024) {
+      quality = 90;
+    }
+    var dir = await getTemporaryDirectory();
+    var targetPath = dir.absolute.path + "/" + DateTime.now().millisecondsSinceEpoch.toString() + randomBit(10).toString() + ".jpg";
+
+    var result = await FlutterImageCompress.compressAndGetFile(
+      file.absolute.path,
+      targetPath,
+      quality: quality,
+      rotate: 0,
+    );
+    if(result == null) return null;
+
+    return result;
+  }
+
+  ///生产固定位数的随机数
+  static randomBit(int len) {
+    String scopeF = '123456789'; //首位
+    String scopeC = '0123456789'; //中间
+    String result = '';
+    for (int i = 0; i < len; i++) {
+      if (i == 1) {
+        result = scopeF[Random().nextInt(scopeF.length)];
+      } else {
+        result = result + scopeC[Random().nextInt(scopeC.length)];
+      }
+    }
+    return result;
   }
 }

@@ -108,6 +108,9 @@ dependencies:
   #裁剪
   image_editor: ^1.0.0
 
+  #压缩图片
+  flutter_image_compress: ^1.1.0
+
   #cached_network_image: ^2.0.0-rc.1
   # 类iOS侧滑菜单
   #flutter_slidable: 0.5.3
