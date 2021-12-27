@@ -40,8 +40,14 @@ class _ProviderWidgetState<T extends ViewStateModel?>
     if (widget.onModelReady != null) {
       widget.onModelReady!(model);
     }
-
     super.initState();
+    model?.bindContext(this);
+  }
+
+  @override
+  void dispose() {
+    model?.releaseContext();
+    super.dispose();
   }
 
   @override
@@ -100,8 +106,17 @@ class _ProviderWidgetState2<A extends ViewStateModel?,
     if (widget.onModelReady != null) {
       widget.onModelReady!(model1, model2);
     }
-
     super.initState();
+
+    model1?.bindContext(this);
+    model2?.bindContext(this);
+  }
+
+  @override
+  void dispose() {
+    model1?.releaseContext();
+    model2?.releaseContext();
+    super.dispose();
   }
 
   @override
@@ -153,7 +168,6 @@ class ProviderWidget4<
 
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return ProviderWidgetState4<A, B, C, D>();
   }
 }
@@ -170,7 +184,6 @@ class ProviderWidgetState4<
 
   @override
   void initState() {
-    // TODO: implement initState
 
     model_1 = widget.model_1;
     model_2 = widget.model_2;
@@ -181,11 +194,23 @@ class ProviderWidgetState4<
     }
 
     super.initState();
+
+    model_1?.bindContext(this);
+    model_2?.bindContext(this);
+    model_3?.bindContext(this);
+    model_4?.bindContext(this);
   }
 
   @override
+  void dispose() {
+    model_1?.releaseContext();
+    model_2?.releaseContext();
+    model_3?.releaseContext();
+    model_4?.releaseContext();
+    super.dispose();
+  }
+  @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<A?>(

@@ -30,6 +30,26 @@ abstract class ViewStateModel with ChangeNotifier {
     notifyListeners();
   }
 
+  /// 与vm绑定的context
+  /// * 方便在某些时候，需要在vm中使用与之绑定的context
+  DisposableBuildContext? _context;
+
+  BuildContext? get context => _context?.context;
+
+  /// 绑定vm关联的[_context]
+  /// * 同一页面多vm的情况下，绑定的是同一个[BuildContext]
+  void bindContext<T extends State>(T state) {
+    _context = DisposableBuildContext(state);
+  }
+
+  /// 释放绑定的[_context]
+  /// * 单独释放增加灵活性
+  /// * 此方法默认在[ProviderWidget]的[ProviderWidget.dispose]中主动调用，
+  ///   而非在vm的[dispose]方法，因为一般情况下[ProviderWidget.dispose]要优先释放。
+  void releaseContext() {
+    _context?.dispose();
+  }
+
   /// 出错时的message
   String? _errorMessage;
 
