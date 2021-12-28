@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:dokit/dokit.dart';
 import 'package:flustars/flustars.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -44,9 +43,7 @@ void main() async {
     debugPrint(trace.toString());
   });
 
-  DoKit.runApp(
-    app: DoKitApp(MyApp()),
-  );
+  runApp(MyApp());
 
   //状态栏置透明
   SystemChrome.setSystemUIOverlayStyle(
