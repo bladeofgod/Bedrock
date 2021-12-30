@@ -141,7 +141,8 @@ dependencies:
   #适配、sp本地缓存、路径util等
   flustars: ^2.0.1
   #字符串util、日期格式化、加解密、日志、等等
-  common_utils: ^2.0.2
+  #根据文档，纯dart项目依赖下面的库
+  #common_utils: ^2.0.2
 
   #微信 mmkv 比sp更快
   # 没有实现NullSafety, 用lib\base_framework\utils\mmkv_flutter.dart代替

@@ -156,7 +156,7 @@ packages:
     source: hosted
     version: "1.15.0"
   common_utils:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: common_utils
       url: "https://pub.flutter-io.cn"
