@@ -3,7 +3,8 @@
 
 import 'dart:io';
 
-import 'package:device_info/device_info.dart';
+
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flustars/flustars.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bedrock/base_framework/config/frame_constant.dart';
@@ -22,7 +23,7 @@ class DeviceModel extends ChangeNotifier{
       await deviceInfoPlugin.androidInfo.then((deviceInfo){
         isAndroid = true;
         androidDeviceInfo = deviceInfo;
-        SpUtil.putString(BaseFrameConstant.DEVICE_UUID, deviceInfo.androidId);
+        SpUtil.putString(BaseFrameConstant.DEVICE_UUID, deviceInfo.androidId ?? '');
       });
 
     }else{
@@ -30,7 +31,7 @@ class DeviceModel extends ChangeNotifier{
       await deviceInfoPlugin.iosInfo.then((deviceInfo){
         isIOS = true;
         iosDeviceInfo = deviceInfo;
-        SpUtil.putString(BaseFrameConstant.DEVICE_UUID, deviceInfo.identifierForVendor);
+        SpUtil.putString(BaseFrameConstant.DEVICE_UUID, deviceInfo.identifierForVendor ?? '');
 
       });
 

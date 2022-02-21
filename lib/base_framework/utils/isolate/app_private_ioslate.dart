@@ -6,7 +6,8 @@
 
 import 'dart:isolate';
 
-import 'package:connectivity/connectivity.dart';
+
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bedrock/base_framework/config/net/base_http.dart';
 import 'package:flutter_bedrock/base_framework/config/net/bedrock_http.dart';

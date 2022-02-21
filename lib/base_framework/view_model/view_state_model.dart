@@ -1,5 +1,5 @@
 
-import 'package:connectivity/connectivity.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bedrock/base_framework/ui/widget/provider_widget.dart';
 import 'package:flutter_bedrock/base_framework/utils/exception_pitcher.dart';

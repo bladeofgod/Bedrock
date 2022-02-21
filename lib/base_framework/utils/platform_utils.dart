@@ -1,7 +1,9 @@
 
 
 
-import 'package:package_info/package_info.dart';
+
+
+import 'package:package_info_plus/package_info_plus.dart';
 
 const bool inProduction = const bool.fromEnvironment("dart.vm.product");
 

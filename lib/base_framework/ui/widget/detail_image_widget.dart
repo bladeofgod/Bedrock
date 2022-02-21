@@ -34,7 +34,7 @@ class DetailImageWidgetState extends PageState {
                 height: getHeightPx(1334),
                 ///可增加滑动退出等功能、具体可以查看插件的文档
                 child: ExtendedImageGesturePageView.builder(
-                  controller: new PageController(initialPage: this.initIndex),
+                  controller: new ExtendedPageController(initialPage: this.initIndex),
                   itemCount: imageList!.length,
                   itemBuilder: (ctx,index){
                     var url = "${imageList![index]}";

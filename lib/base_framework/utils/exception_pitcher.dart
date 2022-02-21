@@ -31,10 +31,13 @@ class ExceptionPitcher with _ExceptionNotifyBinding{
 
 
   /// * 根据code 转换Exception
-  Exception transformException(ResponseData responseData){
+  /// * [withNotify] 是否需要通知异常监听器
+  Exception transformException(ResponseData responseData, {bool withNotify = false}){
     assert(responseData!=null,'responseData can not be null!');
     final Exception exception = _transferException(responseData);
-
+    if(withNotify) {
+      notifyExceptionListener(exception, responseData);
+    }
     return exception;
 
   }
@@ -73,6 +76,15 @@ mixin _ExceptionNotifyBinding{
         package.unlink();
         return;
       }
+    }
+  }
+
+  ///通知注册的异常监听器
+  ///
+  /// * [e] 发生的异常   [data] 返回的数据,见[BaseResponseData]
+  void notifyExceptionListener(Exception e, BaseResponseData data) {
+    for(final _ExceptionPackage package in _packages) {
+      package._listener?.notifyException(exception: e, rawData: data);
     }
   }
 
